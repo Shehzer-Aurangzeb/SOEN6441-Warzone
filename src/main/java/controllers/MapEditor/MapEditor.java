@@ -7,14 +7,29 @@ import main.java.models.Map.Map;
 
 import java.io.*;
 
+/**
+ * Controller class for loading and editing map files.
+ */
 public class MapEditor {
     private BufferedReader READER;
     private Map MAP;
 
+    /**
+     * Constructor for MapEditor class.
+     *
+     * @param new_map The map instance to be edited.
+     */
     public MapEditor(Map new_map) {
         this.MAP = new_map;
     }
 
+    /**
+     * Loads a map file and processes its contents.
+     *
+     * @param p_file The file object representing the map file to be loaded.
+     * @throws FileNotFoundException If the specified file is not found.
+     * @throws IOException           If an I/O error occurs while reading the file.
+     */
     public void loadMap(File p_file) throws FileNotFoundException, IOException {
         READER = new BufferedReader(new FileReader(p_file));
         String l_line = READER.readLine();
@@ -87,4 +102,3 @@ public class MapEditor {
         }
     }
 }
-

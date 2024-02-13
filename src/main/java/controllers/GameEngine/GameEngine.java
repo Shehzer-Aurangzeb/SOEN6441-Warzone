@@ -1,7 +1,6 @@
 package main.java.controllers.GameEngine;
 
 import main.java.controllers.MapEditor.MapEditor;
-import main.java.models.Country.Country;
 import main.java.models.Map.Map;
 
 
@@ -31,7 +30,6 @@ public class GameEngine {
             if (l_file!=null) {
                 gameMap = new Map();
                 mapEditor = new MapEditor(gameMap);
-
                 try {
                     mapEditor.loadMap(l_file);
                 } catch (FileNotFoundException e) {
@@ -43,10 +41,8 @@ public class GameEngine {
                 }
             }
         }
-        System.out.println(gameMap.getContinents().toString());
-        for(Country country:gameMap.getCountries()){
-            System.out.println(country.toString());
-        }
+        System.out.println(gameMap.getCountries().toString());
+
 
     }
 }
