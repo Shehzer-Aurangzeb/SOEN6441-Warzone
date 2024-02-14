@@ -6,12 +6,13 @@ package main.java.models.Commands;
 public class Commands {
 
     /** Array of predefined command names. */
-    private static final String[] commandNames = {"loadmap", "showcommands", "exit"};
+    private static final String[] commandNames = {"loadmap", "showcommands", "showmap", "exit"};
 
     /** Array of descriptions corresponding to predefined commands. */
     private static final String[] commandDescriptions = {
             "Load a map file to start the game.",
             "Display all available commands.",
+            "Display the map.",
             "Exit the game."
     };
 
