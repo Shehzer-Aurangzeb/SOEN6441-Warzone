@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="96d94115-e12c-4ba8-a919-e686672e058e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapters/File/FileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/File/FileAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Commands/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Commands/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/LineType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/LineType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/Map/Map.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
