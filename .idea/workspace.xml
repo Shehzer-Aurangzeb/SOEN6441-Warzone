@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d94115-e12c-4ba8-a919-e686672e058e" name="Changes" comment="Added showmap functionality">
+    <list default="true" id="96d94115-e12c-4ba8-a919-e686672e058e" name="Changes" comment="Added functionality for add player and remove player">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +87,10 @@
       <workItem from="1707890121018" duration="378000" />
       <workItem from="1707890507544" duration="1365000" />
       <workItem from="1707926269292" duration="2236000" />
-      <workItem from="1707958685008" duration="9303000" />
+      <workItem from="1707958685008" duration="10243000" />
+      <workItem from="1707970425101" duration="21000" />
+      <workItem from="1707970450937" duration="254000" />
+      <workItem from="1707970734182" duration="594000" />
     </task>
     <task id="LOCAL-00001" summary="Added showmap functionality">
       <option name="closed" value="true" />
@@ -99,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707891673439</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added functionality for add player and remove player">
+      <option name="closed" value="true" />
+      <created>1707968443135</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707968443135</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +116,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added showmap functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added showmap functionality" />
+    <MESSAGE value="Added functionality for add player and remove player" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functionality for add player and remove player" />
   </component>
 </project>
