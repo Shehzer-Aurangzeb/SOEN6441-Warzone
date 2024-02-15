@@ -16,7 +16,7 @@ public class Continent {
      * @param new_armyBonus The army bonus provided by controlling the entire continent.
      */
     public Continent(String new_name, int new_armyBonus) {
-        d_id = lastAssignedID++;
+        d_id = ++lastAssignedID;
         d_name = new_name;
         d_armyBonus = new_armyBonus;
     }
