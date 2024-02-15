@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d94115-e12c-4ba8-a919-e686672e058e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/constants/Commands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Command/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Enums/ActionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Enums/GamePhase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/Deploy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" afterDir="false" />
+    <list default="true" id="eac42982-40fa-4100-ba31-eb88495ad678" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/SOEN6441-Warzone.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Commands/Commands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,20 +50,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Merging master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/shehzerabbasi/Downloads/Sem1/Warzone/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -76,14 +59,6 @@
       <recent name="$PROJECT_DIR$/javadoc" />
       <recent name="$PROJECT_DIR$/src/resources/maps" />
     </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-20.0.2-azul-20.0.2-4caba194b151-eb49e076" />
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -96,11 +71,26 @@
       <workItem from="1707455003432" duration="1464000" />
       <workItem from="1707590464363" duration="22518000" />
       <workItem from="1707890121018" duration="378000" />
-      <workItem from="1707890507544" duration="1016000" />
+      <workItem from="1707890507544" duration="1365000" />
+      <workItem from="1707926269292" duration="2236000" />
+      <workItem from="1707958685008" duration="9303000" />
     </task>
+    <task id="LOCAL-00001" summary="Added showmap functionality">
+      <option name="closed" value="true" />
+      <created>1707891673439</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707891673439</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added showmap functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added showmap functionality" />
   </component>
 </project>
