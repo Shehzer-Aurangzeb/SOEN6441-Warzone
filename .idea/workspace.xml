@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d94115-e12c-4ba8-a919-e686672e058e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="96d94115-e12c-4ba8-a919-e686672e058e" name="Changes" comment="Added showmap functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Commands/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Commands/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +45,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Commands.java.html.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -88,11 +87,26 @@
       <workItem from="1707455003432" duration="1464000" />
       <workItem from="1707590464363" duration="22518000" />
       <workItem from="1707890121018" duration="378000" />
-      <workItem from="1707890507544" duration="1016000" />
+      <workItem from="1707890507544" duration="1365000" />
+      <workItem from="1707926269292" duration="2236000" />
+      <workItem from="1707958685008" duration="9303000" />
     </task>
+    <task id="LOCAL-00001" summary="Added showmap functionality">
+      <option name="closed" value="true" />
+      <created>1707891673439</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707891673439</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added showmap functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added showmap functionality" />
   </component>
 </project>

@@ -2,6 +2,8 @@ package main.java.controllers.GameEngine;
 
 import main.java.controllers.MapEditor.MapEditor;
 import main.java.models.Map.Map;
+import main.java.models.Player.Player;
+
 import static main.java.views.MapView.MapView.*;
 
 
@@ -11,6 +13,7 @@ import static adapters.File.FileAdapter.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -18,6 +21,7 @@ public class GameEngine {
     Map gameMap;
     MapEditor mapEditor;
     String command;
+    ArrayList<Player> players = new ArrayList<>();
 
     public void startGame() {
         displayWelcomeMessage();
@@ -52,9 +56,36 @@ public class GameEngine {
                     continue;
                 }
             }
-            if (command.equals("exit")) {
-                break;
+            if (command.startsWith("gameplayer -add")) {
+                Player player = new Player();
+                String l_playerName = command.split(" ")[2];
+                String all_playerName = "";
+                player.setName(l_playerName);
+                players.add(player);
+                System.out.println("Player " + l_playerName + " added.");
+                for (Player p : players) {
+                    all_playerName = all_playerName.concat(p.getName());
+                    all_playerName = all_playerName.concat(", ");
+                }
+                all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
+                System.out.println("Player List: " + all_playerName);
             }
+            if (command.startsWith("gameplayer -remove")) {
+                String l_playerName = command.split(" ")[2];
+                String all_playerName = "";
+                players.removeIf(p -> p.getName().equals(l_playerName));
+                System.out.println("Player " + l_playerName + " removed.");
+                for (Player p : players) {
+                    all_playerName = all_playerName.concat(p.getName());
+                    all_playerName = all_playerName.concat(", ");
+                }
+                all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
+                System.out.println("Player List: " + all_playerName);
+            }
+                if (command.equals("exit")) {
+                    break;
+                }
+
         }
     }
 }
