@@ -4,6 +4,7 @@ import main.java.controllers.MapEditor.MapEditor;
 import main.java.models.Map.Map;
 import main.java.models.Player.Player;
 
+import java.util.Collections;
 import static main.java.views.MapView.MapView.*;
 
 
@@ -82,10 +83,31 @@ public class GameEngine {
                 all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
                 System.out.println("Player List: " + all_playerName);
             }
-                if (command.equals("exit")) {
+            if (command.equals("assigncountries")) {
+                try {
+                    assignCountries();;
+                } catch (Exception e) {
+                    System.out.println("Invalid command. Please try again.");
+                    continue;
+                }
+            }
+
+
+            if (command.equals("exit")) {
                     break;
                 }
 
         }
+    }
+    /**
+     * Randomly assigns countries to players.
+     */
+    private void assignCountries() {
+        Collections.shuffle(gameMap.getCountries()); // Assuming Map class has a method getCountries()
+        int l_numPlayers = players.size();
+        for (int i = 0; i < gameMap.getCountries().size(); i++) {
+            players.get(i % l_numPlayers).addCountry(gameMap.getCountries().get(i));
+        }
+        System.out.println("Countries have been assigned to players.");
     }
 }
