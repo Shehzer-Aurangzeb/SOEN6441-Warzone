@@ -1,12 +1,13 @@
 package main.java.controllers.GameEngine;
 
 import main.java.controllers.MapEditor.MapEditor;
+
+import main.java.models.Enums.GamePhase;
 import main.java.models.Map.Map;
 import main.java.models.Player.Player;
 
 import java.util.Collections;
 import static main.java.views.MapView.MapView.*;
-
 
 import static main.java.utils.Feedback.*;
 import static adapters.File.FileAdapter.*;
@@ -18,18 +19,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameEngine {
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+    private GamePhase d_currentPhase;
     Map gameMap;
     MapEditor mapEditor;
     String command;
     ArrayList<Player> players = new ArrayList<>();
 
+    public GameEngine(){
+        this.d_currentPhase= GamePhase.STARTUP;
+        this.sc = new Scanner(System.in);
+    }
     public void startGame() {
         displayWelcomeMessage();
         while (true) {
             command = sc.nextLine();
             if (command.equals("showcommands")) {
-                displayAllCommands();
+//                displayAllCommands();
             }
             if (command.startsWith("loadmap")) {
                 String l_fileName = command.split(" ")[1];
@@ -58,10 +64,9 @@ public class GameEngine {
                 }
             }
             if (command.startsWith("gameplayer -add")) {
-                Player player = new Player();
                 String l_playerName = command.split(" ")[2];
                 String all_playerName = "";
-                player.setName(l_playerName);
+                Player player = new Player(l_playerName);
                 players.add(player);
                 System.out.println("Player " + l_playerName + " added.");
                 for (Player p : players) {
@@ -106,7 +111,7 @@ public class GameEngine {
         Collections.shuffle(gameMap.getCountries()); // Assuming Map class has a method getCountries()
         int l_numPlayers = players.size();
         for (int i = 0; i < gameMap.getCountries().size(); i++) {
-            players.get(i % l_numPlayers).addCountry(gameMap.getCountries().get(i));
+            players.get(i % l_numPlayers).addOwnedCountry(gameMap.getCountries().get(i));
         }
         System.out.println("Countries have been assigned to players.");
     }
