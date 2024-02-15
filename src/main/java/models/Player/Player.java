@@ -20,6 +20,8 @@ public class Player {
     public ArrayList<Country> getAssignCountries() { return this.assignCountries; }
     public ArrayList<Order> get_orders() { return this.d_orders; }
     public void setName(String p_name) { this.d_name = p_name; }
-
+    public void addCountry(Country country) {
+        this.assignCountries.add(country);
+    }
 
 }
