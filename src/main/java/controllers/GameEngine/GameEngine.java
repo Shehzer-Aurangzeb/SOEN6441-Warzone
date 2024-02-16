@@ -53,7 +53,7 @@ public class GameEngine {
                         System.exit(0);
                     }
                 }
-                System.out.println(gameMap.getCountries().toString());
+
             }
             if (command.equals("showmap")) {
                 try {
