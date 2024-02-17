@@ -3,6 +3,7 @@ package controllers.GameEngine;
 import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
+import models.Map.MapValidator;
 import models.Player.Player;
 
 import java.io.File;
@@ -58,6 +59,20 @@ public class GameEngine {
                     displayMapInformation(gameMap);
                 } catch (Exception e) {
                     System.out.println("Map is not loaded. Please load the map first.");
+                    continue;
+                }
+            }
+            if (command.equals("validatemap")) {
+                try {
+                    boolean isValidMap = MapValidator.validateMap(gameMap);
+
+                    if (isValidMap) {
+                        System.out.println("The map is valid.");
+                    } else {
+                        System.out.println("The map is not valid.");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error!!");
                     continue;
                 }
             }
