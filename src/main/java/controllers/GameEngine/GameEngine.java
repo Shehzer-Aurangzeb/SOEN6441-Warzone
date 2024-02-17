@@ -15,6 +15,7 @@ import java.util.Scanner;
 import static adapters.FileAdapter.FileAdapter.*;
 import static utils.Feedback.*;
 import static views.MapView.MapView.displayMapInformation;
+import static views.MapView.PlayerView.*;
 
 public class GameEngine {
     private Scanner sc;
@@ -55,36 +56,43 @@ public class GameEngine {
             }
             if (command.equals("showmap")) {
                 try {
-                    displayMapInformation(gameMap);
+                    if(players.isEmpty())
+                        displayMapInformation(gameMap);
+                    else
+                        displayPlayerList(players, gameMap);
                 } catch (Exception e) {
                     System.out.println("Map is not loaded. Please load the map first.");
                     continue;
                 }
             }
             if (command.startsWith("gameplayer -add")) {
-                String l_playerName = command.split(" ")[2];
-                String all_playerName = "";
-                Player player = new Player(l_playerName);
-                players.add(player);
-                System.out.println("Player " + l_playerName + " added.");
-                for (Player p : players) {
-                    all_playerName = all_playerName.concat(p.getName());
-                    all_playerName = all_playerName.concat(", ");
+                String[] l_playerNames = command.substring(command.indexOf("-add") + 5).trim().split(",+");
+                for (String l_playerName : l_playerNames) {
+                    Player player = new Player(l_playerName.trim());
+                    players.add(player);
                 }
-                all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
-                System.out.println("Player List: " + all_playerName);
+                System.out.print("Player List: ");
+                for (Player p : players) {
+                    System.out.print( p.getName());
+                    if (players.indexOf(p) < players.size() - 1) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println();
             }
             if (command.startsWith("gameplayer -remove")) {
-                String l_playerName = command.split(" ")[2];
-                String all_playerName = "";
-                players.removeIf(p -> p.getName().equals(l_playerName));
-                System.out.println("Player " + l_playerName + " removed.");
-                for (Player p : players) {
-                    all_playerName = all_playerName.concat(p.getName());
-                    all_playerName = all_playerName.concat(", ");
+                String[] l_playerNames = command.substring(command.indexOf("-remove") + 8).trim().split(",");
+                for (String l_playerName : l_playerNames) {
+                    players.removeIf(p -> p.getName().equals(l_playerName));
                 }
-                all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
-                System.out.println("Player List: " + all_playerName);
+                System.out.print("Player List: ");
+                for (Player p : players) {
+                    System.out.print( p.getName());
+                    if (players.indexOf(p) < players.size() - 1) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println();
             }
             if (command.equals("assigncountries")) {
                 try {
