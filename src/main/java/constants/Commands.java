@@ -19,6 +19,7 @@ public class Commands {
         ArrayList<Command> l_startupCommands = new ArrayList<>();
         l_startupCommands.add(new Command("loadmap","Load a map file to start the game.", new String[]{"filename"}));
         l_startupCommands.add(new Command("showcommands","Display all available commands."));
+        l_startupCommands.add(new Command("showmap","Display the current state of the game map."));
         l_startupCommands.add(new Command("exit","Exit the game."));
         PHASE_COMMANDS_MAP.put(GamePhase.STARTUP,l_startupCommands);
 

@@ -4,6 +4,7 @@ import models.Continent.Continent;
 import models.Country.Country;
 import models.Enums.LineType;
 import models.Map.Map;
+import models.MapHolder.MapHolder;
 
 import java.io.*;
 
@@ -13,11 +14,9 @@ public class MapEditor {
 
     /**
      * Constructor for MapEditor class.
-     *
-     * @param new_map The map instance to be edited.
      */
-    public MapEditor(Map new_map) {
-        this.MAP = new_map;
+    public MapEditor() {
+        MAP= MapHolder.getMap();
     }
 
     /**

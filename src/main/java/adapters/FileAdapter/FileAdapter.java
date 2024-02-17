@@ -7,7 +7,7 @@ import java.io.File;
  */
 
 public class FileAdapter {
-    private static final String BASE_PATH = "src/main/resources/maps/";
+    public static final String BASE_PATH = "src/main/resources/maps/";
 
     /**
      * Checks if a file exists in the specified directory.

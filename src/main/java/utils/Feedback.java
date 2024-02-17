@@ -24,7 +24,7 @@ public class Feedback {
     /**
      * Displays all available commands to the user.
      */
-    public static void displayAllCommands(GamePhase p_currentPhase) {
+    public static void displayPhaseInstructions(GamePhase p_currentPhase) {
         ArrayList<Command> l_commands;
         switch (p_currentPhase){
             case STARTUP:
@@ -46,6 +46,17 @@ public class Feedback {
                 }
                 break;
         }
+    }
+
+    /**
+     * Displays a message indicating that a command does not exist or cannot be executed in the current phase.
+     *
+     * @param commandName The name of the command.
+     * @param gamePhase The current game phase.
+     */
+    public static void displayCommandUnavailableMessage(String commandName, GamePhase gamePhase) {
+        System.out.println("The '" + commandName + "' command is not available in the " + gamePhase.toString().toLowerCase() + " phase.");
+        System.out.println("Please type 'showcommands' to see the commands you can run.");
     }
 
 }

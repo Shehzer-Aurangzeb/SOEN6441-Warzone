@@ -44,6 +44,6 @@ class FeedbackTest {
     }
 
     @org.junit.jupiter.api.Test
-    void displayAllCommands() {
+    void displayPhaseInstructions() {
     }
 }

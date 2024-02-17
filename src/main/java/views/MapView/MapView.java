@@ -1,13 +1,22 @@
 package views.MapView;
 
+import controllers.GameEngine.GameEngine;
 import models.Continent.Continent;
 import models.Country.Country;
 import models.Map.Map;
+import models.MapHolder.MapHolder;
 
 import java.util.ArrayList;
 
 public class MapView {
-    public static void displayMapInformation(Map map) {
+    private static Map map;
+    public static void displayMapInformation() {
+        map= MapHolder.getMap();
+        if(map.getContinents().isEmpty()){
+            System.out.println("The map is currently empty or has not been loaded yet. " +
+                    "Please load a map or add elements to the map before using the 'showmap' command.");
+            return;
+        }
         displayCountriesAndContinents(map.getCountries(), map.getContinents());
     }
 

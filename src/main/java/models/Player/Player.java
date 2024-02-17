@@ -1,9 +1,13 @@
 package models.Player;
 
 import models.Country.Country;
+import models.MapHolder.MapHolder;
+import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
+import utils.Command;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Represents a player in the game.
@@ -13,7 +17,7 @@ public class Player {
     private ArrayList<Country> d_ownedCountries;
     private ArrayList<Order> d_orders;
     private int d_noOfArmies;
-
+    private Scanner sc;
     /**
      * Initializes a player with the given name.
      *
@@ -69,8 +73,15 @@ public class Player {
      * Issues an order from the list of orders for the player and removes it from the list.
      */
     public void issue_order() {
-//        Order l_order= new Order();
-//        this.d_orders.add(l_order);
+        String[] l_command= sc.nextLine().split(" ");
+        String l_commandName=l_command[0];
+        switch(l_commandName){
+            case "deploy":
+                createDeployOrder(l_command);
+                break;
+            case "advance":
+                break;
+        }
     }
 
     /**
@@ -83,5 +94,20 @@ public class Player {
         Order l_order = this.d_orders.get(0);
         this.d_orders.remove(0);
         return l_order;
+    }
+    private void createDeployOrder(String[] p_command){
+        int countryID = Integer.parseInt(p_command[1]);
+        int noOfArmies= Integer.parseInt(p_command[2]);
+        if(this.d_noOfArmies<noOfArmies){
+            System.out.println("You do not have enough armies.");
+            return;
+        }
+        Country country = MapHolder.getMap().getCountryByID(countryID);
+        if (country == null) {
+            System.out.println("Invalid country ID. Country does not exist.");
+            return;
+        }
+        this.d_orders.add(new DeployOrder(countryID,noOfArmies));
+        this.d_noOfArmies-=noOfArmies;
     }
 }

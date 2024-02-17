@@ -26,6 +26,9 @@ public class Command {
         this.d_name= new_name;
         this.d_description= new_description;
     }
+    public String getName(){
+        return this.d_name;
+    }
     /**
      * Returns a string representation of the command, including its name, description, and arguments (if any).
      * @return A string representation of the command.

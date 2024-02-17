@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e863773f-6331-46bc-ac7b-c3bc9076bbc0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/MapHolder/MapHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Helpers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/MapEditor/MapEditorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Command/CommandTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Country/CountryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/constants/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +37,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -37,27 +58,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FeedbackTest.displayWelcomeMessage.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FeedbackTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/shehzerabbasi/Downloads/Warzone/src/main/java/org/example/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "JUnit.CommandTest.executor": "Run",
+    "JUnit.CountryTest.executor": "Run",
+    "JUnit.FeedbackTest.displayWelcomeMessage.executor": "Run",
+    "JUnit.FeedbackTest.executor": "Run",
+    "JUnit.FileAdapterTest.executor": "Run",
+    "JUnit.MapTest.executor": "Run",
+    "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
+    "JUnit.PlayerTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/Users/shehzerabbasi/Downloads/Warzone/src/main/java/org/example/Main.java",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -69,7 +96,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="utils" />
+      <recent name="controllers.MapEditor" />
+      <recent name="models.Command" />
+      <recent name="models.Player" />
+      <recent name="models.Country" />
+      <recent name="models.Continent" />
     </key>
   </component>
   <component name="RunManager">
@@ -89,8 +120,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MapTest.getContinentByID_ContinentExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Warzone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.Map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models.Map" />
+      <option name="MAIN_CLASS_NAME" value="models.Map.MapTest" />
+      <option name="METHOD_NAME" value="getContinentByID_ContinentExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MapTest.getContinentByID_ContinentExists" />
         <item itemvalue="JUnit.FeedbackTest.displayWelcomeMessage" />
       </list>
     </recent_temporary>
@@ -111,7 +159,7 @@
       <option name="presentableId" value="Default" />
       <updated>1708122307932</updated>
       <workItem from="1708122309000" duration="3883000" />
-      <workItem from="1708126472305" duration="577000" />
+      <workItem from="1708126472305" duration="21839000" />
     </task>
     <servers />
   </component>
