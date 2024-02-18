@@ -1,6 +1,5 @@
 package models.Map;
 
-import models.Map.Map;
 import models.Continent.Continent;
 import models.Country.Country;
 
