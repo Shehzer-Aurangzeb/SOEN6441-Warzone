@@ -15,7 +15,8 @@ public class Command {
     public static boolean isCommandValidForPhase(String p_commandName, GamePhase p_currentPhase) {
         ArrayList<models.Command.Command> phaseCommands = Commands.PHASE_COMMANDS_MAP.get(p_currentPhase);
         for (models.Command.Command command : phaseCommands) {
-            if (command.getName().equals(p_commandName)) {
+            String l_commandName= command.getName().split(" ")[0];
+            if (l_commandName.equals(p_commandName)) {
                 return true;
             }
         }

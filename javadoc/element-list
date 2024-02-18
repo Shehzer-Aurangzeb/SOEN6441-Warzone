@@ -1,6 +1,7 @@
 unnamed package
 adapters.FileAdapter
 constants
+controllers.CommandHandler
 controllers.GameEngine
 controllers.MapEditor
 models.Command
@@ -8,6 +9,7 @@ models.Continent
 models.Country
 models.Enums
 models.Map
+models.MapHolder
 models.Order
 models.Order.Deploy
 models.Player

@@ -1,12 +1,8 @@
 package utils;
 
-import constants.Commands;
-import models.Command.Command;
-import models.Enums.GamePhase;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,17 +23,11 @@ class FeedbackTest {
     void displayWelcomeMessage() {
         Feedback.displayWelcomeMessage();
 
-        StringBuilder expectedOutputBuilder = new StringBuilder();
-        expectedOutputBuilder.append("Welcome to the Risk Game!\n");
-        expectedOutputBuilder.append("Before we begin, here are a few commands you can use\n\n");
-
-        ArrayList<Command>  l_commands = Commands.PHASE_COMMANDS_MAP.get(GamePhase.STARTUP);
-
-        for (Command command : l_commands) {
-            expectedOutputBuilder.append("\t").append(command.toString()).append("\n");
-        }
-
-        String expectedOutput = expectedOutputBuilder.toString();
+        String expectedOutput = "Welcome to the Risk Game!\n" +
+                "Before we begin, here are a few commands you can use\n\n" +
+                "\t-loadmap <filename>: Load a map file to start the game.\n" +
+                "\t-showcommands: Display all available commands.\n" +
+                "\t-exit: Exit the game.\n";
 
         assertEquals(expectedOutput, outputStreamCaptor.toString());
 

@@ -13,7 +13,7 @@ public class MapView {
     public static void displayMapInformation() {
         map= MapHolder.getMap();
         if(map.getContinents().isEmpty()){
-            System.out.println("The map is currently empty or has not been loaded yet. " +
+            System.out.println("\nThe map is currently empty or has not been loaded yet. " +
                     "Please load a map or add elements to the map before using the 'showmap' command.");
             return;
         }

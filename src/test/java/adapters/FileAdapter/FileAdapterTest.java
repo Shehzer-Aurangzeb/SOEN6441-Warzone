@@ -1,24 +1,19 @@
 package adapters.FileAdapter;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileAdapterTest {
-    private String fileName;
-    private String filePath;
-    private File file;
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
+    private static String fileName;
+    private static String filePath;
+    private static File file;
+    @org.junit.jupiter.api.BeforeAll
+    static void setUp() {
         fileName="testfile.map";
         filePath = FileAdapter.BASE_PATH + fileName;
         file = new File(filePath);
@@ -41,7 +36,8 @@ class FileAdapterTest {
     }
     @Test
     void isFileExists_FileDoesNotExist() {
-       fileName="nonexistentfile.map";
+        //file is deleted in first test case.
+       fileName="testfile.map";
        //function should return null when file does not exist;
         assertNull(FileAdapter.isFileExists(fileName));
     }

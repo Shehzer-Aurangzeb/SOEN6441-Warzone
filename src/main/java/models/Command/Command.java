@@ -40,7 +40,7 @@ public class Command {
         else{
             stringBuilder.append("-").append(this.d_name).append(" ");
             for(String command: this.d_commandArgs){
-                stringBuilder.append('<').append(command).append('>');
+                stringBuilder.append('<').append(command).append('>').append(" ");
             }
             stringBuilder.append(": ").append(this.d_description);
 

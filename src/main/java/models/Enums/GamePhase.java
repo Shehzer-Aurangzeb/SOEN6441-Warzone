@@ -1,7 +1,7 @@
 package models.Enums;
 
 public enum GamePhase {
+    MAP_EDITING,
     STARTUP,
-    ADD_PLAYERS,
-    ISSUE_ORDERS
+    ISSUE_ORDERS,
 }

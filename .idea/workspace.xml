@@ -5,28 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e863773f-6331-46bc-ac7b-c3bc9076bbc0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/MapHolder/MapHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Helpers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/MapEditor/MapEditorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Command/CommandTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Country/CountryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/constants/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/GamePhase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/GamePhase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/MapHolder/MapHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/MapHolder/MapHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/testfile.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +39,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -120,6 +115,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FileAdapterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Warzone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="adapters.FileAdapter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="adapters.FileAdapter" />
+      <option name="MAIN_CLASS_NAME" value="adapters.FileAdapter.FileAdapterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MapTest.getContinentByID_ContinentExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
@@ -138,8 +148,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MapTest.getContinentByID_ContinentExists" />
         <item itemvalue="JUnit.FeedbackTest.displayWelcomeMessage" />
+        <item itemvalue="JUnit.FileAdapterTest" />
+        <item itemvalue="JUnit.MapTest.getContinentByID_ContinentExists" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1708122307932</updated>
       <workItem from="1708122309000" duration="3883000" />
-      <workItem from="1708126472305" duration="21839000" />
+      <workItem from="1708126472305" duration="44335000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,7 @@
+/**
+ * The GameEngine class manages the game phases and controls the flow of the game.
+ * It handles commands from the user, transitions between different phases, and executes game logic.
+ */
 package controllers.GameEngine;
 
 import controllers.MapEditor.MapEditor;
@@ -20,109 +24,49 @@ public class GameEngine {
     private GamePhase d_currentPhase;
     MapEditor d_mapEditor;
     String d_command;
-
+    int MIN_ARMIES_PER_PLAYER=3;
     ArrayList<Player> d_players = new ArrayList<>();
+    /**
+     * Initializes the GameEngine with default settings.
+     */
 
     public GameEngine(){
         MapHolder.setMap(new Map());
         this.d_mapEditor= new MapEditor();
-        this.d_currentPhase= GamePhase.STARTUP;
+        this.d_currentPhase= GamePhase.MAP_EDITING;
         this.d_sc = new Scanner(System.in);
     }
+    /**
+     * Starts the game and handles command processing based on the current phase.
+     */
     public void startGame() {
         displayWelcomeMessage();
         while (true) {
+            if (d_currentPhase == GamePhase.ISSUE_ORDERS) break;
+            System.out.print("\nEnter your command: ");
             d_command = d_sc.nextLine().trim();
-            String l_commandName= d_command.split(" ")[0];
-            if(!isCommandValidForPhase(l_commandName,d_currentPhase)){
-                displayCommandUnavailableMessage(l_commandName,d_currentPhase);
+            String l_commandName = d_command.split(" ")[0];
+            if (!isCommandValidForPhase(l_commandName, d_currentPhase)) {
+                displayCommandUnavailableMessage(l_commandName, d_currentPhase);
                 continue;
             }
             handleCommand();
         }
-//        while (true) {
-//            command = sc.nextLine();
-//            if (command.equals("showcommands")) {
-////                displayAllCommands();
-//            }
-//            if (command.startsWith("loadmap")) {
-//                String l_fileName = command.split(" ")[1];
-//                File l_file = isFileExists(l_fileName);
-//                if (l_file != null) {
-//                    gameMap = new Map();
-//                    mapEditor = new MapEditor(gameMap);
-//                    try {
-//                        mapEditor.loadMap(l_file);
-//                    } catch (FileNotFoundException e) {
-//                        System.out.println("File not found.");
-//                        System.exit(0);
-//                    } catch (IOException e) {
-//                        System.out.println("IO exception.");
-//                        System.exit(0);
-//                    }
-//                }
-//                System.out.println(gameMap.getCountries().toString());
-//            }
-//            if (command.equals("showmap")) {
-//                try {
-//                    displayMapInformation(gameMap);
-//                } catch (Exception e) {
-//                    System.out.println("Map is not loaded. Please load the map first.");
-//                    continue;
-//                }
-//            }
-//            if (command.startsWith("gameplayer -add")) {
-//                String l_playerName = command.split(" ")[2];
-//                String all_playerName = "";
-//                Player player = new Player(l_playerName);
-//                players.add(player);
-//                System.out.println("Player " + l_playerName + " added.");
-//                for (Player p : players) {
-//                    all_playerName = all_playerName.concat(p.getName());
-//                    all_playerName = all_playerName.concat(", ");
-//                }
-//                all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
-//                System.out.println("Player List: " + all_playerName);
-//            }
-//            if (command.startsWith("gameplayer -remove")) {
-//                String l_playerName = command.split(" ")[2];
-//                String all_playerName = "";
-//                players.removeIf(p -> p.getName().equals(l_playerName));
-//                System.out.println("Player " + l_playerName + " removed.");
-//                for (Player p : players) {
-//                    all_playerName = all_playerName.concat(p.getName());
-//                    all_playerName = all_playerName.concat(", ");
-//                }
-//                all_playerName = all_playerName.substring(0, all_playerName.length() - 2);
-//                System.out.println("Player List: " + all_playerName);
-//            }
-//            if (command.equals("assigncountries")) {
-//                try {
-//                    assignCountries();;
-//                } catch (Exception e) {
-//                    System.out.println("Invalid command. Please try again.");
-//                    continue;
-//                }
-//            }
-//
-//
-//            if (command.equals("exit")) {
-//                break;
-//            }
-//
-//        }
+        startMainGameLoop();
     }
-
+    /**
+     * Handles the command processing based on the current phase of the game.
+     */
     private void handleCommand() {
         switch (d_currentPhase) {
+            case MAP_EDITING:
+                processMapEditingPhaseCommand();
+                break;
             case STARTUP:
                 processStartupPhaseCommand();
                 break;
-            case ADD_PLAYERS:
-                processAddPlayersCommands();
-                break;
             case ISSUE_ORDERS:
-                processIssueOrdersCommands();
+                processIssueOrdersCommand();
                 break;
             default:
                 String l_commandName= d_command.split(" ")[0];
@@ -130,7 +74,10 @@ public class GameEngine {
                 break;
         }
     }
-    private void processStartupPhaseCommand(){
+    /**
+     * Processes commands during the map editing phase.
+     */
+    private void processMapEditingPhaseCommand(){
         String l_commandName= d_command.split(" ")[0];
         switch(l_commandName){
             case "loadmap":
@@ -142,23 +89,52 @@ public class GameEngine {
             case "showmap":
                 displayMapInformation();
                 break;
+            case "proceed":
+                //check if map is valid if true change phase
+                d_currentPhase= GamePhase.STARTUP;
+                System.out.println("\nYou have entered the Startup Phase. Please create players to proceed further.");
+                System.out.println("Use 'showcommands' to see to see how you can add players");
+                break;
             case "exit":
                 handleExitCommand();
                 break;
         }
     }
-    private void processAddPlayersCommands(){
+    /**
+     * Processes commands during the startup phase.
+     */
+    private void processStartupPhaseCommand(){
         String l_commandName= d_command.split(" ")[0];
+
         switch(l_commandName){
+            case "gameplayer":
+                handleGamePlayerCommand(d_command,d_players);
+                checkStartGamePrompt();
+                break;
+            case "startgame":
+                if(d_players.size()<2){
+                    System.out.println("\nMinimum two players required to start the game.");
+                }else{
+                    assignCountries();
+                    assignReinforcements();
+                    d_currentPhase=GamePhase.ISSUE_ORDERS;
+                    System.out.println("\nThe game has started! It's time to issue your orders.");
+                }
+
+                break;
             case "showcommands":
                 handleDisplayCommands(d_currentPhase);
+                break;
             case "exit":
                 handleExitCommand();
                 break;
 
         }
     }
-    private void processIssueOrdersCommands(){
+    /**
+     * Processes commands during the issue orders phase.
+     */
+    private void processIssueOrdersCommand(){
         String l_commandName= d_command.split(" ")[0];
         switch(l_commandName){
             case "showcommands":
@@ -174,13 +150,41 @@ public class GameEngine {
      * Randomly assigns countries to players.
      */
     private void assignCountries() {
-
         int l_numPlayers = d_players.size();
         for (int i = 0; i < MapHolder.getMap().getCountries().size(); i++) {
             d_players.get(i % l_numPlayers).addOwnedCountry(MapHolder.getMap().getCountries().get(i));
         }
-        System.out.println("Countries have been assigned to players.");
+        System.out.println("\nCountries have been assigned to players.");
     }
+    /**
+     * Assigns reinforcements to players based on the number of countries owned.
+     */
+    private void assignReinforcements() {
+        for(Player player:d_players) {
+            int l_armyCount = player.getOwnedCountries().size()/3;
+            if(l_armyCount<MIN_ARMIES_PER_PLAYER) l_armyCount=MIN_ARMIES_PER_PLAYER;
+            player.setNoOfArmies(l_armyCount);
+        }
+        System.out.println("\nCountries have been assigned to players.");
+    }
+    /**
+     * Checks if there are enough players to start the game and prompts the user accordingly.
+     */
+    private void checkStartGamePrompt(){
+        if (d_players.size() >= 2) {
+            System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
+        }
+    }
+    /**
+     * Starts the main game loop where players issue orders and orders are executed.
+     */
+    private void startMainGameLoop(){
+        while (true){
+            handleIssueOrder(d_players);
+            handleExecuteOrder();
+        }
+    }
+
 
 
 }
