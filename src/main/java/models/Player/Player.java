@@ -5,12 +5,12 @@ import models.Enums.GamePhase;
 import models.MapHolder.MapHolder;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
-import models.PlayerHolder.PlayerHolder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
+import static controllers.CommandHandler.CommandHandler.handleExitCommand;
 import static utils.Feedback.displayCommandUnavailableMessage;
 import static views.MapView.PlayerView.displayPlayerList;
 
@@ -158,6 +158,9 @@ public class Player {
                 break;
             case "endturn":
                 this.hasOrders=false;
+                break;
+            case "exit":
+                handleExitCommand();
                 break;
             default:
                 this.lastCommandValidForOrders=false;

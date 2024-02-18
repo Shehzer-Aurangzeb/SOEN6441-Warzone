@@ -185,6 +185,8 @@ public class CommandHandler {
                     l_currentOrder++;
                     break;
             }
+            l_currentPlayerIndex= (l_currentPlayerIndex+1)% l_existingPlayers.size();
+
 
         }
         //after all orders are executed. assign reinforcements for next turn.
