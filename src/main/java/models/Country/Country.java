@@ -10,6 +10,7 @@ public class Country {
     private String d_name;
     private int d_continentId;
     private ArrayList<Country> d_neighbours;
+    private int d_armiesDeployed;
 
     /**
      * Constructs a new country.
@@ -19,10 +20,11 @@ public class Country {
      * @param new_continentId The ID of the continent to which the country belongs.
      */
     public Country(int new_id, String new_name, int new_continentId) {
-        d_id = new_id;
-        d_name = new_name;
-        d_continentId = new_continentId;
-        d_neighbours = new ArrayList<>();
+        this.d_id = new_id;
+        this.d_name = new_name;
+        this.d_continentId = new_continentId;
+        this.d_neighbours = new ArrayList<>();
+        this.d_armiesDeployed= 0;
     }
 
     /**
@@ -32,6 +34,14 @@ public class Country {
      */
     public int getID() {
         return this.d_id;
+    }
+    /**
+     * Retrieves the armies deployed of the country.
+     *
+     * @return The armies deployed of the country.
+     */
+    public int getArmiesDeployed() {
+        return this.d_armiesDeployed;
     }
 
     /**
@@ -68,6 +78,15 @@ public class Country {
      */
     public void setID(int p_id) {
         this.d_id = p_id;
+    }
+
+    /**
+     * Sets the armies deployed for the country.
+     *
+     * @param p_armiesDeployed The name to set
+     */
+    public void setArmiesDeployed(int p_armiesDeployed) {
+        this.d_armiesDeployed = p_armiesDeployed;
     }
 
     /**

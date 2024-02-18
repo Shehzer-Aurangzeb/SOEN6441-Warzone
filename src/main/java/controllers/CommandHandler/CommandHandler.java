@@ -134,6 +134,9 @@ public class CommandHandler {
                 continue;
             }
             l_currentPlayer.issue_order();
+            if(!l_currentPlayer.lastCommandValidForOrders()){
+                continue;
+            }
             l_currentPlayer.setHasOrders(l_currentPlayer.getNoOfArmies()>0);
             l_currentPlayerIndex= (l_currentPlayerIndex+1)% p_existingPlayers.size();
         }

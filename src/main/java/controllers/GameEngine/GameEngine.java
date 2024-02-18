@@ -10,6 +10,7 @@ import models.Map.Map;
 import models.MapHolder.MapHolder;
 import models.Map.MapValidator;
 import models.Player.Player;
+import models.PlayerHolder.PlayerHolder;
 
 
 import java.util.ArrayList;
@@ -137,6 +138,7 @@ public class GameEngine {
                 }else{
                     assignCountries();
                     assignReinforcements();
+                    PlayerHolder.setPlayers(d_players);
                     d_currentPhase=GamePhase.ISSUE_ORDERS;
                     System.out.println("\nThe game has started! It's time to issue your orders.");
                 }
@@ -185,7 +187,7 @@ public class GameEngine {
             if(l_armyCount<MIN_ARMIES_PER_PLAYER) l_armyCount=MIN_ARMIES_PER_PLAYER;
             player.setNoOfArmies(l_armyCount);
         }
-        System.out.println("\nCountries have been assigned to players.");
+        System.out.println("\nReinforcements have been assigned to players.");
     }
     /**
      * Checks if there are enough players to start the game and prompts the user accordingly.

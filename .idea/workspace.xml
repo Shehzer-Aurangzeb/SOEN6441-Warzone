@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e863773f-6331-46bc-ac7b-c3bc9076bbc0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MapView/MapView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +56,14 @@
     "JUnit.FileAdapterTest.executor": "Run",
     "JUnit.MapTest.executor": "Run",
     "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
+    "JUnit.MapViewTest.executor": "Run",
     "JUnit.PlayerTest.executor": "Run",
+    "Maven.Warzone [test].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Merging develop",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -164,7 +165,7 @@
       <option name="presentableId" value="Default" />
       <updated>1708122307932</updated>
       <workItem from="1708122309000" duration="3883000" />
-      <workItem from="1708126472305" duration="44794000" />
+      <workItem from="1708126472305" duration="51556000" />
     </task>
     <servers />
   </component>

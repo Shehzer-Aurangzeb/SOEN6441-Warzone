@@ -5,11 +5,14 @@ import models.Enums.GamePhase;
 import models.MapHolder.MapHolder;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
+import models.PlayerHolder.PlayerHolder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
 import static utils.Feedback.displayCommandUnavailableMessage;
+import static views.MapView.PlayerView.displayPlayerList;
 
 /**
  * Represents a player in the game.
@@ -20,6 +23,7 @@ public class Player {
     private ArrayList<Order> d_orders;
     private int d_noOfArmies;
     private boolean hasOrders;
+    private boolean lastCommandValidForOrders;
 
     private Scanner sc = new Scanner(System.in);
     /**
@@ -33,6 +37,7 @@ public class Player {
         this.d_orders = new ArrayList<>();
         this.d_noOfArmies = 0;
         this.hasOrders=true;
+        this.lastCommandValidForOrders= true;
     }
     //getters
 
@@ -73,6 +78,15 @@ public class Player {
     }
 
     /**
+     * Checks if the player last command was valid for orders.
+     *
+     * @return True if the command was valid.
+     */
+    public boolean lastCommandValidForOrders() {
+        return this.lastCommandValidForOrders;
+    }
+
+    /**
      * Retrieves the list of countries owned by the player.
      *
      * @return The list of owned countries.
@@ -100,7 +114,14 @@ public class Player {
     public void setHasOrders(boolean p_hasOrders){
         this.hasOrders= p_hasOrders;
     }
-
+    /**
+     * Sets the flag indicating whether the player last command was valid.
+     *
+     * @param p_lastCommandValidForOrders A boolean value indicating whether the player last command was valid.
+     */
+    public void setLastCommandValidForOrders(boolean p_lastCommandValidForOrders) {
+        this.lastCommandValidForOrders=p_lastCommandValidForOrders;
+    }
     /**
      * Sets the number of armies owned by the player.
      *
@@ -122,11 +143,23 @@ public class Player {
                 createDeployOrder(l_commandParts);
                 break;
             case "showarmies":
+                this.lastCommandValidForOrders=false;
                 System.out.print("\nArmies owned by "+this.getName()+": "+this.d_noOfArmies);
                 break;
             case "advance":
                 break;
+            case "showcommands":
+                this.lastCommandValidForOrders=false;
+                handleDisplayCommands(GamePhase.ISSUE_ORDERS);
+                break;
+            case "showmap":
+                this.lastCommandValidForOrders=false;
+                displayPlayerList();
+                break;
+            case "endturn":
+                break;
             default:
+                this.lastCommandValidForOrders=false;
                 displayCommandUnavailableMessage(l_commandName,GamePhase.ISSUE_ORDERS);
                 break;
         }
@@ -157,16 +190,24 @@ public class Player {
         int countryID = Integer.parseInt(p_command[1]);
         int noOfArmies= Integer.parseInt(p_command[2]);
         if(this.d_noOfArmies<noOfArmies){
+            this.lastCommandValidForOrders=false;
             System.out.println("\nYou do not have enough armies.");
             return;
         }
         Country country = MapHolder.getMap().getCountryByID(countryID);
         if (country == null) {
+            this.lastCommandValidForOrders=false;
             System.out.println("\nInvalid country ID. Country does not exist.");
+            return;
+        }
+        if(!this.getOwnedCountries().contains(country)){
+            this.lastCommandValidForOrders=false;
+            System.out.println("\nCannot deploy armies to country" +countryID+". You do not own this country. Please select a country that you own to deploy your armies");
             return;
         }
         this.d_orders.add(new DeployOrder(countryID,noOfArmies));
         this.d_noOfArmies-=noOfArmies;
+        this.lastCommandValidForOrders=true;
         System.out.println("\n Deployed "+ noOfArmies + " armies to country "+ countryID);
     }
 }
