@@ -28,7 +28,7 @@ public class MapValidator {
             return false;
         }
 
-        // Check if all continents are connected subgraphs
+        // Check if all continents are connected sub-graphs
         if (!areContinentsConnected(l_continents, l_countries)) {
             System.out.println("One or more continents are disconnected subgraphs.");
             return false;
