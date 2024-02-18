@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapTest {
+public class MapTest {
     private Map map;
     @BeforeEach
     void setUp() {

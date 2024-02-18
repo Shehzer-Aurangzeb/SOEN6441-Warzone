@@ -6,7 +6,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FeedbackTest {
+public class FeedbackTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
