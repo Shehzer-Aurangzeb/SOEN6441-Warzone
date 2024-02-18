@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ContinentTest {
+public class ContinentTest {
 
     private Continent continent;
     @BeforeEach

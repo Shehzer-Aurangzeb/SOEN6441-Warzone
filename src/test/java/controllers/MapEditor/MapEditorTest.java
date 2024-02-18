@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapEditorTest {
+public class MapEditorTest {
 
     private Map map;
     private MapEditor mapEditor;
