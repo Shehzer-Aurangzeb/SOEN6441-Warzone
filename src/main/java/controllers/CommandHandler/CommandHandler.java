@@ -8,7 +8,9 @@ package controllers.CommandHandler;
 
 import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
+import models.Order.Order;
 import models.Player.Player;
+import models.PlayerHolder.PlayerHolder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +23,7 @@ import static utils.Feedback.displayPlayers;
 
 public class CommandHandler {
 
+    final static int MIN_ARMIES_PER_PLAYER=3;
     /**
      * Handles the loadmap command by loading the specified map file.
      * If the file exists, it loads the map using the provided MapEditor instance.
@@ -120,34 +123,36 @@ public class CommandHandler {
     /**
      * Handles the issue order phase by allowing players to issue orders one by one until all players have finished.
      *
-     * @param p_existingPlayers The list of existing players.
      */
 
-    public static void handleIssueOrder(ArrayList<Player> p_existingPlayers){
+    public static void handleIssueOrder(){
         int l_currentPlayerIndex = 0;
+        ArrayList<Player> l_existingPlayers= PlayerHolder.getPlayers();
         while(true){
-            if(allPlayersDoneWithOrders(p_existingPlayers)) break;
-            Player l_currentPlayer= p_existingPlayers.get(l_currentPlayerIndex);
+            if(allPlayersDoneWithOrders()) break;
+            Player l_currentPlayer= l_existingPlayers.get(l_currentPlayerIndex);
             if(!l_currentPlayer.hasOrders())
             {
-                l_currentPlayerIndex= (l_currentPlayerIndex+1)% p_existingPlayers.size();
+                l_currentPlayerIndex= (l_currentPlayerIndex+1)% l_existingPlayers.size();
                 continue;
             }
             l_currentPlayer.issue_order();
+            if(!l_currentPlayer.lastCommandValidForOrders()){
+                continue;
+            }
             l_currentPlayer.setHasOrders(l_currentPlayer.getNoOfArmies()>0);
-            l_currentPlayerIndex= (l_currentPlayerIndex+1)% p_existingPlayers.size();
+            l_currentPlayerIndex= (l_currentPlayerIndex+1)% l_existingPlayers.size();
         }
         System.out.println("\nAll players have finished issuing orders. The game is now proceeding to execute orders.");
     }
     /**
      * Checks if all players are done issuing orders.
      *
-     * @param p_existingPlayers The list of existing players.
      * @return True if all players are done issuing orders, false otherwise.
      */
-    private static boolean allPlayersDoneWithOrders(ArrayList<Player> p_existingPlayers){
+    private static boolean allPlayersDoneWithOrders(){
         boolean l_allPlayersDone= true;
-        for(Player player:p_existingPlayers){
+        for(Player player:PlayerHolder.getPlayers()){
             if(player.hasOrders()){
                 l_allPlayersDone=false;
                 break;
@@ -159,8 +164,52 @@ public class CommandHandler {
      * Placeholder method for handling the execution of orders.
      */
     public static void handleExecuteOrder(){
+        ArrayList<Player> l_existingPlayers= PlayerHolder.getPlayers();
+        int l_totalOrders=0;
+        for(Player player: l_existingPlayers){
+            l_totalOrders+=player.getOrders().size();
+        }
+        int l_currentOrder=1;
+        int l_currentPlayerIndex = 0;
+        while(l_currentOrder<=l_totalOrders){
+            Player l_currentPlayer= l_existingPlayers.get(l_currentPlayerIndex);
+            Order l_order = l_currentPlayer.next_order();
+            if(l_order==null) {
+                l_currentPlayerIndex= (l_currentPlayerIndex+1)% l_existingPlayers.size();
+                continue;
+            }
+            switch (l_order.getName()){
+                case DEPLOY:
+                    System.out.println("\nExecuting order for player " + l_currentPlayer.getName() + ": " + l_order);
+                    l_order.execute();
+                    l_currentOrder++;
+                    break;
+            }
+            l_currentPlayerIndex= (l_currentPlayerIndex+1)% l_existingPlayers.size();
 
+
+        }
+        //after all orders are executed. assign reinforcements for next turn.
+        assignReinforcements();
+        //reset the hasOrders function to true;
+        resetOrdersStatus();
     }
-
+    /**
+     * Assigns reinforcements to players based on the number of countries owned.
+     */
+    public static void assignReinforcements() {
+        ArrayList <Player> l_existingPlayer = PlayerHolder.getPlayers();
+        for(Player player:l_existingPlayer) {
+            int l_armyCount = player.getOwnedCountries().size()/3;
+            if(l_armyCount<MIN_ARMIES_PER_PLAYER) l_armyCount=MIN_ARMIES_PER_PLAYER;
+            player.setNoOfArmies(l_armyCount);
+        }
+    }
+    private static void resetOrdersStatus(){
+        ArrayList <Player> l_existingPlayer = PlayerHolder.getPlayers();
+        for(Player player:l_existingPlayer) {
+            player.setHasOrders(true);
+        }
+    }
 
 }

@@ -4,7 +4,8 @@ package models.Continent;
  * Represents a continent in a game map.
  */
 public class Continent {
-    private int d_id=0;
+    private int d_id=1;
+    private static int lastAssignedID=1;
     private String d_name;
     private int d_armyBonus;
 
@@ -15,9 +16,10 @@ public class Continent {
      * @param new_armyBonus The army bonus provided by controlling the entire continent.
      */
     public Continent(String new_name, int new_armyBonus) {
-        d_id ++;
-        d_name = new_name;
-        d_armyBonus = new_armyBonus;
+        this.d_id=lastAssignedID;
+        this.d_name = new_name;
+        this.d_armyBonus = new_armyBonus;
+        lastAssignedID++;
     }
 
     /**

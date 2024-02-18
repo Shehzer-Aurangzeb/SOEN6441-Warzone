@@ -3,7 +3,9 @@ package views.MapView;
 import models.Continent.Continent;
 import models.Country.Country;
 import models.Map.Map;
+import models.MapHolder.MapHolder;
 import models.Player.Player;
+import models.PlayerHolder.PlayerHolder;
 
 import java.util.ArrayList;
 /**
@@ -12,13 +14,10 @@ import java.util.ArrayList;
 public class PlayerView {
 
     /**
-     * Displays the list of players along with their owned countries on the provided map.
-     *
-     * @param playersList An ArrayList containing Player objects representing the players.
-     * @param map The Map object representing the game map.
+     * Displays the list of players along with their owned countries on the provided map..
      */
-    public static void displayPlayerList(ArrayList<Player> playersList, Map map) {
-        displayPlayerCountries(playersList, map);
+    public static void displayPlayerList() {
+        displayPlayerCountries(PlayerHolder.getPlayers(), MapHolder.getMap());
 
     }
 
