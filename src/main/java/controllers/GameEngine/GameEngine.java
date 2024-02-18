@@ -8,6 +8,7 @@ import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
+import models.Map.MapValidator;
 import models.Player.Player;
 
 
@@ -18,6 +19,7 @@ import static controllers.CommandHandler.CommandHandler.*;
 import static utils.Feedback.*;
 import static utils.Command.*;
 import static views.MapView.MapView.displayMapInformation;
+import static views.MapView.PlayerView.*;
 
 public class GameEngine {
     private Scanner d_sc;
@@ -26,6 +28,7 @@ public class GameEngine {
     String d_command;
     int MIN_ARMIES_PER_PLAYER=3;
     ArrayList<Player> d_players = new ArrayList<>();
+
     /**
      * Initializes the GameEngine with default settings.
      */
@@ -49,6 +52,23 @@ public class GameEngine {
             if (!isCommandValidForPhase(l_commandName, d_currentPhase)) {
                 displayCommandUnavailableMessage(l_commandName, d_currentPhase);
                 continue;
+
+
+
+//            if (command.equals("validatemap")) {
+//                try {
+//                    boolean isValidMap = MapValidator.validateMap(gameMap);
+//
+//                    if (isValidMap) {
+//                        System.out.println("The map is valid.");
+//                    } else {
+//                        System.out.println("The map is not valid.");
+//                    }
+//                } catch (Exception e) {
+//                    System.out.println("Error!!");
+//                    continue;
+//                }
+//            }
             }
             handleCommand();
         }
@@ -184,7 +204,4 @@ public class GameEngine {
             handleExecuteOrder();
         }
     }
-
-
-
 }
