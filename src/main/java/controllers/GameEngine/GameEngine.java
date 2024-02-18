@@ -21,7 +21,7 @@ import static views.MapView.PlayerView.*;
 public class GameEngine {
     private Scanner sc;
     private GamePhase d_currentPhase;
-    Map gameMap;
+    public Map gameMap;
     MapEditor mapEditor;
     String command;
     ArrayList<Player> players = new ArrayList<>();
@@ -129,7 +129,7 @@ public class GameEngine {
      * Randomly assigns countries to players.
      */
     private void assignCountries() {
-        Collections.shuffle(gameMap.getCountries()); // Assuming Map class has a method getCountries()
+        Collections.shuffle(gameMap.getCountries());
         int l_numPlayers = players.size();
         for (int i = 0; i < gameMap.getCountries().size(); i++) {
             players.get(i % l_numPlayers).addOwnedCountry(gameMap.getCountries().get(i));
