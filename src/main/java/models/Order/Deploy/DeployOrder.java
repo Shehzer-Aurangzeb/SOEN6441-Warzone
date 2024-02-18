@@ -1,6 +1,7 @@
 package models.Order.Deploy;
 
 import models.Country.Country;
+import models.Enums.OrderType;
 import models.MapHolder.MapHolder;
 import models.Order.Order;
 
@@ -21,11 +22,19 @@ public class DeployOrder implements Order {
         this.d_targetCountry = new_countryID;
         this.d_noOfArmies = new_noOfArmies;
     }
+    public OrderType getName(){
+        return OrderType.DEPLOY;
+    };
     /**
      * Executes the deployment order.
      */
     public void execute(){
+        Country country = MapHolder.getMap().getCountryByID(this.d_targetCountry);
+        country.setArmiesDeployed(this.d_noOfArmies);
 
     }
-
+    @Override
+    public String toString(){
+        return "Deploying " + this.d_noOfArmies + " armies to reinforce country " + this.d_targetCountry + ".";
+    }
 }

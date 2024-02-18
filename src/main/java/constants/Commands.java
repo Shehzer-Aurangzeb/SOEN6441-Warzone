@@ -62,6 +62,7 @@ public class Commands {
         l_issueOrders.add(new Command("deploy","Deploy a specified number of armies to a country.",new String[]{"countryID","num"}));
         l_issueOrders.add(new Command("showcommands","Display all available commands."));
         l_issueOrders.add(new Command("showarmies","Displays the number of armies owned by the current player."));
+        l_issueOrders.add(new Command("showmap","Display the current state of the game map."));
         l_issueOrders.add(new Command("endturn","End your turn without issuing any more orders for this round."));
         l_issueOrders.add(new Command("exit","Exit the game."));
         PHASE_COMMANDS_MAP.put(GamePhase.ISSUE_ORDERS,l_issueOrders);

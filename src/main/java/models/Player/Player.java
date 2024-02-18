@@ -144,19 +144,20 @@ public class Player {
                 break;
             case "showarmies":
                 this.lastCommandValidForOrders=false;
-                System.out.print("\nArmies owned by "+this.getName()+": "+this.d_noOfArmies);
-                break;
-            case "advance":
+                System.out.print("\nArmies left to deploy for " + this.getName() + ": " + this.d_noOfArmies);
                 break;
             case "showcommands":
                 this.lastCommandValidForOrders=false;
                 handleDisplayCommands(GamePhase.ISSUE_ORDERS);
+                break;
+            case "advance":
                 break;
             case "showmap":
                 this.lastCommandValidForOrders=false;
                 displayPlayerList();
                 break;
             case "endturn":
+                this.hasOrders=false;
                 break;
             default:
                 this.lastCommandValidForOrders=false;
@@ -208,6 +209,6 @@ public class Player {
         this.d_orders.add(new DeployOrder(countryID,noOfArmies));
         this.d_noOfArmies-=noOfArmies;
         this.lastCommandValidForOrders=true;
-        System.out.println("\n Deployed "+ noOfArmies + " armies to country "+ countryID);
+        System.out.println("\nDeploy order created.");
     }
 }
