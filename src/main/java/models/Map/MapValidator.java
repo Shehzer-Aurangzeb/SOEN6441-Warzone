@@ -11,8 +11,14 @@ public class MapValidator {
 
     /**
      * Validates the integrity of a map represented by continents and countries.
-     * The validation includes checking for a connected graph, if continents are connected sub-graphs,
-     * and unique country names.
+     * The validation checks include:
+     * - Ensuring the map is not empty and contains continents and countries.</li>
+     * - Checking if there is at least one country in each continent.</li>
+     * - Verifying that the continents form a connected graph.</li>
+     * - Ensuring all continents are connected sub-graphs.</li>
+     * - Checking for unique country names within the map.</li>
+     * If any of the validation checks fail, corresponding error messages are printed.
+     *
      *
      * @param p_map The map to be validated, represented as an object of type Map.
      * @return true if the map is valid; false otherwise.
