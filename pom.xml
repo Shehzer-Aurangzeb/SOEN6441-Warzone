@@ -28,6 +28,17 @@
         </dependency>
 
     </dependencies>
+    <profiles>
+        <profile>
+            <id>disable-java8-doclint</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <properties>
+                <doclint>none</doclint>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -41,6 +52,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
+
 <!--                    <includes>-->
 <!--                        <include>Sample.java</include>-->
 <!--                    </includes>-->
@@ -51,11 +63,13 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
+                    <outputDirectory>${project.basedir}/javadoc</outputDirectory>
                     <source>17</source>
-                    <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
             </plugin>
+
         </plugins>
+
     </build>
 
 </project>

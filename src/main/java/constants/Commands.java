@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Constants class that stores commands for each game phase.
+ * The Constants class stores constants related to game phases, including commands for each phase.
+ * It provides access to predefined commands for different stages of the game.
  */
 public class Commands {
     /**

@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/canada.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/europass.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.husky/pre-commit" beforeDir="false" afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/constants/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/Commands.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +35,7 @@
     "JUnit.MapValidatorTest.executor": "Run",
     "JUnit.TestSuite.executor": "Run",
     "Maven.Warzone [test].executor": "Run",
-    "git-widget-placeholder": "Merging develop",
+    "git-widget-placeholder": "develop",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
