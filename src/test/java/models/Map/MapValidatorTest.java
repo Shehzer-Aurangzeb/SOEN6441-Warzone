@@ -3,12 +3,13 @@ package models.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import models.Continent.Continent;
 import models.Country.Country;
+
+import java.util.ArrayList;
 
 public class MapValidatorTest {
     private Map map;
@@ -24,10 +25,10 @@ public class MapValidatorTest {
         map = null;
     }
 
-    @Disabled
+    //@Disabled
     @Test
     void ValidMap() {
-        Map map = createValidMap();
+        map = createValidMap();
         assertTrue(MapValidator.validateMap(map));
     }
 
@@ -65,6 +66,13 @@ public class MapValidatorTest {
         map.addContinent(continent1);
         map.addContinent(continent2);
 
+        ArrayList<Continent> continents = map.getContinents();
+        int i = 1;
+        for (Continent continent : continents){
+            continent.setID(i);
+            i++;
+        }
+
         Country country1 = new Country(1, "Country1", 1);
         Country country2 = new Country(2, "Country2", 1);
         Country country3 = new Country(3, "Country3", 2);
@@ -95,6 +103,13 @@ public class MapValidatorTest {
         map.addContinent(continent1);
         map.addContinent(continent2);
         map.addContinent(continent3);
+
+        ArrayList<Continent> continents = map.getContinents();
+        int i = 1;
+        for (Continent continent : continents){
+            continent.setID(i);
+            i++;
+        }
 
         Country country1 = new Country(1, "Country1", 1);
         Country country2 = new Country(2, "Country2", 1);
@@ -134,6 +149,13 @@ public class MapValidatorTest {
         map.addContinent(continent1);
         map.addContinent(continent2);
 
+        ArrayList<Continent> continents = map.getContinents();
+        int i = 1;
+        for (Continent continent : continents){
+            continent.setID(i);
+            i++;
+        }
+
         Country country1 = new Country(1, "Country1", 1);
         Country country2 = new Country(2, "Country2", 1);
         Country country3 = new Country(3, "Country3", 2);
@@ -163,6 +185,13 @@ public class MapValidatorTest {
         Continent continent1 = new Continent("Continent1", 3);
         map.addContinent(continent1);
 
+        ArrayList<Continent> continents = map.getContinents();
+        int i = 1;
+        for (Continent continent : continents){
+            continent.setID(i);
+            i++;
+        }
+
         Country country1 = new Country(1, "Country1", 1);
         Country country2 = new Country(2, "Country2", 1);
         Country duplicateCountry = new Country(3, "Country1", 1); // Duplicate name
@@ -187,6 +216,13 @@ public class MapValidatorTest {
         Continent continent2 = new Continent("Continent2", 2);
         map.addContinent(continent1);
         map.addContinent(continent2);
+
+        ArrayList<Continent> continents = map.getContinents();
+        int i = 1;
+        for (Continent continent : continents){
+            continent.setID(i);
+            i++;
+        }
 
         Country country1 = new Country(1, "Country1", 1);
         Country country2 = new Country(2, "Country2", 1);
