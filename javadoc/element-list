@@ -13,5 +13,6 @@ models.MapHolder
 models.Order
 models.Order.Deploy
 models.Player
+models.PlayerHolder
 utils
 views.MapView

@@ -190,7 +190,7 @@ public class Player {
      *                  The third element is the number of armies to deploy.
      */
 
-    private void createDeployOrder(String[] p_command){
+    public final void createDeployOrder(String[] p_command){
         int countryID = Integer.parseInt(p_command[1]);
         int noOfArmies= Integer.parseInt(p_command[2]);
         if(this.d_noOfArmies<noOfArmies){
@@ -206,7 +206,7 @@ public class Player {
         }
         if(!this.getOwnedCountries().contains(country)){
             this.lastCommandValidForOrders=false;
-            System.out.println("\nCannot deploy armies to country" +countryID+". You do not own this country. Please select a country that you own to deploy your armies");
+            System.out.println("\nCannot deploy armies to country " +countryID+". You do not own this country. Please select a country that you own to deploy your armies");
             return;
         }
         this.d_orders.add(new DeployOrder(countryID,noOfArmies));

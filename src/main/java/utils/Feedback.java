@@ -1,3 +1,6 @@
+/**
+ * Utility class for displaying feedback messages to the user.
+ */
 package utils;
 
 import java.util.ArrayList;
@@ -6,9 +9,6 @@ import constants.Commands;
 import models.Enums.GamePhase;
 import models.Player.Player;
 
-/**
- * Utility class for displaying feedback messages to the user.
- */
 
 public class Feedback {
     /**

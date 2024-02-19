@@ -191,7 +191,6 @@ public class CommandHandler {
         }
         //after all orders are executed. assign reinforcements for next turn.
         assignReinforcements();
-        //reset the hasOrders function to true;
         resetOrdersStatus();
     }
     /**
@@ -205,6 +204,9 @@ public class CommandHandler {
             player.setNoOfArmies(l_armyCount);
         }
     }
+    /**
+     * Resets the hasOrders flag for all players after each turn.
+     */
     private static void resetOrdersStatus(){
         ArrayList <Player> l_existingPlayer = PlayerHolder.getPlayers();
         for(Player player:l_existingPlayer) {

@@ -8,7 +8,6 @@ import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
-import models.Map.MapValidator;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
 
@@ -20,7 +19,6 @@ import static controllers.CommandHandler.CommandHandler.*;
 import static utils.Feedback.*;
 import static utils.Command.*;
 import static views.MapView.MapView.displayMapInformation;
-import static views.MapView.PlayerView.*;
 
 public class GameEngine {
     private Scanner d_sc;
@@ -45,8 +43,7 @@ public class GameEngine {
      */
     public void startGame() {
         displayWelcomeMessage();
-        while (true) {
-            if (d_currentPhase == GamePhase.ISSUE_ORDERS) break;
+        while (d_currentPhase!=GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
             d_command = d_sc.nextLine().trim();
             String l_commandName = d_command.split(" ")[0];

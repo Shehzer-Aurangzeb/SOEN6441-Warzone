@@ -4,8 +4,12 @@ import models.Enums.OrderType;
 
 public interface Order {
     /**
+     * get the order name.
+     */
+
+    OrderType getName();
+    /**
      * Executes the order.
      */
-    OrderType getName();
     void execute();
 }
