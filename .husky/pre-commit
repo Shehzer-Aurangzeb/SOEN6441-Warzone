@@ -1,1 +1,3 @@
+mvn compile
 mvn clean test
+mvn javadoc:javadoc

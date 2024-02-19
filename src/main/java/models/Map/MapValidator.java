@@ -11,20 +11,31 @@ public class MapValidator {
 
     /**
      * Validates the integrity of a map represented by continents and countries.
-     * The validation includes checking for a connected graph, if continents are connected sub-graphs,
-     * and unique country names.
+     * The validation checks include:
+     * - Ensuring the map is not empty and contains continents and countries.</li>
+     * - Checking if there is at least one country in each continent.</li>
+     * - Verifying that the continents form a connected graph.</li>
+     * - Ensuring all continents are connected sub-graphs.</li>
+     * - Checking for unique country names within the map.</li>
+     * If any of the validation checks fail, corresponding error messages are printed.
+     *
      *
      * @param p_map The map to be validated, represented as an object of type Map.
      * @return true if the map is valid; false otherwise.
      */
     public static boolean validateMap(Map p_map) {
+
         // Retrieve continents and countries from the given map
         ArrayList<Continent> l_continents = p_map.getContinents();
         ArrayList<Country> l_countries = p_map.getCountries();
 
+        if(l_continents.isEmpty()){
+            System.out.println("\nThe map is currently empty or has not been loaded yet.");
+            return false;
+        }
+
         // Check if there is at least one country in a continent
         if(!hasCountriesInContinents(l_continents, l_countries)){
-            System.out.println("The map is invalid.");
             return false;
         }
 
@@ -35,7 +46,7 @@ public class MapValidator {
         }
 
         // Check if all continents are connected sub-graphs
-        if (!areContinentsConnected(l_continents, l_countries)) {
+        if (!areContinentsConnectedSubgraphs(l_continents, l_countries)) {
             System.out.println("One or more continents are disconnected sub-graphs.");
             return false;
         }
@@ -137,7 +148,7 @@ public class MapValidator {
      * @param p_countries           List of all countries in the map.
      * @return true if all continents are connected sub-graphs; false otherwise.
      */
-    private static boolean areContinentsConnected(ArrayList<Continent> p_continents, ArrayList<Country> p_countries) {
+    private static boolean areContinentsConnectedSubgraphs(ArrayList<Continent> p_continents, ArrayList<Country> p_countries) {
         for (Continent continent : p_continents) {
             Set<Country> l_visited = new HashSet<>();
             ArrayList<Country> l_continentCountries = new ArrayList<>();

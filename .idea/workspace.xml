@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/TestRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/canada.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/europass.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.husky/pre-commit" beforeDir="false" afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/CommandHandler/CommandHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/CommandHandler/CommandHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +38,14 @@
     "JUnit.CommandTest.testToString_WithArguments.executor": "Debug",
     "JUnit.ContinentTest.executor": "Run",
     "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
+    "JUnit.MapValidatorTest.executor": "Run",
     "JUnit.TestSuite.executor": "Run",
     "Maven.Warzone [test].executor": "Run",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "Merging develop",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.CommandHandlerTest">
+  <component name="RunManager" selected="JUnit.MapValidatorTest">
     <configuration name="CommandHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
@@ -107,8 +108,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MapValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Warzone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.Map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models.Map" />
+      <option name="MAIN_CLASS_NAME" value="models.Map.MapValidatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MapValidatorTest" />
         <item itemvalue="JUnit.CommandHandlerTest" />
         <item itemvalue="JUnit.ContinentTest" />
         <item itemvalue="JUnit.CommandTest.testToString_WithArguments" />

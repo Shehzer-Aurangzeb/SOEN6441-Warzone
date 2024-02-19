@@ -7,6 +7,7 @@ package controllers.GameEngine;
 import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
+import models.Map.MapValidator;
 import models.MapHolder.MapHolder;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
@@ -85,6 +86,7 @@ public class GameEngine {
      * Processes commands during the map editing phase.
      */
     private void processMapEditingPhaseCommand(){
+        Map gameMap = MapHolder.getMap();
         String l_commandName= d_command.split(" ")[0];
         switch(l_commandName){
             case "loadmap":
@@ -97,10 +99,14 @@ public class GameEngine {
                 displayMapInformation();
                 break;
             case "proceed":
-                //check if map is valid if true change phase
-                d_currentPhase= GamePhase.STARTUP;
-                System.out.println("\nYou have entered the Startup Phase. Please create players to proceed further.");
-                System.out.println("Use 'showcommands' to see to see how you can add players");
+                if(MapValidator.validateMap(gameMap)){
+                    d_currentPhase= GamePhase.STARTUP;
+                    System.out.println("\nYou have entered the Startup Phase. Please create players to proceed further.");
+                    System.out.println("Use 'showcommands' to see to see how you can add players");
+                }
+                else {
+                    System.out.println("The map is not valid. Please load a valid map.\n");
+                }
                 break;
             case "exit":
                 handleExitCommand();
