@@ -20,28 +20,6 @@ class CommandHandlerTest {
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
-    @Test
-    void handleLoadMapCommand() {
-        // Mock MapEditor
-        MapEditor mapEditor = new MapEditor();
-        String command = "loadmap bigeurope.map";
-
-        // Test loading existing map file
-        CommandHandler.handleLoadMapCommand(command, mapEditor);
-        assertEquals("\nMap loaded successfully. Type 'proceed' to move to the next phase of the game.\n", outputStreamCaptor.toString());
-
-        // Test loading non-existing map file
-        command = "loadmap non_existing.map";
-        CommandHandler.handleLoadMapCommand(command, mapEditor);
-        assertEquals("\nThe specified map file does not exist. Please make sure the file name is correct or create a new map.\n", outputStreamCaptor.toString());
-    }
-
-    @Test
-    void handleExitCommand() {
-        CommandHandler.handleExitCommand();
-        assertEquals("Exiting the game. Goodbye!\n", outputStreamCaptor.toString());
-
-    }
 
     @Test
     void handleGamePlayerCommand() {

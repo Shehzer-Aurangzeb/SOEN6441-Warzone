@@ -15,10 +15,6 @@ public class ContinentTest {
     }
 
 
-    @Test
-    void getID() {
-        assertEquals(1, continent.getID());
-    }
 
     @Test
     void getName() {

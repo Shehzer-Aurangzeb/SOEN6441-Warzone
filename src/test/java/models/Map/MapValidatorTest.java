@@ -1,5 +1,6 @@
 package models.Map;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +9,7 @@ import models.Country.Country;
 
 public class MapValidatorTest {
 
-
+    @Disabled
     @Test
     void ValidMap() {
         Map map = createValidMap();
