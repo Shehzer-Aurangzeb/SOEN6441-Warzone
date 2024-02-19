@@ -64,6 +64,7 @@
                 <version>3.4.1</version>
                 <configuration>
                     <outputDirectory>${project.basedir}/javadoc/</outputDirectory>
+                    <reportOutputDirectory>${project.basedir}/javadoc/</reportOutputDirectory>
                     <source>17</source>
                 </configuration>
             </plugin>
