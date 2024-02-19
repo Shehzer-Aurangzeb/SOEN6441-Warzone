@@ -11,31 +11,34 @@ public class MapValidatorTest {
 
     @Test
     void ValidMap() {
-        // Create a valid map with connected graph, connected continents, and unique country names
         Map map = createValidMap();
         assertTrue(MapValidator.validateMap(map));
     }
 
     @Test
     void InvalidMapDisconnectedGraph() {
-        // Create an invalid map with a disconnected graph
         Map map = createInvalidMapDisconnectedGraph();
         assertFalse(MapValidator.validateMap(map));
     }
 
     @Test
     void InvalidMapDisconnectedSubgraphs() {
-        // Create an invalid map with a disconnected continent
         Map map = createInvalidMapDisconnectedSubgraphs();
         assertFalse(MapValidator.validateMap(map));
     }
 
     @Test
-    void testInvalidMapDuplicateCountryName() {
-        // Create an invalid map with duplicate country names
+    void InvalidMapDuplicateCountryName() {
         Map map = createInvalidMapDuplicateCountryName();
         assertFalse(MapValidator.validateMap(map));
     }
+
+    @Test
+    void InvalidMapContinentWithoutCountry () {
+        Map map = createInvalidMapContinentWithoutAnyCountry();
+        assertFalse(MapValidator.validateMap(map));
+    }
+
 
     private Map createValidMap() {
         Map map = new Map();
@@ -159,5 +162,26 @@ public class MapValidatorTest {
 
         return map;
     }
+
+    private Map createInvalidMapContinentWithoutAnyCountry() {
+        Map map = new Map();
+
+        Continent continent1 = new Continent("Continent1", 3);
+        Continent continent2 = new Continent("Continent2", 2);
+        map.addContinent(continent1);
+        map.addContinent(continent2);
+
+        Country country1 = new Country(1, "Country1", 1);
+        Country country2 = new Country(2, "Country2", 1);
+
+        country1.addNeighbor(country2);
+        country2.addNeighbor(country1);
+
+        map.addCountry(country1);
+        map.addCountry(country2);
+
+        return map;
+    }
+
 
 }

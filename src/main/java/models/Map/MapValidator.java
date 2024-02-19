@@ -22,6 +22,12 @@ public class MapValidator {
         ArrayList<Continent> l_continents = p_map.getContinents();
         ArrayList<Country> l_countries = p_map.getCountries();
 
+        // Check if there is at least one country in a continent
+        if(!hasCountriesInContinents(l_continents, l_countries)){
+            System.out.println("The map is invalid.");
+            return false;
+        }
+
         // Check if the continents are connected or not
         if(!isConnectedGraph(l_continents, l_countries)) {
             System.out.println("The map is a disconnected graph.");
@@ -42,6 +48,34 @@ public class MapValidator {
 
         // If all validation checks pass, the map is considered valid
         return true;
+    }
+
+    /**
+     * Checks whether each continent has at least one country associated with it.
+     * If a continent is found without any country, it prints an error message.
+     *
+     * @param p_continents List of continents to check for the presence of countries.
+     * @param p_countries  List of all countries in the map.
+     * @return true if each continent has at least one country; false otherwise.
+     */
+    private static boolean hasCountriesInContinents(ArrayList<Continent> p_continents, ArrayList<Country> p_countries) {
+        for (Continent continent : p_continents) {
+            boolean hasCountry = false;
+
+            for (Country country : p_countries) {
+                if (country.getContinentID() == continent.getID()) {
+                    hasCountry = true;
+                    break;
+                }
+            }
+
+            if (!hasCountry) {
+                System.out.println("Continent without any country found: " + continent.getName());
+                return false;
+            }
+        }
+
+        return true; // All continents have at least one country
     }
 
 
@@ -122,7 +156,7 @@ public class MapValidator {
 
             // Check if all countries in the continent are visited
             if (l_visited.size() != l_continentCountries.size()) {
-                System.out.println("Disconnected continent found: " + continent.getName());
+                System.out.println("Continent with disconnected sub-graphs found: " + continent.getName());
                 System.out.println("Visited countries: " + l_visited.size() + ", Total countries: " + l_continentCountries.size());
                 return false;
             }
