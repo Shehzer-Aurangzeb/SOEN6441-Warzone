@@ -1,5 +1,7 @@
 package models.Map;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,39 +9,50 @@ import models.Continent.Continent;
 import models.Country.Country;
 
 public class MapValidatorTest {
+    private Map map;
 
+    @BeforeEach
+    void setUp() {
+        map = new Map();
+    }
+
+    @AfterEach
+    void tearDown() {
+        map = null;
+    }
 
     @Test
     void ValidMap() {
-        Map map = createValidMap();
+        map = createValidMap();
         assertTrue(MapValidator.validateMap(map));
     }
 
     @Test
     void InvalidMapDisconnectedGraph() {
-        Map map = createInvalidMapDisconnectedGraph();
+        map = createInvalidMapDisconnectedGraph();
         assertFalse(MapValidator.validateMap(map));
     }
 
     @Test
     void InvalidMapDisconnectedSubgraphs() {
-        Map map = createInvalidMapDisconnectedSubgraphs();
+        map = createInvalidMapDisconnectedSubgraphs();
         assertFalse(MapValidator.validateMap(map));
     }
 
     @Test
     void InvalidMapDuplicateCountryName() {
-        Map map = createInvalidMapDuplicateCountryName();
+        map = createInvalidMapDuplicateCountryName();
         assertFalse(MapValidator.validateMap(map));
     }
 
     @Test
     void InvalidMapContinentWithoutCountry () {
-        Map map = createInvalidMapContinentWithoutAnyCountry();
+        map = createInvalidMapContinentWithoutAnyCountry();
         assertFalse(MapValidator.validateMap(map));
     }
 
 
+    // Created different types of Demo maps for checking the validation logic of the map
     private Map createValidMap() {
         Map map = new Map();
 
