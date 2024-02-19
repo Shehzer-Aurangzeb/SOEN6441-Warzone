@@ -18,13 +18,18 @@ public class MapValidator {
      * @return true if the map is valid; false otherwise.
      */
     public static boolean validateMap(Map p_map) {
+
         // Retrieve continents and countries from the given map
         ArrayList<Continent> l_continents = p_map.getContinents();
         ArrayList<Country> l_countries = p_map.getCountries();
 
+        if(l_continents.isEmpty()){
+            System.out.println("\nThe map is currently empty or has not been loaded yet.");
+            return false;
+        }
+
         // Check if there is at least one country in a continent
         if(!hasCountriesInContinents(l_continents, l_countries)){
-            System.out.println("The map is invalid.");
             return false;
         }
 
@@ -35,7 +40,7 @@ public class MapValidator {
         }
 
         // Check if all continents are connected sub-graphs
-        if (!areContinentsConnected(l_continents, l_countries)) {
+        if (!areContinentsConnectedSubgraphs(l_continents, l_countries)) {
             System.out.println("One or more continents are disconnected sub-graphs.");
             return false;
         }
@@ -137,7 +142,7 @@ public class MapValidator {
      * @param p_countries           List of all countries in the map.
      * @return true if all continents are connected sub-graphs; false otherwise.
      */
-    private static boolean areContinentsConnected(ArrayList<Continent> p_continents, ArrayList<Country> p_countries) {
+    private static boolean areContinentsConnectedSubgraphs(ArrayList<Continent> p_continents, ArrayList<Country> p_countries) {
         for (Continent continent : p_continents) {
             Set<Country> l_visited = new HashSet<>();
             ArrayList<Country> l_continentCountries = new ArrayList<>();
