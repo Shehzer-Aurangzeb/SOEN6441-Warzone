@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileAdapterTest {
+public class FileAdapterTest {
     private static String fileName;
     private static String filePath;
     private static File file;

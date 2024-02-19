@@ -4,226 +4,88 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e863773f-6331-46bc-ac7b-c3bc9076bbc0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/CommandHandler/CommandHandlerTest.java" afterDir="false" />
+    <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/views/MapView/PlayerViewTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/adapters/FileAdapter/FileAdapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/adapters/FileAdapter/FileAdapter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/adapters/FileAdapter/FileAdapterTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/adapters/FileAdapter/FileAdapterTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/adapters/FileAdapter/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/adapters/FileAdapter/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/constants/Commands.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constants/Commands.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/constants/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constants/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/CommandHandler/CommandHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/CommandHandler/CommandHandler.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/CommandHandler/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/CommandHandler/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/GameEngine/GameEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/GameEngine/GameEngine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/GameEngine/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/GameEngine/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/MapEditor/MapEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/MapEditor/MapEditor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/MapEditor/MapEditorTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/MapEditor/MapEditorTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/controllers/MapEditor/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/controllers/MapEditor/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/element-list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Command/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Command/Command.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Command/CommandTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Command/CommandTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Command/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Command/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Continent/Continent.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Continent/Continent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Continent/ContinentTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Continent/ContinentTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Continent/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Continent/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Country/Country.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Country/Country.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Country/CountryTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Country/CountryTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Country/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Country/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Enums/ActionType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Enums/ActionType.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Enums/GamePhase.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Enums/GamePhase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Enums/LineType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Enums/LineType.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Enums/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Enums/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Map/Map.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Map/Map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Map/MapTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Map/MapTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Map/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Map/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/MapHolder/MapHolder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/MapHolder/MapHolder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/MapHolder/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/MapHolder/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Order/Deploy/DeployOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Order/Deploy/DeployOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Order/Deploy/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Order/Deploy/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Order/Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Order/Order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Order/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Order/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Player/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Player/Player.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Player/PlayerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Player/PlayerTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/models/Player/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/models/Player/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/Command.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/Feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/Feedback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/FeedbackTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/FeedbackTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/utils/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/utils/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/views/MapView/MapView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/views/MapView/MapView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/views/MapView/MapViewTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/views/MapView/MapViewTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/views/MapView/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/views/MapView/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/OrderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/OrderType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/MapEditor/MapEditorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/MapEditor/MapEditorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/Command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Command/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/Country/CountryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Country/CountryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/Map/MapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-        <option value="Enum" />
-        <option value="JUnit5 Test Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2cT4bX8YfZHd4NKAd2YjWXlRIcp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "JUnit.CommandHandlerTest.assignReinforcements.executor": "Run",
-    "JUnit.CommandHandlerTest.handleGamePlayerCommand.executor": "Run",
     "JUnit.CommandTest.executor": "Run",
-    "JUnit.CountryTest.executor": "Run",
-    "JUnit.FeedbackTest.displayWelcomeMessage.executor": "Run",
-    "JUnit.FeedbackTest.executor": "Run",
-    "JUnit.FileAdapterTest.executor": "Run",
-    "JUnit.MapTest.executor": "Run",
+    "JUnit.CommandTest.testToString_WithArguments.executor": "Debug",
+    "JUnit.ContinentTest.executor": "Run",
     "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
-    "JUnit.MapViewTest.executor": "Run",
-    "JUnit.PlayerTest.executor": "Run",
-    "JUnit.PlayerTest.issue_order_playerDoesNotOwnTheCountry.executor": "Run",
-    "Maven.Warzone [test].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/shehzerabbasi/Downloads/Warzone/src/main/java/org/example/Main.java",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+    "JUnit.TestSuite.executor": "Run",
+    "git-widget-placeholder": "Merging develop",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/maps" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="models.Player" />
-      <recent name="controllers.CommandHandler" />
-      <recent name="controllers.MapEditor" />
-      <recent name="models.Command" />
-      <recent name="models.Country" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="CommandHandlerTest.assignReinforcements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommandTest.testToString_WithArguments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controllers.CommandHandler.*" />
+          <option name="PATTERN" value="models.Command.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controllers.CommandHandler" />
-      <option name="MAIN_CLASS_NAME" value="controllers.CommandHandler.CommandHandlerTest" />
-      <option name="METHOD_NAME" value="assignReinforcements" />
+      <option name="PACKAGE_NAME" value="models.Command" />
+      <option name="MAIN_CLASS_NAME" value="models.Command.CommandTest" />
+      <option name="METHOD_NAME" value="testToString_WithArguments" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommandHandlerTest.handleGamePlayerCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ContinentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controllers.CommandHandler.*" />
+          <option name="PATTERN" value="models.Continent.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controllers.CommandHandler" />
-      <option name="MAIN_CLASS_NAME" value="controllers.CommandHandler.CommandHandlerTest" />
-      <option name="METHOD_NAME" value="handleGamePlayerCommand" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FeedbackTest.displayWelcomeMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="utils" />
-      <option name="MAIN_CLASS_NAME" value="utils.FeedbackTest" />
-      <option name="METHOD_NAME" value="displayWelcomeMessage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileAdapterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="adapters.FileAdapter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="adapters.FileAdapter" />
-      <option name="MAIN_CLASS_NAME" value="adapters.FileAdapter.FileAdapterTest" />
+      <option name="PACKAGE_NAME" value="models.Continent" />
+      <option name="MAIN_CLASS_NAME" value="models.Continent.ContinentTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.issue_order_playerDoesNotOwnTheCountry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MapTest.getContinentByID_ContinentExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.Player.*" />
+          <option name="PATTERN" value="models.Map.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.Player" />
-      <option name="MAIN_CLASS_NAME" value="models.Player.PlayerTest" />
-      <option name="METHOD_NAME" value="issue_order_playerDoesNotOwnTheCountry" />
+      <option name="PACKAGE_NAME" value="models.Map" />
+      <option name="MAIN_CLASS_NAME" value="models.Map.MapTest" />
+      <option name="METHOD_NAME" value="getContinentByID_ContinentExists" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -231,35 +93,13 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlayerTest.issue_order_playerDoesNotOwnTheCountry" />
-        <item itemvalue="JUnit.CommandHandlerTest.assignReinforcements" />
-        <item itemvalue="JUnit.CommandHandlerTest.handleGamePlayerCommand" />
-        <item itemvalue="JUnit.FeedbackTest.displayWelcomeMessage" />
-        <item itemvalue="JUnit.FileAdapterTest" />
+        <item itemvalue="JUnit.ContinentTest" />
+        <item itemvalue="JUnit.CommandTest.testToString_WithArguments" />
+        <item itemvalue="JUnit.MapTest.getContinentByID_ContinentExists" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-92e50af3" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="e863773f-6331-46bc-ac7b-c3bc9076bbc0" name="Changes" comment="" />
-      <created>1708122307932</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1708122307932</updated>
-      <workItem from="1708122309000" duration="3883000" />
-      <workItem from="1708126472305" duration="52183000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>

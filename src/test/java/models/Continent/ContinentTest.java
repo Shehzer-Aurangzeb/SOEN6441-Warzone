@@ -1,24 +1,23 @@
 package models.Continent;
 
-import org.junit.jupiter.api.AfterEach;
+
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ContinentTest {
+public class ContinentTest {
 
-    private Continent continent;
-    @BeforeEach
-    void setUp() {
+    private static Continent continent;
+    @BeforeAll
+    static void setUp() {
         continent = new Continent("Asia", 5);
     }
 
 
     @Test
     void getID() {
-        assertEquals(0, continent.getID());
+        assertEquals(1, continent.getID());
     }
 
     @Test

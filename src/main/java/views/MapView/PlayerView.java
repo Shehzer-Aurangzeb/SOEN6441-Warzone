@@ -94,8 +94,8 @@ public class PlayerView {
             for (Country c : p.getOwnedCountries()) {
                 String l_continentName = getContinentName(p_continents, c.getContinentID());
                 String l_name = MapView.getNeighbourName(c);
-                int no_of_armies_in_country = 0;
-                System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "s| %-" + columnWidths[2] + "d| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s|\n", p.getName(), c.getName(), no_of_armies_in_country, l_continentName, l_name);
+                int no_of_armies_in_country = c.getArmiesDeployed();
+                System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "d| %-" + columnWidths[2] + "d| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s|\n", p.getName(), c.getID(), no_of_armies_in_country, l_continentName, l_name);
             }
         }
         printSeparator(totalWidth);

@@ -22,15 +22,15 @@ public class MapValidator {
         ArrayList<Continent> l_continents = p_map.getContinents();
         ArrayList<Country> l_countries = p_map.getCountries();
 
-        // Check if the map is a connected graph
-        if (!isGraphConnected(l_countries)) {
+        // Check if the continents are connected or not
+        if(!isConnectedGraph(l_continents, l_countries)) {
             System.out.println("The map is a disconnected graph.");
             return false;
         }
 
-        // Check if all continents are connected subgraphs
+        // Check if all continents are connected sub-graphs
         if (!areContinentsConnected(l_continents, l_countries)) {
-            System.out.println("One or more continents are disconnected subgraphs.");
+            System.out.println("One or more continents are disconnected sub-graphs.");
             return false;
         }
 
@@ -44,35 +44,57 @@ public class MapValidator {
         return true;
     }
 
+
     /**
-     * Checks whether the graph formed by countries is connected.
+     * Checks whether the given graph, represented by a collection of continents and countries,
+     * forms a connected graph. A connected graph implies that there is at least one connection
+     * between countries in different continents.
      *
-     * @param p_countries List of countries to check for graph connectivity.
+     * If there is only one continent, it is considered connected by default. Otherwise, it iterates
+     * through each continent and checks if there is at least one connection between a country in that
+     * continent and a country in another continent.
+     *
+     * @param p_continents The list of continents in the graph.
+     * @param p_countries The list of countries in the graph.
      * @return true if the graph is connected; false otherwise.
      */
-    private static boolean isGraphConnected(ArrayList<Country> p_countries) {
-        if (p_countries.isEmpty()) return true;
+    private static boolean isConnectedGraph(ArrayList<Continent> p_continents, ArrayList<Country> p_countries) {
 
-        Set<Country> l_visited = new HashSet<>();
-        dfsCountries(p_countries.get(0), l_visited);
+        // If there is only one continent, it is always connected
+        if (p_continents.size() == 1) {
+            return true;
+        }
 
-        return l_visited.size() == p_countries.size();
-    }
+        // Iterate through each continent
+        for (Continent continent : p_continents) {
+            boolean isConnected = false;
 
-    /**
-     * Performs a depth-first search (DFS) traversal of the graph starting from a specific country.
-     *
-     * @param p_country      The starting country for DFS traversal.
-     * @param p_visited      Set of visited countries during DFS traversal.
-     */
-    private static void dfsCountries(Country p_country, Set<Country> p_visited) {
-        p_visited.add(p_country);
-        for (Country neighbor : p_country.getNeighbours()) {
-            if (!p_visited.contains(neighbor)) {
-                dfsCountries(neighbor, p_visited);
+            // Iterate through each country in the current continent
+            for (Country country : p_countries) {
+                if (country.getContinentID() == continent.getID()) {
+                    // Check if the country has a neighbor in another continent
+                    for (Country neighbor : country.getNeighbours()) {
+                        if (neighbor.getContinentID() != continent.getID()) {
+                            isConnected = true;
+                            break;
+                        }
+                    }
+
+                    if (isConnected) {
+                        break;
+                    }
+                }
+            }
+
+            if (!isConnected) {
+                System.out.println(continent.getName() + " is not connected.");
+                return false;
             }
         }
+
+        return true;
     }
+
 
     /**
      * Checks whether all countries within each continent are connected.

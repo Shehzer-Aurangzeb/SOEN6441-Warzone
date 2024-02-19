@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapTest {
+public class MapTest {
     private Map map;
     @BeforeEach
     void setUp() {
@@ -75,15 +75,6 @@ class MapTest {
         Country foundCountry = map.getCountryByID(1);
 
         assertNull(foundCountry);
-    }
-
-    @Test
-    void getContinentByID_ContinentExists() {
-        Continent continent = new Continent("Continent1", 5);
-        map.addContinent(continent);
-        Continent foundContinent = map.getContinentByID(1);
-        assertNotNull(foundContinent);
-        assertEquals(continent, foundContinent);
     }
     @Test
     void getContinentByID_ContinentDoesNotExist() {

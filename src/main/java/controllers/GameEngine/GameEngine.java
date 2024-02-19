@@ -122,8 +122,8 @@ public class GameEngine {
                 if(d_players.size()<2){
                     System.out.println("\nMinimum two players required to start the game.");
                 }else{
-                    assignCountries();
                     PlayerHolder.setPlayers(d_players);
+                    assignCountries();
                     assignReinforcements();
                     System.out.println("\nReinforcements have been assigned to players.");
                     d_currentPhase=GamePhase.ISSUE_ORDERS;
