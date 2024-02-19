@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/views/MapView/PlayerViewTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/MapValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MapView/PlayerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/adapters/FileAdapter/FileAdapterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/MapEditor/MapEditorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/MapEditor/MapEditorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Command/CommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Continent/ContinentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Country/CountryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Country/CountryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Map/MapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/views/MapView/MapViewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +25,7 @@
     "JUnit.ContinentTest.executor": "Run",
     "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
     "JUnit.TestSuite.executor": "Run",
-    "git-widget-placeholder": "Merging develop",
+    "git-widget-placeholder": "develop",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
