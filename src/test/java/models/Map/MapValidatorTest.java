@@ -27,7 +27,7 @@ public class MapValidatorTest {
     @Disabled
     @Test
     void ValidMap() {
-        map = createValidMap();
+        Map map = createValidMap();
         assertTrue(MapValidator.validateMap(map));
     }
 
