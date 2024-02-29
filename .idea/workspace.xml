@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Enums/PlayerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/AdvanceOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/BlockadeOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/BombOrder.java" afterDir="false" />
+    <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="Implemented deploy, advance, bomb and blockade commands">
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/AirliftOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DiplomacyOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/OrderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/OrderType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="2-createOrder-functionality" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiProvider">{
@@ -50,31 +48,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "JUnit.CommandHandlerTest.executor": "Run",
-    "JUnit.CommandTest.executor": "Run",
-    "JUnit.CommandTest.testToString_WithArguments.executor": "Debug",
-    "JUnit.ContinentTest.executor": "Run",
-    "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
-    "JUnit.MapValidatorTest.ValidMap.executor": "Run",
-    "JUnit.MapValidatorTest.executor": "Run",
-    "JUnit.TestSuite.executor": "Run",
-    "Maven.Warzone [test].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/gp/IdeaProjects/SOEN6441-Warzone",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandHandlerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandTest.testToString_WithArguments.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ContinentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MapTest.getContinentByID_ContinentExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MapValidatorTest.ValidMap.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MapValidatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestSuite.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Warzone [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gp/IdeaProjects/SOEN6441-Warzone&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/documentation" />
@@ -179,7 +177,17 @@
       <workItem from="1708738564353" duration="13251000" />
       <workItem from="1708834783850" duration="28653000" />
       <workItem from="1709189252383" duration="158000" />
+      <workItem from="1709189420794" duration="3438000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented deploy, advance, bomb and blockade commands">
+      <option name="closed" value="true" />
+      <created>1709189547226</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709189547226</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,5 +195,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Implemented deploy, advance, bomb and blockade commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented deploy, advance, bomb and blockade commands" />
   </component>
 </project>

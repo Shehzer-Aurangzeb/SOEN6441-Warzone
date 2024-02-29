@@ -9,6 +9,8 @@ import models.Order.Order;
 import models.Order.Deploy.AdvanceOrder;
 import models.Order.Deploy.BombOrder;
 import models.Order.Deploy.BlockadeOrder;
+import models.Order.Deploy.AirliftOrder;
+import models.Order.Deploy.DiplomacyOrder;
 import models.MapHolder.MapHolder;
 import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
 import static controllers.CommandHandler.CommandHandler.handleExitCommand;
@@ -27,6 +29,8 @@ public class Player {
     private boolean lastCommandValidForOrders;
 
     private Scanner sc = new Scanner(System.in);
+    private GamePhase currentPhase;
+
     /**
      * Initializes a player with the given name.
      *
@@ -135,20 +139,26 @@ public class Player {
     /**
      * Issues an order from the list of orders for the player and removes it from the list.
      */
+    /**
+     * Issues an order from the list of orders for the player and removes it from the list.
+     */
+    /**
+     * Issues an order from the list of orders for the player and removes it from the list.
+     */
     public void IssueOrder() {
-        System.out.print("\nPlayer "+ this.getName() + " please enter your next order: ");
-        String[] l_commandParts= sc.nextLine().split(" ");
-        String l_commandName=l_commandParts[0];
-        switch(l_commandName){
+        System.out.print("\nPlayer " + this.getName() + " please enter your next order: ");
+        String[] l_commandParts = sc.nextLine().split(" ");
+        String l_commandName = l_commandParts[0];
+        switch (l_commandName) {
             case "deploy":
                 createDeployOrder(l_commandParts);
                 break;
             case "showarmies":
-                this.lastCommandValidForOrders=false;
+                this.lastCommandValidForOrders = false;
                 System.out.print("\nArmies left to deploy for " + this.getName() + ": " + this.d_noOfArmies);
                 break;
             case "showcommands":
-                this.lastCommandValidForOrders=false;
+                this.lastCommandValidForOrders = false;
                 handleDisplayCommands(GamePhase.ISSUE_ORDERS);
                 break;
             case "advance":
@@ -160,22 +170,35 @@ public class Player {
             case "blockade":
                 handleBlockadeOrder(l_commandParts);
                 break;
+            case "airlift":
+                handleAirliftOrder(l_commandParts);
+                break;
+            case "negotiate":
+                if (currentPhase == GamePhase.ISSUE_ORDERS) {
+                    System.out.println("\nThe 'negotiate' command is not available in the ISSUE ORDERS phase.");
+                    System.out.println("Please type 'showcommands' to see the commands you can run.");
+                } else {
+                    handleDiplomacyOrder(l_commandParts);
+                }
+                break;
             case "showmap":
-                this.lastCommandValidForOrders=false;
+                this.lastCommandValidForOrders = false;
                 displayPlayerList();
                 break;
             case "endturn":
-                this.hasOrders=false;
+                this.hasOrders = false;
                 break;
             case "exit":
                 handleExitCommand();
                 break;
             default:
-                this.lastCommandValidForOrders=false;
-                displayCommandUnavailableMessage(l_commandName,GamePhase.ISSUE_ORDERS);
+                this.lastCommandValidForOrders = false;
+                displayCommandUnavailableMessage(l_commandName, GamePhase.ISSUE_ORDERS);
                 break;
         }
     }
+
+
 
     /**
      * Retrieves the next order to be executed by the player.
@@ -326,6 +349,56 @@ public class Player {
             System.out.println("\nBlockade order created.");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID. Please provide a valid integer.");
+        }
+    }
+    /**
+     * Handles the airlift order command.
+     *
+     * @param commandParts The command parts containing the details of the airlift order.
+     */
+    private void handleAirliftOrder(String[] commandParts) {
+        if (commandParts.length != 4) {
+            System.out.println("Invalid airlift order command format. Usage: airlift sourcecountryID targetcountryID numarmies");
+            return;
+        }
+        try {
+            int sourceCountryID = Integer.parseInt(commandParts[1]);
+            int targetCountryID = Integer.parseInt(commandParts[2]);
+            int numArmies = Integer.parseInt(commandParts[3]);
+
+            // Check if the player has the airlift card (implement this logic)
+            // If the player has the airlift card, create and add an AirliftOrder to the list of orders
+            // Otherwise, print a message indicating that the player does not have the required card
+            AirliftOrder airliftOrder = new AirliftOrder(sourceCountryID, targetCountryID, numArmies);
+            this.d_orders.add(airliftOrder);
+            this.lastCommandValidForOrders = true;
+            System.out.println("\nAirlift order created.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid country ID or number of armies. Please provide valid integers.");
+        }
+    }
+
+    /**
+     * Handles the diplomacy order command.
+     *
+     * @param commandParts The command parts containing the details of the diplomacy order.
+     */
+    private void handleDiplomacyOrder(String[] commandParts) {
+        if (commandParts.length != 2) {
+            System.out.println("Invalid diplomacy order command format. Usage: diplomacy playerID");
+            return;
+        }
+        try {
+            int playerID = Integer.parseInt(commandParts[1]);
+            // Check if the player has the diplomacy card (implement this logic)
+            // If the player has the diplomacy card, create and add a DiplomacyOrder to the list of orders
+            // Otherwise, print a message indicating that the player does not have the required card
+            DiplomacyOrder diplomacyOrder = new DiplomacyOrder(playerID);
+            this.d_orders.add(diplomacyOrder);
+            this.lastCommandValidForOrders = true;
+            System.out.println("\nDiplomacy order created.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid player ID. Please provide a valid integer.");
         }
     }
 
