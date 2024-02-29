@@ -1,14 +1,15 @@
 package models.Player;
 
-import models.Country.Country;
-import models.Enums.GamePhase;
-import models.MapHolder.MapHolder;
-import models.Order.Deploy.DeployOrder;
-import models.Order.Order;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import models.Country.Country;
+import models.Enums.GamePhase;
+import models.Order.Deploy.DeployOrder;
+import models.Order.Order;
+import models.Order.Deploy.AdvanceOrder;
+import models.Order.Deploy.BombOrder;
+import models.Order.Deploy.BlockadeOrder;
+import models.MapHolder.MapHolder;
 import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
 import static controllers.CommandHandler.CommandHandler.handleExitCommand;
 import static utils.Feedback.displayCommandUnavailableMessage;
@@ -134,7 +135,7 @@ public class Player {
     /**
      * Issues an order from the list of orders for the player and removes it from the list.
      */
-    public void issue_order() {
+    public void IssueOrder() {
         System.out.print("\nPlayer "+ this.getName() + " please enter your next order: ");
         String[] l_commandParts= sc.nextLine().split(" ");
         String l_commandName=l_commandParts[0];
@@ -151,6 +152,13 @@ public class Player {
                 handleDisplayCommands(GamePhase.ISSUE_ORDERS);
                 break;
             case "advance":
+                handleAdvanceOrder(l_commandParts);
+                break;
+            case "bomb":
+                handleBombOrder(l_commandParts);
+                break;
+            case "blockade":
+                handleBlockadeOrder(l_commandParts);
                 break;
             case "showmap":
                 this.lastCommandValidForOrders=false;
@@ -189,7 +197,6 @@ public class Player {
      *                  The second element is the country ID.
      *                  The third element is the number of armies to deploy.
      */
-
     public final void createDeployOrder(String[] p_command){
         int countryID = Integer.parseInt(p_command[1]);
         int noOfArmies= Integer.parseInt(p_command[2]);
@@ -209,9 +216,130 @@ public class Player {
             System.out.println("\nCannot deploy armies to country " +countryID+". You do not own this country. Please select a country that you own to deploy your armies");
             return;
         }
-        this.d_orders.add(new DeployOrder(countryID,noOfArmies));
+        // Modify the line below to pass the current player
+        this.d_orders.add(new DeployOrder(countryID, noOfArmies, this));
         this.d_noOfArmies-=noOfArmies;
         this.lastCommandValidForOrders=true;
         System.out.println("\nDeploy order created.");
+    }
+
+    /**
+     * Handles the advance order command.
+     *
+     * @param commandParts The command parts containing the details of the advance order.
+     */
+    /**
+     * Handles the advance order command.
+     *
+     * @param commandParts The command parts containing the details of the advance order.
+     */
+    private void handleAdvanceOrder(String[] commandParts) {
+        if (commandParts.length != 4) {
+            System.out.println("Invalid advance order command format. Usage: advance countryFrom countryTo numArmies");
+            return;
+        }
+        try {
+            String countryFrom = commandParts[1];
+            String countryTo = commandParts[2];
+            int numArmies = Integer.parseInt(commandParts[3]);
+            if (this.d_noOfArmies < numArmies) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nYou do not have enough armies to advance.");
+                return;
+            }
+            Country sourceCountry = MapHolder.getMap().getCountryByName(countryFrom);
+            Country targetCountry = MapHolder.getMap().getCountryByName(countryTo);
+            if (sourceCountry == null || targetCountry == null) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nInvalid country names. One or both countries do not exist.");
+                return;
+            }
+            if (!this.d_ownedCountries.contains(sourceCountry)) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nYou do not own the source country.");
+                return;
+            }
+            AdvanceOrder advanceOrder = new AdvanceOrder(countryFrom, countryTo, numArmies);
+            this.d_orders.add(advanceOrder); // Add AdvanceOrder to the list of orders
+            this.d_noOfArmies -= numArmies;
+            this.lastCommandValidForOrders = true;
+            System.out.println("\nAdvance order created.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number of armies. Please provide an integer.");
+        }
+    }
+
+    /**
+     * Handles the bomb order command.
+     *
+     * @param commandParts The command parts containing the details of the bomb order.
+     */
+    private void handleBombOrder(String[] commandParts) {
+        if (commandParts.length != 2) {
+            System.out.println("Invalid bomb order command format. Usage: bomb countryID");
+            return;
+        }
+        try {
+            int countryID = Integer.parseInt(commandParts[1]);
+            Country targetCountry = MapHolder.getMap().getCountryByID(countryID);
+            if (targetCountry == null) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nInvalid country ID. Country does not exist.");
+                return;
+            }
+            // Check if the player has the bomb card (implement this logic)
+            // If the player has the bomb card, create and add a BombOrder to the list of orders
+            // Otherwise, print a message indicating that the player does not have the required card
+            BombOrder bombOrder = new BombOrder(countryID);
+            this.d_orders.add(bombOrder);
+            this.lastCommandValidForOrders = true;
+            System.out.println("\nBomb order created.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid country ID. Please provide a valid integer.");
+        }
+    }
+
+    /**
+     * Handles the blockade order command.
+     *
+     * @param commandParts The command parts containing the details of the blockade order.
+     */
+    private void handleBlockadeOrder(String[] commandParts) {
+        if (commandParts.length != 2) {
+            System.out.println("Invalid blockade order command format. Usage: blockade countryID");
+            return;
+        }
+        try {
+            int countryID = Integer.parseInt(commandParts[1]);
+            Country targetCountry = MapHolder.getMap().getCountryByID(countryID);
+            if (targetCountry == null) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nInvalid country ID. Country does not exist.");
+                return;
+            }
+            // Check if the player has the blockade card (implement this logic)
+            // If the player has the blockade card, create and add a BlockadeOrder to the list of orders
+            // Otherwise, print a message indicating that the player does not have the required card
+            BlockadeOrder blockadeOrder = new BlockadeOrder(countryID);
+            this.d_orders.add(blockadeOrder);
+            this.lastCommandValidForOrders = true;
+            System.out.println("\nBlockade order created.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid country ID. Please provide a valid integer.");
+        }
+    }
+
+    /**
+     * Issues an order from the list of orders for the player and removes it from the list.
+     */
+
+
+    public static Player getCurrentPlayer() {
+        // You might need to implement this based on your game logic
+        // For example, you could keep track of the current player in the PlayerHolder class
+        return null;
+    }
+    public void issueOrder(Order order) {
+        d_orders.add(order);
     }
 }

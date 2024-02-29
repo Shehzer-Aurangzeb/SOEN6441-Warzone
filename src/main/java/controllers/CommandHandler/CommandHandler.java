@@ -10,6 +10,7 @@ import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
+import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
@@ -231,7 +232,7 @@ public class CommandHandler {
                 l_currentPlayerIndex = (l_currentPlayerIndex + 1) % l_existingPlayers.size();
                 continue;
             }
-            l_currentPlayer.issue_order();
+            l_currentPlayer.IssueOrder(); // Correct method name here
             if (!l_currentPlayer.lastCommandValidForOrders()) {
                 continue;
             }
@@ -310,5 +311,28 @@ public class CommandHandler {
             player.setHasOrders(true);
         }
     }
+
+    public static void handleDeployOrder(String p_command) {
+        String[] commandParts = p_command.split(" ");
+        if (commandParts.length != 3) {
+            System.out.println("Invalid deploy order command format. Usage: deploy countryID numArmies");
+            return;
+        }
+        try {
+            int countryID = Integer.parseInt(commandParts[1]);
+            int numArmies = Integer.parseInt(commandParts[2]);
+            Player currentPlayer = Player.getCurrentPlayer();
+            if (currentPlayer != null) {
+                DeployOrder deployOrder = new DeployOrder(countryID, numArmies, currentPlayer);
+                currentPlayer.IssueOrder(); // Fix method name here
+                System.out.println("Deploy order issued successfully.");
+            } else {
+                System.out.println("No active player found to issue the deploy order.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid country ID or number of armies. Please provide integers.");
+        }
+    }
+
 
 }

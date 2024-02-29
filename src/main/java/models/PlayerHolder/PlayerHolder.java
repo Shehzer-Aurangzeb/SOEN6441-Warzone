@@ -15,7 +15,7 @@ public class PlayerHolder {
 
 
     private static ArrayList<Player> d_players= new ArrayList<>();
-
+    private static int currentPlayerIndex = 0;
     /**
      * Retrieves the list of players.
      *
@@ -34,4 +34,24 @@ public class PlayerHolder {
     public static void setPlayers(ArrayList<Player> p_players) {
         PlayerHolder.d_players = p_players;
     }
+
+    /**
+     * Retrieves the current player.
+     *
+     * @return The current player.
+     */
+    public static Player getCurrentPlayer() {
+        if (d_players.isEmpty()) {
+            return null;
+        }
+        return d_players.get(currentPlayerIndex);
+    }
+
+    /**
+     * Moves to the next player.
+     */
+    public static void moveToNextPlayer() {
+        currentPlayerIndex = (currentPlayerIndex + 1) % d_players.size();
+    }
 }
+
