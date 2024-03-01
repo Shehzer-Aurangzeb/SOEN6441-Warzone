@@ -1,8 +1,8 @@
-package utils;
-
+import utils.Feedback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,11 +29,20 @@ public class FeedbackTest {
                 "\t-showcommands: Display all available commands.\n" +
                 "\t-exit: Exit the game.\n";
 
-        assertEquals(expectedOutput, outputStreamCaptor.toString());
+        // Normalize line separators
+        expectedOutput = normalizeLineSeparators(expectedOutput);
+        String actualOutput = normalizeLineSeparators(outputStreamCaptor.toString());
 
+        assertEquals(expectedOutput, actualOutput);
     }
 
-    @org.junit.jupiter.api.Test
+    // Utility method to normalize line separators
+    private String normalizeLineSeparators(String input) {
+        return input.replaceAll("\r\n", "\n");
+    }
+
+
+@org.junit.jupiter.api.Test
     void displayPhaseInstructions() {
     }
 }

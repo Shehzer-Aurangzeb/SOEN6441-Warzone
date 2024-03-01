@@ -42,7 +42,9 @@ public class DiplomacyOrder implements Order {
      */
     @Override
     public void execute() {
-        // Implement the execution logic for diplomacy order
+        // Placeholder implementation for executing a diplomacy order
         // This method will be called when the order is executed
+        System.out.println("Executing diplomacy order with player ID: " + playerID);
+        // Implement the actual logic for diplomacy here
     }
 }

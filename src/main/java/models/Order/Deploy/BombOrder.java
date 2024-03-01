@@ -9,15 +9,15 @@ import models.Order.Order;
  * Represents an order to bomb a country.
  */
 public class BombOrder implements Order {
-    private int d_targetCountry;
+    private int targetCountryID;
 
     /**
      * Initializes a bomb order with the target country.
      *
-     * @param p_countryID The country to bomb.
+     * @param targetCountryID The ID of the country to bomb.
      */
-    public BombOrder(int p_countryID) {
-        this.d_targetCountry = p_countryID;
+    public BombOrder(int targetCountryID) {
+        this.targetCountryID = targetCountryID;
     }
 
     /**
@@ -33,17 +33,44 @@ public class BombOrder implements Order {
     /**
      * Executes the bomb order.
      */
-    @Override
     public void execute() {
-        Country targetCountry = MapHolder.getMap().getCountryByID(this.d_targetCountry);
+        // Get the target country from the map
+        Country targetCountry = MapHolder.getMap().getCountryByID(targetCountryID);
+
         // Check if the target country exists
         if (targetCountry != null) {
-            // Reduce the number of armies in the target country
-            int remainingArmies = Math.max(0, targetCountry.getArmiesDeployed() - 1);
-            targetCountry.setArmiesDeployed(remainingArmies);
-            System.out.println("Bombing country " + this.d_targetCountry + ". Armies reduced to " + remainingArmies + ".");
+            // Check if there are armies left in the target country
+            int armies = targetCountry.getArmiesDeployed();
+            if (armies > 0) {
+                // Decrease the number of armies in the target country by 1
+                targetCountry.setArmiesDeployed(armies - 1);
+            } else {
+                // No armies left in the target country
+                System.out.println("Cannot bomb country " + targetCountryID + ". No armies left.");
+            }
         } else {
+            // Handle the case where the target country does not exist
             System.out.println("Invalid target country for bombing.");
+        }
+    }
+
+    /**
+     * Returns a string representation of the bomb order.
+     *
+     * @return A string representing the bomb order.
+     */
+    @Override
+    public String toString() {
+        Country targetCountry = MapHolder.getMap().getCountryByID(this.targetCountryID);
+        if (targetCountry != null) {
+            int newArmies = Math.max(0, targetCountry.getArmiesDeployed() - 1);
+            if (newArmies == 0) {
+                return "Cannot bomb country " + this.targetCountryID + ". No armies left.";
+            } else {
+                return "Bombing country " + this.targetCountryID + ". Armies reduced to " + newArmies + ".";
+            }
+        } else {
+            return "Invalid target country for bombing.";
         }
     }
 }
