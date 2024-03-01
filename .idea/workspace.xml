@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="Implemented airliftOrder and diplomacyOrder">
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/AdvanceOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/BlockadeOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/BombOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/DeployOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/DiplomacyOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes">
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/PlayerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/PlayerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/AirliftOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/AirliftOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/BombOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/BombOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DiplomacyOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DiplomacyOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +205,7 @@
       <workItem from="1708834783850" duration="28653000" />
       <workItem from="1709189252383" duration="158000" />
       <workItem from="1709189420794" duration="3610000" />
-      <workItem from="1709245191647" duration="15234000" />
+      <workItem from="1709245191647" duration="15346000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented deploy, advance, bomb and blockade commands">
       <option name="closed" value="true" />
@@ -237,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709193022104</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes">
+      <option name="closed" value="true" />
+      <created>1709260581010</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709260581010</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +241,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Implemented deploy, advance, bomb and blockade commands" />
     <MESSAGE value="Implemented airliftOrder and diplomacyOrder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented airliftOrder and diplomacyOrder" />
+    <MESSAGE value="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SOEN6441_Warzone$PlayerTest_testIssueOrder_countryDoesNotExist.ic" NAME="PlayerTest.testIssueOrder_countryDoesNotExist Coverage Results" MODIFIED="1709250641043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
