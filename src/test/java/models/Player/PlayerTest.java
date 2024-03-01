@@ -86,7 +86,7 @@ public class PlayerTest {
         System.out.println(actualOutput);
 
         // Check if the trimmed expected output matches the trimmed actual output
-        assertEquals(expectedOutput, actualOutput, "Expected output and actual output are not identical");
+        assertEquals(expectedOutput.trim(), actualOutput.trim(), "Expected output and actual output are not identical");
     }
 
 
