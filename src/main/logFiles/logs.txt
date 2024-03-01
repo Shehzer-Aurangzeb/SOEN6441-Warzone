@@ -1,0 +1,28 @@
+Welcome to Warzone Game!
+
+============== Map Editing Phase ==============
+
+europass.map is loaded.
+Entered showmap command.
+
+============== Startup Phase ==============
+
+Player riki added 
+Player biti added 
+Player siti added 
+Countries assigned to players.
+Armies assigned to players.
+Player riki - Army count: 12
+Player biti - Army count: 12
+Player siti - Army count: 12
+
+============== Issue Order Phase ==============
+
+Player riki deployed 12 armies to country 1
+Player biti deployed 12 armies to country 2
+Player siti deployed 12 armies to country 3
+Armies assigned to players.
+Player riki - Army count: 12
+Player biti - Army count: 12
+Player siti - Army count: 12
+Exiting....

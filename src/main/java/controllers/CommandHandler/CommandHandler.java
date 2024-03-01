@@ -7,6 +7,7 @@ package controllers.CommandHandler;
 
 
 import controllers.MapEditor.MapEditor;
+import log.LogEntryBuffer;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
@@ -25,6 +26,8 @@ public class CommandHandler {
 
     final static int MIN_ARMIES_PER_PLAYER = 3;
 
+    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
+
     /**
      * Handles the loadmap command by loading the specified map file.
      * If the file exists, it loads the map using the provided MapEditor instance.
@@ -41,8 +44,10 @@ public class CommandHandler {
                 p_mapEditor.loadMap(l_file);
                 // \n to skip one line
                 System.out.println("\nMap loaded successfully. Type 'proceed' to move to the next phase of the game.");
+                d_logger.log(l_fileName+ " is loaded." );
             } catch (FileNotFoundException e) {
                 System.out.println("File not found.");
+                d_logger.log("Map is not loaded." );
             } catch (IOException e) {
                 System.out.println("IO exception.");
                 System.exit(0);
@@ -118,10 +123,13 @@ public class CommandHandler {
                     l_entityValue = l_commandParts[i + 2];
                     if (l_commandParts[0].equals("editcontinent")) {
                         p_mapEditor.addContinent(l_entityID, l_entityValue);
+                        d_logger.log("Continent "+l_entityID+" added.");
                     } else if (l_commandParts[0].equals("editcountry")) {
                         p_mapEditor.addCountry(l_entityID, l_entityValue);
+                        d_logger.log("Country "+l_entityID+" added.");
                     } else if (l_commandParts[0].equals("editneighbor")) {
                         p_mapEditor.addNeighbor(l_entityID, l_entityValue);
+                        d_logger.log("Neighbour "+l_entityID+" added.");
                     }
                     i += 3;
                     break;
@@ -130,13 +138,16 @@ public class CommandHandler {
                     if (l_commandParts[0].equals("editcontinent")) {
                         p_mapEditor.removeContinent(l_entityID);
                         i += 2;
+                        d_logger.log("Continent "+l_entityID+" removed.");
                     } else if (l_commandParts[0].equals("editcountry")) {
                         p_mapEditor.removeCountry(l_entityID);
                         i += 2;
+                        d_logger.log("Country "+l_entityID+" removed.");
                     } else if (l_commandParts[0].equals("editneighbor")) {
                         l_entityValue = l_commandParts[i + 2];
                         p_mapEditor.removeNeighbor(l_entityID, l_entityValue);
                         i += 3;
+                        d_logger.log("Neighbour "+l_entityID+" removed.");
                     }
 
                     break;
@@ -152,6 +163,7 @@ public class CommandHandler {
      * Handles the exit command by gracefully exiting the game.
      */
     public static void handleExitCommand() {
+        d_logger.log("Exiting....");
         System.out.println("Exiting the game. Goodbye!");
         System.exit(0);
     }
@@ -164,6 +176,7 @@ public class CommandHandler {
     public static void handleDisplayCommands(GamePhase p_gamePhase) {
         System.out.println(""); //to skip one line.
         displayPhaseInstructions(p_gamePhase);
+        d_logger.log("Showcommands entered for "+p_gamePhase+ " phase.");
 
     }
 
@@ -176,6 +189,7 @@ public class CommandHandler {
     public static void handleGamePlayerCommand(String p_command, ArrayList<Player> p_existingPlayers) {
         String[] l_commandParts = p_command.trim().split(" ");
         String l_option = "";
+        boolean l_validOption = true;
         if (l_commandParts[1].equals("-add") || l_commandParts[1].equals("-remove")) l_option = l_commandParts[1];
         //there are no playerNames
         if (l_commandParts.length == 2) {
@@ -188,6 +202,7 @@ public class CommandHandler {
                     String l_playerName = l_commandParts[i];
                     Player player = new Player(l_playerName);
                     p_existingPlayers.add(player);
+                    d_logger.log("Player "+player.getName()+" added ");
                 }
                 displayPlayers(p_existingPlayers);
                 break;
@@ -204,6 +219,7 @@ public class CommandHandler {
                     if (l_playerToRemove != null) {
                         p_existingPlayers.remove(l_playerToRemove);
                         System.out.println("\nPlayer '" + l_playerName + "' removed successfully.");
+                        d_logger.log("Player "+l_playerName+" removed ");
                     } else {
                         System.out.println("\nPlayer '" + l_playerName + "' not found.");
 
@@ -294,11 +310,13 @@ public class CommandHandler {
      * Assigns reinforcements to players based on the number of countries owned.
      */
     public static void assignReinforcements() {
+        d_logger.log("Armies assigned to players.");
         ArrayList<Player> l_existingPlayer = PlayerHolder.getPlayers();
         for (Player player : l_existingPlayer) {
             int l_armyCount = player.getOwnedCountries().size() / 3;
             if (l_armyCount < MIN_ARMIES_PER_PLAYER) l_armyCount = MIN_ARMIES_PER_PLAYER;
             player.setNoOfArmies(l_armyCount);
+            d_logger.log("Player "+player.getName()+" - Army count: "+ l_armyCount );
         }
     }
 
