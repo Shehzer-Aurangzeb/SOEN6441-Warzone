@@ -1,5 +1,6 @@
 package models.Player;
 
+import log.LogEntryBuffer;
 import models.Country.Country;
 import models.Enums.GamePhase;
 import models.MapHolder.MapHolder;
@@ -26,6 +27,8 @@ public class Player {
     private boolean lastCommandValidForOrders;
 
     private Scanner sc = new Scanner(System.in);
+
+    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
     /**
      * Initializes a player with the given name.
      *
@@ -213,5 +216,7 @@ public class Player {
         this.d_noOfArmies-=noOfArmies;
         this.lastCommandValidForOrders=true;
         System.out.println("\nDeploy order created.");
+        d_logger.log("Player "+this.getName()+" deployed "+ noOfArmies+" armies to country "+countryID);
+
     }
 }
