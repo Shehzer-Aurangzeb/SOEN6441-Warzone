@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import models.Country.Country;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
+import models.Order.Bomb.BombOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

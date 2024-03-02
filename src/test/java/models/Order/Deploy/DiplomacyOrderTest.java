@@ -3,6 +3,7 @@ package models.Order.Deploy;
 import models.Enums.OrderType;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
+import models.Order.Diplomacy.DiplomacyOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

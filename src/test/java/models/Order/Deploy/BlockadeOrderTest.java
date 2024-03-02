@@ -7,6 +7,7 @@ import models.Enums.PlayerType;
 import models.Country.Country;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
+import models.Order.Blockade.BlockadeOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package models.Order.Deploy;
+package models.Order.Blockade;
 
 import models.Country.Country;
 import models.Enums.OrderType;

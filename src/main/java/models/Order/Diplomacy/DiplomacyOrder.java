@@ -1,4 +1,4 @@
-package models.Order.Deploy;
+package models.Order.Diplomacy;
 
 import models.Enums.OrderType;
 import models.Order.Order;

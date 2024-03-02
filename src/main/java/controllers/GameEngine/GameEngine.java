@@ -5,7 +5,7 @@ import models.Enums.GamePhase;
 import models.Map.Map;
 import models.Map.MapValidator;
 import models.MapHolder.MapHolder;
-import models.Order.Deploy.AdvanceOrder;
+import models.Order.Advance.AdvanceOrder;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
 

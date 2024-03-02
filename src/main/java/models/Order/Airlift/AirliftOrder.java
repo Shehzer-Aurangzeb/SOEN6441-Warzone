@@ -1,4 +1,4 @@
-package models.Order.Deploy;
+package models.Order.Airlift;
 import models.Order.Order;
 import models.Enums.OrderType;
 import models.MapHolder.MapHolder;
