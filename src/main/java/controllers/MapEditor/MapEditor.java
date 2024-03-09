@@ -10,22 +10,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class MapEditor {
-    private BufferedReader READER;
     private final String CONTINENTS = "[continents]";
     private final String COUNTRIES = "[countries]";
     private final String BORDERS = "[borders]";
-    private Map MAP;
-    private HashMap<String, Map> d_mapRegistry = new HashMap<>();
+    private Map d_map;
+    private final HashMap<String, Map> d_mapRegistry = new HashMap<>();
     private String d_currentEditingFilename;
-
-    /**
-     * Constructor for MapEditor class.
-     */
-    public MapEditor() {
-        MAP = MapHolder.getMap();
-    }
 
     public HashMap<String, Map> getMapRegistry() {
         return this.d_mapRegistry;
@@ -56,7 +49,9 @@ public class MapEditor {
      * @throws IOException           If an I/O error occurs while reading the file.
      */
     public void loadMap(File p_file) throws FileNotFoundException, IOException {
-        READER = new BufferedReader(new FileReader(p_file));
+        d_map=new Map();
+        List<Continent> l_mapContinents= d_map.getContinents();
+        BufferedReader READER = new BufferedReader(new FileReader(p_file));
         String l_line = READER.readLine();
         boolean l_startReading = false;
         LineType l_lineType = LineType.CONTINENT; //initializing to remove error.
@@ -74,10 +69,13 @@ public class MapEditor {
                 l_lineType = LineType.NEIGHBOR;
 
             } else if (l_startReading) {
-                processMapLine(l_line, l_lineType);
+                processMapLine(l_line, l_lineType,l_mapContinents);
             }
             l_line = READER.readLine();
         }
+        //when done loading set the global state
+        MapHolder.setMap(d_map);
+        d_map=null;
 
     }
 
@@ -272,7 +270,7 @@ public class MapEditor {
         Continent.lastAssignedID = newID;
     }
 
-    private void processMapLine(String p_line, LineType p_lineType) {
+    private void processMapLine(String p_line, LineType p_lineType,List<Continent> p_mapContinents) {
         // skips empty line or comments. comment starts with ;
         if (p_line.isBlank() || p_line.startsWith(";")) return;
         String[] l_parts = p_line.split(" ");
@@ -281,7 +279,7 @@ public class MapEditor {
                 processContinentLine(l_parts);
                 break;
             case COUNTRY:
-                processCountryLine(l_parts);
+                processCountryLine(l_parts,p_mapContinents);
                 break;
             case NEIGHBOR:
                 processNeighborLine(l_parts);
@@ -295,23 +293,24 @@ public class MapEditor {
         String l_continentName = p_parts[0];
         int l_armyBonus = Integer.parseInt(p_parts[1]);
         Continent l_continent = new Continent(l_continentName, l_armyBonus);
-        MAP.addContinent(l_continent);
+        d_map.addContinent(l_continent);
     }
 
-    private void processCountryLine(String[] p_parts) {
+    private void processCountryLine(String[] p_parts,List<Continent> p_mapContinents) {
         int l_countryId = Integer.parseInt(p_parts[0]);
         String l_countryName = p_parts[1];
-        int l_continentId = Integer.parseInt(p_parts[2]);
+        int l_continentIndex=Integer.parseInt(p_parts[2])-1;
+        int l_continentId = p_mapContinents.get(l_continentIndex).getID();
         Country l_country = new Country(l_countryId, l_countryName, l_continentId);
-        MAP.addCountry(l_country);
+        d_map.addCountry(l_country);
     }
 
     private void processNeighborLine(String[] p_parts) {
         int l_countryId = Integer.parseInt(p_parts[0]);
-        Country l_country = MAP.getCountryByID(l_countryId);
+        Country l_country = d_map.getCountryByID(l_countryId);
         if (l_country == null) return;
         for (int i = 1; i < p_parts.length; i++) {
-            Country l_neighbor = MAP.getCountryByID(Integer.parseInt(p_parts[i]));
+            Country l_neighbor = d_map.getCountryByID(Integer.parseInt(p_parts[i]));
             if (l_neighbor != null) {
                 l_country.addNeighbor(l_neighbor);
             }
