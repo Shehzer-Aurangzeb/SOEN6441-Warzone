@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/Architectural_document.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Helpers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/Main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/FileAdapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/FileAdapter.html" afterDir="false" />
@@ -117,8 +117,14 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Map/MapValidatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/TestRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/bigeurope.map" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,31 +138,52 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2cexZeizsvE02IcG7EUrwVWQk1o" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "JUnit.CommandHandlerTest.executor": "Run",
-    "JUnit.CommandTest.executor": "Run",
-    "JUnit.CommandTest.testToString_WithArguments.executor": "Debug",
-    "JUnit.ContinentTest.executor": "Run",
-    "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
-    "JUnit.MapValidatorTest.ValidMap.executor": "Run",
-    "JUnit.MapValidatorTest.executor": "Run",
-    "JUnit.TestSuite.executor": "Run",
-    "Maven.Warzone [test].executor": "Run",
-    "git-widget-placeholder": "develop",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandHandlerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandTest.testToString_WithArguments.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ContinentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MapTest.getContinentByID_ContinentExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MapValidatorTest.ValidMap.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MapValidatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestSuite.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Warzone [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/documentation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MapValidatorTest.ValidMap">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Warzone" />
@@ -227,15 +254,37 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MapValidatorTest.ValidMap" />
-        <item itemvalue="JUnit.MapValidatorTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MapValidatorTest" />
+        <item itemvalue="JUnit.MapValidatorTest.ValidMap" />
         <item itemvalue="JUnit.CommandHandlerTest" />
         <item itemvalue="JUnit.ContinentTest" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-92e50af3" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="" />
+      <created>1708485901913</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708485901913</updated>
+      <workItem from="1708485903353" duration="6230000" />
+      <workItem from="1708528102054" duration="2212000" />
+      <workItem from="1708738564353" duration="13251000" />
+      <workItem from="1708834783850" duration="28653000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

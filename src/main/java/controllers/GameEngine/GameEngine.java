@@ -26,25 +26,25 @@ public class GameEngine {
     private GamePhase d_currentPhase;
     MapEditor d_mapEditor;
     String d_command;
-
     ArrayList<Player> d_players = new ArrayList<>();
 
     /**
      * Initializes the GameEngine with default settings.
      */
 
-    public GameEngine(){
+    public GameEngine() {
         MapHolder.setMap(new Map());
-        this.d_mapEditor= new MapEditor();
-        this.d_currentPhase= GamePhase.MAP_EDITING;
+        this.d_mapEditor = new MapEditor();
+        this.d_currentPhase = GamePhase.MAP_EDITING;
         this.d_sc = new Scanner(System.in);
     }
+
     /**
      * Starts the game and handles command processing based on the current phase.
      */
     public void startGame() {
         displayWelcomeMessage();
-        while (d_currentPhase!=GamePhase.ISSUE_ORDERS) {
+        while (d_currentPhase != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
             d_command = d_sc.nextLine().trim();
             String l_commandName = d_command.split(" ")[0];
@@ -56,15 +56,17 @@ public class GameEngine {
         }
         startMainGameLoop();
     }
+
     /**
      * Starts the main game loop where players issue orders and orders are executed.
      */
-    private void startMainGameLoop(){
-        while (true){
+    private void startMainGameLoop() {
+        while (true) {
             handleIssueOrder();
             handleExecuteOrder();
         }
     }
+
     /**
      * Handles the command processing based on the current phase of the game.
      */
@@ -77,20 +79,30 @@ public class GameEngine {
                 processStartupPhaseCommand();
                 break;
             default:
-                String l_commandName= d_command.split(" ")[0];
+                String l_commandName = d_command.split(" ")[0];
                 displayCommandUnavailableMessage(l_commandName, d_currentPhase);
                 break;
         }
     }
+
     /**
      * Processes commands during the map editing phase.
      */
-    private void processMapEditingPhaseCommand(){
+    private void processMapEditingPhaseCommand() {
         Map gameMap = MapHolder.getMap();
-        String l_commandName= d_command.split(" ")[0];
-        switch(l_commandName){
+        String l_commandName = d_command.split(" ")[0];
+        switch (l_commandName) {
             case "loadmap":
-                handleLoadMapCommand(d_command,d_mapEditor);
+                handleLoadMapCommand(d_command, d_mapEditor);
+                break;
+            case "editmap":
+                handleEditMapCommand(d_command, d_mapEditor);
+                break;
+            case "editcontinent", "editcountry", "editneighbor":
+                handleEditMapElementsCommand(d_command, d_mapEditor);
+                break;
+            case "savemap":
+                handleSaveMapCommand(d_command, d_mapEditor);
                 break;
             case "showcommands":
                 handleDisplayCommands(d_currentPhase);
@@ -99,12 +111,11 @@ public class GameEngine {
                 displayMapInformation();
                 break;
             case "proceed":
-                if(MapValidator.validateMap(gameMap)){
-                    d_currentPhase= GamePhase.STARTUP;
+                if (MapValidator.validateMap(gameMap)) {
+                    d_currentPhase = GamePhase.STARTUP;
                     System.out.println("\nYou have entered the Startup Phase. Please create players to proceed further.");
                     System.out.println("Use 'showcommands' to see to see how you can add players");
-                }
-                else {
+                } else {
                     System.out.println("The map is not valid. Please load a valid map.\n");
                 }
                 break;
@@ -113,29 +124,29 @@ public class GameEngine {
                 break;
         }
     }
+
     /**
      * Processes commands during the startup phase.
      */
-    private void processStartupPhaseCommand(){
-        String l_commandName= d_command.split(" ")[0];
+    private void processStartupPhaseCommand() {
+        String l_commandName = d_command.split(" ")[0];
 
-        switch(l_commandName){
+        switch (l_commandName) {
             case "gameplayer":
-                handleGamePlayerCommand(d_command,d_players);
+                handleGamePlayerCommand(d_command, d_players);
                 checkStartGamePrompt();
                 break;
             case "startgame":
-                if(d_players.size()<2){
+                if (d_players.size() < 2) {
                     System.out.println("\nMinimum two players required to start the game.");
-                }else{
+                } else {
                     PlayerHolder.setPlayers(d_players);
                     assignCountries();
                     assignReinforcements();
                     System.out.println("\nReinforcements have been assigned to players.");
-                    d_currentPhase=GamePhase.ISSUE_ORDERS;
+                    d_currentPhase = GamePhase.ISSUE_ORDERS;
                     System.out.println("\nThe game has started! It's time to issue your orders.");
                 }
-
                 break;
             case "showcommands":
                 handleDisplayCommands(d_currentPhase);
@@ -146,6 +157,7 @@ public class GameEngine {
 
         }
     }
+
     /**
      * Randomly assigns countries to players.
      */
@@ -160,7 +172,7 @@ public class GameEngine {
     /**
      * Checks if there are enough players to start the game and prompts the user accordingly.
      */
-    private void checkStartGamePrompt(){
+    private void checkStartGamePrompt() {
         if (d_players.size() >= 2) {
             System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
         }

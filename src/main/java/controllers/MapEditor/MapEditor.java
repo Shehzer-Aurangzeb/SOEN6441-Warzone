@@ -7,16 +7,45 @@ import models.Map.Map;
 import models.MapHolder.MapHolder;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class MapEditor {
     private BufferedReader READER;
+    private final String CONTINENTS = "[continents]";
+    private final String COUNTRIES = "[countries]";
+    private final String BORDERS = "[borders]";
     private Map MAP;
+    private HashMap<String, Map> d_mapRegistry = new HashMap<>();
+    private String d_currentEditingFilename;
 
     /**
      * Constructor for MapEditor class.
      */
     public MapEditor() {
-        MAP= MapHolder.getMap();
+        MAP = MapHolder.getMap();
+    }
+
+    public HashMap<String, Map> getMapRegistry() {
+        return this.d_mapRegistry;
+    }
+
+    /**
+     * Retrieves the file currently being edited.
+     *
+     * @return The file currently being edited.
+     */
+    public String getCurrentEditingFilename() {
+        return this.d_currentEditingFilename;
+    }
+
+    public void setCurrentEditingFilename(String p_filename) {
+        this.d_currentEditingFilename = p_filename;
+    }
+
+    public void setMapInRegistry(String p_filename, Map p_map) {
+        this.d_mapRegistry.put(p_filename, p_map);
     }
 
     /**
@@ -32,15 +61,15 @@ public class MapEditor {
         boolean l_startReading = false;
         LineType l_lineType = LineType.CONTINENT; //initializing to remove error.
         while (l_line != null) {
-            if (l_line.startsWith("[continents]")) {
+            if (l_line.startsWith(CONTINENTS)) {
                 l_startReading = true;
                 l_lineType = LineType.CONTINENT;
 
-            } else if (l_line.startsWith("[countries]")) {
+            } else if (l_line.startsWith(COUNTRIES)) {
                 l_startReading = true;
                 l_lineType = LineType.COUNTRY;
 
-            } else if (l_line.startsWith("[borders]")) {
+            } else if (l_line.startsWith(BORDERS)) {
                 l_startReading = true;
                 l_lineType = LineType.NEIGHBOR;
 
@@ -50,6 +79,197 @@ public class MapEditor {
             l_line = READER.readLine();
         }
 
+    }
+
+    public void addContinent(String p_continentName, String p_continentValue) {
+        if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
+            System.out.println("\nCannot add continent. Please use the 'editmap' command to select the file for editing.");
+            return;
+        }
+        Map l_mapToEdit = d_mapRegistry.get(d_currentEditingFilename);
+        Continent l_continent = l_mapToEdit.getContinentByName(p_continentName);
+        if (l_continent == null) {
+            l_mapToEdit.addContinent(new Continent(p_continentName, Integer.parseInt(p_continentValue)));
+            System.out.println("\nContinent '" + p_continentName + "' with value '" + p_continentValue + "' has been successfully added.");
+
+        } else {
+            System.out.println("\nError: Continent '" + p_continentName + "' already exists. " +
+                    "Please remove the existing continent before adding a new one.");
+        }
+
+    }
+
+    public void removeContinent(String p_continentName) {
+        if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
+            System.out.println("\nCannot remove continent. Please use the 'editmap' command to select the file for editing.");
+            return;
+        }
+        Map l_mapToEdit = d_mapRegistry.get(d_currentEditingFilename);
+        Continent l_continent = l_mapToEdit.getContinentByName(p_continentName);
+        if (l_continent == null) {
+            System.out.println("\nError: Continent '" + p_continentName + "' does not exist.");
+        } else {
+            l_mapToEdit.removeContinent(l_continent);
+            //delete all countries of this continent
+            Iterator<Country> l_iterator = l_mapToEdit.getCountries().iterator();
+            while (l_iterator.hasNext()) {
+                Country l_country = l_iterator.next();
+                if (l_country.getContinentID() == l_continent.getID()) {
+                    l_iterator.remove();
+                }
+            }
+            restructureMapAfterContinentDeletion(l_mapToEdit);
+            System.out.println("\nContinent '" + p_continentName + "' has been successfully removed.");
+        }
+    }
+
+    public void addCountry(String p_countryName, String p_continentName) {
+        if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
+            System.out.println("\nCannot add country. Please use the 'editmap' command to select the file for editing.");
+            return;
+        }
+        Map l_mapToEdit = d_mapRegistry.get(d_currentEditingFilename);
+        Continent l_continent = l_mapToEdit.getContinentByName(p_continentName);
+        Country l_country = l_mapToEdit.getCountryByName(p_countryName);
+        if (l_continent == null) {
+            System.out.println("\nError: Continent '" + p_continentName + "' does not exists.");
+        } else if (l_country == null) {
+            l_mapToEdit.addCountry(new Country(p_countryName, l_continent.getID()));
+            System.out.println("\nCountry '" + p_countryName + "' added to continent '" + p_continentName + "'.");
+        } else {
+            System.out.println("\nError: Country '" + p_countryName + "' already exists." +
+                    " Please remove the existing country before adding a new one.");
+        }
+
+    }
+
+    public void removeCountry(String p_countryName) {
+        if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
+            System.out.println("\nCannot remove country. Please use the 'editmap' command to select the file for editing.");
+            return;
+        }
+        Map l_mapToEdit = d_mapRegistry.get(d_currentEditingFilename);
+        Country l_country = l_mapToEdit.getCountryByName(p_countryName);
+        if (l_country == null) {
+            System.out.println("\nError: Country '" + p_countryName + "' does not exists.");
+        } else {
+            l_mapToEdit.removeCountry(l_country);
+            System.out.println("\nCountry '" + p_countryName + "' removed successfully.");
+        }
+    }
+
+    public void addNeighbor(String p_countryName, String p_neighborCountryName) {
+        if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
+            System.out.println("\nCannot add neighbor. Please use the 'editmap' command to select the file for editing.");
+            return;
+        }
+        Map l_mapToEdit = d_mapRegistry.get(d_currentEditingFilename);
+        Country l_country = l_mapToEdit.getCountryByName(p_countryName);
+        Country l_neighborCountry = l_mapToEdit.getCountryByName(p_neighborCountryName);
+        if (l_country == null) {
+            System.out.println("\nError: Country '" + p_countryName + "' does not exists.");
+        } else if (l_neighborCountry == null) {
+            System.out.println("\nError: Neighbor Country '" + p_neighborCountryName + "' does not exists.");
+        } else {
+            l_country.addNeighbor(l_neighborCountry);
+            System.out.println("\nThe country '" + p_neighborCountryName + "' has been " +
+                    "successfully added to the list of neighbors for the country '" + p_countryName + "'.");
+        }
+    }
+
+    public void removeNeighbor(String p_countryName, String p_neighborCountryName) {
+        if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
+            System.out.println("\nCannot remove neighbor. Please use the 'editmap' command to select the file for editing.");
+            return;
+        }
+        Map l_mapToEdit = d_mapRegistry.get(d_currentEditingFilename);
+        Country l_country = l_mapToEdit.getCountryByName(p_countryName);
+        Country l_neighborCountry = l_mapToEdit.getCountryByName(p_neighborCountryName);
+        if (l_country == null) {
+            System.out.println("\nError: Country '" + p_countryName + "' does not exists.");
+        } else if (l_neighborCountry == null) {
+            System.out.println("\nError: Neighbor Country '" + p_neighborCountryName + "' does not exists.");
+        } else {
+            l_country.removeNeighbor(l_neighborCountry);
+            System.out.println("\nThe country '" + p_neighborCountryName + "' has been " +
+                    "successfully removed from the list of neighbors for the country '" + p_countryName + "'.");
+        }
+
+    }
+
+    public void saveMap(File p_file, Map p_map) {
+        emptyFile(p_file);
+        try (PrintWriter l_pw = new PrintWriter(new FileOutputStream(p_file))) {
+            l_pw.println("; map: " + p_file.getName() + ".map");
+            l_pw.println();
+            writeContinents(l_pw, p_map.getContinents());
+            writeCountriesAndBorders(l_pw, p_map.getCountries());
+            System.out.println("\nMap successfully saved to the file: " + p_file.getName());
+
+        } catch (FileNotFoundException e) {
+            System.out.println("\nFile not found. " + e.getMessage());
+        }
+    }
+
+    private void emptyFile(File p_file) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(p_file))) {
+            //writing nothing to files make it empty.
+        } catch (FileNotFoundException e) {
+            System.out.println("\nFile not found. " + e.getMessage());
+        }
+    }
+
+    private void writeContinents(PrintWriter p_pw, ArrayList<Continent> p_continents) {
+        p_pw.println(CONTINENTS);
+        for (Continent l_continent : p_continents) {
+            p_pw.println(l_continent.getName() + " " + l_continent.getArmyBonus());
+        }
+        //new empty line
+        p_pw.println();
+    }
+
+    private void writeCountriesAndBorders(PrintWriter p_pw, ArrayList<Country> p_countries) {
+        StringBuilder l_line = new StringBuilder();
+        p_pw.println(COUNTRIES);
+        for (Country l_country : p_countries) {
+            l_line.append(l_country.getID()).append(" ").append(l_country.getName()).append(" ").append(l_country.getContinentID());
+            p_pw.println(l_line.toString());
+            //reset line content
+            l_line.setLength(0);
+        }
+        //new empty line
+        p_pw.println();
+        p_pw.println(BORDERS);
+        for (Country l_country : p_countries) {
+            //reset line
+            l_line.setLength(0);
+            l_line.append(l_country.getID());
+            for (Country l_neighbor : l_country.getNeighbours()) {
+                l_line.append(" ").append(l_neighbor.getID());
+            }
+            p_pw.println(l_line.toString());
+
+        }
+    }
+
+    private void restructureMapAfterContinentDeletion(Map p_map) {
+        ArrayList<Continent> l_continents = p_map.getContinents();
+        ArrayList<Country> l_countries = p_map.getCountries();
+        int newID = 1;
+        for (Continent l_continent : l_continents) {
+//            System.out.println("\nContinent " + l_continent.getName() + " " + l_continent.getID());
+            int l_oldID = l_continent.getID();
+            l_continent.setID(newID);
+//            System.out.println("\nContinent " + l_continent.getName() + " " + l_continent.getID());
+            for (Country l_country : l_countries) {
+                if (l_country.getContinentID() == l_oldID) {
+                    l_country.setContinentID(newID);
+//                    System.out.println("\nCountry " + l_country.getName() + " " + l_country.getContinentID());
+                }
+            }
+            newID++;
+        }
+        Continent.lastAssignedID = newID;
     }
 
     private void processMapLine(String p_line, LineType p_lineType) {
@@ -97,4 +317,6 @@ public class MapEditor {
             }
         }
     }
+
+
 }

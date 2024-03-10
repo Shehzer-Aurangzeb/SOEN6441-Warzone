@@ -1,7 +1,7 @@
 package models.Country;
 
 import java.util.ArrayList;
-
+import static utils.Helpers.*;
 /**
  * Represents a country in a game map.
  */
@@ -21,6 +21,19 @@ public class Country {
      */
     public Country(int new_id, String new_name, int new_continentId) {
         this.d_id = new_id;
+        this.d_name = new_name;
+        this.d_continentId = new_continentId;
+        this.d_neighbours = new ArrayList<>();
+        this.d_armiesDeployed= 0;
+    }
+    /**
+     * Constructs a new country.
+     *
+     * @param new_name       The name of the country.
+     * @param new_continentId The ID of the continent to which the country belongs.
+     */
+    public Country(String new_name, int new_continentId) {
+        this.d_id = generateUniqueID();
         this.d_name = new_name;
         this.d_continentId = new_continentId;
         this.d_neighbours = new ArrayList<>();

@@ -1,0 +1,30 @@
+; map: test_map.map.map
+
+[continents]
+North-America 10
+Asia 5
+Africa 12
+
+[countries]
+663 India 2
+528 Pakistan 2
+242 Bangladesh 2
+312 Iran 2
+507 Afghanistan 2
+635 Canada 1
+798 Argentina 1
+423 Cuba 1
+675 South_Africa 3
+240 Kenya 3
+
+[borders]
+663 242 528
+528 663
+242 663
+312
+507 675
+635
+798 675
+423
+675 507 798
+240
