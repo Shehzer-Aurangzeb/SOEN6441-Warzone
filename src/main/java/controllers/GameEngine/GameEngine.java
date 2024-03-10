@@ -3,9 +3,10 @@ package controllers.GameEngine;
 import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
-import models.Map.MapValidator;
 import models.MapHolder.MapHolder;
 import models.Order.Advance.AdvanceOrder;
+import models.Phase.MapEditing.Preload.Preload;
+import models.Phase.Phase;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
 import log.LogEntryBuffer;
@@ -13,19 +14,16 @@ import log.LogEntryBuffer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static controllers.CommandHandler.CommandHandler.*;
-import static models.Player.Player.getCurrentPlayer;
 import static utils.Feedback.*;
-import static utils.Command.*;
-import static views.MapView.MapView.displayMapInformation;
 
 public class GameEngine {
     private final Scanner d_sc;
-    private GamePhase d_currentPhase;
     private final MapEditor d_mapEditor;
     private String d_command;
     private final ArrayList<Player> d_players = new ArrayList<>();
     private static LogEntryBuffer d_logger;
+    private Phase d_currentGamePhase;
+
 
     /**
      * Initializes the GameEngine with default settings.
@@ -33,28 +31,31 @@ public class GameEngine {
     public GameEngine() {
         MapHolder.setMap(new Map());
         this.d_mapEditor = new MapEditor();
-        this.d_currentPhase = GamePhase.MAP_EDITING;
         d_logger = LogEntryBuffer.getInstance();
         d_logger.clear();
         this.d_sc = new Scanner(System.in);
     }
+
+    public void setPhase(Phase new_state) {
+        d_currentGamePhase = new_state;
+    }
+
+    public Phase getPhase() {
+        return d_currentGamePhase;
+    }
+
     /**
      * Starts the game and handles command processing based on the current phase.
      */
     public void startGame() {
+        //initially preload phase
+        this.d_currentGamePhase = new Preload(this);
         displayWelcomeMessage();
         d_logger.log("Welcome to Warzone Game!");
         d_logger.log("\n============== Map Editing Phase ==============\n");
-
-        while (d_currentPhase != GamePhase.ISSUE_ORDERS) {
+        while (d_currentGamePhase.getPhaseName() != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
             d_command = d_sc.nextLine().trim();
-            String l_commandName = d_command.split(" ")[0];
-            if (!isCommandValidForPhase(l_commandName, d_currentPhase)) {
-                displayCommandUnavailableMessage(l_commandName, d_currentPhase);
-                d_logger.log("Invalid command entered.");
-                continue;
-            }
             handleCommand();
         }
         startMainGameLoop();
@@ -66,87 +67,48 @@ public class GameEngine {
     private void startMainGameLoop() {
         d_logger.log("\n============== Issue Order Phase ==============\n");
         while (true) {
-            handleIssueOrder();
-            handleExecuteOrder();
+            switch (d_currentGamePhase.getPhaseName()) {
+                case ISSUE_ORDERS:
+                    d_currentGamePhase.issueOrders();
+                    break;
+                case EXECUTE_ORDERS:
+                    d_currentGamePhase.executeOrders();
+                    break;
+            }
         }
     }
 
     /**
-     * Handles the command processing based on the current phase of the game.
+     * Handles the given command processing.
      */
     private void handleCommand() {
-        switch (d_currentPhase) {
-            case MAP_EDITING:
-                processMapEditingPhaseCommand();
-                break;
-            case STARTUP:
-                processStartupPhaseCommand();
-                break;
-            case ISSUE_ORDERS:
-                processIssueOrdersPhaseCommand();
-                break;
-            default:
-                String l_commandName = d_command.split(" ")[0];
-                displayCommandUnavailableMessage(l_commandName, d_currentPhase);
-                d_logger.log("Invalid command entered.");
-                break;
-        }
-    }
-
-    /**
-     * Processes commands during the map editing phase.
-     */
-    private void processMapEditingPhaseCommand() {
-
-        Map gameMap = MapHolder.getMap();
         String l_commandName = d_command.split(" ")[0];
-
+        String l_filename;
         switch (l_commandName) {
             case "loadmap":
-                handleLoadMapCommand(d_command, d_mapEditor);
+                l_filename = d_command.split(" ")[1];
+                d_currentGamePhase.loadMap(l_filename, d_mapEditor);
                 break;
             case "editmap":
-                handleEditMapCommand(d_command, d_mapEditor);
+                l_filename = d_command.split(" ")[1];
+                d_currentGamePhase.editMap(l_filename, d_mapEditor);
                 break;
             case "editcontinent", "editcountry", "editneighbor":
-                handleEditMapElementsCommand(d_command, d_mapEditor);
+                d_currentGamePhase.modifyMapComponents(d_command, d_mapEditor);
                 break;
             case "savemap":
-                handleSaveMapCommand(d_command, d_mapEditor);
+                l_filename = d_command.split(" ")[1];
+                d_currentGamePhase.saveMap(l_filename, d_mapEditor);
                 break;
             case "showcommands":
-                handleDisplayCommands(d_currentPhase);
+                d_currentGamePhase.showCommands();
                 break;
             case "showmap":
+                d_currentGamePhase.showMap();
                 d_logger.log("Entered showmap command.");
-                displayMapInformation();
                 break;
-            case "proceed":
-                if (MapValidator.validateMap(gameMap)) {
-                    d_currentPhase = GamePhase.STARTUP;
-                    d_logger.log("\n============== Startup Phase ==============\n");
-                    System.out.println("\nYou have entered the Startup Phase. Please create players to proceed further.");
-                    System.out.println("Use 'showcommands' to see to see how you can add players");
-                } else {
-                    System.out.println("The map is not valid. Please load a valid map.\n");
-                }
-                break;
-            case "exit":
-                handleExitCommand();
-                break;
-        }
-    }
-
-    /**
-     * Processes commands during the startup phase.
-     */
-    private void processStartupPhaseCommand() {
-
-        String l_commandName = d_command.split(" ")[0];
-
-        switch (l_commandName) {
             case "gameplayer":
-                handleGamePlayerCommand(d_command, d_players);
+                d_currentGamePhase.addOrRemovePlayer(d_command, d_players);
                 checkStartGamePrompt();
                 break;
             case "startgame":
@@ -157,102 +119,22 @@ public class GameEngine {
                     assignCountries();
                     assignReinforcements();
                     System.out.println("\nReinforcements have been assigned to players.");
-                    d_currentPhase = GamePhase.ISSUE_ORDERS;
-                    System.out.println("\nThe game has started! It's time to issue your orders.");
+                    d_currentGamePhase.next();
                 }
                 break;
-            case "showcommands":
-                handleDisplayCommands(d_currentPhase);
+            case "proceed":
+                d_logger.log("\n============== Startup Phase ==============\n");
+                d_currentGamePhase.next();
                 break;
             case "exit":
-                handleExitCommand();
-                break;
-
-        }
-    }
-
-    /**
-     * Processes commands during the issue orders phase.
-     */
-    private void processIssueOrdersPhaseCommand() {
-        String l_commandName = d_command.split(" ")[0];
-        switch (l_commandName) {
-            case "deploy":
-                handleDeployOrder(d_command);
-                break;
-            case "advance":
-                handleAdvanceOrder(d_command);
-                break;
-            case "bomb":
-                handleBombOrder(d_command);
-                break;
-            case "blockade":
-                handleBlockadeOrder(d_command);
+                d_currentGamePhase.exit();
                 break;
             default:
-                displayCommandUnavailableMessage(l_commandName, d_currentPhase);
+                d_currentGamePhase.printInvalidCommandMessage(d_command, d_currentGamePhase.getPhaseName());
+                d_logger.log("Invalid command entered.");
                 break;
         }
     }
-
-    // Add methods to handle specific order commands here
-
-    /**
-     * Handles the deploy order command.
-     *
-     * @param p_command The deploy order command.
-     */
-    private void handleDeployOrder(String p_command) {
-        // Delegate to the CommandHandler
-        handleDeployOrder(p_command);
-    }
-
-    /**
-     * Handles the advance order command.
-     *
-     * @param p_command The advance order command.
-     */
-    private void handleAdvanceOrder(String p_command) {
-        String[] commandParts = p_command.split(" ");
-        if (commandParts.length != 4) {
-            System.out.println("Invalid advance order command format. Usage: advance countryFrom countryTo numArmies");
-            return;
-        }
-        try {
-            String countryFrom = commandParts[1];
-            String countryTo = commandParts[2];
-            int numArmies = Integer.parseInt(commandParts[3]);
-            Player currentPlayer = getCurrentPlayer();
-            if (currentPlayer != null) {
-                AdvanceOrder advanceOrder = new AdvanceOrder(countryFrom, countryTo, numArmies);
-                currentPlayer.issueOrder(advanceOrder); // Implement issueOrder method in Player class
-                System.out.println("Advance order issued successfully.");
-            } else {
-                System.out.println("No active player found to issue the advance order.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid number of armies. Please provide an integer.");
-        }
-    }
-
-    /**
-     * Handles the bomb order command.
-     *
-     * @param p_command The bomb order command.
-     */
-    private void handleBombOrder(String p_command) {
-        // Delegate to the CommandHandler or implement the logic here
-    }
-
-    /**
-     * Handles the blockade order command.
-     *
-     * @param p_command The blockade order command.
-     */
-    private void handleBlockadeOrder(String p_command) {
-        // Delegate to the CommandHandler or implement the logic here
-    }
-
     /**
      * Randomly assigns countries to players.
      */
@@ -273,4 +155,16 @@ public class GameEngine {
             System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
         }
     }
+    /**
+     * Assigns reinforcements to players based on the number of countries owned.
+     */
+    private static void assignReinforcements() {
+        ArrayList<Player> l_existingPlayer = PlayerHolder.getPlayers();
+        for (Player player : l_existingPlayer) {
+            int l_armyCount = player.getOwnedCountries().size() / 3;
+            if (l_armyCount < 3) l_armyCount = 3;
+            player.setNoOfArmies(l_armyCount);
+        }
+    }
+
 }

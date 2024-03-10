@@ -140,13 +140,7 @@ public class Player {
     /**
      * Issues an order from the list of orders for the player and removes it from the list.
      */
-    /**
-     * Issues an order from the list of orders for the player and removes it from the list.
-     */
-    /**
-     * Issues an order from the list of orders for the player and removes it from the list.
-     */
-    public void IssueOrder() {
+    public void issue_order() {
         System.out.print("\nPlayer " + this.getName() + " please enter your next order: ");
         String[] l_commandParts = sc.nextLine().split(" ");
         String l_commandName = l_commandParts[0];
@@ -403,19 +397,5 @@ public class Player {
         } catch (NumberFormatException e) {
             System.out.println("Invalid player ID. Please provide a valid integer.");
         }
-    }
-
-    /**
-     * Issues an order from the list of orders for the player and removes it from the list.
-     */
-
-
-    public static Player getCurrentPlayer() {
-        // You might need to implement this based on your game logic
-        // For example, you could keep track of the current player in the PlayerHolder class
-        return null;
-    }
-    public void issueOrder(Order order) {
-        d_orders.add(order);
     }
 }
