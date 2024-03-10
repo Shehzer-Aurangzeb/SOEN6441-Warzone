@@ -25,10 +25,13 @@ public class Player {
     private int d_noOfArmies;
     private boolean hasOrders;
     private boolean lastCommandValidForOrders;
-
     private Scanner sc = new Scanner(System.in);
-
     private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
+
+
+
+
+
     /**
      * Initializes a player with the given name.
      *
