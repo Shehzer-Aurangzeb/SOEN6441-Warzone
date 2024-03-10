@@ -1,7 +1,3 @@
-/**
- * The GameEngine class manages the game phases and controls the flow of the game.
- * It handles commands from the user, transitions between different phases, and executes game logic.
- */
 package controllers.GameEngine;
 
 import controllers.MapEditor.MapEditor;
@@ -9,14 +5,15 @@ import models.Enums.GamePhase;
 import models.Map.Map;
 import models.Map.MapValidator;
 import models.MapHolder.MapHolder;
+import models.Order.Advance.AdvanceOrder;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
-
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static controllers.CommandHandler.CommandHandler.*;
+import static models.Player.Player.getCurrentPlayer;
 import static utils.Feedback.*;
 import static utils.Command.*;
 import static views.MapView.MapView.displayMapInformation;
@@ -24,14 +21,13 @@ import static views.MapView.MapView.displayMapInformation;
 public class GameEngine {
     private Scanner d_sc;
     private GamePhase d_currentPhase;
-    MapEditor d_mapEditor;
-    String d_command;
-    ArrayList<Player> d_players = new ArrayList<>();
+    private MapEditor d_mapEditor;
+    private String d_command;
+    private ArrayList<Player> d_players = new ArrayList<>();
 
     /**
      * Initializes the GameEngine with default settings.
      */
-
     public GameEngine() {
         MapHolder.setMap(new Map());
         this.d_mapEditor = new MapEditor();
@@ -77,6 +73,9 @@ public class GameEngine {
                 break;
             case STARTUP:
                 processStartupPhaseCommand();
+                break;
+            case ISSUE_ORDERS:
+                processIssueOrdersPhaseCommand();
                 break;
             default:
                 String l_commandName = d_command.split(" ")[0];
@@ -159,6 +158,88 @@ public class GameEngine {
     }
 
     /**
+     * Processes commands during the issue orders phase.
+     */
+    private void processIssueOrdersPhaseCommand() {
+        String l_commandName = d_command.split(" ")[0];
+        switch (l_commandName) {
+            case "deploy":
+                handleDeployOrder(d_command);
+                break;
+            case "advance":
+                handleAdvanceOrder(d_command);
+                break;
+            case "bomb":
+                handleBombOrder(d_command);
+                break;
+            case "blockade":
+                handleBlockadeOrder(d_command);
+                break;
+            default:
+                displayCommandUnavailableMessage(l_commandName, d_currentPhase);
+                break;
+        }
+    }
+
+    // Add methods to handle specific order commands here
+
+    /**
+     * Handles the deploy order command.
+     *
+     * @param p_command The deploy order command.
+     */
+    private void handleDeployOrder(String p_command) {
+        // Delegate to the CommandHandler
+        handleDeployOrder(p_command);
+    }
+
+    /**
+     * Handles the advance order command.
+     *
+     * @param p_command The advance order command.
+     */
+    private void handleAdvanceOrder(String p_command) {
+        String[] commandParts = p_command.split(" ");
+        if (commandParts.length != 4) {
+            System.out.println("Invalid advance order command format. Usage: advance countryFrom countryTo numArmies");
+            return;
+        }
+        try {
+            String countryFrom = commandParts[1];
+            String countryTo = commandParts[2];
+            int numArmies = Integer.parseInt(commandParts[3]);
+            Player currentPlayer = getCurrentPlayer();
+            if (currentPlayer != null) {
+                AdvanceOrder advanceOrder = new AdvanceOrder(countryFrom, countryTo, numArmies);
+                currentPlayer.issueOrder(advanceOrder); // Implement issueOrder method in Player class
+                System.out.println("Advance order issued successfully.");
+            } else {
+                System.out.println("No active player found to issue the advance order.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number of armies. Please provide an integer.");
+        }
+    }
+
+    /**
+     * Handles the bomb order command.
+     *
+     * @param p_command The bomb order command.
+     */
+    private void handleBombOrder(String p_command) {
+        // Delegate to the CommandHandler or implement the logic here
+    }
+
+    /**
+     * Handles the blockade order command.
+     *
+     * @param p_command The blockade order command.
+     */
+    private void handleBlockadeOrder(String p_command) {
+        // Delegate to the CommandHandler or implement the logic here
+    }
+
+    /**
      * Randomly assigns countries to players.
      */
     private void assignCountries() {
@@ -177,5 +258,4 @@ public class GameEngine {
             System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
         }
     }
-
 }

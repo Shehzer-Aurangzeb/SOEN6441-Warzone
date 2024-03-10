@@ -1,5 +1,7 @@
 package models.Country;
 
+import models.Enums.PlayerType;
+
 import java.util.ArrayList;
 import static utils.Helpers.*;
 /**
@@ -11,7 +13,7 @@ public class Country {
     private int d_continentId;
     private ArrayList<Country> d_neighbours;
     private int d_armiesDeployed;
-
+    private PlayerType d_player;
     /**
      * Constructs a new country.
      *
@@ -25,6 +27,7 @@ public class Country {
         this.d_continentId = new_continentId;
         this.d_neighbours = new ArrayList<>();
         this.d_armiesDeployed= 0;
+        this.d_player = PlayerType.NEUTRAL;
     }
     /**
      * Constructs a new country.
@@ -76,6 +79,14 @@ public class Country {
     }
 
     /**
+     * Retrieves the player owning the country.
+     *
+     * @return The player owning the country.
+     */
+    public PlayerType getPlayer() {
+        return this.d_player;
+    }
+    /**
      * Retrieves the list of neighbouring countries.
      *
      * @return The list of neighbouring countries.
@@ -120,6 +131,14 @@ public class Country {
         this.d_continentId = p_continentID;
     }
 
+    /**
+     * Sets the player owning the country.
+     *
+     * @param player The player to set as the owner.
+     */
+    public void setPlayer(PlayerType player) {
+        this.d_player = player;
+    }
     /**
      * Adds a neighbouring country to the list of neighbours.
      *

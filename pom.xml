@@ -26,7 +26,6 @@
             <version>3.12.4</version> <!-- or the latest version -->
             <scope>test</scope>
         </dependency>
-
     </dependencies>
     <profiles>
         <profile>

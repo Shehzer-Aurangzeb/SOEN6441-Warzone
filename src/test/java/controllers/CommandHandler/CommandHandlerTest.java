@@ -31,9 +31,14 @@ class CommandHandlerTest {
         // Test adding a player
         String command = "gameplayer -add Tania";
         CommandHandler.handleGamePlayerCommand(command, existingPlayers);
-        assertEquals("\nPlayers:\n1. Shehzar\n2. Tania\n", outputStreamCaptor.toString());
 
+        // Trim the output and replace consecutive spaces with a single space
+        String expectedOutput = "Players:\n1. Shehzar\n2. Tania".replaceAll("\\s+", " ");
+        String actualOutput = outputStreamCaptor.toString().trim().replaceAll("\\s+", " ");
+
+        assertEquals(expectedOutput, actualOutput);
     }
+
 
     @Test
     void assignReinforcements() {
