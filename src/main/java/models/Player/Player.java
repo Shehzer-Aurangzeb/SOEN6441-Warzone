@@ -1,6 +1,5 @@
 package models.Player;
 
-import log.LogEntryBuffer;
 import models.Country.Country;
 import models.Enums.GamePhase;
 import models.MapHolder.MapHolder;
@@ -14,6 +13,7 @@ import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
 import static controllers.CommandHandler.CommandHandler.handleExitCommand;
 import static utils.Feedback.displayCommandUnavailableMessage;
 import static views.MapView.PlayerView.displayPlayerList;
+import log.LogEntryBuffer;
 
 /**
  * Represents a player in the game.
