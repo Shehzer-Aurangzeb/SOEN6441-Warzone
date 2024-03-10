@@ -5,31 +5,157 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Enums/PlayerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Airlift/AirliftOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Blockade/BlockadeOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Bomb/BombOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Order/Diplomacy/DiplomacyOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/AdvanceOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/BlockadeOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/BombOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/DeployOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/DiplomacyOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/PlayerType.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/PlayerType.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Advance/AdvanceOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Advance/class-use/AdvanceOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Advance/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Advance/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Advance/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Airlift/AirliftOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Airlift/class-use/AirliftOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Airlift/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Airlift/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Airlift/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Blockade/BlockadeOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Blockade/class-use/BlockadeOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Blockade/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Blockade/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Blockade/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Bomb/BombOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Bomb/class-use/BombOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Bomb/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Bomb/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Bomb/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Diplomacy/DiplomacyOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Diplomacy/class-use/DiplomacyOrder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Diplomacy/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Diplomacy/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Diplomacy/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/log/LogEntryBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/log/LogEntryWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Observable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/logFiles/logs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/FileAdapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/FileAdapter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/class-use/FileAdapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/class-use/FileAdapter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/class-use/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/class-use/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/constants/Commands.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/constants/Commands.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/constants/class-use/Commands.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/constants/class-use/Commands.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/constants/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/constants/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/constants/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/constants/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/constants/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/constants/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/CommandHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/CommandHandler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/class-use/CommandHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/class-use/CommandHandler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/CommandHandler/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/GameEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/GameEngine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/class-use/GameEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/class-use/GameEngine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/GameEngine/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/MapEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/MapEditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/class-use/MapEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/class-use/MapEditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/element-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Command/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Command/Command.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Command/class-use/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Command/class-use/Command.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Command/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Command/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Command/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Command/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Command/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Command/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/Continent.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/Continent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/class-use/Continent.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/class-use/Continent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Continent/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Country/Country.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Country/Country.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Country/class-use/Country.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Country/class-use/Country.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Country/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Country/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Country/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Country/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Country/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Country/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/ActionType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/ActionType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/GamePhase.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/GamePhase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/LineType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/LineType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/OrderType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/OrderType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/ActionType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/ActionType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/GamePhase.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/GamePhase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/LineType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/LineType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/OrderType.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/class-use/OrderType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Enums/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/Map.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/Map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/MapValidator.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/MapValidator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/class-use/Map.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/class-use/Map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/class-use/MapValidator.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/class-use/MapValidator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Map/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Map/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/MapHolder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/MapHolder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/class-use/MapHolder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/class-use/MapHolder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/MapHolder/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/DeployOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/DeployOrder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/class-use/DeployOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/class-use/DeployOrder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Deploy/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/Order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/class-use/Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/class-use/Order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Order/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Order/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Player/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Player/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Player/class-use/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Player/class-use/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/PlayerHolder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/PlayerHolder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/class-use/PlayerHolder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/class-use/PlayerHolder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/PlayerHolder/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/Command.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/Feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/Feedback.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/Helpers.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/Helpers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/class-use/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/class-use/Command.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/class-use/Feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/class-use/Feedback.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/class-use/Helpers.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/class-use/Helpers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/MapView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/MapView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/PlayerView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/PlayerView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/class-use/MapView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/class-use/MapView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/class-use/PlayerView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/class-use/PlayerView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CommandHandler/CommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/OrderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/OrderType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/PlayerHolder/PlayerHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/CommandHandler/CommandHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/CommandHandler/CommandHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Player/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,201 +197,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
-    "JUnit.AirliftOrderTest.executor": "Run",
-    "JUnit.AirliftOrderTest.testExecute_InvalidCountries.executor": "Run",
-    "JUnit.BombOrderTest.executor": "Run",
-    "JUnit.BombOrderTest.testExecute_ValidTargetCountry.executor": "Run",
-    "JUnit.CommandHandlerTest.executor": "Run",
-    "JUnit.CommandTest.executor": "Run",
-    "JUnit.CommandTest.testToString_WithArguments.executor": "Debug",
-    "JUnit.ContinentTest.executor": "Run",
-    "JUnit.DeployOrderTest.executor": "Run",
-    "JUnit.FeedbackTest (1).executor": "Run",
-    "JUnit.FeedbackTest.executor": "Run",
-    "JUnit.MapTest.getContinentByID_ContinentExists.executor": "Run",
-    "JUnit.MapValidatorTest.ValidMap.executor": "Run",
-    "JUnit.MapValidatorTest.executor": "Run",
-    "JUnit.PlayerTest.executor": "Run",
-    "JUnit.PlayerTest.testIssueOrder_countryDoesNotExist.executor": "Run",
-    "JUnit.TestSuite.executor": "Run",
-    "Maven.Warzone [test].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
     "git-widget-placeholder": "Merging develop",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/gp/IdeaProjects/SOEN6441-Warzone",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/documentation" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="models.Order.Deploy" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn test" />
-    </option>
-  </component>
-  <component name="RunManager" selected="JUnit.FeedbackTest (1)">
-    <configuration name="AirliftOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.Order.Deploy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
-      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.AirliftOrderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BombOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.Order.Deploy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
-      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.BombOrderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BombOrderTest.testExecute_ValidTargetCountry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.Order.Deploy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
-      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.BombOrderTest" />
-      <option name="METHOD_NAME" value="testExecute_ValidTargetCountry" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FeedbackTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FeedbackTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FeedbackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="utils" />
-      <option name="MAIN_CLASS_NAME" value="utils.FeedbackTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.FeedbackTest (1)" />
-        <item itemvalue="JUnit.FeedbackTest" />
-        <item itemvalue="JUnit.AirliftOrderTest" />
-        <item itemvalue="JUnit.BombOrderTest" />
-        <item itemvalue="JUnit.BombOrderTest.testExecute_ValidTargetCountry" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-3183f394aec4-cf227e86" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="" />
-      <created>1708485901913</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1708485901913</updated>
-      <workItem from="1708485903353" duration="6230000" />
-      <workItem from="1708528102054" duration="2212000" />
-      <workItem from="1708738564353" duration="13251000" />
-      <workItem from="1708834783850" duration="28653000" />
-      <workItem from="1709189252383" duration="158000" />
-      <workItem from="1709189420794" duration="3610000" />
-      <workItem from="1709245191647" duration="15346000" />
-    </task>
-    <task id="LOCAL-00001" summary="Implemented deploy, advance, bomb and blockade commands">
-      <option name="closed" value="true" />
-      <created>1709189547226</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1709189547226</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Implemented airliftOrder and diplomacyOrder">
-      <option name="closed" value="true" />
-      <created>1709193022104</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1709193022104</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes">
-      <option name="closed" value="true" />
-      <created>1709260581010</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1709260581010</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented deploy, advance, bomb and blockade commands" />
-    <MESSAGE value="Implemented airliftOrder and diplomacyOrder" />
-    <MESSAGE value="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented testcases for deploy,bomb,blockade,advance,diplomacy,player and feedback classes" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SOEN6441_Warzone$PlayerTest_testIssueOrder_countryDoesNotExist.ic" NAME="PlayerTest.testIssueOrder_countryDoesNotExist Coverage Results" MODIFIED="1709250641043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>models.Player.*</FILTER>
-    </SUITE>
   </component>
 </project>

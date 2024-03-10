@@ -8,6 +8,7 @@ import models.MapHolder.MapHolder;
 import models.Order.Advance.AdvanceOrder;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
+import log.LogEntryBuffer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,11 +20,12 @@ import static utils.Command.*;
 import static views.MapView.MapView.displayMapInformation;
 
 public class GameEngine {
-    private Scanner d_sc;
+    private final Scanner d_sc;
     private GamePhase d_currentPhase;
-    private MapEditor d_mapEditor;
+    private final MapEditor d_mapEditor;
     private String d_command;
-    private ArrayList<Player> d_players = new ArrayList<>();
+    private final ArrayList<Player> d_players = new ArrayList<>();
+    private static LogEntryBuffer d_logger;
 
     /**
      * Initializes the GameEngine with default settings.
@@ -32,20 +34,25 @@ public class GameEngine {
         MapHolder.setMap(new Map());
         this.d_mapEditor = new MapEditor();
         this.d_currentPhase = GamePhase.MAP_EDITING;
+        d_logger = LogEntryBuffer.getInstance();
+        d_logger.clear();
         this.d_sc = new Scanner(System.in);
     }
-
     /**
      * Starts the game and handles command processing based on the current phase.
      */
     public void startGame() {
         displayWelcomeMessage();
+        d_logger.log("Welcome to Warzone Game!");
+        d_logger.log("\n============== Map Editing Phase ==============\n");
+
         while (d_currentPhase != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
             d_command = d_sc.nextLine().trim();
             String l_commandName = d_command.split(" ")[0];
             if (!isCommandValidForPhase(l_commandName, d_currentPhase)) {
                 displayCommandUnavailableMessage(l_commandName, d_currentPhase);
+                d_logger.log("Invalid command entered.");
                 continue;
             }
             handleCommand();
@@ -57,6 +64,7 @@ public class GameEngine {
      * Starts the main game loop where players issue orders and orders are executed.
      */
     private void startMainGameLoop() {
+        d_logger.log("\n============== Issue Order Phase ==============\n");
         while (true) {
             handleIssueOrder();
             handleExecuteOrder();
@@ -80,6 +88,7 @@ public class GameEngine {
             default:
                 String l_commandName = d_command.split(" ")[0];
                 displayCommandUnavailableMessage(l_commandName, d_currentPhase);
+                d_logger.log("Invalid command entered.");
                 break;
         }
     }
@@ -88,8 +97,10 @@ public class GameEngine {
      * Processes commands during the map editing phase.
      */
     private void processMapEditingPhaseCommand() {
+
         Map gameMap = MapHolder.getMap();
         String l_commandName = d_command.split(" ")[0];
+
         switch (l_commandName) {
             case "loadmap":
                 handleLoadMapCommand(d_command, d_mapEditor);
@@ -107,11 +118,13 @@ public class GameEngine {
                 handleDisplayCommands(d_currentPhase);
                 break;
             case "showmap":
+                d_logger.log("Entered showmap command.");
                 displayMapInformation();
                 break;
             case "proceed":
                 if (MapValidator.validateMap(gameMap)) {
                     d_currentPhase = GamePhase.STARTUP;
+                    d_logger.log("\n============== Startup Phase ==============\n");
                     System.out.println("\nYou have entered the Startup Phase. Please create players to proceed further.");
                     System.out.println("Use 'showcommands' to see to see how you can add players");
                 } else {
@@ -128,6 +141,7 @@ public class GameEngine {
      * Processes commands during the startup phase.
      */
     private void processStartupPhaseCommand() {
+
         String l_commandName = d_command.split(" ")[0];
 
         switch (l_commandName) {
@@ -248,6 +262,7 @@ public class GameEngine {
             d_players.get(i % l_numPlayers).addOwnedCountry(MapHolder.getMap().getCountries().get(i));
         }
         System.out.println("\nCountries have been assigned to players.");
+        d_logger.log("Countries assigned to players.");
     }
 
     /**
