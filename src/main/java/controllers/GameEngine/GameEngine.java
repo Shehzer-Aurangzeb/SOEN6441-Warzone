@@ -5,6 +5,7 @@ import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
 import models.Order.Advance.AdvanceOrder;
+import models.Order.Order;
 import models.Phase.MapEditing.Preload.Preload;
 import models.Phase.Phase;
 import models.Player.Player;
@@ -166,5 +167,43 @@ public class GameEngine {
             player.setNoOfArmies(l_armyCount);
         }
     }
+
+    /**
+     * Executes all orders for each player in the game.
+     * <p>
+     * This method iterates through all players, executing their orders sequentially.
+     * After executing all orders for a player, if the player has conquered at least
+     * one country during their turn, they are awarded a random card. The method also
+     * resets the player's conquered status for the next turn.
+     */
+    public void executeOrders() {
+        for (Player player : d_players) {
+            // Logic to execute player's orders
+            executePlayerOrders(player);
+
+            // Check if the player has conquered a country this turn
+            if (player.hasConqueredThisTurn()) {
+                player.addRandomCard(); // Award a random card
+                player.setConqueredThisTurn(false); // Reset for next turn
+            }
+        }
+    }
+
+    /**
+     * Executes all pending orders for a given player.
+     * <p>
+     * Iterates through the list of a player's orders and executes each one. The method
+     * is intended to be called by {@link #executeOrders()} for each player in the game.
+     *
+     * @param player The player whose orders are to be executed.
+     */
+    private void executePlayerOrders(Player player) {
+        // Iterate over and execute each of the player's orders
+        for (Order order : player.getOrders()) {
+            order.execute(); // Execute the order
+        }
+    }
+
+
 
 }

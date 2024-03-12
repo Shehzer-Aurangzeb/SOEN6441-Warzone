@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import log.LogEntryBuffer;
 import models.Country.Country;
+import models.Enums.CardType;
 import models.Enums.GamePhase;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
@@ -13,10 +14,12 @@ import models.Order.Blockade.BlockadeOrder;
 import models.Order.Airlift.AirliftOrder;
 import models.Order.Diplomacy.DiplomacyOrder;
 import models.MapHolder.MapHolder;
+import models.Card.Card;
 import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
 import static controllers.CommandHandler.CommandHandler.handleExitCommand;
 import static utils.Feedback.displayCommandUnavailableMessage;
 import static views.MapView.PlayerView.displayPlayerList;
+import java.util.Random;
 
 /**
  * Represents a player in the game.
@@ -28,10 +31,16 @@ public class Player {
     private int d_noOfArmies;
     private boolean hasOrders;
     private boolean lastCommandValidForOrders;
+    private ArrayList<Card> d_cards = new ArrayList<>();
+
+
+
 
     private Scanner sc = new Scanner(System.in);
     private GamePhase currentPhase;
     private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
+    private boolean conqueredThisTurn  = false;;
+
     /**
      * Initializes a player with the given name.
      *
@@ -44,6 +53,7 @@ public class Player {
         this.d_noOfArmies = 0;
         this.hasOrders=true;
         this.lastCommandValidForOrders= true;
+        this.d_cards = new ArrayList<>();
     }
     //getters
 
@@ -398,4 +408,47 @@ public class Player {
             System.out.println("Invalid player ID. Please provide a valid integer.");
         }
     }
+
+    /**
+     * Adds a random card to the player's collection of cards.
+     * <p>
+     * This method selects a random {@link CardType} and creates a new {@link Card} of that type.
+     * The new card is then added to the player's hand.
+     */
+    public void addRandomCard() {
+        CardType[] cardTypes = CardType.values();
+        CardType randomType = cardTypes[new Random().nextInt(cardTypes.length)];
+        Card newCard = new Card(randomType);
+        d_cards.add(newCard);
+        System.out.println(this.d_playerName + " received a " + randomType + " card.");
+    }
+
+    /**
+     * Retrieves the player's current collection of cards.
+     *
+     * @return An {@link ArrayList} of {@link Card} objects representing the player's hand.
+     */
+    public ArrayList<Card> getCards() {
+        return d_cards;
+    }
+
+    /**
+     * Sets the flag indicating whether the player has conquered at least one country during their turn.
+     *
+     * @param conquered A boolean value, where {@code true} indicates that the player has conquered a country.
+     */
+    public void setConqueredThisTurn(boolean conquered) {
+        this.conqueredThisTurn = conquered;
+    }
+
+    /**
+     * Checks if the player has conquered at least one country during their turn.
+     *
+     * @return {@code true} if the player has conquered a country, otherwise {@code false}.
+     */
+    public boolean hasConqueredThisTurn() {
+        return conqueredThisTurn;
+    }
+
+
 }
