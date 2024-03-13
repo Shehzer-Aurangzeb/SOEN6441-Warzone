@@ -16,6 +16,7 @@ import models.MapHolder.MapHolder;
 import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
 import static controllers.CommandHandler.CommandHandler.handleExitCommand;
 import static utils.Feedback.displayCommandUnavailableMessage;
+import static views.MapView.PlayerView.displayMyMap;
 import static views.MapView.PlayerView.displayPlayerList;
 
 /**
@@ -179,6 +180,10 @@ public class Player {
             case "showmap":
                 this.lastCommandValidForOrders = false;
                 displayPlayerList();
+                break;
+            case "mymap":
+                this.lastCommandValidForOrders = false;
+                displayMyMap(this);
                 break;
             case "endturn":
                 this.hasOrders = false;
