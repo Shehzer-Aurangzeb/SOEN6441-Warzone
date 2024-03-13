@@ -4,8 +4,6 @@ import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
-import models.Order.Advance.AdvanceOrder;
-import models.Order.Order;
 import models.Phase.MapEditing.Preload.Preload;
 import models.Phase.Phase;
 import models.Player.Player;
@@ -24,6 +22,8 @@ public class GameEngine {
     private final ArrayList<Player> d_players = new ArrayList<>();
     private static LogEntryBuffer d_logger;
     private Phase d_currentGamePhase;
+
+
 
 
     /**
@@ -45,19 +45,25 @@ public class GameEngine {
         return d_currentGamePhase;
     }
 
+    void setCommandForTesting(String command) {
+        this.d_command = command;
+    }
     /**
      * Starts the game and handles command processing based on the current phase.
      */
     public void startGame() {
-        //initially preload phase
         this.d_currentGamePhase = new Preload(this);
         displayWelcomeMessage();
         d_logger.log("Welcome to Warzone Game!");
         d_logger.log("\n============== Map Editing Phase ==============\n");
         while (d_currentGamePhase.getPhaseName() != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
-            d_command = d_sc.nextLine().trim();
-            handleCommand();
+            this.d_command = d_sc.nextLine().trim(); // Ensure this line is correctly assigning the input to d_command
+            if (d_command != null && !d_command.isEmpty()) {
+                handleCommand();
+            } else {
+                System.out.println("No command entered, please try again.");
+            }
         }
         startMainGameLoop();
     }
@@ -82,50 +88,40 @@ public class GameEngine {
     /**
      * Handles the given command processing.
      */
-    private void handleCommand() {
-        String l_commandName = d_command.split(" ")[0];
-        String l_filename;
-        switch (l_commandName) {
+    /**
+     * Handles the given command processing.
+     */
+    public void handleCommand() {
+        String commandType = d_command.split(" ")[0];
+        switch (commandType) {
             case "loadmap":
-                l_filename = d_command.split(" ")[1];
-                d_currentGamePhase.loadMap(l_filename, d_mapEditor);
+                handleLoadMap();
                 break;
             case "editmap":
-                l_filename = d_command.split(" ")[1];
-                d_currentGamePhase.editMap(l_filename, d_mapEditor);
+                handleEditMap();
                 break;
-            case "editcontinent", "editcountry", "editneighbor":
-                d_currentGamePhase.modifyMapComponents(d_command, d_mapEditor);
+            case "editcontinent":
+            case "editcountry":
+            case "editneighbor":
+                handleModifyMapComponents();
                 break;
             case "savemap":
-                l_filename = d_command.split(" ")[1];
-                d_currentGamePhase.saveMap(l_filename, d_mapEditor);
+                handleSaveMap();
                 break;
             case "showcommands":
                 d_currentGamePhase.showCommands();
                 break;
             case "showmap":
-                d_currentGamePhase.showMap();
-                d_logger.log("Entered showmap command.");
+                handleShowMap();
                 break;
             case "gameplayer":
-                d_currentGamePhase.addOrRemovePlayer(d_command, d_players);
-                checkStartGamePrompt();
+                handleAddOrRemovePlayer();
                 break;
             case "startgame":
-                if (d_players.size() < 2) {
-                    System.out.println("\nMinimum two players required to start the game.");
-                } else {
-                    PlayerHolder.setPlayers(d_players);
-                    assignCountries();
-                    assignReinforcements();
-                    System.out.println("\nReinforcements have been assigned to players.");
-                    d_currentGamePhase.next();
-                }
+                handleStartGame();
                 break;
             case "proceed":
-                d_logger.log("\n============== Startup Phase ==============\n");
-                d_currentGamePhase.next();
+                handleProceed();
                 break;
             case "exit":
                 d_currentGamePhase.exit();
@@ -136,10 +132,56 @@ public class GameEngine {
                 break;
         }
     }
+
+    public void handleLoadMap() {
+        String filename = d_command.split(" ")[1];
+        d_currentGamePhase.loadMap(filename, d_mapEditor);
+    }
+
+    public void handleEditMap() {
+        String filename = d_command.split(" ")[1];
+        d_currentGamePhase.editMap(filename, d_mapEditor);
+    }
+
+    public void handleModifyMapComponents() {
+        d_currentGamePhase.modifyMapComponents(d_command, d_mapEditor);
+    }
+
+    public void handleSaveMap() {
+        String filename = d_command.split(" ")[1];
+        d_currentGamePhase.saveMap(filename, d_mapEditor);
+    }
+
+    public void handleShowMap() {
+        d_currentGamePhase.showMap();
+        d_logger.log("Entered showmap command.");
+    }
+
+    public void handleAddOrRemovePlayer() {
+        d_currentGamePhase.addOrRemovePlayer(d_command, d_players);
+        checkStartGamePrompt();
+    }
+
+    public void handleStartGame() {
+        if (d_players.size() < 2) {
+            System.out.println("\nMinimum two players required to start the game.");
+        } else {
+            PlayerHolder.setPlayers(d_players);
+            assignCountries();
+            assignReinforcements();
+            System.out.println("\nReinforcements have been assigned to players.");
+            d_currentGamePhase.next();
+        }
+    }
+
+    public void handleProceed() {
+        d_logger.log("\n============== Startup Phase ==============\n");
+        d_currentGamePhase.next();
+    }
     /**
      * Randomly assigns countries to players.
      */
-    private void assignCountries() {
+    public void assignCountries() {
         int l_numPlayers = d_players.size();
         for (int i = 0; i < MapHolder.getMap().getCountries().size(); i++) {
             d_players.get(i % l_numPlayers).addOwnedCountry(MapHolder.getMap().getCountries().get(i));
@@ -151,7 +193,7 @@ public class GameEngine {
     /**
      * Checks if there are enough players to start the game and prompts the user accordingly.
      */
-    private void checkStartGamePrompt() {
+    public void checkStartGamePrompt() {
         if (d_players.size() >= 2) {
             System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
         }
@@ -159,7 +201,7 @@ public class GameEngine {
     /**
      * Assigns reinforcements to players based on the number of countries owned.
      */
-    private static void assignReinforcements() {
+    public static void assignReinforcements() {
         ArrayList<Player> l_existingPlayer = PlayerHolder.getPlayers();
         for (Player player : l_existingPlayer) {
             int l_armyCount = player.getOwnedCountries().size() / 3;
@@ -167,43 +209,6 @@ public class GameEngine {
             player.setNoOfArmies(l_armyCount);
         }
     }
-
-    /**
-     * Executes all orders for each player in the game.
-     * <p>
-     * This method iterates through all players, executing their orders sequentially.
-     * After executing all orders for a player, if the player has conquered at least
-     * one country during their turn, they are awarded a random card. The method also
-     * resets the player's conquered status for the next turn.
-     */
-    public void executeOrders() {
-        for (Player player : d_players) {
-            // Logic to execute player's orders
-            executePlayerOrders(player);
-
-            // Check if the player has conquered a country this turn
-            if (player.hasConqueredThisTurn()) {
-                player.addRandomCard(); // Award a random card
-                player.setConqueredThisTurn(false); // Reset for next turn
-            }
-        }
-    }
-
-    /**
-     * Executes all pending orders for a given player.
-     * <p>
-     * Iterates through the list of a player's orders and executes each one. The method
-     * is intended to be called by {@link #executeOrders()} for each player in the game.
-     *
-     * @param player The player whose orders are to be executed.
-     */
-    private void executePlayerOrders(Player player) {
-        // Iterate over and execute each of the player's orders
-        for (Order order : player.getOrders()) {
-            order.execute(); // Execute the order
-        }
-    }
-
 
 
 }
