@@ -26,7 +26,6 @@ public class ExecuteOrder extends GamePlay {
     }
 
     public void executeOrders() {
-        System.out.println("Executing orders");
         ArrayList<Player> l_existingPlayers = PlayerHolder.getPlayers();
         int l_totalOrders = 0;
         for (Player player : l_existingPlayers) {
@@ -73,6 +72,7 @@ public class ExecuteOrder extends GamePlay {
                     l_order.execute();
                     l_currentOrder++;
                     break;
+
             }
             l_currentPlayerIndex = (l_currentPlayerIndex + 1) % l_existingPlayers.size();
         }
