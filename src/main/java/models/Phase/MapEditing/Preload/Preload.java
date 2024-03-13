@@ -2,6 +2,7 @@ package models.Phase.MapEditing.Preload;
 
 import controllers.GameEngine.GameEngine;
 import controllers.MapEditor.MapEditor;
+import log.LogEntryBuffer;
 import models.Enums.GamePhase;
 import models.Phase.MapEditing.MapEditing;
 import models.Phase.MapEditing.Postload.Postload;
@@ -11,6 +12,7 @@ import static views.MapView.MapView.displayMapInformation;
 
 public class Preload extends MapEditing {
     private static final GamePhase PHASE_NAME= GamePhase.MAP_EDITING_PRELOAD;
+    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
 
     public Preload(GameEngine new_ge){
         super(new_ge,PHASE_NAME);

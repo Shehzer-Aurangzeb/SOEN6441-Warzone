@@ -19,7 +19,7 @@ public class CommandHandler {
      * Handles the exit command by gracefully exiting the game.
      */
     public static void handleExitCommand() {
-        d_logger.log("Exiting....");
+        d_logger.log("Exiting the game....");
         System.out.println("Exiting the game. Goodbye!");
         System.exit(0);
     }

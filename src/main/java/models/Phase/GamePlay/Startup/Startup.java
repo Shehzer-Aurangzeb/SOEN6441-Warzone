@@ -1,6 +1,7 @@
 package models.Phase.GamePlay.Startup;
 
 import controllers.GameEngine.GameEngine;
+import log.LogEntryBuffer;
 import models.Enums.GamePhase;
 import models.Phase.GamePlay.GamePlay;
 import models.Phase.GamePlay.IssueOrder.IssueOrder;
@@ -14,6 +15,7 @@ import static utils.Feedback.*;
 public class Startup extends GamePlay {
 
     private static final GamePhase PHASE_NAME = GamePhase.STARTUP;
+    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
 
     public Startup(GameEngine new_ge) {
         super(new_ge,PHASE_NAME);
@@ -41,6 +43,7 @@ public class Startup extends GamePlay {
                         Player l_player = new Player(l_playerName);
                         p_existingPlayers.add(l_player);
                         System.out.println("\nPlayer '" + l_playerName + "' added successfully.");
+                        d_logger.log("Player "+ l_playerName + " added." );
                         i+=2;
                         break;
                     case "-remove":
@@ -54,6 +57,7 @@ public class Startup extends GamePlay {
                         if (l_playerToRemove != null) {
                             p_existingPlayers.remove(l_playerToRemove);
                             System.out.println("\nPlayer '" + l_playerName + "' removed successfully.");
+                            d_logger.log("Player "+ l_playerName + " removed." );
                         } else {
                             System.out.println("\nPlayer '" + l_playerName + "' not found.");
                         }

@@ -1,5 +1,6 @@
 package controllers.MapEditor;
 
+import log.LogEntryBuffer;
 import models.Continent.Continent;
 import models.Country.Country;
 import models.Enums.LineType;
@@ -19,6 +20,7 @@ public class MapEditor {
     private Map d_map;
     private final HashMap<String, Map> d_mapRegistry = new HashMap<>();
     private String d_currentEditingFilename;
+    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
 
     public HashMap<String, Map> getMapRegistry() {
         return this.d_mapRegistry;
@@ -89,10 +91,12 @@ public class MapEditor {
         if (l_continent == null) {
             l_mapToEdit.addContinent(new Continent(p_continentName, Integer.parseInt(p_continentValue)));
             System.out.println("\nContinent '" + p_continentName + "' with value '" + p_continentValue + "' has been successfully added.");
+            d_logger.log("\nContinent '" + p_continentName + "' with value '" + p_continentValue + "' has been added.");
 
         } else {
             System.out.println("\nError: Continent '" + p_continentName + "' already exists. " +
                     "Please remove the existing continent before adding a new one.");
+            d_logger.log("Continent " + p_continentName + " already exists. " );
         }
 
     }
@@ -106,6 +110,7 @@ public class MapEditor {
         Continent l_continent = l_mapToEdit.getContinentByName(p_continentName);
         if (l_continent == null) {
             System.out.println("\nError: Continent '" + p_continentName + "' does not exist.");
+            d_logger.log("\nContinent '" + p_continentName + "' does not exist to remove. '");
         } else {
             l_mapToEdit.removeContinent(l_continent);
             //delete all countries of this continent
@@ -118,6 +123,7 @@ public class MapEditor {
             }
             restructureMapAfterContinentDeletion(l_mapToEdit);
             System.out.println("\nContinent '" + p_continentName + "' has been successfully removed.");
+            d_logger.log("\nContinent '" + p_continentName + "' has been removed.");
         }
     }
 
@@ -134,6 +140,7 @@ public class MapEditor {
         } else if (l_country == null) {
             l_mapToEdit.addCountry(new Country(p_countryName, l_continent.getID()));
             System.out.println("\nCountry '" + p_countryName + "' added to continent '" + p_continentName + "'.");
+            d_logger.log("\nCountry '" + p_countryName + "' added to continent '" + p_continentName + "'.");
         } else {
             System.out.println("\nError: Country '" + p_countryName + "' already exists." +
                     " Please remove the existing country before adding a new one.");
@@ -153,6 +160,7 @@ public class MapEditor {
         } else {
             l_mapToEdit.removeCountry(l_country);
             System.out.println("\nCountry '" + p_countryName + "' removed successfully.");
+            d_logger.log(("\nCountry '" + p_countryName + "' has been removed."));
         }
     }
 
@@ -172,6 +180,7 @@ public class MapEditor {
             l_country.addNeighbor(l_neighborCountry);
             System.out.println("\nThe country '" + p_neighborCountryName + "' has been " +
                     "successfully added to the list of neighbors for the country '" + p_countryName + "'.");
+            d_logger.log("Country " + p_neighborCountryName + " has been added as neighbor to country "+p_countryName+".");
         }
     }
 
@@ -191,6 +200,7 @@ public class MapEditor {
             l_country.removeNeighbor(l_neighborCountry);
             System.out.println("\nThe country '" + p_neighborCountryName + "' has been " +
                     "successfully removed from the list of neighbors for the country '" + p_countryName + "'.");
+            d_logger.log("Country " + p_neighborCountryName + " has been removed from the list of neighbors for country "+p_countryName+".");
         }
 
     }
@@ -203,6 +213,7 @@ public class MapEditor {
             writeContinents(l_pw, p_map.getContinents());
             writeCountriesAndBorders(l_pw, p_map.getCountries());
             System.out.println("\nMap successfully saved to the file: " + p_file.getName());
+            d_logger.log("Map has been saved.");
 
         } catch (FileNotFoundException e) {
             System.out.println("\nFile not found. " + e.getMessage());

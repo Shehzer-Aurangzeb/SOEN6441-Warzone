@@ -39,6 +39,7 @@ public class GameEngine {
 
     public void setPhase(Phase new_state) {
         d_currentGamePhase = new_state;
+        d_logger.log("\n============== "+ d_currentGamePhase.getPhaseName()+" Phase ==============\n");
     }
 
     public Phase getPhase() {
@@ -54,8 +55,8 @@ public class GameEngine {
     public void startGame() {
         this.d_currentGamePhase = new Preload(this);
         displayWelcomeMessage();
-        d_logger.log("Welcome to Warzone Game!");
-        d_logger.log("\n============== Map Editing Phase ==============\n");
+        d_logger.log("Welcome to Warzone Game!\n");
+        d_logger.log("\n============== "+ d_currentGamePhase.getPhaseName()+" Phase ==============\n");
         while (d_currentGamePhase.getPhaseName() != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
             this.d_command = d_sc.nextLine().trim(); // Ensure this line is correctly assigning the input to d_command
@@ -72,7 +73,7 @@ public class GameEngine {
      * Starts the main game loop where players issue orders and orders are executed.
      */
     private void startMainGameLoop() {
-        d_logger.log("\n============== Issue Order Phase ==============\n");
+      //  d_logger.log("\n============== Issue Order Phase ==============\n");
         while (true) {
             switch (d_currentGamePhase.getPhaseName()) {
                 case ISSUE_ORDERS:
@@ -124,6 +125,7 @@ public class GameEngine {
                 handleProceed();
                 break;
             case "exit":
+                d_logger.log("Exiting the game....");
                 d_currentGamePhase.exit();
                 break;
             default:
@@ -154,7 +156,6 @@ public class GameEngine {
 
     public void handleShowMap() {
         d_currentGamePhase.showMap();
-        d_logger.log("Entered showmap command.");
     }
 
     public void handleAddOrRemovePlayer() {
@@ -175,7 +176,6 @@ public class GameEngine {
     }
 
     public void handleProceed() {
-        d_logger.log("\n============== Startup Phase ==============\n");
         d_currentGamePhase.next();
     }
     /**
@@ -187,7 +187,7 @@ public class GameEngine {
             d_players.get(i % l_numPlayers).addOwnedCountry(MapHolder.getMap().getCountries().get(i));
         }
         System.out.println("\nCountries have been assigned to players.");
-        d_logger.log("Countries assigned to players.");
+        d_logger.log("Countries have been assigned to players.");
     }
 
     /**

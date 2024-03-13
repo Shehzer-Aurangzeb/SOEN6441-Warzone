@@ -1,21 +1,27 @@
 Welcome to Warzone Game!
 
-============== Map Editing Phase ==============
 
-Entered showmap command.
+============== MAP_EDITING_PRELOAD Phase ==============
 
-============== Startup Phase ==============
+Map 'europass.map' has been loaded.
 
-
-============== Startup Phase ==============
+============== MAP_EDITING_POSTLOAD Phase ==============
 
 
-============== Startup Phase ==============
+============== STARTUP Phase ==============
 
-Countries assigned to players.
+Player riki added.
+Player biti added.
+Countries have been assigned to players.
 
-============== Issue Order Phase ==============
+============== ISSUE_ORDERS Phase ==============
 
-Player Tania deployed 2 armies to country 1
-Player Tanzina deployed 5 armies to country 2
-Player Tania deployed 3 armies to country 3
+Player riki deployed 18 armies to country 1
+Player biti deployed 18 armies to country 2
+
+============== EXECUTE_ORDERS Phase ==============
+
+
+============== ISSUE_ORDERS Phase ==============
+
+Exiting the game....
