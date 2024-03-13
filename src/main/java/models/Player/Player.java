@@ -216,9 +216,15 @@ public class Player {
      *                  The third element is the number of armies to deploy.
      */
     public final void createDeployOrder(String[] p_command){
+        // Check if the command has the correct number of arguments
+        if (p_command.length < 3) {
+            System.out.println("\nInvalid deploy command. Usage: deploy countryID noOfArmies");
+            this.lastCommandValidForOrders=false;
+            return;
+        }
         int countryID = Integer.parseInt(p_command[1]);
         int noOfArmies= Integer.parseInt(p_command[2]);
-        if(this.d_noOfArmies<noOfArmies){
+        if(this.d_noOfArmies < noOfArmies){
             this.lastCommandValidForOrders=false;
             System.out.println("\nYou do not have enough armies.");
             return;
@@ -231,17 +237,16 @@ public class Player {
         }
         if(!this.getOwnedCountries().contains(country)){
             this.lastCommandValidForOrders=false;
-            System.out.println("\nCannot deploy armies to country " +countryID+". You do not own this country. Please select a country that you own to deploy your armies");
+            System.out.println("\nCannot deploy armies to country " + countryID + ". You do not own this country. Please select a country that you own to deploy your armies.");
             return;
         }
-        // Modify the line below to pass the current player
         this.d_orders.add(new DeployOrder(countryID, noOfArmies, this));
-        this.d_noOfArmies-=noOfArmies;
+        this.d_noOfArmies -= noOfArmies;
         this.lastCommandValidForOrders=true;
         System.out.println("\nDeploy order created.");
         d_logger.log("Player "+this.getName()+" deployed "+ noOfArmies+" armies to country "+countryID);
-
     }
+
 
     /**
      * Handles the advance order command.
