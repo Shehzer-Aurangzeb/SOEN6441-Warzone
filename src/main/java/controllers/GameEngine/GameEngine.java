@@ -4,6 +4,8 @@ import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
+import models.Order.Advance.AdvanceOrder;
+import models.Order.Order;
 import models.Phase.MapEditing.Preload.Preload;
 import models.Phase.Phase;
 import models.Player.Player;
@@ -76,10 +78,12 @@ public class GameEngine {
         while (true) {
             switch (d_currentGamePhase.getPhaseName()) {
                 case ISSUE_ORDERS:
+                    prepareForNextTurn(); // Resetting flags before issuing orders
                     d_currentGamePhase.issueOrders();
                     break;
                 case EXECUTE_ORDERS:
                     d_currentGamePhase.executeOrders();
+                    endOfTurnProcess();
                     break;
             }
         }
@@ -209,6 +213,48 @@ public class GameEngine {
             player.setNoOfArmies(l_armyCount);
         }
     }
+
+    public void endTurnAndUpdatePlayers() {
+        for (Player player : d_players) { // Assuming d_players is your list of players
+            if (player.hasConqueredThisTurn()) {
+                player.addRandomCard();
+                player.setConqueredThisTurn(false); // Reset for the next turn
+            }
+        }
+    }
+
+    public void endOfTurnProcess() {
+        // Iterate over all players using PlayerHolder.getPlayers()
+        for (Player player : PlayerHolder.getPlayers()) {
+            boolean conqueredThisTurn = false;
+
+            // Assuming getExecutedOrders() returns a list of orders that were executed in the turn
+            for (Order order : player.getExecutedOrders()) {
+                if (order instanceof AdvanceOrder && ((AdvanceOrder) order).wasCountryConquered()) {
+                    conqueredThisTurn = true;
+                    break; // Exit loop as only one card is awarded regardless of the number of countries conquered
+                }
+            }
+
+            if (conqueredThisTurn) {
+                player.awardRandomCard();
+            }
+
+            // Reset or clear the executed orders for the next turn
+            player.clearExecutedOrders();
+        }
+    }
+
+    public void prepareForNextTurn() {
+        for (Player player : PlayerHolder.getPlayers()) {
+            player.setConqueredThisTurn(false);
+        }
+
+    }
+
+
+
+
 
 
 }

@@ -1,8 +1,12 @@
 package models.Country;
 
 import models.Enums.PlayerType;
+import models.Player.Player;
 
 import java.util.ArrayList;
+
+
+
 import static utils.Helpers.*;
 /**
  * Represents a country in a game map.
@@ -13,7 +17,13 @@ public class Country {
     private int d_continentId;
     private ArrayList<Country> d_neighbours;
     private int d_armiesDeployed;
-    private PlayerType d_player;
+    private static PlayerType d_player;
+
+    private transient Player d_playerOwner;
+
+
+
+
     /**
      * Constructs a new country.
      *
@@ -156,6 +166,15 @@ public class Country {
     public void removeNeighbor(Country p_neighbor) {
         this.d_neighbours.remove(p_neighbor);
     }
+
+    public Player getPlayerOwner() {
+        return d_playerOwner;
+    }
+
+    public void setPlayerOwner(Player playerOwner) {
+        this.d_playerOwner = playerOwner;
+    }
+
 
     /**
      * Returns a string representation of the country.

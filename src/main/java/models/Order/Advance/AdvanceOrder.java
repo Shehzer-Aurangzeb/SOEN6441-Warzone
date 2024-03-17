@@ -4,6 +4,7 @@ import models.Country.Country;
 import models.Enums.OrderType;
 import models.MapHolder.MapHolder;
 import models.Order.Order;
+import models.Player.Player;
 
 import java.util.Random;
 
@@ -14,6 +15,8 @@ public class AdvanceOrder implements Order {
     private String d_countryFrom;
     private String d_countryTo;
     private int d_noOfArmies;
+    // Add a flag to indicate if a country has been conquered
+    private boolean d_countryConquered = false;
 
     /**
      * Initializes an advance order with the source country, target country, and number of armies to advance.
@@ -45,23 +48,6 @@ public class AdvanceOrder implements Order {
         Country sourceCountry = MapHolder.getMap().getCountryByName(this.d_countryFrom);
         Country targetCountry = MapHolder.getMap().getCountryByName(this.d_countryTo);
 
-        if (sourceCountry != null && targetCountry != null && sourceCountry.getArmiesDeployed() >= d_noOfArmies) {
-            if (!sourceCountry.getPlayer().equals(targetCountry.getPlayer())) {
-                boolean conquered = simulateAttack(sourceCountry, targetCountry);
-
-                if (conquered) {
-                    // Transfer ownership
-                    targetCountry.setPlayer(sourceCountry.getPlayer());
-                    System.out.println("Conquered " + targetCountry.getName());
-                } else {
-                    System.out.println("Attack on " + targetCountry.getName() + " failed.");
-                }
-            } else {
-                System.out.println("Cannot attack your own country.");
-            }
-        } else {
-            System.out.println("Invalid operation. Either countries don't exist or not enough armies.");
-        }
         // Check if both countries exist
         if (sourceCountry != null && targetCountry != null) {
             // Check if the source country has enough armies to advance
@@ -71,53 +57,19 @@ public class AdvanceOrder implements Order {
                 sourceCountry.setArmiesDeployed(remainingArmies);
                 targetCountry.setArmiesDeployed(targetCountry.getArmiesDeployed() + this.d_noOfArmies);
                 System.out.println("Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".");
+
+
             } else {
                 System.out.println("Not enough armies in " + this.d_countryFrom + " to advance.");
             }
+
         } else {
             System.out.println("Invalid source or target country for advance order.");
         }
     }
 
-    /**
-     * Simulates an attack from one country to another and determines the outcome.
-     * This method calculates the outcome of an attack based on the number of attacking
-     * and defending armies. It uses a simple probabilistic model where each attacking army
-     * has a 60% chance of winning against a defending army in each round. The battle continues
-     * until either the attacking or defending armies are depleted.
-     * If the attackers conquer the target country (i.e., all defending armies are defeated),
-     * it is assumed that a third of the attacking armies are lost in the battle, and the
-     * remaining forces are moved to the target country. If the attack fails, all attacking
-     * armies are considered lost.
-     * @param sourceCountry The country from which the attack is launched.
-     * @param targetCountry The country being attacked.
-     * @return True if the attack was successful and the target country was conquered, false otherwise.
-     */
-    private boolean simulateAttack(Country sourceCountry, Country targetCountry) {
-        int attackingArmies = d_noOfArmies; // Number of armies attacking
-        int defendingArmies = targetCountry.getArmiesDeployed(); // Number of armies defending
-        Random rand = new Random();
-        while (attackingArmies > 0 && defendingArmies > 0) {
-            if (rand.nextDouble() < 0.6) { // Assuming attackers have a 60% chance to win each small round
-                defendingArmies--; // Attacker wins this small round
-            } else {
-                attackingArmies--; // Defender wins this small round
-            }
-        }
-
-        // If defending armies are depleted, attack is successful
-        boolean conquered = defendingArmies <= 0;
-
-        if (conquered) {
-            // Assuming attackers lose a third of their forces in a successful attack, rounded up
-            int survivingArmies = attackingArmies - (int) Math.ceil(attackingArmies / 3.0);
-            targetCountry.setArmiesDeployed(survivingArmies); // Update target country with surviving armies
-        } else {
-            // If attack fails, all attacking armies are lost.
-            sourceCountry.setArmiesDeployed(sourceCountry.getArmiesDeployed() - d_noOfArmies);
-        }
-
-        return conquered;
+    public boolean wasCountryConquered() {
+        return d_countryConquered;
     }
 
 

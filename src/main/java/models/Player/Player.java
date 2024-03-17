@@ -33,6 +33,10 @@ public class Player {
     private boolean lastCommandValidForOrders;
     private ArrayList<Card> d_cards = new ArrayList<>();
 
+    private ArrayList<Order> executedOrders = new ArrayList<>();
+
+
+
 
 
 
@@ -449,6 +453,28 @@ public class Player {
     public boolean hasConqueredThisTurn() {
         return conqueredThisTurn;
     }
+
+    public void addExecutedOrder(Order order) {
+        this.executedOrders.add(order);
+    }
+
+    public ArrayList<Order> getExecutedOrders() {
+        return new ArrayList<>(executedOrders); // Return a copy to avoid external modification
+    }
+
+    public void clearExecutedOrders() {
+        this.executedOrders.clear();
+    }
+
+
+    public void awardRandomCard() {
+        // Example implementation, adapt as needed
+        CardType[] cardTypes = CardType.values();
+        CardType randomCardType = cardTypes[new Random().nextInt(cardTypes.length)];
+        d_cards.add(new Card(randomCardType)); // Assuming a Card constructor accepting a CardType
+        System.out.println(this.getName() + " received a " + randomCardType + " card.");
+    }
+
 
 
 }
