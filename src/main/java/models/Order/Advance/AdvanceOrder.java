@@ -22,7 +22,7 @@ public class AdvanceOrder implements Order {
      * @param p_countryTo   The country to advance armies to.
      * @param p_noOfArmies  The number of armies to advance.
      */
-    public AdvanceOrder(String p_countryFrom, String p_countryTo, int p_noOfArmies){
+    public AdvanceOrder(String p_countryFrom, String p_countryTo, int p_noOfArmies) {
         this.d_countryFrom = p_countryFrom;
         this.d_countryTo = p_countryTo;
         this.d_noOfArmies = p_noOfArmies;
@@ -33,9 +33,11 @@ public class AdvanceOrder implements Order {
      *
      * @return The order type.
      */
-    public OrderType getName(){
+    public OrderType getName() {
         return OrderType.ADVANCE;
-    };
+    }
+
+    ;
 
     /**
      * Executes the advance order.
@@ -71,7 +73,8 @@ public class AdvanceOrder implements Order {
             }
         } else {
             System.out.println("Invalid source or target country for advance order.");
-}
+        }
+
     }
 
     /**
@@ -84,6 +87,7 @@ public class AdvanceOrder implements Order {
      * it is assumed that a third of the attacking armies are lost in the battle, and the
      * remaining forces are moved to the target country. If the attack fails, all attacking
      * armies are considered lost.
+     *
      * @param sourceCountry The country from which the attack is launched.
      * @param targetCountry The country being attacked.
      * @return True if the attack was successful and the target country was conquered, false otherwise.
@@ -117,7 +121,7 @@ public class AdvanceOrder implements Order {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".";
     }
 

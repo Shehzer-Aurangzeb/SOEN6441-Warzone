@@ -3,7 +3,9 @@ package models.Country;
 import models.Enums.PlayerType;
 
 import java.util.ArrayList;
+
 import static utils.Helpers.*;
+
 /**
  * Represents a country in a game map.
  */
@@ -14,11 +16,12 @@ public class Country {
     private ArrayList<Country> d_neighbours;
     private int d_armiesDeployed;
     private PlayerType d_player;
+
     /**
      * Constructs a new country.
      *
-     * @param new_id         The unique identifier of the country.
-     * @param new_name       The name of the country.
+     * @param new_id          The unique identifier of the country.
+     * @param new_name        The name of the country.
      * @param new_continentId The ID of the continent to which the country belongs.
      */
     public Country(int new_id, String new_name, int new_continentId) {
@@ -26,13 +29,14 @@ public class Country {
         this.d_name = new_name;
         this.d_continentId = new_continentId;
         this.d_neighbours = new ArrayList<>();
-        this.d_armiesDeployed= 0;
+        this.d_armiesDeployed = 0;
         this.d_player = PlayerType.NEUTRAL;
     }
+
     /**
      * Constructs a new country.
      *
-     * @param new_name       The name of the country.
+     * @param new_name        The name of the country.
      * @param new_continentId The ID of the continent to which the country belongs.
      */
     public Country(String new_name, int new_continentId) {
@@ -40,7 +44,7 @@ public class Country {
         this.d_name = new_name;
         this.d_continentId = new_continentId;
         this.d_neighbours = new ArrayList<>();
-        this.d_armiesDeployed= 0;
+        this.d_armiesDeployed = 0;
     }
 
     /**
@@ -51,6 +55,7 @@ public class Country {
     public int getID() {
         return this.d_id;
     }
+
     /**
      * Retrieves the armies deployed of the country.
      *
@@ -84,8 +89,15 @@ public class Country {
      * @return The player owning the country.
      */
     public PlayerType getPlayer() {
-        return this.d_player;
+        if (this.d_player != null) {
+            return this.d_player;
+        } else {
+            // Handle the situation when the player is null
+            // For example, you can return a default player type
+            return PlayerType.NEUTRAL; // Or any other default player type
+        }
     }
+
     /**
      * Retrieves the list of neighbouring countries.
      *
@@ -139,6 +151,7 @@ public class Country {
     public void setPlayer(PlayerType player) {
         this.d_player = player;
     }
+
     /**
      * Adds a neighbouring country to the list of neighbours.
      *
@@ -156,16 +169,6 @@ public class Country {
     public void removeNeighbor(Country p_neighbor) {
         this.d_neighbours.remove(p_neighbor);
     }
-
-    public PlayerType getPlayer_1() {
-        if (this.d_player != null) {
-            return this.d_player;
-        } else {
-            // Handle the situation when the player is null
-            // For example, you can return a default player type
-            return PlayerType.NEUTRAL; // Or any other default player type
-}
-}
 
     /**
      * Returns a string representation of the country.
