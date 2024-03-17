@@ -16,21 +16,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PlayerTest {
 
     private Player player;
-    private String[] command;
-    private int countryID;
-    private int noOfArmies;
-    private ByteArrayOutputStream outContent1 = new ByteArrayOutputStream();
-    private Map map;
+    private final ByteArrayOutputStream outContent1 = new ByteArrayOutputStream();
 
     @BeforeEach
     void setUp() {
-        map = new Map();
+        Map map = new Map();
         player = new Player("Player A");
         MapHolder.setMap(map);
         // Set up test data
-        command = new String[]{"deploy", "1", "5"};
-        countryID = Integer.parseInt(command[1]);
-        noOfArmies = Integer.parseInt(command[2]);
+        String[] command = new String[]{"deploy", "1", "5"};
+        int countryID = Integer.parseInt(command[1]);
+        int noOfArmies = Integer.parseInt(command[2]);
     }
 
     @Test

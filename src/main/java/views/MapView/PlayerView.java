@@ -6,6 +6,7 @@ import models.Map.Map;
 import models.MapHolder.MapHolder;
 import models.Player.Player;
 import models.PlayerHolder.PlayerHolder;
+import utils.ViewUtils;
 
 import java.util.ArrayList;
 /**
@@ -20,7 +21,6 @@ public class PlayerView {
         displayPlayerCountries(PlayerHolder.getPlayers(), MapHolder.getMap());
 
     }
-
     /**
      * Displays the owned countries of each player along with relevant information.
      *
@@ -46,8 +46,8 @@ public class PlayerView {
             }
 
             for (Country c : p.getOwnedCountries()) {
-                String l_continentName = getContinentName(p_continents, c.getContinentID());
-                String l_name = MapView.getNeighbourName(c);
+                String l_continentName = ViewUtils.getContinentName(p_continents, c.getContinentID());
+                String l_name = ViewUtils.getNeighbourName(c);
 
                 // Calculate max country name length
                 int countryNameLength = c.getName().length();
@@ -75,30 +75,31 @@ public class PlayerView {
             }
         }
 
-        int[] columnWidths = {maxNameLength + 2, maxCountryNameLength + 2, maxNoOfArmyLength + 2, maxContinentLength + 2, maxNeighboursLength + 2}; // Widths for Country ID, Name, Continent, Neighbours
-        int totalWidth = calculateTotalWidth(columnWidths) + 11;
+        int[] columnWidths = {maxNameLength + 2, maxCountryNameLength + 2, maxCountryNameLength + 2, maxNoOfArmyLength + 2, maxContinentLength + 2, maxNeighboursLength + 2}; // Widths for Country ID, Name, Continent, Neighbours
+        int totalWidth = ViewUtils.calculateTotalWidth(columnWidths) + 13;
 
         // Print header
         System.out.println("Map Information:");
-        printSeparator(totalWidth);
+        ViewUtils.printSeparator(totalWidth);
 
         String h1 = "Player";
         String h2 = "Country Owned";
-        String h3 = "Armies Deployed";
-        String h4 = "Continent";
-        String h5 = "Neighbours";
+        String h3 = "Country Name";
+        String h4 = "Armies Deployed";
+        String h5 = "Continent";
+        String h6 = "Neighbours";
 
-        System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "s| %-" + columnWidths[2] + "s| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s|\n", h1, h2, h3, h4, h5);
-        printSeparator(totalWidth);
+        System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "s| %-" + columnWidths[2] + "s| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s| %-" + columnWidths[5] + "s|\n", h1, h2, h3, h4, h5, h6);
+        ViewUtils.printSeparator(totalWidth);
         for (Player p : playersList) {
             for (Country c : p.getOwnedCountries()) {
-                String l_continentName = getContinentName(p_continents, c.getContinentID());
-                String l_name = MapView.getNeighbourName(c);
+                String l_continentName = ViewUtils.getContinentName(p_continents, c.getContinentID());
+                String l_name = ViewUtils.getNeighbourName(c);
                 int no_of_armies_in_country = c.getArmiesDeployed();
-                System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "d| %-" + columnWidths[2] + "d| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s|\n", p.getName(), c.getID(), no_of_armies_in_country, l_continentName, l_name);
+                System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "d| %-" + columnWidths[2] + "s| %-" + columnWidths[3] + "d| %-" + columnWidths[4] + "s| %-" + columnWidths[5] + "s|\n", p.getName(), c.getID(), c.getName(), no_of_armies_in_country, l_continentName, l_name);
             }
         }
-        printSeparator(totalWidth);
+        ViewUtils.printSeparator(totalWidth);
         for (Player p : playersList) {
             int l_countryCount =0;
             for (Country c : p.getOwnedCountries()) {
@@ -107,44 +108,10 @@ public class PlayerView {
             System.out.println("Player "+p.getName()+" owns "+l_countryCount+" countries.");
         }
     }
-
-    /**
-     * Prints a separator line of specified width.
-     *
-     * @param width The width of the separator line.
-     */
-    private static void printSeparator(int width) {
-        System.out.println("".format("%-" + (width) + "s", "").replace(' ', '_'));
-    }
-
-    /**
-     * Calculates the total width required for formatting.
-     *
-     * @param columnWidths An array of column widths.
-     * @return The total width.
-     */
-    private static int calculateTotalWidth(int[] columnWidths) {
-        int totalWidth = 0;
-        for (int width : columnWidths) {
-            totalWidth += width;
-        }
-        return totalWidth ; // the total number of characters in the header line
-    }
-
-    /**
-     * Retrieves the name of the continent from the provided continent list based on the continent ID.
-     *
-     * @param p_continents An ArrayList containing Continent objects representing continents.
-     * @param p_continentID The ID of the continent whose name is to be retrieved.
-     * @return The name of the continent.
-     */
-    private static String getContinentName(ArrayList<Continent> p_continents, int p_continentID) {
-        for (Continent continent : p_continents) {
-            if (continent.getID() == p_continentID) {
-                return continent.getName();
-            }
-        }
-        return "Unknown"; // If continent ID not found, return "Unknown"
+    public static void displayMyMap(Player player) {
+        ArrayList<Player> playerList = new ArrayList<>();
+        playerList.add(player);
+        displayPlayerCountries(playerList, MapHolder.getMap());
     }
 
 }

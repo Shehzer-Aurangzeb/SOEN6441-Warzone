@@ -37,13 +37,13 @@ public class LogEntryWriter implements Observer, Serializable {
     public void writeLogFile(String p_str) {
         PrintWriter l_WriteData = null;
         try {
-            l_WriteData = new PrintWriter(new BufferedWriter(new FileWriter("src/main/logFiles/" + l_Filename + ".txt", true)));
+            l_WriteData = new PrintWriter(new BufferedWriter(new FileWriter("src/main/resources/logFiles/" + l_Filename + ".txt", true)));
             l_WriteData.println(p_str);
 
         } catch (Exception p_Exception) {
             System.out.println(p_Exception.getMessage());
         } finally {
-            if(l_WriteData!=null)l_WriteData.close();
+            l_WriteData.close();
         }
     }
 

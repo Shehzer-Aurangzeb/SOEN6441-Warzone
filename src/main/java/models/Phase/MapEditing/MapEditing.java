@@ -2,6 +2,7 @@ package models.Phase.MapEditing;
 
 import controllers.GameEngine.GameEngine;
 import controllers.MapEditor.MapEditor;
+import log.LogEntryBuffer;
 import models.Enums.GamePhase;
 import models.Map.Map;
 import models.MapHolder.MapHolder;
@@ -17,6 +18,7 @@ import static adapters.FileAdapter.FileAdapter.isFileExists;
 
 public abstract class MapEditing extends Phase {
     public static boolean isMapLoaded=false;
+    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
     public MapEditing(GameEngine new_ge,GamePhase new_phaseName){
         super(new_ge,new_phaseName);
     }
@@ -30,6 +32,8 @@ public abstract class MapEditing extends Phase {
                 p_mapEditor.setCurrentEditingFilename(p_filename);
                 isMapLoaded=true;
                 System.out.println("\nMap loaded successfully. Type 'proceed' to move to the next phase of the game.");
+                d_logger.log("Map '" + p_filename + "' has been loaded.");
+
             } catch (FileNotFoundException e) {
                 System.out.println("File not found.");
             } catch (IOException e) {
@@ -39,6 +43,7 @@ public abstract class MapEditing extends Phase {
         } else {
             System.out.println("\nThe specified map file does not exist." +
                     " Please make sure the file name is correct or create a new map.");
+            d_logger.log("Map '" + p_filename + "' does not exist.");
         }
     }
     public void editMap(String p_filename, MapEditor p_mapEditor){
@@ -57,6 +62,7 @@ public abstract class MapEditing extends Phase {
                 p_mapEditor.setMapInRegistry(p_filename, new Map());
                 p_mapEditor.setCurrentEditingFilename(p_filename);
                 System.out.println("\nNew map '" + p_filename + "' created. Ready to edit.");
+                d_logger.log("Map "+ p_filename + " has been created.");
             }
             isMapLoaded=true;
         }
