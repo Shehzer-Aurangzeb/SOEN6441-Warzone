@@ -1,0 +1,8 @@
+Welcome to Warzone Game!
+
+
+============== MAP_EDITING_PRELOAD Phase ==============
+
+Map 'canada' has been loaded.
+Showmap command entered.
+Exiting the game....
