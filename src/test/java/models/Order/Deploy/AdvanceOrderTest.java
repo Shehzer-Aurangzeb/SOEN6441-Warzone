@@ -1,6 +1,6 @@
 package models.Order.Deploy;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import models.Country.Country;
@@ -10,6 +10,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class AdvanceOrderTest {
+
+    private Country sourceCountry;
+    private Country targetCountry;
+    private AdvanceOrder advanceOrder;
 
     @BeforeEach
     public void setUp() {
@@ -85,4 +89,28 @@ public class AdvanceOrderTest {
         // Verify the output message
         assertEquals("Advancing 5 armies from InvalidCountry to InvalidCountry.", advanceOrder.toString());
     }
+
+    @Test
+    public void simulateAttack_ConquestSuccessful() {
+
+        sourceCountry = mock(Country.class);
+        targetCountry = mock(Country.class);
+
+        // Setup common configurations for the mock countries
+        when(sourceCountry.getArmiesDeployed()).thenReturn(100);
+        when(targetCountry.getArmiesDeployed()).thenReturn(30);
+
+        // Create the AdvanceOrder instance for testing
+        advanceOrder = new AdvanceOrder("SourceCountry", "TargetCountry", 50);
+        // Configure the target country to have fewer armies, indicating a successful attack
+        when(targetCountry.getArmiesDeployed()).thenReturn(20);
+
+        // Perform the simulated attack
+        boolean result = advanceOrder.simulateAttack(sourceCountry, targetCountry);
+
+        // Assert that the conquest was successful
+        assertTrue(result, "The attack should be successful and return true");
+    }
+
+
 }

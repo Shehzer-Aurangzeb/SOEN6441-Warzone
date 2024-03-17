@@ -157,6 +157,16 @@ public class Country {
         this.d_neighbours.remove(p_neighbor);
     }
 
+    public PlayerType getPlayer_1() {
+        if (this.d_player != null) {
+            return this.d_player;
+        } else {
+            // Handle the situation when the player is null
+            // For example, you can return a default player type
+            return PlayerType.NEUTRAL; // Or any other default player type
+}
+}
+
     /**
      * Returns a string representation of the country.
      *

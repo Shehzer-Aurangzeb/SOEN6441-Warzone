@@ -80,6 +80,7 @@ public class GameEngine {
                     break;
                 case EXECUTE_ORDERS:
                     d_currentGamePhase.executeOrders();
+                    awardCardsAndResetConquests();
                     break;
             }
         }
@@ -207,6 +208,15 @@ public class GameEngine {
             int l_armyCount = player.getOwnedCountries().size() / 3;
             if (l_armyCount < 3) l_armyCount = 3;
             player.setNoOfArmies(l_armyCount);
+        }
+    }
+
+    private void awardCardsAndResetConquests() {
+        for (Player player : PlayerHolder.getPlayers()) {
+            if (player.hasConqueredThisTurn()) {
+                player.addRandomCard(); // Award a random card
+                player.setConqueredThisTurn(false); // Reset for the next turn
+            }
         }
     }
 

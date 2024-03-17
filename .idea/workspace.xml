@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f66b9fb-5e7c-4099-9f0d-25590f8807da" name="Changes" comment="removed testcases from PlayerTest">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Suite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/ModelsTestSuite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/logFiles/logs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/FeedbackTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/AdvanceOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Order/Deploy/AdvanceOrderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,6 +54,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JUnit.AdvanceOrderTest.simulateAttack_ConquestFailed.executor": "Run",
+    "JUnit.AdvanceOrderTest.simulateAttack_ConquestSuccessful.executor": "Run",
+    "JUnit.AdvanceOrderTest.testExecute_InvalidCountries.executor": "Run",
+    "JUnit.AdvanceOrderTest.testExecute_SourceCountryDoesNotHaveEnoughArmies.executor": "Run",
+    "JUnit.AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies.executor": "Run",
     "JUnit.PlayerTest.executor": "Run",
     "JUnit.PlayerViewTest.executor": "Run",
     "JUnit.TestSuite.executor": "Run",
@@ -66,7 +70,7 @@
     "Maven.Warzone [test,-X].executor": "Run",
     "Maven.Warzone [test].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "git-widget-placeholder": "Merging develop",
+    "git-widget-placeholder": "latest-code__1",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -98,94 +102,110 @@
       <command value="mvn dependency:tree " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ModelsTestSuite">
-    <configuration name="MapValidatorTest.ValidMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
+  <component name="RunManager" selected="JUnit.AdvanceOrderTest.simulateAttack_ConquestSuccessful">
+    <configuration name="AdvanceOrderTest.simulateAttack_ConquestFailed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SOEN6441-Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.Map.*" />
+          <option name="PATTERN" value="models.Order.Deploy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.Map" />
-      <option name="MAIN_CLASS_NAME" value="models.Map.MapValidatorTest" />
-      <option name="METHOD_NAME" value="ValidMap" />
+      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
+      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.AdvanceOrderTest" />
+      <option name="METHOD_NAME" value="simulateAttack_ConquestFailed" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModelsTestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
+    <configuration name="AdvanceOrderTest.simulateAttack_ConquestSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SOEN6441-Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.*" />
+          <option name="PATTERN" value="models.Order.Deploy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models" />
-      <option name="MAIN_CLASS_NAME" value="models.ModelsTestSuite" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
+      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.AdvanceOrderTest" />
+      <option name="METHOD_NAME" value="simulateAttack_ConquestSuccessful" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
+    <configuration name="AdvanceOrderTest.testExecute_InvalidCountries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SOEN6441-Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.Player.*" />
+          <option name="PATTERN" value="models.Order.Deploy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.Player" />
-      <option name="MAIN_CLASS_NAME" value="models.Player.PlayerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
+      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.AdvanceOrderTest" />
+      <option name="METHOD_NAME" value="testExecute_InvalidCountries" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
+    <configuration name="AdvanceOrderTest.testExecute_SourceCountryDoesNotHaveEnoughArmies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SOEN6441-Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="views.MapView.*" />
+          <option name="PATTERN" value="models.Order.Deploy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="views.MapView" />
-      <option name="MAIN_CLASS_NAME" value="views.MapView.PlayerViewTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
+      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.AdvanceOrderTest" />
+      <option name="METHOD_NAME" value="testExecute_SourceCountryDoesNotHaveEnoughArmies" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Warzone" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestSuite" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SOEN6441-Warzone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.Order.Deploy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models.Order.Deploy" />
+      <option name="MAIN_CLASS_NAME" value="models.Order.Deploy.AdvanceOrderTest" />
+      <option name="METHOD_NAME" value="testExecute_SourceCountryHasEnoughArmies" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ModelsTestSuite" />
-      <item itemvalue="JUnit.PlayerTest" />
-      <item itemvalue="JUnit.PlayerViewTest" />
-      <item itemvalue="JUnit.MapValidatorTest.ValidMap" />
-      <item itemvalue="JUnit.TestSuite" />
+      <item itemvalue="JUnit.AdvanceOrderTest.simulateAttack_ConquestFailed" />
+      <item itemvalue="JUnit.AdvanceOrderTest.simulateAttack_ConquestSuccessful" />
+      <item itemvalue="JUnit.AdvanceOrderTest.testExecute_InvalidCountries" />
+      <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryDoesNotHaveEnoughArmies" />
+      <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ModelsTestSuite" />
-        <item itemvalue="JUnit.TestSuite" />
-        <item itemvalue="JUnit.PlayerTest" />
-        <item itemvalue="JUnit.PlayerViewTest" />
-        <item itemvalue="JUnit.MapValidatorTest.ValidMap" />
+        <item itemvalue="JUnit.AdvanceOrderTest.simulateAttack_ConquestSuccessful" />
+        <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies" />
+        <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryDoesNotHaveEnoughArmies" />
+        <item itemvalue="JUnit.AdvanceOrderTest.testExecute_InvalidCountries" />
+        <item itemvalue="JUnit.AdvanceOrderTest.simulateAttack_ConquestFailed" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -45,29 +45,24 @@ public class AdvanceOrder implements Order {
         Country sourceCountry = MapHolder.getMap().getCountryByName(this.d_countryFrom);
         Country targetCountry = MapHolder.getMap().getCountryByName(this.d_countryTo);
 
-        if (sourceCountry != null && targetCountry != null && sourceCountry.getArmiesDeployed() >= d_noOfArmies) {
-            if (!sourceCountry.getPlayer().equals(targetCountry.getPlayer())) {
-                boolean conquered = simulateAttack(sourceCountry, targetCountry);
-
-                if (conquered) {
-                    // Transfer ownership
-                    targetCountry.setPlayer(sourceCountry.getPlayer());
-                    System.out.println("Conquered " + targetCountry.getName());
-                } else {
-                    System.out.println("Attack on " + targetCountry.getName() + " failed.");
-                }
-            } else {
-                System.out.println("Cannot attack your own country.");
-            }
-        } else {
-            System.out.println("Invalid operation. Either countries don't exist or not enough armies.");
-        }
-        // Check if both countries exist
         if (sourceCountry != null && targetCountry != null) {
-            // Check if the source country has enough armies to advance
-            if (sourceCountry.getArmiesDeployed() >= this.d_noOfArmies) {
+            int sourceArmies = sourceCountry.getArmiesDeployed(); // Store the number of armies deployed in a variable
+            if (sourceArmies >= this.d_noOfArmies) {
+                if (sourceCountry.getPlayer() != null && !sourceCountry.getPlayer().equals(targetCountry.getPlayer())) {
+                    boolean conquered = simulateAttack(sourceCountry, targetCountry);
+
+                    if (conquered) {
+                        // Transfer ownership
+                        targetCountry.setPlayer(sourceCountry.getPlayer());
+                        System.out.println("Conquered " + targetCountry.getName());
+                    } else {
+                        System.out.println("Attack on " + targetCountry.getName() + " failed.");
+                    }
+                } else {
+                    System.out.println("Invalid operation. Either countries don't exist or not enough armies.");
+                }
                 // Move the specified number of armies from the source country to the target country
-                int remainingArmies = Math.max(0, sourceCountry.getArmiesDeployed() - this.d_noOfArmies);
+                int remainingArmies = Math.max(0, sourceArmies - this.d_noOfArmies); // Use the stored variable here
                 sourceCountry.setArmiesDeployed(remainingArmies);
                 targetCountry.setArmiesDeployed(targetCountry.getArmiesDeployed() + this.d_noOfArmies);
                 System.out.println("Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".");
@@ -76,7 +71,7 @@ public class AdvanceOrder implements Order {
             }
         } else {
             System.out.println("Invalid source or target country for advance order.");
-        }
+}
     }
 
     /**
@@ -93,7 +88,7 @@ public class AdvanceOrder implements Order {
      * @param targetCountry The country being attacked.
      * @return True if the attack was successful and the target country was conquered, false otherwise.
      */
-    private boolean simulateAttack(Country sourceCountry, Country targetCountry) {
+    public boolean simulateAttack(Country sourceCountry, Country targetCountry) {
         int attackingArmies = d_noOfArmies; // Number of armies attacking
         int defendingArmies = targetCountry.getArmiesDeployed(); // Number of armies defending
         Random rand = new Random();

@@ -1,9 +1,13 @@
 package models.Player;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.Random;
 import java.util.Scanner;
 import log.LogEntryBuffer;
+import models.Card.Card;
 import models.Country.Country;
+import models.Enums.CardType;
 import models.Enums.GamePhase;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
@@ -29,9 +33,13 @@ public class Player {
     private boolean hasOrders;
     private boolean lastCommandValidForOrders;
 
+    private boolean conqueredThisTurn = false;
+
     private Scanner sc = new Scanner(System.in);
     private GamePhase currentPhase;
     private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
+    private ArrayList<Card> d_cards = new ArrayList<>();
+
     /**
      * Initializes a player with the given name.
      *
@@ -398,4 +406,24 @@ public class Player {
             System.out.println("Invalid player ID. Please provide a valid integer.");
         }
     }
+
+    public void addRandomCard() {
+        CardType[] cardTypes = CardType.values();
+        CardType randomType = cardTypes[new Random().nextInt(cardTypes.length)];
+        Card newCard = new Card(randomType);
+        this.d_cards.add(newCard);
+        System.out.println(this.d_playerName + " received a " + randomType + " card.");
+    }
+
+
+
+    public void setConqueredThisTurn(boolean conquered) {
+        this.conqueredThisTurn = conquered;
+    }
+
+    public boolean hasConqueredThisTurn() {
+        return this.conqueredThisTurn;
+    }
+
+
 }
