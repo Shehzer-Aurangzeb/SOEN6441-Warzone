@@ -8,6 +8,11 @@
     <artifactId>Warzone</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+<!--    <properties>-->
+<!--        <maven.compiler.source>17</maven.compiler.source>-->
+<!--        <maven.compiler.target>17</maven.compiler.target>-->
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--    </properties>-->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -70,9 +75,24 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <profiles>
+        <profile>
+            <id>disable-java8-doclint</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <properties>
+                <doclint>none</doclint>
+            </properties>
+        </profile>
+    </profiles>
     <build>
         <plugins>
+            <plugin>
+                <groupId>io.github.dathin</groupId>
+                <artifactId>jhusky</artifactId>
+                <version>1.0.9</version> <!--  Currently this is the latest version  -->
+            </plugin>
             <!-- Maven Compiler Plugin to set the Java version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -84,14 +104,12 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven Surefire Plugin for running tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <configuration>
+                </configuration>
             </plugin>
-
-            <!-- Maven Javadoc Plugin for generating documentation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -99,9 +117,10 @@
                 <configuration>
                     <outputDirectory>${project.basedir}/javadoc/</outputDirectory>
                     <reportOutputDirectory>${project.basedir}/javadoc/</reportOutputDirectory>
-                    <source>${maven.compiler.source}</source>
+                    <source>17</source>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>

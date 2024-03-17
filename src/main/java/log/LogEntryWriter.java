@@ -43,7 +43,7 @@ public class LogEntryWriter implements Observer, Serializable {
         } catch (Exception p_Exception) {
             System.out.println(p_Exception.getMessage());
         } finally {
-            l_WriteData.close();
+            if(l_WriteData!=null)l_WriteData.close();
         }
     }
 

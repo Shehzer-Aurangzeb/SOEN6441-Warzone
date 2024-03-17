@@ -50,7 +50,8 @@ public class MapEditor {
      */
     public void loadMap(File p_file) throws FileNotFoundException, IOException {
         d_map=new Map();
-        List<Continent> l_mapContinents= d_map.getContinents();
+        //reset the continent last assigned id.
+        Continent.lastAssignedID=1;
         BufferedReader READER = new BufferedReader(new FileReader(p_file));
         String l_line = READER.readLine();
         boolean l_startReading = false;
@@ -69,7 +70,7 @@ public class MapEditor {
                 l_lineType = LineType.NEIGHBOR;
 
             } else if (l_startReading) {
-                processMapLine(l_line, l_lineType,l_mapContinents);
+                processMapLine(l_line, l_lineType);
             }
             l_line = READER.readLine();
         }
@@ -270,7 +271,7 @@ public class MapEditor {
         Continent.lastAssignedID = newID;
     }
 
-    private void processMapLine(String p_line, LineType p_lineType,List<Continent> p_mapContinents) {
+    private void processMapLine(String p_line, LineType p_lineType) {
         // skips empty line or comments. comment starts with ;
         if (p_line.isBlank() || p_line.startsWith(";")) return;
         String[] l_parts = p_line.split(" ");
@@ -279,7 +280,7 @@ public class MapEditor {
                 processContinentLine(l_parts);
                 break;
             case COUNTRY:
-                processCountryLine(l_parts,p_mapContinents);
+                processCountryLine(l_parts);
                 break;
             case NEIGHBOR:
                 processNeighborLine(l_parts);
@@ -296,11 +297,13 @@ public class MapEditor {
         d_map.addContinent(l_continent);
     }
 
-    private void processCountryLine(String[] p_parts,List<Continent> p_mapContinents) {
+    private void processCountryLine(String[] p_parts) {
+        List<Continent> l_mapContinents= d_map.getContinents();
+        System.out.println("continents"+ l_mapContinents.size());
         int l_countryId = Integer.parseInt(p_parts[0]);
         String l_countryName = p_parts[1];
         int l_continentIndex=Integer.parseInt(p_parts[2])-1;
-        int l_continentId = p_mapContinents.get(l_continentIndex).getID();
+        int l_continentId = l_mapContinents.get(l_continentIndex).getID();
         Country l_country = new Country(l_countryId, l_countryName, l_continentId);
         d_map.addCountry(l_country);
     }
