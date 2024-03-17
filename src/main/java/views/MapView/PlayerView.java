@@ -75,8 +75,8 @@ public class PlayerView {
             }
         }
 
-        int[] columnWidths = {maxNameLength + 2, maxCountryNameLength + 2, maxNoOfArmyLength + 2, maxContinentLength + 2, maxNeighboursLength + 2}; // Widths for Country ID, Name, Continent, Neighbours
-        int totalWidth = ViewUtils.calculateTotalWidth(columnWidths) + 11;
+        int[] columnWidths = {maxNameLength + 2, maxCountryNameLength + 2, maxCountryNameLength + 2, maxNoOfArmyLength + 2, maxContinentLength + 2, maxNeighboursLength + 2}; // Widths for Country ID, Name, Continent, Neighbours
+        int totalWidth = ViewUtils.calculateTotalWidth(columnWidths) + 13;
 
         // Print header
         System.out.println("Map Information:");
@@ -84,18 +84,19 @@ public class PlayerView {
 
         String h1 = "Player";
         String h2 = "Country Owned";
-        String h3 = "Armies Deployed";
-        String h4 = "Continent";
-        String h5 = "Neighbours";
+        String h3 = "Country Name";
+        String h4 = "Armies Deployed";
+        String h5 = "Continent";
+        String h6 = "Neighbours";
 
-        System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "s| %-" + columnWidths[2] + "s| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s|\n", h1, h2, h3, h4, h5);
+        System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "s| %-" + columnWidths[2] + "s| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s| %-" + columnWidths[5] + "s|\n", h1, h2, h3, h4, h5, h6);
         ViewUtils.printSeparator(totalWidth);
         for (Player p : playersList) {
             for (Country c : p.getOwnedCountries()) {
                 String l_continentName = ViewUtils.getContinentName(p_continents, c.getContinentID());
                 String l_name = ViewUtils.getNeighbourName(c);
                 int no_of_armies_in_country = c.getArmiesDeployed();
-                System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "d| %-" + columnWidths[2] + "d| %-" + columnWidths[3] + "s| %-" + columnWidths[4] + "s|\n", p.getName(), c.getID(), no_of_armies_in_country, l_continentName, l_name);
+                System.out.printf("| %-" + columnWidths[0] + "s| %-" + columnWidths[1] + "d| %-" + columnWidths[2] + "s| %-" + columnWidths[3] + "d| %-" + columnWidths[4] + "s| %-" + columnWidths[5] + "s|\n", p.getName(), c.getID(), c.getName(), no_of_armies_in_country, l_continentName, l_name);
             }
         }
         ViewUtils.printSeparator(totalWidth);
