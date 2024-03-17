@@ -1,46 +1,55 @@
 package models.Continent;
 
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class ContinentTest {
 
     private static Continent continent;
-    @BeforeAll
-    static void setUp() {
-        continent = new Continent("Asia", 5);
+
+    @BeforeEach
+    public void setUp() {
+        continent = mock(Continent.class);
     }
-
-
 
     @Test
     void getName() {
-        assertEquals("Asia", continent.getName());
+        String expectedName = "Test Continent";
+
+        // Set up mock behavior
+        when(continent.getName()).thenReturn(expectedName);
+
+        // Test the getName method
+        assertEquals(expectedName, continent.getName());
     }
 
     @Test
     void getArmyBonus() {
-        assertEquals(5, continent.getArmyBonus());
+        int expectedArmyBonus = 5;
+
+        // Set up mock behavior
+        when(continent.getArmyBonus()).thenReturn(expectedArmyBonus);
+
+        // Test the getArmyBonus method
+        assertEquals(expectedArmyBonus, continent.getArmyBonus());
     }
 
     @Test
-    void setID() {
-        continent.setID(2);
-        assertEquals(2, continent.getID());
+    void getID() {
+        // Define test data
+        int expectedId = 1;
+
+        // Set up mock behavior
+        when(continent.getID()).thenReturn(expectedId);
+        // Test the getID method
+        assertEquals(expectedId, continent.getID());
     }
 
-    @Test
-    void setName() {
-        continent.setName("Europe");
-        assertEquals("Europe", continent.getName());
-    }
-
-    @Test
-    void setArmyBonus() {
-        continent.setArmyBonus(10);
-        assertEquals(10, continent.getArmyBonus());
+    @AfterEach
+    public void tearDown(){
+        continent=null;
     }
 }

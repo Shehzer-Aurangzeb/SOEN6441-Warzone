@@ -1,13 +1,10 @@
 package views.MapView;
 
-import controllers.GameEngine.GameEngine;
-import log.LogEntryBuffer;
 import models.Continent.Continent;
 import models.Country.Country;
+import models.GameContext.GameContext;
 import models.Map.Map;
-import models.MapHolder.MapHolder;
 import utils.ViewUtils;
-
 import java.util.ArrayList;
 
 /**
@@ -15,9 +12,10 @@ import java.util.ArrayList;
  */
 public class MapView {
     private static Map map;
-    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
+
+    private static final GameContext d_ctx= GameContext.getInstance();
     public static void displayMapInformation() {
-        map= MapHolder.getMap();
+        map=d_ctx.getMap();
         if(map.getContinents().isEmpty()){
             System.out.println("\nThe map is currently empty or has not been loaded yet. " +
                     "Please load a map or add elements to the map before using the 'showmap' command.");
@@ -25,7 +23,7 @@ public class MapView {
         }
 
         displayCountriesAndContinents(map.getCountries(), map.getContinents());
-        d_logger.log("Showmap command entered.");
+        d_ctx.updateLog("Showmap command entered.");
     }
 
     /**

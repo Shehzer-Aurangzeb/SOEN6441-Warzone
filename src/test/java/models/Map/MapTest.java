@@ -16,6 +16,10 @@ public class MapTest {
     void setUp() {
         map = new Map();
     }
+    @AfterEach
+    void tearDown() {
+        map = null;
+    }
 
 
     @Test

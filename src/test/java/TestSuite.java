@@ -1,5 +1,7 @@
-import org.junit.platform.suite.api.SelectPackages;
-import org.junit.platform.suite.api.Suite;
+import org.junit.platform.suite.api.*;
+/**
+ * Test Suite for Warzone Game
+ */
 
 @Suite
 @SelectPackages({

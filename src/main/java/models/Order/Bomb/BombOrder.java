@@ -2,7 +2,8 @@ package models.Order.Bomb;
 
 import models.Country.Country;
 import models.Enums.OrderType;
-import models.MapHolder.MapHolder;
+
+import models.GameContext.GameContext;
 import models.Order.Order;
 
 /**
@@ -10,6 +11,7 @@ import models.Order.Order;
  */
 public class BombOrder implements Order {
     private int targetCountryID;
+    private static final GameContext d_ctx= GameContext.getInstance();
 
     /**
      * Initializes a bomb order with the target country.
@@ -35,7 +37,7 @@ public class BombOrder implements Order {
      */
     public void execute() {
         // Get the target country from the map
-        Country targetCountry = MapHolder.getMap().getCountryByID(targetCountryID);
+        Country targetCountry = d_ctx.getMap().getCountryByID(targetCountryID);
 
         // Check if the target country exists
         if (targetCountry != null) {
@@ -61,7 +63,7 @@ public class BombOrder implements Order {
      */
     @Override
     public String toString() {
-        Country targetCountry = MapHolder.getMap().getCountryByID(this.targetCountryID);
+        Country targetCountry = d_ctx.getMap().getCountryByID(this.targetCountryID);
         if (targetCountry != null) {
             int newArmies = Math.max(0, targetCountry.getArmiesDeployed() - 1);
             if (newArmies == 0) {

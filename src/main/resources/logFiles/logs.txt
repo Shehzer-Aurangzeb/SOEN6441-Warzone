@@ -66,3 +66,59 @@ Exiting the game....
 
 ============== null Phase ==============
 
+Map 'canada' has been loaded.
+Map 'canada' has been loaded.
+Player Player1 added.
+Player Player1 removed.
+
+Continent 'Asia' with value '5' has been added.
+Map has been saved.
+Map 'canada' has been loaded.
+Player Player1 added.
+Player Player1 removed.
+
+Continent 'Asia' with value '5' has been added.
+Map has been saved.
+Map 'canada' has been loaded.
+Player Player1 added.
+Player Player1 removed.
+
+Continent 'Asia' with value '5' has been added.
+Map has been saved.
+Map 'canada' has been loaded.
+Player Player1 added.
+Player Player1 removed.
+
+Continent 'Asia' with value '5' has been added.
+Map has been saved.
+Map 'canada' has been loaded.
+Welcome to Warzone Game!
+
+============== Map Editing Phase ==============
+
+Map 'canada' has been loaded.
+Showmap command entered.
+
+Continent 'new' with value '5' has been added.
+Map has been saved.
+Map 'canada' has been loaded.
+Showmap command entered.
+Invalid command entered.
+
+Continent 'new' has been removed.
+Map has been saved.
+Player Shehzar added.
+Player Tania added.
+Countries assigned to players.
+
+============== Issue Order Phase ==============
+
+Showcommands entered for ISSUE_ORDERS phase.
+Player Shehzar deployed 5 armies to country 1
+Player Tania deployed 4 armies to country 2
+Player Tania deployed 1 armies to country 2
+Exiting....
+Welcome to Warzone Game!
+
+============== Map Editing Phase ==============
+

@@ -24,7 +24,6 @@ public class MapValidator {
      * @return true if the map is valid; false otherwise.
      */
     public static boolean validateMap(Map p_map) {
-
         // Retrieve continents and countries from the given map
         ArrayList<Continent> l_continents = p_map.getContinents();
         ArrayList<Country> l_countries = p_map.getCountries();

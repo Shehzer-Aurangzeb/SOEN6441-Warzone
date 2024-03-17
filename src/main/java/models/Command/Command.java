@@ -1,8 +1,8 @@
 package models.Command;
 
 public class Command {
-    private String d_name;
-    private String d_description;
+    private final String d_name;
+    private final String d_description;
     private String[] d_commandArgs;
 
     /**
