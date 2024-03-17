@@ -12,14 +12,10 @@ import static utils.Feedback.*;
 
 public class CommandHandler {
 
-
-    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
-
     /**
      * Handles the exit command by gracefully exiting the game.
      */
     public static void handleExitCommand() {
-        d_logger.log("Exiting the game....");
         System.out.println("Exiting the game. Goodbye!");
         System.exit(0);
     }
@@ -31,7 +27,5 @@ public class CommandHandler {
      */
     public static void handleDisplayCommands(GamePhase p_gamePhase) {
         displayPhaseInstructions(p_gamePhase);
-        d_logger.log("Showcommands entered for " + p_gamePhase + " phase.");
-
     }
 }

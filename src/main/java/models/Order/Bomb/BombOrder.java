@@ -49,6 +49,7 @@ public class BombOrder implements Order {
             } else {
                 // No armies left in the target country
                 System.out.println("Cannot bomb country " + targetCountryID + ". No armies left.");
+                d_ctx.updateLog("Cannot bomb country " + targetCountryID + ". No armies left.");
             }
         } else {
             // Handle the case where the target country does not exist
@@ -69,6 +70,7 @@ public class BombOrder implements Order {
             if (newArmies == 0) {
                 return "Cannot bomb country " + this.targetCountryID + ". No armies left.";
             } else {
+                d_ctx.updateLog("Bombing country " + this.targetCountryID + ". Armies reduced to " + newArmies + ".");
                 return "Bombing country " + this.targetCountryID + ". Armies reduced to " + newArmies + ".";
             }
         } else {

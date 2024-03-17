@@ -2,123 +2,42 @@ Welcome to Warzone Game!
 
 ============== Map Editing Phase ==============
 
-Entered showmap command.
+Map 'europass.map' has been loaded.
 
-============== Startup Phase ==============
+============== MAP_EDITING_POSTLOAD Phase ==============
 
-Entered showmap command.
+Showcommands entered for MAP_EDITING_POSTLOAD phase.
 
-============== Startup Phase ==============
+============== STARTUP Phase ==============
 
-Welcome to Warzone Game!
-
-
-============== MAP_EDITING_PRELOAD Phase ==============
-
-Map 'canada' has been loaded.
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-Exiting the game....
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-
-============== null Phase ==============
-
-Exiting the game....
-
-============== null Phase ==============
-
-Map 'canada' has been loaded.
-Map 'canada' has been loaded.
-Player Player1 added.
-Player Player1 removed.
-
-Continent 'Asia' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.
-Player Player1 added.
-Player Player1 removed.
-
-Continent 'Asia' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.
-Player Player1 added.
-Player Player1 removed.
-
-Continent 'Asia' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.
-Player Player1 added.
-Player Player1 removed.
-
-Continent 'Asia' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.
-Welcome to Warzone Game!
-
-============== Map Editing Phase ==============
-
-Map 'canada' has been loaded.
-Showmap command entered.
-
-Continent 'new' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.
-Showmap command entered.
-Invalid command entered.
-
-Continent 'new' has been removed.
-Map has been saved.
-Player Shehzar added.
-Player Tania added.
+Player P1 added.
+Player P2 added.
 Countries assigned to players.
 
 ============== Issue Order Phase ==============
 
-Showcommands entered for ISSUE_ORDERS phase.
-Player Shehzar deployed 5 armies to country 1
-Player Tania deployed 4 armies to country 2
-Player Tania deployed 1 armies to country 2
-Exiting....
-Welcome to Warzone Game!
 
-============== Map Editing Phase ==============
+Deploy order created.
 
+Deploy order created.
+
+============== Execute Order Phase ==============
+
+Deploying 18 armies to reinforce country 1.
+Deploying 18 armies to reinforce country 2.
+
+============== Issue Order Phase ==============
+
+
+Advance order created for P1.
+
+Advance order created for P2.
+
+============== Execute Order Phase ==============
+
+Advancing 18 armies from Reykjavik to Aberdeen.
+Advancing 18 armies from Ostisland to Glasgow.
+
+============== Issue Order Phase ==============
+
+Exiting the game....

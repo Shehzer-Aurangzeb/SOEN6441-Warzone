@@ -58,8 +58,10 @@ public class AdvanceOrder implements Order {
                         // Transfer ownership
                         targetCountry.setPlayer(sourceCountry.getPlayer());
                         System.out.println("Conquered " + targetCountry.getName());
+                        d_ctx.updateLog("Conquered " + targetCountry.getName());
                     } else {
                         System.out.println("Attack on " + targetCountry.getName() + " failed.");
+                        d_ctx.updateLog("Attack on " + targetCountry.getName() + " failed.");
                     }
                 } else {
                     System.out.println("Invalid operation. Either countries don't exist or not enough armies.");
@@ -69,11 +71,14 @@ public class AdvanceOrder implements Order {
                 sourceCountry.setArmiesDeployed(remainingArmies);
                 targetCountry.setArmiesDeployed(targetCountry.getArmiesDeployed() + this.d_noOfArmies);
                 System.out.println("Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".");
+                d_ctx.updateLog("Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".");
             } else {
                 System.out.println("Not enough armies in " + this.d_countryFrom + " to advance.");
+                d_ctx.updateLog("Not enough armies in " + this.d_countryFrom + " to advance.");
             }
         } else {
             System.out.println("Invalid source or target country for advance order.");
+            d_ctx.updateLog("Invalid source or target country for advance order.");
         }
 
     }

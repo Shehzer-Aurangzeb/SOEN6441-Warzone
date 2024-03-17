@@ -53,7 +53,7 @@ public class LogEntryWriter implements Observer, Serializable {
     @Override
     public void clearLogs() {
         try {
-            File l_File = new File("src/main/logFiles/" + l_Filename + ".txt");
+            File l_File = new File("src/main/resources/logFiles/" + l_Filename + ".txt");
             if (l_File.exists()) {
                 l_File.delete();
             }
