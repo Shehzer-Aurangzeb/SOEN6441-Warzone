@@ -1,15 +1,9 @@
 package controllers.GameEngine;
 
-import controllers.MapEditor.MapEditor;
 import models.Enums.GamePhase;
-import models.Map.Map;
-import models.MapHolder.MapHolder;
-import models.Order.Advance.AdvanceOrder;
+import models.GameContext.GameContext;
 import models.Phase.MapEditing.Preload.Preload;
-import models.Phase.Phase;
 import models.Player.Player;
-import models.PlayerHolder.PlayerHolder;
-import log.LogEntryBuffer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,43 +11,27 @@ import java.util.Scanner;
 import static utils.Feedback.*;
 
 public class GameEngine {
-    private final Scanner d_sc;
-    private final MapEditor d_mapEditor;
+    private final Scanner d_sc = new Scanner(System.in);
+    private final GameContext d_ctx = GameContext.getInstance();
     private String d_command;
-    private final ArrayList<Player> d_players = new ArrayList<>();
-    private static LogEntryBuffer d_logger;
-    private Phase d_currentGamePhase;
-
 
     /**
      * Initializes the GameEngine with default settings.
      */
     public GameEngine() {
-        MapHolder.setMap(new Map());
-        this.d_mapEditor = new MapEditor();
-        d_logger = LogEntryBuffer.getInstance();
-        d_logger.clear();
-        this.d_sc = new Scanner(System.in);
     }
 
-    public void setPhase(Phase new_state) {
-        d_currentGamePhase = new_state;
-    }
-
-    public Phase getPhase() {
-        return d_currentGamePhase;
-    }
 
     /**
      * Starts the game and handles command processing based on the current phase.
      */
     public void startGame() {
         //initially preload phase
-        this.d_currentGamePhase = new Preload(this);
+        d_ctx.setPhase(new Preload(this));
         displayWelcomeMessage();
-        d_logger.log("Welcome to Warzone Game!");
-        d_logger.log("\n============== Map Editing Phase ==============\n");
-        while (d_currentGamePhase.getPhaseName() != GamePhase.ISSUE_ORDERS) {
+        d_ctx.updateLog("Welcome to Warzone Game!");
+        d_ctx.updateLog("\n============== Map Editing Phase ==============\n");
+        while (d_ctx.getPhase().getPhaseName() != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
             d_command = d_sc.nextLine().trim();
             handleCommand();
@@ -65,14 +43,14 @@ public class GameEngine {
      * Starts the main game loop where players issue orders and orders are executed.
      */
     private void startMainGameLoop() {
-        d_logger.log("\n============== Issue Order Phase ==============\n");
+        d_ctx.updateLog("\n============== Issue Order Phase ==============\n");
         while (true) {
-            switch (d_currentGamePhase.getPhaseName()) {
+            switch (d_ctx.getPhase().getPhaseName()) {
                 case ISSUE_ORDERS:
-                    d_currentGamePhase.issueOrders();
+                    d_ctx.getPhase().issueOrders();
                     break;
                 case EXECUTE_ORDERS:
-                    d_currentGamePhase.executeOrders();
+                    d_ctx.getPhase().executeOrders();
                     break;
             }
         }
@@ -87,79 +65,81 @@ public class GameEngine {
         switch (l_commandName) {
             case "loadmap":
                 l_filename = d_command.split(" ")[1];
-                d_currentGamePhase.loadMap(l_filename, d_mapEditor);
+                d_ctx.getPhase().loadMap(l_filename);
                 break;
             case "editmap":
                 l_filename = d_command.split(" ")[1];
-                d_currentGamePhase.editMap(l_filename, d_mapEditor);
+                d_ctx.getPhase().editMap(l_filename);
                 break;
             case "editcontinent", "editcountry", "editneighbor":
-                d_currentGamePhase.modifyMapComponents(d_command, d_mapEditor);
+                d_ctx.getPhase().modifyMapComponents(d_command);
                 break;
             case "savemap":
                 l_filename = d_command.split(" ")[1];
-                d_currentGamePhase.saveMap(l_filename, d_mapEditor);
+                d_ctx.getPhase().saveMap(l_filename);
                 break;
             case "showcommands":
-                d_currentGamePhase.showCommands();
+                d_ctx.getPhase().showCommands();
                 break;
             case "showmap":
-                d_currentGamePhase.showMap();
-                d_logger.log("Entered showmap command.");
+                d_ctx.getPhase().showMap();
+                d_ctx.updateLog("Entered showmap command.");
                 break;
             case "gameplayer":
-                d_currentGamePhase.addOrRemovePlayer(d_command, d_players);
+                d_ctx.getPhase().addOrRemovePlayer(d_command);
                 checkStartGamePrompt();
                 break;
             case "startgame":
-                if (d_players.size() < 2) {
+                if (d_ctx.getGamePlayers().size() < 2) {
                     System.out.println("\nMinimum two players required to start the game.");
                 } else {
-                    PlayerHolder.setPlayers(d_players);
+//                    PlayerHolder.setPlayers(d_players);
                     assignCountries();
                     assignReinforcements();
                     System.out.println("\nReinforcements have been assigned to players.");
-                    d_currentGamePhase.next();
+                    d_ctx.getPhase().next();
                 }
                 break;
             case "proceed":
-                d_logger.log("\n============== Startup Phase ==============\n");
-                d_currentGamePhase.next();
+                d_ctx.updateLog("\n============== Startup Phase ==============\n");
+                d_ctx.getPhase().next();
                 break;
             case "exit":
-                d_currentGamePhase.exit();
+                d_ctx.getPhase().exit();
                 break;
             default:
-                d_currentGamePhase.printInvalidCommandMessage(d_command, d_currentGamePhase.getPhaseName());
-                d_logger.log("Invalid command entered.");
+                d_ctx.getPhase().printInvalidCommandMessage(d_command);
+                d_ctx.updateLog("Invalid command entered.");
                 break;
         }
     }
+
     /**
      * Randomly assigns countries to players.
      */
     private void assignCountries() {
-        int l_numPlayers = d_players.size();
-        for (int i = 0; i < MapHolder.getMap().getCountries().size(); i++) {
-            d_players.get(i % l_numPlayers).addOwnedCountry(MapHolder.getMap().getCountries().get(i));
+        int l_numPlayers = d_ctx.getGamePlayers().size();
+        for (int i = 0; i < d_ctx.getMap().getCountries().size(); i++) {
+            d_ctx.getGamePlayers().get(i % l_numPlayers).addOwnedCountry(d_ctx.getMap().getCountries().get(i));
         }
         System.out.println("\nCountries have been assigned to players.");
-        d_logger.log("Countries assigned to players.");
+        d_ctx.updateLog("Countries assigned to players.");
     }
 
     /**
      * Checks if there are enough players to start the game and prompts the user accordingly.
      */
     private void checkStartGamePrompt() {
-        if (d_players.size() >= 2) {
+        if (d_ctx.getGamePlayers().size() >= 2) {
             System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
         }
     }
+
     /**
      * Assigns reinforcements to players based on the number of countries owned.
      */
-    private static void assignReinforcements() {
-        ArrayList<Player> l_existingPlayer = PlayerHolder.getPlayers();
+    public void assignReinforcements() {
+        ArrayList<Player> l_existingPlayer = d_ctx.getGamePlayers();
         for (Player player : l_existingPlayer) {
             int l_armyCount = player.getOwnedCountries().size() / 3;
             if (l_armyCount < 3) l_armyCount = 3;

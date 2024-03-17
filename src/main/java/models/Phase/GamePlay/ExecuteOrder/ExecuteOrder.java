@@ -6,7 +6,6 @@ import models.Order.Order;
 import models.Phase.GamePlay.GamePlay;
 import models.Phase.GamePlay.IssueOrder.IssueOrder;
 import models.Player.Player;
-import models.PlayerHolder.PlayerHolder;
 
 import java.util.ArrayList;
 
@@ -22,11 +21,11 @@ public class ExecuteOrder extends GamePlay {
     }
 
     public void issueOrders() {
-        printInvalidCommandMessage("issue orders",d_ge.getPhase().getPhaseName());
+        printInvalidCommandMessage("issue orders");
     }
 
     public void executeOrders() {
-        ArrayList<Player> l_existingPlayers = PlayerHolder.getPlayers();
+        ArrayList<Player> l_existingPlayers = d_ctx.getGamePlayers();
         int l_totalOrders = 0;
         for (Player player : l_existingPlayers) {
             l_totalOrders += player.getOrders().size();
@@ -58,8 +57,8 @@ public class ExecuteOrder extends GamePlay {
     /**
      * Assigns reinforcements to players based on the number of countries owned.
      */
-    public static void assignReinforcements() {
-        ArrayList<Player> l_existingPlayer = PlayerHolder.getPlayers();
+    public void assignReinforcements() {
+        ArrayList<Player> l_existingPlayer = d_ctx.getGamePlayers();
         for (Player player : l_existingPlayer) {
             int l_armyCount = player.getOwnedCountries().size() / 3;
             if (l_armyCount < MIN_ARMIES_PER_PLAYER) l_armyCount = MIN_ARMIES_PER_PLAYER;
@@ -70,17 +69,17 @@ public class ExecuteOrder extends GamePlay {
     /**
      * Resets the hasOrders flag for all players after each turn.
      */
-    private static void resetOrdersStatus() {
-        ArrayList<Player> l_existingPlayer = PlayerHolder.getPlayers();
+    private void resetOrdersStatus() {
+        ArrayList<Player> l_existingPlayer = d_ctx.getGamePlayers();
         for (Player player : l_existingPlayer) {
             player.setHasOrders(true);
         }
     }
-    public void addOrRemovePlayer(String p_command, ArrayList<Player> p_existingPlayers) {
-        printInvalidCommandMessage(p_command,d_ge.getPhase().getPhaseName());
+    public void addOrRemovePlayer(String p_command) {
+        printInvalidCommandMessage(p_command);
     }
     public void next(){
        //go back to issue orders
-        d_ge.setPhase(new IssueOrder(d_ge));
+        d_ctx.setPhase(new IssueOrder(d_ge));
     }
 }

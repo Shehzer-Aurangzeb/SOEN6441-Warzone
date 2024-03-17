@@ -10,12 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FileAdapterTest {
     private static String fileName;
-    private static String filePath;
     private static File file;
     @org.junit.jupiter.api.BeforeAll
     static void setUp() {
         fileName="testfile.map";
-        filePath = FileAdapter.BASE_PATH + fileName;
+        String filePath = FileAdapter.BASE_PATH + fileName;
         file = new File(filePath);
         // Create the file
         try {

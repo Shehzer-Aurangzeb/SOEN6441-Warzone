@@ -3,8 +3,8 @@ package controllers.MapEditor;
 import models.Continent.Continent;
 import models.Country.Country;
 import models.Enums.LineType;
+import models.GameContext.GameContext;
 import models.Map.Map;
-import models.MapHolder.MapHolder;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,6 +23,13 @@ public class MapEditor {
     public HashMap<String, Map> getMapRegistry() {
         return this.d_mapRegistry;
     }
+
+    private final GameContext d_ctx;
+
+    public MapEditor(GameContext ctx) {
+        this.d_ctx = ctx;
+    }
+
 
     /**
      * Retrieves the file currently being edited.
@@ -74,7 +81,7 @@ public class MapEditor {
             l_line = READER.readLine();
         }
         //when done loading set the global state
-        MapHolder.setMap(d_map);
+        d_ctx.setMap(d_map);
         d_map=null;
 
     }

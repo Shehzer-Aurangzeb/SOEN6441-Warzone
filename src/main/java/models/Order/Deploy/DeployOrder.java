@@ -2,7 +2,7 @@ package models.Order.Deploy;
 
 import models.Country.Country;
 import models.Enums.OrderType;
-import models.MapHolder.MapHolder;
+import models.GameContext.GameContext;
 import models.Order.Order;
 import models.Player.Player;
 
@@ -12,7 +12,8 @@ import models.Player.Player;
 public class DeployOrder implements Order {
     private int d_targetCountry;
     private int d_noOfArmies;
-    private Player player; // Declare the Player variable
+    private static final GameContext d_ctx= GameContext.getInstance();
+
 
     /**
      * Initializes a deployment order with the target country and number of armies to deploy.
@@ -20,10 +21,10 @@ public class DeployOrder implements Order {
      * @param p_countryID    The target country to deploy armies to.
      * @param p_noOfArmies The number of armies to deploy.
      */
-    public DeployOrder(int p_countryID, int p_noOfArmies, Player player){
+    public DeployOrder(int p_countryID, int p_noOfArmies){
         this.d_targetCountry = p_countryID;
         this.d_noOfArmies = p_noOfArmies;
-        this.player = player; // Assign the Player variable
+
     }
 
     /**
@@ -39,13 +40,9 @@ public class DeployOrder implements Order {
      * Executes the deployment order.
      */
     public void execute(){
-        Country country = MapHolder.getMap().getCountryByID(this.d_targetCountry);
+        Country country = d_ctx.getMap().getCountryByID(this.d_targetCountry);
         country.setArmiesDeployed(this.d_noOfArmies);
     }
-
-
-
-
     @Override
     public String toString(){
         return "Deploying " + this.d_noOfArmies + " armies to reinforce country " + this.d_targetCountry + ".";

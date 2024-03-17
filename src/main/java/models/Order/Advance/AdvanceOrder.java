@@ -2,7 +2,7 @@ package models.Order.Advance;
 
 import models.Country.Country;
 import models.Enums.OrderType;
-import models.MapHolder.MapHolder;
+import models.GameContext.GameContext;
 import models.Order.Order;
 
 /**
@@ -12,6 +12,7 @@ public class AdvanceOrder implements Order {
     private String d_countryFrom;
     private String d_countryTo;
     private int d_noOfArmies;
+    private static final GameContext d_ctx= GameContext.getInstance();
 
     /**
      * Initializes an advance order with the source country, target country, and number of armies to advance.
@@ -40,8 +41,8 @@ public class AdvanceOrder implements Order {
      */
     public void execute() {
         // Retrieve the source country and target country from the map
-        Country sourceCountry = MapHolder.getMap().getCountryByName(this.d_countryFrom);
-        Country targetCountry = MapHolder.getMap().getCountryByName(this.d_countryTo);
+        Country sourceCountry = d_ctx.getMap().getCountryByName(this.d_countryFrom);
+        Country targetCountry = d_ctx.getMap().getCountryByName(this.d_countryTo);
 
         // Check if both countries exist
         if (sourceCountry != null && targetCountry != null) {

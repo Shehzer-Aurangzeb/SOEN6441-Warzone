@@ -3,7 +3,7 @@ package models.Order.Blockade;
 import models.Country.Country;
 import models.Enums.OrderType;
 import models.Enums.PlayerType;
-import models.MapHolder.MapHolder;
+import models.GameContext.GameContext;
 import models.Order.Order;
 
 
@@ -13,6 +13,7 @@ import models.Order.Order;
  */
 public class BlockadeOrder implements Order {
     private int d_targetCountry;
+    private static final GameContext d_ctx= GameContext.getInstance();
 
     /**
      * Initializes a blockade order with the target country.
@@ -37,7 +38,7 @@ public class BlockadeOrder implements Order {
      */
     public void execute() {
         // Retrieve the target country from the map
-        Country targetCountry = MapHolder.getMap().getCountryByID(this.d_targetCountry);
+        Country targetCountry = d_ctx.getMap().getCountryByID(this.d_targetCountry);
 
         // Check if the target country exists
         if (targetCountry != null) {

@@ -17,7 +17,7 @@ public class MapEditorTest {
     @BeforeEach
     void setUp() {
         map = new Map();
-        mapEditor = new MapEditor();
+//        mapEditor = new MapEditor();
 
     }
 

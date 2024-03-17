@@ -2,9 +2,10 @@ package models.Player;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import log.LogEntryBuffer;
+
 import models.Country.Country;
 import models.Enums.GamePhase;
+import models.GameContext.GameContext;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
 import models.Order.Advance.AdvanceOrder;
@@ -12,9 +13,7 @@ import models.Order.Bomb.BombOrder;
 import models.Order.Blockade.BlockadeOrder;
 import models.Order.Airlift.AirliftOrder;
 import models.Order.Diplomacy.DiplomacyOrder;
-import models.MapHolder.MapHolder;
-import static controllers.CommandHandler.CommandHandler.handleDisplayCommands;
-import static controllers.CommandHandler.CommandHandler.handleExitCommand;
+
 import static utils.Feedback.displayCommandUnavailableMessage;
 import static views.MapView.PlayerView.displayPlayerList;
 
@@ -24,14 +23,13 @@ import static views.MapView.PlayerView.displayPlayerList;
 public class Player {
     private final String d_playerName;
     private ArrayList<Country> d_ownedCountries;
-    private ArrayList<Order> d_orders;
+    private final ArrayList<Order> d_orders;
     private int d_noOfArmies;
     private boolean hasOrders;
     private boolean lastCommandValidForOrders;
+    private final GameContext d_ctx = GameContext.getInstance();
+    private final Scanner sc = new Scanner(System.in);
 
-    private Scanner sc = new Scanner(System.in);
-    private GamePhase currentPhase;
-    private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
     /**
      * Initializes a player with the given name.
      *
@@ -42,8 +40,8 @@ public class Player {
         this.d_ownedCountries = new ArrayList<>();
         this.d_orders = new ArrayList<>();
         this.d_noOfArmies = 0;
-        this.hasOrders=true;
-        this.lastCommandValidForOrders= true;
+        this.hasOrders = true;
+        this.lastCommandValidForOrders = true;
     }
     //getters
 
@@ -117,24 +115,26 @@ public class Player {
      *
      * @param p_hasOrders A boolean value indicating whether the player has orders.
      */
-    public void setHasOrders(boolean p_hasOrders){
-        this.hasOrders= p_hasOrders;
+    public void setHasOrders(boolean p_hasOrders) {
+        this.hasOrders = p_hasOrders;
     }
+
     /**
      * Sets the flag indicating whether the player last command was valid.
      *
      * @param p_lastCommandValidForOrders A boolean value indicating whether the player last command was valid.
      */
     public void setLastCommandValidForOrders(boolean p_lastCommandValidForOrders) {
-        this.lastCommandValidForOrders=p_lastCommandValidForOrders;
+        this.lastCommandValidForOrders = p_lastCommandValidForOrders;
     }
+
     /**
      * Sets the number of armies owned by the player.
      *
      * @param p_noOfArmies The number of armies to set for the player.
      */
-    public void setNoOfArmies(int p_noOfArmies){
-        this.d_noOfArmies=p_noOfArmies;
+    public void setNoOfArmies(int p_noOfArmies) {
+        this.d_noOfArmies = p_noOfArmies;
     }
 
     /**
@@ -154,7 +154,7 @@ public class Player {
                 break;
             case "showcommands":
                 this.lastCommandValidForOrders = false;
-                handleDisplayCommands(GamePhase.ISSUE_ORDERS);
+                d_ctx.getPhase().showCommands();
                 break;
             case "advance":
                 handleAdvanceOrder(l_commandParts);
@@ -169,7 +169,7 @@ public class Player {
                 handleAirliftOrder(l_commandParts);
                 break;
             case "negotiate":
-                if (currentPhase == GamePhase.ISSUE_ORDERS) {
+                if (d_ctx.getPhase().getPhaseName() == GamePhase.ISSUE_ORDERS) {
                     System.out.println("\nThe 'negotiate' command is not available in the ISSUE ORDERS phase.");
                     System.out.println("Please type 'showcommands' to see the commands you can run.");
                 } else {
@@ -184,7 +184,7 @@ public class Player {
                 this.hasOrders = false;
                 break;
             case "exit":
-                handleExitCommand();
+                d_ctx.getPhase().exit();
                 break;
             default:
                 this.lastCommandValidForOrders = false;
@@ -192,7 +192,6 @@ public class Player {
                 break;
         }
     }
-
 
 
     /**
@@ -215,39 +214,34 @@ public class Player {
      *                  The second element is the country ID.
      *                  The third element is the number of armies to deploy.
      */
-    public final void createDeployOrder(String[] p_command){
+    public final void createDeployOrder(String[] p_command) {
         int countryID = Integer.parseInt(p_command[1]);
-        int noOfArmies= Integer.parseInt(p_command[2]);
-        if(this.d_noOfArmies<noOfArmies){
-            this.lastCommandValidForOrders=false;
+        int noOfArmies = Integer.parseInt(p_command[2]);
+        if (this.d_noOfArmies < noOfArmies) {
+            this.lastCommandValidForOrders = false;
             System.out.println("\nYou do not have enough armies.");
             return;
         }
-        Country country = MapHolder.getMap().getCountryByID(countryID);
+        Country country = d_ctx.getMap().getCountryByID(countryID);
         if (country == null) {
-            this.lastCommandValidForOrders=false;
+            this.lastCommandValidForOrders = false;
             System.out.println("\nInvalid country ID. Country does not exist.");
             return;
         }
-        if(!this.getOwnedCountries().contains(country)){
-            this.lastCommandValidForOrders=false;
-            System.out.println("\nCannot deploy armies to country " +countryID+". You do not own this country. Please select a country that you own to deploy your armies");
+        if (!this.getOwnedCountries().contains(country)) {
+            this.lastCommandValidForOrders = false;
+            System.out.println("\nCannot deploy armies to country " + countryID + ". You do not own this country. Please select a country that you own to deploy your armies");
             return;
         }
         // Modify the line below to pass the current player
-        this.d_orders.add(new DeployOrder(countryID, noOfArmies, this));
-        this.d_noOfArmies-=noOfArmies;
-        this.lastCommandValidForOrders=true;
+        this.d_orders.add(new DeployOrder(countryID, noOfArmies));
+        this.d_noOfArmies -= noOfArmies;
+        this.lastCommandValidForOrders = true;
         System.out.println("\nDeploy order created.");
-        d_logger.log("Player "+this.getName()+" deployed "+ noOfArmies+" armies to country "+countryID);
+        d_ctx.updateLog("Player " + this.getName() + " deployed " + noOfArmies + " armies to country " + countryID);
 
     }
 
-    /**
-     * Handles the advance order command.
-     *
-     * @param commandParts The command parts containing the details of the advance order.
-     */
     /**
      * Handles the advance order command.
      *
@@ -267,8 +261,8 @@ public class Player {
                 System.out.println("\nYou do not have enough armies to advance.");
                 return;
             }
-            Country sourceCountry = MapHolder.getMap().getCountryByName(countryFrom);
-            Country targetCountry = MapHolder.getMap().getCountryByName(countryTo);
+            Country sourceCountry = d_ctx.getMap().getCountryByName(countryFrom);
+            Country targetCountry = d_ctx.getMap().getCountryByName(countryTo);
             if (sourceCountry == null || targetCountry == null) {
                 this.lastCommandValidForOrders = false;
                 System.out.println("\nInvalid country names. One or both countries do not exist.");
@@ -301,7 +295,7 @@ public class Player {
         }
         try {
             int countryID = Integer.parseInt(commandParts[1]);
-            Country targetCountry = MapHolder.getMap().getCountryByID(countryID);
+            Country targetCountry = d_ctx.getMap().getCountryByID(countryID);
             if (targetCountry == null) {
                 this.lastCommandValidForOrders = false;
                 System.out.println("\nInvalid country ID. Country does not exist.");
@@ -331,7 +325,7 @@ public class Player {
         }
         try {
             int countryID = Integer.parseInt(commandParts[1]);
-            Country targetCountry = MapHolder.getMap().getCountryByID(countryID);
+            Country targetCountry = d_ctx.getMap().getCountryByID(countryID);
             if (targetCountry == null) {
                 this.lastCommandValidForOrders = false;
                 System.out.println("\nInvalid country ID. Country does not exist.");
@@ -348,6 +342,7 @@ public class Player {
             System.out.println("Invalid country ID. Please provide a valid integer.");
         }
     }
+
     /**
      * Handles the airlift order command.
      *
