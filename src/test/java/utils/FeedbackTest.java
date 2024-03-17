@@ -1,3 +1,8 @@
+package utils;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import utils.Feedback;
 
 import java.io.ByteArrayOutputStream;
@@ -10,16 +15,16 @@ public class FeedbackTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @AfterEach
     void tearDown() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void displayWelcomeMessage() {
         String l_message="Welcome to the Risk Game!";
         int totalWidth= 60;
@@ -48,7 +53,7 @@ public class FeedbackTest {
     }
 
 
-@org.junit.jupiter.api.Test
+@Test
     void displayPhaseInstructions() {
     }
 }
