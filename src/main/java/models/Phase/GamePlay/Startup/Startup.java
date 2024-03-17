@@ -7,9 +7,6 @@ import models.Phase.GamePlay.GamePlay;
 import models.Phase.GamePlay.IssueOrder.IssueOrder;
 import models.Player.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static utils.Feedback.*;
 
 public class Startup extends GamePlay {
@@ -25,7 +22,7 @@ public class Startup extends GamePlay {
         return PHASE_NAME;
     }
 
-    public void addOrRemovePlayer(String p_command, ArrayList<Player> p_existingPlayers) {
+    public void addOrRemovePlayer(String p_command) {
         String[] l_commandParts = p_command.split("\\s+");
         boolean l_validOption = true; // Flag to track if the option is valid
         //i=1 because 0th index contains name
@@ -41,28 +38,20 @@ public class Startup extends GamePlay {
                 switch (l_option) {
                     case "-add":
                         Player l_player = new Player(l_playerName);
-                        p_existingPlayers.add(l_player);
+                        d_ctx.addPlayer(l_player);
                         System.out.println("\nPlayer '" + l_playerName + "' added successfully.");
                         d_logger.log("Player "+ l_playerName + " added." );
                         i+=2;
                         break;
                     case "-remove":
-                        Player l_playerToRemove = null;
-                        for (Player player : p_existingPlayers) {
-                            if (player.getName().equals(l_playerName)) {
-                                l_playerToRemove = player;
-                                break;
-                            }
-                        }
+                        Player l_playerToRemove= d_ctx.removePlayer(l_playerName);
                         if (l_playerToRemove != null) {
-                            p_existingPlayers.remove(l_playerToRemove);
                             System.out.println("\nPlayer '" + l_playerName + "' removed successfully.");
                             d_logger.log("Player "+ l_playerName + " removed." );
                         } else {
                             System.out.println("\nPlayer '" + l_playerName + "' not found.");
                         }
                         i+=2;
-                        displayPlayers(p_existingPlayers);
                         break;
                     default:
                         System.out.println("\nInvalid option. Please use '-add' to add a player or '-remove' to remove a player.");
@@ -71,15 +60,15 @@ public class Startup extends GamePlay {
                 }
             }
         }
-        displayPlayers(p_existingPlayers);
+        displayPlayers();
     }
 
     public void issueOrders(){
-        printInvalidCommandMessage("orders",d_ge.getPhase().getPhaseName());
+        printInvalidCommandMessage("orders");
     }
     public void executeOrders(){};
     public void next() {
-        d_ge.setPhase(new IssueOrder(d_ge));
+        d_ctx.setPhase(new IssueOrder(d_ge));
         printWelcomeMessageWithBanner("You have entered Game Play - Issue Order phase.");
         System.out.println("\nThe game has started! It's time to issue your orders.");
     }

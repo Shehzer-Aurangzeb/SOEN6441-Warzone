@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class Map {
     /** List of continents in the map. */
-    private ArrayList<Continent> d_continents;
+    private final ArrayList<Continent> d_continents;
 
     /** List of countries in the map. */
-    private ArrayList<Country> d_countries;
+    private final ArrayList<Country> d_countries;
 
     /**
      * Constructor to initialize an empty map.

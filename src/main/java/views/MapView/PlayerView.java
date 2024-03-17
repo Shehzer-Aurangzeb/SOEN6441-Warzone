@@ -2,11 +2,13 @@ package views.MapView;
 
 import models.Continent.Continent;
 import models.Country.Country;
+import models.GameContext.GameContext;
 import models.Map.Map;
-import models.MapHolder.MapHolder;
+
 import models.Player.Player;
-import models.PlayerHolder.PlayerHolder;
+
 import utils.ViewUtils;
+
 
 import java.util.ArrayList;
 /**
@@ -17,8 +19,10 @@ public class PlayerView {
     /**
      * Displays the list of players along with their owned countries on the provided map..
      */
+    private static final GameContext d_ctx= GameContext.getInstance();
+
     public static void displayPlayerList() {
-        displayPlayerCountries(PlayerHolder.getPlayers(), MapHolder.getMap());
+        displayPlayerCountries(d_ctx.getGamePlayers(), d_ctx.getMap());
 
     }
     /**
@@ -111,7 +115,7 @@ public class PlayerView {
     public static void displayMyMap(Player player) {
         ArrayList<Player> playerList = new ArrayList<>();
         playerList.add(player);
-        displayPlayerCountries(playerList, MapHolder.getMap());
+        displayPlayerCountries(playerList, d_ctx.getMap());
     }
 
 }

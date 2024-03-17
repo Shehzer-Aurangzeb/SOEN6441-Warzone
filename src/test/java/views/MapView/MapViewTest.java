@@ -1,19 +1,9 @@
 package views.MapView;
 
-import models.Continent.Continent;
-import models.Country.Country;
-import models.Map.Map;
-import models.MapHolder.MapHolder;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class MapViewTest {
 
