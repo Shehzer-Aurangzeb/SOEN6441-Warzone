@@ -14,14 +14,30 @@ import java.io.IOException;
 import static adapters.FileAdapter.FileAdapter.isFileExists;
 import static views.MapView.MapView.displayMapInformation;
 
+/**
+ * The {@code MapEditing} abstract class extends {@code Phase} and provides common functionalities
+ * for different stages of the map editing process. It allows for loading, editing, saving maps, and displaying map information.
+ */
 public abstract class MapEditing extends Phase {
 
     public static boolean isMapLoaded = false;
 
+    /**
+     * Constructs a new MapEditing phase with a reference to the game engine and sets the phase name.
+     *
+     * @param new_ge The game engine this phase is part of.
+     * @param new_phaseName The name of the new phase.
+     */
     public MapEditing(GameEngine new_ge, GamePhase new_phaseName) {
         super(new_ge, new_phaseName);
     }
 
+    /**
+     * Attempts to load a map from the specified filename.
+     * It checks for the file's existence and loads it into the game context.
+     *
+     * @param p_filename The filename of the map to load.
+     */
     public void loadMap(String p_filename) {
         File l_file = isFileExists(p_filename);
         if (l_file != null) {
@@ -46,6 +62,11 @@ public abstract class MapEditing extends Phase {
         }
     }
 
+    /**
+     * Edits an existing map or creates a new map if the specified filename does not exist in the registry.
+     *
+     * @param p_filename The filename of the map to edit or the name for a new map.
+     */
     public void editMap(String p_filename) {
         File l_file = isFileExists(p_filename);
         //load map if file exists.
@@ -69,28 +90,55 @@ public abstract class MapEditing extends Phase {
         }
     }
 
+    /**
+     * Gets the name of the current game phase.
+     * @return The name of the current game phase.
+     */
     public abstract GamePhase getPhaseName();
 
+    /**
+     * Modifies map components based on the given command.
+     * @param p_command The command specifying the modification action.
+     */
     public abstract void modifyMapComponents(String p_command);
 
+    /**
+     * Saves the current map to a file.
+     * @param p_command The command or filename under which to save the map.
+     */
     public abstract void saveMap(String p_command);
 
+    /**
+     * Displays the current state of the map.
+     */
     public void showMap(){
         displayMapInformation();
     }
 
+    /**
+     * Handles attempts to add or remove a player, which is not allowed in this phase, by displaying an invalid command message.
+     *
+     * @param p_command The command attempted, expected to be related to adding or removing a player.
+     */
     public void addOrRemovePlayer(String p_command) {
         printInvalidCommandMessage(p_command);
     }
 
+    /**
+     * Issues a message indicating that issuing orders is not a valid action during the map editing phase.
+     */
     public void issueOrders() {
         printInvalidCommandMessage("order");
     }
 
+    /**
+     * Placeholder for the executeOrders method, not used in the map editing phase.
+     */
     public void executeOrders() {
     }
-
     ;
-
+    /**
+     * Transitions the game to the next phase.
+     */
     public abstract void next();
 }

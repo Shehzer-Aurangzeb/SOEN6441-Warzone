@@ -11,6 +11,11 @@ import java.io.File;
 import static adapters.FileAdapter.FileAdapter.*;
 import static utils.Feedback.printWelcomeMessageWithBanner;
 
+/**
+ * The {@code Postload} class extends {@code MapEditing} to handle post-loading operations on a map.
+ * This includes adding or removing continents, countries, and neighbors, as well as saving the modified map.
+ * This phase is critical for ensuring the map is correctly modified and validated before transitioning to the game startup phase.
+ */
 public class Postload extends MapEditing {
 
     private static final GamePhase PHASE_NAME = GamePhase.MAP_EDITING_POSTLOAD;
@@ -23,6 +28,11 @@ public class Postload extends MapEditing {
         return PHASE_NAME;
     }
 
+    /**
+     * Modifies map components based on specified commands, which may include adding or removing continents, countries, and their neighbors.
+     *
+     * @param p_command The command specifying what modifications to make to the map.
+     */
     public void modifyMapComponents(String p_command) {
         String[] l_commandParts = p_command.split("\\s+");
         boolean l_validOption = true; // Flag to track if the option is valid
@@ -68,6 +78,12 @@ public class Postload extends MapEditing {
         }
     }
 
+    /**
+     * Saves the currently edited map to a file. If the file does not exist, it is created;
+     * otherwise, the existing file is overwritten.
+     *
+     * @param p_filename The name of the file to save the map to.
+     */
     public void saveMap(String p_filename) {
         if (!d_ctx.getMapService().getMapRegistry().containsKey(p_filename)) {
             System.out.println("\nPlease specify the same filename used for editing when saving the map.");
@@ -82,6 +98,10 @@ public class Postload extends MapEditing {
         }
     }
 
+    /**
+     * Transitions from the map editing phase to the game startup phase if the map is valid.
+     * If the map is not valid, prompts the user to load a valid map.
+     */
     public void next() {
         if (!MapValidator.validateMap(d_ctx.getMap())) {
             System.out.println("The map is not valid. Please load a valid map.\n");
