@@ -22,7 +22,6 @@ public class GameEngine {
     public GameEngine() {
     }
 
-
     void setCommandForTesting(String command) {
         this.d_command = command;
     }
