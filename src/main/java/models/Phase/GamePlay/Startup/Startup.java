@@ -9,19 +9,39 @@ import models.Player.Player;
 
 import static utils.Feedback.*;
 
+/**
+ * The {@code Startup} class extends {@code GamePlay} to manage the startup phase of the game.
+ * This phase is responsible for setting up the game by adding or removing players based on user commands.
+ */
 public class Startup extends GamePlay {
 
     private static final GamePhase PHASE_NAME = GamePhase.STARTUP;
     private static LogEntryBuffer d_logger = LogEntryBuffer.getInstance();
 
+    /**
+     * Constructs a new Startup phase associated with the specified game engine.
+     *
+     * @param new_ge The game engine this phase is part of.
+     */
     public Startup(GameEngine new_ge) {
         super(new_ge,PHASE_NAME);
     }
 
+    /**
+     * Returns the name of this game phase.
+     *
+     * @return The specific GamePhase enum constant representing the startup phase.
+     */
     public GamePhase getPhaseName() {
         return PHASE_NAME;
     }
 
+    /**
+     * Processes the addition or removal of players based on the given command.
+     * The command should specify the action ('-add' or '-remove') followed by the player name.
+     *
+     * @param p_command The command to process, containing the action and player name.
+     */
     public void addOrRemovePlayer(String p_command) {
         String[] l_commandParts = p_command.split("\\s+");
         boolean l_validOption = true; // Flag to track if the option is valid
@@ -67,6 +87,10 @@ public class Startup extends GamePlay {
         printInvalidCommandMessage("orders");
     }
     public void executeOrders(){};
+
+    /**
+     * Transitions the game to the next phase, specifically to the issue orders phase, and displays welcome messages.
+     */
     public void next() {
         d_ctx.setPhase(new IssueOrder(d_ge));
         printWelcomeMessageWithBanner("You have entered Game Play - Issue Order phase.");
