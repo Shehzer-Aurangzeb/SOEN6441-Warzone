@@ -1,7 +1,7 @@
 package models.Enums;
 
 /**
- * Enum representing different type of actions
+ * Enum representing different type of cards
  **/
 public enum CardType {
     INFANTRY,

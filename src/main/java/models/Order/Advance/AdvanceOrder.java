@@ -34,6 +34,7 @@ public class AdvanceOrder implements Order {
      *
      * @return The order type.
      */
+    @Override
     public OrderType getName() {
         return OrderType.ADVANCE;
     }
@@ -43,6 +44,7 @@ public class AdvanceOrder implements Order {
     /**
      * Executes the advance order.
      */
+    @Override
     public void execute() {
         // Retrieve the source country and target country from the map
         Country sourceCountry = d_ctx.getMap().getCountryByName(this.d_countryFrom);

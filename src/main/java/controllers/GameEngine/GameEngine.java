@@ -10,6 +10,10 @@ import java.util.Scanner;
 
 import static utils.Feedback.*;
 
+/**
+ * The GameEngine class is responsible for the main game loop, handling user commands, and transitioning between different phases of the game.
+ *
+ */
 public class GameEngine {
     private final Scanner d_sc = new Scanner(System.in);
     private final GameContext d_ctx = GameContext.getInstance();
@@ -22,6 +26,12 @@ public class GameEngine {
     public GameEngine() {
     }
 
+    /**
+     * Sets a command for testing purposes.
+     * This method allows for the simulation of user input during testing.
+     *
+     * @param command The command to be set for the next operation.
+     */
     void setCommandForTesting(String command) {
         this.d_command = command;
     }
@@ -115,30 +125,54 @@ public class GameEngine {
         }
     }
 
+    /**
+     * Handles the loading of a map from a file specified by the user.
+     * This method is invoked when the "loadmap" command is executed.
+     */
     public void handleLoadMap() {
         String filename = d_command.split(" ")[1];
         d_ctx.getPhase().loadMap(filename);
     }
 
+    /**
+     * Handles the editing of a map specified by the user.
+     * This method is invoked when the "editmap" command is executed.
+     */
     public void handleEditMap() {
         String filename = d_command.split(" ")[1];
         d_ctx.getPhase().editMap(filename);
     }
 
+    /**
+     * Modifies map components based on the user's command.
+     * This method handles commands related to editing continents, countries, and neighbors within the map.
+     */
     public void handleModifyMapComponents() {
         d_ctx.getPhase().modifyMapComponents(d_command);
     }
 
+    /**
+     * Handles the saving of the current map to a file specified by the user.
+     * This method is invoked when the "savemap" command is executed.
+     */
     public void handleSaveMap() {
         String filename = d_command.split(" ")[1];
         d_ctx.getPhase().saveMap(filename);
     }
 
+    /**
+     * Handles the addition or removal of players based on the user's command.
+     * This method is invoked when the "gameplayer" command is executed.
+     */
     public void handleAddOrRemovePlayer() {
         d_ctx.getPhase().addOrRemovePlayer(d_command);
         checkStartGamePrompt();
     }
 
+    /**
+     * Initiates the start of the game after players have been added.
+     * This method checks if there are enough players to start the game and transitions to the next phase if conditions are met.
+     */
     public void handleStartGame() {
         if (d_ctx.getGamePlayers().size() < 2) {
             System.out.println("\nMinimum two players required to start the game.");
@@ -166,7 +200,6 @@ public class GameEngine {
     /**
      * Checks if there are enough players to start the game and prompts the user accordingly.
      */
-
     private void checkStartGamePrompt() {
         if (d_ctx.getGamePlayers().size() >= 2) {
             System.out.println("\nYou have sufficient players to start the game. Type 'startgame' command to begin.");
@@ -176,7 +209,6 @@ public class GameEngine {
     /**
      * Assigns reinforcements to players based on the number of countries owned.
      */
-
     public void assignReinforcements() {
         ArrayList<Player> l_existingPlayer = d_ctx.getGamePlayers();
         for (Player player : l_existingPlayer) {
@@ -186,6 +218,9 @@ public class GameEngine {
         }
     }
 
+    /**
+     * Awards cards to players who have conquered at least one country in their last turn and resets their conquest status for the next turn.
+     */
     private void awardCardsAndResetConquests() {
         ArrayList<Player> l_existingPlayer = d_ctx.getGamePlayers();
         for (Player player : l_existingPlayer) {
