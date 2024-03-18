@@ -37,7 +37,7 @@ public abstract class Phase {
         displayCommandUnavailableMessage(p_command,d_ctx.getPhase().getPhaseName());
     }
     public void exit(){
-        d_ctx.updateLog("Exiting....");
+        d_ctx.updateLog("Exiting the game....");
         System.out.println("Exiting the game. Goodbye!");
         System.exit(0);
     }

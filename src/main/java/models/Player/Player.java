@@ -186,10 +186,12 @@ public class Player {
             case "showmap":
                 this.lastCommandValidForOrders = false;
                 displayPlayerList();
+                d_ctx.updateLog("showmap command entered");
                 break;
             case "mymap":
                 this.lastCommandValidForOrders = false;
                 displayMyMap(this);
+                d_ctx.updateLog("mymap command entered");
                 break;
             case "endturn":
                 this.hasOrders = false;
@@ -249,8 +251,7 @@ public class Player {
         this.d_noOfArmies -= noOfArmies;
         this.lastCommandValidForOrders = true;
         System.out.println("\nDeploy order created.");
-        d_ctx.updateLog("Player " + this.getName() + " deployed " + noOfArmies + " armies to country " + countryID);
-
+        d_ctx.updateLog("\nDeploy order created.");
     }
 
     /**
@@ -289,6 +290,8 @@ public class Player {
             this.d_noOfArmies -= numArmies;
             this.lastCommandValidForOrders = true;
             System.out.println("\nAdvance order created.");
+            d_ctx.updateLog("\nAdvance order created for "+ this.d_playerName+".");
+
         } catch (NumberFormatException e) {
             System.out.println("Invalid number of armies. Please provide an integer.");
         }
@@ -319,6 +322,7 @@ public class Player {
             this.d_orders.add(bombOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nBomb order created.");
+            d_ctx.updateLog("\nBomb order created for "+ this.d_playerName+".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID. Please provide a valid integer.");
         }
@@ -349,6 +353,7 @@ public class Player {
             this.d_orders.add(blockadeOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nBlockade order created.");
+            d_ctx.updateLog("\nBlockade order created for "+ this.d_playerName+".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID. Please provide a valid integer.");
         }
@@ -376,6 +381,7 @@ public class Player {
             this.d_orders.add(airliftOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nAirlift order created.");
+            d_ctx.updateLog("\nAirlift order created for "+ this.d_playerName+".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID or number of armies. Please provide valid integers.");
         }
@@ -400,6 +406,7 @@ public class Player {
             this.d_orders.add(diplomacyOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nDiplomacy order created.");
+            d_ctx.updateLog("\nDiplomacy order created for "+ this.d_playerName+".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid player ID. Please provide a valid integer.");
         }
@@ -411,6 +418,7 @@ public class Player {
         Card newCard = new Card(randomType);
         this.d_cards.add(newCard);
         System.out.println(this.d_playerName + " received a " + randomType + " card.");
+        d_ctx.updateLog(this.d_playerName + " received a " + randomType + " card.");
     }
 
 

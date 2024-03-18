@@ -57,6 +57,7 @@ public abstract class MapEditing extends Phase {
             if (d_ctx.getMapService().getMapRegistry().containsKey(p_filename)) {
                 d_ctx.getMapService().setCurrentEditingFilename(p_filename);
                 System.out.println("\nMap '" + p_filename + "' is selected for edit.");
+                d_ctx.updateLog("\nMap '" + p_filename + "' is selected for edit.");
             } else {
                 //creating a new map and linking it to filename.
                 d_ctx.getMapService().setMapInRegistry(p_filename, new Map());

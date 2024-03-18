@@ -50,6 +50,7 @@ public class BlockadeOrder implements Order {
                 targetCountry.setArmiesDeployed(remainingArmies);
                 targetCountry.setPlayer(PlayerType.NEUTRAL); // Make the country neutral
                 System.out.println("Blockading country " + this.d_targetCountry + ".");
+                d_ctx.updateLog("Blockading country " + this.d_targetCountry + ".");
             } else {
                 System.out.println("Cannot blockade a neutral country.");
             }
