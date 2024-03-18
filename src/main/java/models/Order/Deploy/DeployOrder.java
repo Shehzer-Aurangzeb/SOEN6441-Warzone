@@ -45,6 +45,7 @@ public class DeployOrder implements Order {
     }
     @Override
     public String toString(){
+        d_ctx.updateLog("Deploying " + this.d_noOfArmies + " armies to reinforce country " + this.d_targetCountry + ".");
         return "Deploying " + this.d_noOfArmies + " armies to reinforce country " + this.d_targetCountry + ".";
     }
 }

@@ -43,7 +43,9 @@ public class AirliftOrder implements Order {
         Country targetCountry = d_ctx.getMap().getCountryByID(targetCountryID);
         String sourceCountryName = sourceCountry != null ? sourceCountry.getName() : "Unknown";
         String targetCountryName = targetCountry != null ? targetCountry.getName() : "Unknown";
+        d_ctx.updateLog("Airlifting " + numArmies + " armies from " + sourceCountryName + " to " + targetCountryName + ".");
         return "Airlifting " + numArmies + " armies from " + sourceCountryName + " to " + targetCountryName + ".";
+
     }
 
 }

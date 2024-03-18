@@ -52,13 +52,14 @@ public class GameEngine {
      * Starts the main game loop where players issue orders and orders are executed.
      */
     private void startMainGameLoop() {
-        d_ctx.updateLog("\n============== Issue Order Phase ==============\n");
         while (true) {
             switch (d_ctx.getPhase().getPhaseName()) {
                 case ISSUE_ORDERS:
+                    d_ctx.updateLog("\n============== Issue Order Phase ==============\n");
                     d_ctx.getPhase().issueOrders();
                     break;
                 case EXECUTE_ORDERS:
+                    d_ctx.updateLog("\n============== Execute Order Phase ==============\n");
                     d_ctx.getPhase().executeOrders();
                     break;
             }
@@ -102,6 +103,7 @@ public class GameEngine {
                 break;
             case "proceed":
                 d_ctx.getPhase().next();
+                d_ctx.updateLog("\n============== "+ d_ctx.getPhase().getPhaseName()+ " Phase ==============\n");
                 break;
             case "exit":
                 d_ctx.getPhase().exit();
