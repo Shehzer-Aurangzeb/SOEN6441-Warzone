@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IssueOrderTest {
+public class IssueOrderTest {
     private GameEngine gameEngine;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private GameContext gameContext;

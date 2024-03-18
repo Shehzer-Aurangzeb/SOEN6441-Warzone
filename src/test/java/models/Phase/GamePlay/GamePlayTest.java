@@ -13,7 +13,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GamePlayTest {
+public class GamePlayTest {
     private GameEngine gameEngine;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private GameContext gameContext;
