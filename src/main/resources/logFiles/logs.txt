@@ -1,43 +1,5 @@
-Welcome to Warzone Game!
+Blockading country 202.
+Deploying 5 armies to reinforce country 1.
 
-============== Map Editing Phase ==============
-
-Map 'europass.map' has been loaded.
-
-============== MAP_EDITING_POSTLOAD Phase ==============
-
-Showcommands entered for MAP_EDITING_POSTLOAD phase.
-
-============== STARTUP Phase ==============
-
-Player P1 added.
-Player P2 added.
-Countries assigned to players.
-
-============== Issue Order Phase ==============
-
-
-Deploy order created.
-
-Deploy order created.
-
-============== Execute Order Phase ==============
-
-Deploying 18 armies to reinforce country 1.
-Deploying 18 armies to reinforce country 2.
-
-============== Issue Order Phase ==============
-
-
-Advance order created for P1.
-
-Advance order created for P2.
-
-============== Execute Order Phase ==============
-
-Advancing 18 armies from Reykjavik to Aberdeen.
-Advancing 18 armies from Ostisland to Glasgow.
-
-============== Issue Order Phase ==============
-
-Exiting the game....
+Continent 'Asia' with value '5' has been added.
+Map has been saved.

@@ -34,24 +34,23 @@ public class AdvanceOrderTest {
         targetCountry = null;
     }
 
-    @Disabled
-    @Test
-    public void testExecute_SourceCountryHasEnoughArmies() {
-        // Set armies deployed in the source country
-        int sourceArmies = 10;
-        sourceCountry.setArmiesDeployed(sourceArmies);
-
-        // Create an instance of AdvanceOrder with enough armies
-        int numArmies = 5;
-        AdvanceOrder advanceOrder = new AdvanceOrder("SourceCountry", "TargetCountry", numArmies);
-
-        // Call execute() method
-        advanceOrder.execute();
-
-        // Assert that the armies are correctly moved from the source to the target country
-        assertEquals(sourceArmies - numArmies, sourceCountry.getArmiesDeployed());
-        assertEquals(numArmies, targetCountry.getArmiesDeployed());
-    }
+//    @Test
+//    public void testExecute_SourceCountryHasEnoughArmies() {
+//        // Set armies deployed in the source country
+//        int sourceArmies = 10;
+//        sourceCountry.setArmiesDeployed(sourceArmies);
+//
+//        // Create an instance of AdvanceOrder with enough armies
+//        int numArmies = 5;
+//        AdvanceOrder advanceOrder = new AdvanceOrder("SourceCountry", "TargetCountry", numArmies);
+//
+//        // Call execute() method
+//        advanceOrder.execute();
+//
+//        // Assert that the armies are correctly moved from the source to the target country
+//        assertEquals(sourceArmies - numArmies, sourceCountry.getArmiesDeployed());
+//        assertEquals(numArmies, targetCountry.getArmiesDeployed());
+//    }
 
     @Test
     public void testExecute_SourceCountryDoesNotHaveEnoughArmies() {

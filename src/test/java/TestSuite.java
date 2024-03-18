@@ -9,7 +9,8 @@ import org.junit.platform.suite.api.*;
         "controllers",
         "models",
         "utils",
-        "views"
+        "views",
+
 })
 public class TestSuite {
 }

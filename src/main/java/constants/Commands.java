@@ -72,6 +72,11 @@ public class Commands {
         // Commands for the issue order phase
         ArrayList<Command> l_issueOrders = new ArrayList<>();
         l_issueOrders.add(new Command("deploy","Deploy a specified number of armies to a country.",new String[]{"countryID","num"}));
+        l_issueOrders.add(new Command("advance", "Move armies between territories.", new String[]{"sourceCountryID", "targetCountryID", "num"}));
+        l_issueOrders.add(new Command("bomb", "Destroy half of opponent's armies on an adjacent territory.", new String[]{"opponentCountryID"}));
+        l_issueOrders.add(new Command("blockade", "Triple armies on a territory and make it neutral.", new String[]{"countryID"}));
+        l_issueOrders.add(new Command("airlift", "Move armies between any two territories.", new String[]{"sourceCountryID", "targetCountryID", "num"}));
+        l_issueOrders.add(new Command("negotiate", "Prevent attacks between players until the end of the turn.", new String[]{"opponentPlayerID"}));
         l_issueOrders.add(new Command("showcommands","Display all available commands."));
         l_issueOrders.add(new Command("showarmies","Displays the number of armies owned by the current player."));
         l_issueOrders.add(new Command("showmap","Display the current state of the game map."));

@@ -1,7 +1,6 @@
 unnamed package
 adapters.FileAdapter
 constants
-controllers.CommandHandler
 controllers.GameEngine
 controllers.MapEditor
 log
