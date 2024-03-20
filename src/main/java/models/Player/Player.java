@@ -38,6 +38,7 @@ public class Player {
     private ArrayList<Card> d_cards = new ArrayList<>();
 
 
+
     /**
      * Initializes a player with the given name.
      *
@@ -188,12 +189,7 @@ public class Player {
                 handleAirliftOrder(l_commandParts);
                 break;
             case "negotiate":
-                if (d_ctx.getPhase().getPhaseName() == GamePhase.ISSUE_ORDERS) {
-                    System.out.println("\nThe 'negotiate' command is not available in the ISSUE ORDERS phase.");
-                    System.out.println("Please type 'showcommands' to see the commands you can run.");
-                } else {
                     handleDiplomacyOrder(l_commandParts);
-                }
                 break;
             case "showmap":
                 this.lastCommandValidForOrders = false;
@@ -431,23 +427,19 @@ public class Player {
      */
     private void handleDiplomacyOrder(String[] commandParts) {
         if (commandParts.length != 2) {
-            System.out.println("Invalid diplomacy order command format. Usage: diplomacy playerID");
+            System.out.println("Invalid diplomacy order command format. Usage: diplomacy playerName");
             return;
         }
-        try {
-            int playerID = Integer.parseInt(commandParts[1]);
-            // Check if the player has the diplomacy card (implement this logic)
-            // If the player has the diplomacy card, create and add a DiplomacyOrder to the list of orders
-            // Otherwise, print a message indicating that the player does not have the required card
-            DiplomacyOrder diplomacyOrder = new DiplomacyOrder(playerID);
-            this.d_orders.add(diplomacyOrder);
-            this.lastCommandValidForOrders = true;
-            System.out.println("\nDiplomacy order created.");
-            d_ctx.updateLog("\nDiplomacy order created for " + this.d_playerName + ".");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid player ID. Please provide a valid integer.");
-        }
+        String playerName = commandParts[1]; // Extract playerName from commandParts
+        DiplomacyOrder diplomacyOrder = new DiplomacyOrder(playerName); // Pass playerName to the constructor
+        this.d_orders.add(diplomacyOrder);
+        this.lastCommandValidForOrders = true;
+        System.out.println("\nDiplomacy order created.");
+        d_ctx.updateLog("\nDiplomacy order created for " + this.d_playerName + ".");
     }
+
+
+
 
     public void addRandomCard() {
         CardType[] cardTypes = CardType.values();

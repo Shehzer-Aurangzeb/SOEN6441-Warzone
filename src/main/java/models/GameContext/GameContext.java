@@ -90,6 +90,22 @@ public class GameContext {
     }
 
     /**
+     * Retrieves a player by name.
+     *
+     * @param playerName The name of the player to retrieve.
+     * @return The player object if found, null otherwise.
+     */
+    public Player getPlayerByName(String playerName) {
+        for (Player player : d_players) {
+            if (player.getName().equals(playerName)) {
+                return player;
+            }
+        }
+        return null;
+    }
+
+
+    /**
      * Sets the list of players to a new list of players.
      *
      * @param new_players The new list of players.
