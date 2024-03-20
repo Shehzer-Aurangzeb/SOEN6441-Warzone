@@ -32,6 +32,7 @@ public class DeployOrder implements Order {
      *
      * @return The order type.
      */
+    @Override
     public OrderType getName(){
         return OrderType.DEPLOY;
     };
@@ -40,6 +41,7 @@ public class DeployOrder implements Order {
      * Executes the deployment order.
      * @param p_player The player who issued order
      */
+    @Override
     public void execute(Player p_player){
         Country targetCountry = d_ctx.getMap().getCountryByID(this.d_targetCountry);
 
@@ -51,6 +53,7 @@ public class DeployOrder implements Order {
 
         // Deploy armies to the target country
         targetCountry.setArmiesDeployed(this.d_noOfArmies+targetCountry.getArmiesDeployed());
+
     }
     @Override
     public String toString(){

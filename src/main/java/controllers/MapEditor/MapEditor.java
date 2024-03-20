@@ -13,6 +13,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The MapEditor class is responsible for editing map files used in the game.
+ * It allows for loading, modifying, and saving maps, as well as managing continents, countries, and their borders.
+ * The class operates within the context of a game session, utilizing the GameContext to record actions and manage state.
+ */
 public class MapEditor {
     private final String CONTINENTS = "[continents]";
     private final String COUNTRIES = "[countries]";
@@ -20,14 +25,25 @@ public class MapEditor {
     private Map d_map;
     private final HashMap<String, Map> d_mapRegistry = new HashMap<>();
     private String d_currentEditingFilename;
+
+    /**
+     * Gets the registry of maps that are currently loaded or have been edited.
+     *
+     * @return A HashMap containing the filenames and corresponding map objects.
+     */
     public HashMap<String, Map> getMapRegistry() {
         return this.d_mapRegistry;
     }
 
     private final GameContext d_ctx;
 
-    public MapEditor(GameContext ctx) {
-        this.d_ctx = ctx;
+    /**
+     * Constructs a new MapEditor instance with a given game context.
+     *
+     * @param p_ctx The game context this MapEditor will operate within.
+     */
+    public MapEditor(GameContext p_ctx) {
+        this.d_ctx = p_ctx;
     }
 
 
@@ -40,10 +56,21 @@ public class MapEditor {
         return this.d_currentEditingFilename;
     }
 
+    /**
+     * Sets the filename of the map file currently being edited.
+     *
+     * @param p_filename The filename to set as the current map being edited.
+     */
     public void setCurrentEditingFilename(String p_filename) {
         this.d_currentEditingFilename = p_filename;
     }
 
+    /**
+     * Adds or updates a map in the registry with the specified filename and map object.
+     *
+     * @param p_filename The filename associated with the map.
+     * @param p_map      The map object to be stored in the registry.
+     */
     public void setMapInRegistry(String p_filename, Map p_map) {
         this.d_mapRegistry.put(p_filename, p_map);
     }
@@ -87,6 +114,12 @@ public class MapEditor {
 
     }
 
+    /**
+     * Adds a continent to the current map being edited, based on the provided continent name and control value.
+     *
+     * @param p_continentName  The name of the continent to add.
+     * @param p_continentValue The control value of the continent, determining the bonus armies.
+     */
     public void addContinent(String p_continentName, String p_continentValue) {
         if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
             System.out.println("\nCannot add continent. Please use the 'editmap' command to select the file for editing.");
@@ -107,6 +140,11 @@ public class MapEditor {
 
     }
 
+    /**
+     * Removes a continent and its countries from the current map being edited.
+     *
+     * @param p_continentName The name of the continent to remove.
+     */
     public void removeContinent(String p_continentName) {
         if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
             System.out.println("\nCannot remove continent. Please use the 'editmap' command to select the file for editing.");
@@ -133,6 +171,12 @@ public class MapEditor {
         }
     }
 
+    /**
+     * Adds a country to a specified continent in the current map being edited.
+     *
+     * @param p_countryName    The name of the country to add.
+     * @param p_continentName  The name of the continent to which the country will be added.
+     */
     public void addCountry(String p_countryName, String p_continentName) {
         if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
             System.out.println("\nCannot add country. Please use the 'editmap' command to select the file for editing.");
@@ -154,6 +198,11 @@ public class MapEditor {
 
     }
 
+    /**
+     * Removes a country from the current map being edited.
+     *
+     * @param p_countryName The name of the country to remove.
+     */
     public void removeCountry(String p_countryName) {
         if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
             System.out.println("\nCannot remove country. Please use the 'editmap' command to select the file for editing.");
@@ -170,6 +219,12 @@ public class MapEditor {
         }
     }
 
+    /**
+     * Adds a neighbor to a specified country in the current map being edited.
+     *
+     * @param p_countryName         The name of the country to add a neighbor to.
+     * @param p_neighborCountryName The name of the neighboring country.
+     */
     public void addNeighbor(String p_countryName, String p_neighborCountryName) {
         if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
             System.out.println("\nCannot add neighbor. Please use the 'editmap' command to select the file for editing.");
@@ -190,6 +245,13 @@ public class MapEditor {
         }
     }
 
+
+    /**
+     * Removes a neighbor from a specified country in the current map being edited.
+     *
+     * @param p_countryName        The name of the country from which the neighbor will be removed.
+     * @param p_neighborCountryName The name of the neighbor country to remove.
+     */
     public void removeNeighbor(String p_countryName, String p_neighborCountryName) {
         if (d_currentEditingFilename == null || d_currentEditingFilename.isEmpty()) {
             System.out.println("\nCannot remove neighbor. Please use the 'editmap' command to select the file for editing.");
@@ -211,6 +273,12 @@ public class MapEditor {
 
     }
 
+    /**
+     * Saves the current state of the map to a file. This includes writing the continents, countries, and their borders to the specified file.
+     *
+     * @param p_file The file to save the map to.
+     * @param p_map  The map object containing the data to be saved.
+     */
     public void saveMap(File p_file, Map p_map) {
         emptyFile(p_file);
         try (PrintWriter l_pw = new PrintWriter(new FileOutputStream(p_file))) {
@@ -226,6 +294,11 @@ public class MapEditor {
         }
     }
 
+    /**
+     * Empties the contents of a given file. This is typically used before saving a map to ensure the file is cleared before writing new contents.
+     *
+     * @param p_file The file to be emptied.
+     */
     private void emptyFile(File p_file) {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(p_file))) {
             //writing nothing to files make it empty.
@@ -234,6 +307,13 @@ public class MapEditor {
         }
     }
 
+    /**
+     * Writes the continent information of a map to a PrintWriter.
+     * This method formats the continent data according to the map file specification.
+     *
+     * @param p_pw        The PrintWriter to write the continent information to.
+     * @param p_continents The list of continents to be written.
+     */
     private void writeContinents(PrintWriter p_pw, ArrayList<Continent> p_continents) {
         p_pw.println(CONTINENTS);
         for (Continent l_continent : p_continents) {
@@ -243,6 +323,13 @@ public class MapEditor {
         p_pw.println();
     }
 
+    /**
+     * Writes the country and border information of a map to a PrintWriter.
+     * This method formats the country and border data according to the map file specification.
+     *
+     * @param p_pw       The PrintWriter to write the country and border information to.
+     * @param p_countries The list of countries to be written, including their borders.
+     */
     private void writeCountriesAndBorders(PrintWriter p_pw, ArrayList<Country> p_countries) {
         StringBuilder l_line = new StringBuilder();
         p_pw.println(COUNTRIES);
@@ -267,6 +354,12 @@ public class MapEditor {
         }
     }
 
+    /**
+     * Adjusts the continent and country IDs in a map after a continent has been deleted.
+     * This ensures that all IDs remain sequential and consistent.
+     *
+     * @param p_map The map object to restructure.
+     */
     private void restructureMapAfterContinentDeletion(Map p_map) {
         ArrayList<Continent> l_continents = p_map.getContinents();
         ArrayList<Country> l_countries = p_map.getCountries();
@@ -287,6 +380,12 @@ public class MapEditor {
         Continent.lastAssignedID = newID;
     }
 
+    /**
+     * Processes a line from the map file, updating the map object based on the type of line (continent, country, or neighbor).
+     *
+     * @param p_line    The line to process.
+     * @param p_lineType The type of line (continent, country, or neighbor).
+     */
     private void processMapLine(String p_line, LineType p_lineType) {
         // skips empty line or comments. comment starts with ;
         if (p_line.isBlank() || p_line.startsWith(";")) return;

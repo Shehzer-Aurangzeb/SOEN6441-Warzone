@@ -35,15 +35,18 @@ public class AdvanceOrder implements Order {
      *
      * @return The order type.
      */
+    @Override
     public OrderType getName() {
         return OrderType.ADVANCE;
     }
 
     /**
      * Executes the advance order.
+     *
      * @param p_player the player who issues the order.
      */
     public void execute(Player p_player) {
+
         // Retrieve the source country and target country from the map
         Country sourceCountry = d_ctx.getMap().getCountryByName(this.d_countryFrom);
         Country targetCountry = d_ctx.getMap().getCountryByName(this.d_countryTo);
@@ -71,8 +74,8 @@ public class AdvanceOrder implements Order {
     /**
      * Simulates an attack between two territories.
      *
-     * @param attacker             The country launching the attack.
-     * @param defender             The country being attacked.
+     * @param attacker The country launching the attack.
+     * @param defender The country being attacked.
      */
     public void simulateAttack(Country attacker, Country defender) {
         int numOfAttackingArmies = this.d_noOfArmies;
@@ -111,8 +114,8 @@ public class AdvanceOrder implements Order {
     }
 
     private void moveArmies(Country from, Country to) {
-        to.setArmiesDeployed(to.getArmiesDeployed()+this.d_noOfArmies);
-        from.setArmiesDeployed(Math.max(0,from.getArmiesDeployed() - this.d_noOfArmies));
+        to.setArmiesDeployed(to.getArmiesDeployed() + this.d_noOfArmies);
+        from.setArmiesDeployed(Math.max(0, from.getArmiesDeployed() - this.d_noOfArmies));
     }
 
     @Override

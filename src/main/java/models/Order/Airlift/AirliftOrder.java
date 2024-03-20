@@ -5,24 +5,51 @@ import models.Enums.OrderType;
 import models.Country.Country;
 import models.Player.Player;
 
+
+/**
+ * The {@code AirliftOrder} class implements the {@code Order} interface to represent an airlift order in the game.
+ * It allows for the transfer of a specified number of armies from one country to another.
+ */
 public class AirliftOrder implements Order {
     private int sourceCountryID;
     private int targetCountryID;
     private int numArmies;
     private static final GameContext d_ctx= GameContext.getInstance();
 
+    /**
+     * Constructs an AirliftOrder with specified source and target country IDs and the number of armies to be airlifted.
+     *
+     * @param sourceCountryID The ID of the country from which armies are to be airlifted.
+     * @param targetCountryID The ID of the country to which armies are to be airlifted.
+     * @param numArmies The number of armies to airlift.
+     */
     public AirliftOrder(int sourceCountryID, int targetCountryID, int numArmies) {
         this.sourceCountryID = sourceCountryID;
         this.targetCountryID = targetCountryID;
         this.numArmies = numArmies;
     }
 
+    /**
+     * Gets the type of the order, which is AIRLIFT in this case.
+     *
+     * @return The order type AIRLIFT.
+     */
     @Override
     public OrderType getName() {
         return OrderType.AIRLIFT;
     }
 
+    /**
+     * Executes the airlift order by transferring the specified number of armies from the source country to the target country.
+     * It updates the army count for both countries accordingly. If there are not enough armies in the source country,
+     * or if any of the country IDs are invalid, it throws an exception.
+     *
+     * @throws IllegalStateException If there are not enough armies in the source country.
+     * @throws IllegalArgumentException If the source or target country IDs are invalid.
+     * @param p_player The player who issued order
+     */
     public void execute(Player p_player) {
+
         Country sourceCountry = d_ctx.getMap().getCountryByID(sourceCountryID);
         Country targetCountry = d_ctx.getMap().getCountryByID(targetCountryID);
 
@@ -38,6 +65,12 @@ public class AirliftOrder implements Order {
         }
     }
 
+    /**
+     * Returns a string representation of the airlift order, including the number of armies to be transferred,
+     * and the names of the source and target countries.
+     *
+     * @return A string describing the airlift order.
+     */
     @Override
     public String toString() {
         Country sourceCountry = d_ctx.getMap().getCountryByID(sourceCountryID);

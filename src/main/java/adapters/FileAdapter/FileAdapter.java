@@ -25,6 +25,13 @@ public class FileAdapter {
         if (l_file.exists()) return l_file;
         return null;
     }
+
+    /**
+     * Creates a new File instance for a file with the specified filename in the predefined base path.
+     *
+     * @param p_fileName The name of the file to be created. If it does not end with ".map", the extension is appended.
+     * @return A File object representing the file to be created in the predefined base path.
+     */
     public static File createFile(String p_fileName){
         String l_fileName= p_fileName.endsWith(".map")?p_fileName:p_fileName+".map";
         return new File(BASE_PATH + l_fileName);

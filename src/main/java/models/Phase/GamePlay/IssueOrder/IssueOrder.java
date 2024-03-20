@@ -10,19 +10,33 @@ import java.util.ArrayList;
 
 import static utils.Feedback.printWelcomeMessageWithBanner;
 
-
+/**
+ * Represents the phase in the game where players are issuing their orders. This phase allows each player to issue
+ * their orders in turn, cycling through all players until all have either issued all their orders or have no more orders to issue.
+ */
 public class IssueOrder extends GamePlay {
     private static final GamePhase PHASE_NAME = GamePhase.ISSUE_ORDERS;
 
-    public IssueOrder(GameEngine new_ge) {
-        super(new_ge, PHASE_NAME);
+
+    /**
+     * Constructs a new IssueOrder phase associated with a specific game engine.
+     *
+     * @param new_ge The game engine this phase is part of.
+     */
+    public IssueOrder(GameEngine new_ge){
+        super(new_ge,PHASE_NAME);
     }
 
     public GamePhase getPhaseName() {
         return PHASE_NAME;
     }
 
-    public void issueOrders() {
+
+    /**
+     * Processes the issuance of orders from all players in the game. This method cycles through each player,
+     * prompting them to issue their orders until all players have finished.
+     */
+    public void issueOrders(){
         int l_currentPlayerIndex = 0;
         ArrayList<Player> l_existingPlayers = d_ctx.getGamePlayers();
         while (!allPlayersDoneWithOrders()) {
@@ -40,7 +54,6 @@ public class IssueOrder extends GamePlay {
         next();
 
     }
-
 
     public void addOrRemovePlayer(String p_command) {
         printInvalidCommandMessage(p_command);
