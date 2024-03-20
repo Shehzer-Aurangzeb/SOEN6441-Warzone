@@ -23,6 +23,7 @@ public class DeployOrderTest {
         deployOrder = new DeployOrder(1, 5);
         player= new Player("test-player");
         gameContext.addPlayer(player);
+        player.addOwnedCountry(gameContext.getMap().getCountryByID(1));
 
     }
 
