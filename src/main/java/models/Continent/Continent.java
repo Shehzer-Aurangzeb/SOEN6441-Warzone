@@ -1,5 +1,10 @@
 package models.Continent;
 
+import models.Country.Country;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a continent in a game map.
  */
@@ -8,7 +13,7 @@ public class Continent {
     public static int lastAssignedID=1;
     private String d_name;
     private int d_armyBonus;
-
+    private List<Country> d_countries;
     /**
      * Constructs a new continent.
      *
@@ -20,6 +25,7 @@ public class Continent {
         this.d_name = new_name;
         this.d_armyBonus = new_armyBonus;
         lastAssignedID++;
+        this.d_countries= new ArrayList<>();
     }
     /**
      * Retrieves the ID of the continent.
@@ -28,6 +34,14 @@ public class Continent {
      */
     public int getID() {
         return this.d_id;
+    }
+    /**
+     * Retrieves the list of countries of the continent.
+     *
+     * @return The countries of the continent.
+     */
+    public List<Country> getCountries() {
+        return this.d_countries;
     }
 
     /**
@@ -55,6 +69,20 @@ public class Continent {
      */
     public void setID(int p_id) {
         this.d_id = p_id;
+    }
+    /**
+     * Add the country to the list of countries of the continent.
+     *
+     */
+    public void addCountry(Country p_country) {
+        this.d_countries.add(p_country);
+    }
+    /**
+     * Remove the country from the list of countries of the continent.
+     *
+     */
+    public void removeCountry(Country p_country) {
+        this.d_countries.remove(p_country);
     }
 
     /**

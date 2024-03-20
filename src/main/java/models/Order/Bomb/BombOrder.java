@@ -12,7 +12,7 @@ import models.Player.Player;
  */
 public class BombOrder implements Order {
     private int targetCountryID;
-    private static final GameContext d_ctx= GameContext.getInstance();
+    private static final GameContext d_ctx = GameContext.getInstance();
 
     /**
      * Initializes a bomb order with the target country.
@@ -36,26 +36,23 @@ public class BombOrder implements Order {
     /**
      * Executes the bomb order.
      */
+//    int currentArmies = targetCountry.getArmiesDeployed();
+//    int remainingArmies = currentArmies - (currentArmies / 2);
+//    targetCountry.setArmiesDeployed(remainingArmies);
     public void execute(Player p_player) {
         // Get the target country from the map
         Country targetCountry = d_ctx.getMap().getCountryByID(targetCountryID);
 
-        // Check if the target country exists
-        if (targetCountry != null) {
-            // Check if there are armies left in the target country
-            int armies = targetCountry.getArmiesDeployed();
-            if (armies > 0) {
-                // Decrease the number of armies in the target country by 1
-                targetCountry.setArmiesDeployed(armies - 1);
-            } else {
-                // No armies left in the target country
-                System.out.println("Cannot bomb country " + targetCountryID + ". No armies left.");
-                d_ctx.updateLog("Cannot bomb country " + targetCountryID + ". No armies left.");
-            }
-        } else {
-            // Handle the case where the target country does not exist
-            System.out.println("Invalid target country for bombing.");
+        if (targetCountry == null) {
+            System.out.println("\nInvalid country ID. Country does not exist.");
+            return;
         }
+        int currentArmies = targetCountry.getArmiesDeployed();
+        int remainingArmies = Math.max(0,currentArmies - (currentArmies / 2));
+        targetCountry.setArmiesDeployed(remainingArmies);
+        System.out.println("Bomb order executed successfully. Half of the armies on " + targetCountry.getName() + " have been destroyed.");
+
+
     }
 
     /**

@@ -68,6 +68,8 @@ public class GameEngine {
                 case EXECUTE_ORDERS:
                     d_ctx.updateLog("\n============== Execute Order Phase ==============\n");
                     d_ctx.getPhase().executeOrders();
+                    //after executing
+                    awardCardsAndResetConquests();
                     break;
             }
         }
@@ -213,7 +215,7 @@ public class GameEngine {
         for (Player player : l_existingPlayer) {
             int l_armyCount = player.getOwnedCountries().size() / 3;
             if (l_armyCount < 3) l_armyCount = 3;
-            player.setNoOfArmies(l_armyCount);
+            player.setNoOfArmies(player.getNoOfArmies()+l_armyCount);
         }
     }
 

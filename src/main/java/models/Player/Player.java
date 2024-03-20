@@ -1,11 +1,13 @@
 package models.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 import models.Card.Card;
 
+import models.Continent.Continent;
 import models.Country.Country;
 import models.Enums.CardType;
 import models.Enums.GamePhase;
@@ -28,6 +30,7 @@ import static views.MapView.PlayerView.displayPlayerList;
 public class Player {
     private final String d_playerName;
     private ArrayList<Country> d_ownedCountries;
+    private ArrayList<Continent> d_ownedContinents;
     private final ArrayList<Order> d_orders;
     private int d_noOfArmies;
     private boolean hasOrders;
@@ -35,7 +38,7 @@ public class Player {
     private final GameContext d_ctx = GameContext.getInstance();
     private final Scanner sc = new Scanner(System.in);
     private boolean conqueredThisTurn = false;
-    private ArrayList<Card> d_cards = new ArrayList<>();
+    private ArrayList<CardType> d_cards; // ArrayList to store cards
 
 
     /**
@@ -46,10 +49,12 @@ public class Player {
     public Player(String new_name) {
         this.d_playerName = new_name;
         this.d_ownedCountries = new ArrayList<>();
+        this.d_ownedContinents = new ArrayList<>();
         this.d_orders = new ArrayList<>();
         this.d_noOfArmies = 0;
         this.hasOrders = true;
         this.lastCommandValidForOrders = true;
+        this.d_cards=new ArrayList<>();
     }
     //getters
 
@@ -107,6 +112,29 @@ public class Player {
         return this.d_ownedCountries;
     }
 
+    /**
+     * Adds the list of continents owned by the player.
+     *
+     */
+    public void addOwnedContinent(Continent p_continent) {
+        if(this.d_ownedContinents.contains(p_continent)) return;
+        this.d_ownedContinents.add(p_continent);
+    }
+
+
+    /**
+     * remove a continents owned by the player.
+     *
+     */
+    public void removeOwnedContinent(Continent p_continent) {
+        if(!this.d_ownedContinents.contains(p_continent)) return;
+        this.d_ownedContinents.remove(p_continent);
+    }
+
+
+    public boolean hasConqueredThisTurn() {
+        return this.conqueredThisTurn;
+    }
     //setters
 
     /**
@@ -118,6 +146,10 @@ public class Player {
 
         this.d_ownedCountries.add(p_country);
     }
+    public void setConqueredThisTurn(boolean p_conquered) {
+        this.conqueredThisTurn = p_conquered;
+    }
+
 
     /**
      * Removed a country from the list of countries owned by the player.
@@ -341,6 +373,30 @@ public class Player {
                 System.out.println("\nInvalid country ID. Country does not exist.");
                 return;
             }
+            if(!this.d_cards.contains(CardType.BOMB)){
+                this.lastCommandValidForOrders = false;
+                System.out.println("You do not have the Bomb card to issue this order.");
+                return;
+            }
+            // Check if the specified country is adjacent to any of the current player's territories
+            boolean isAdjacent = false;
+            for (Country country : this.getOwnedCountries()) {
+                if (country.getNeighbours().contains(targetCountry)) {
+                    isAdjacent = true;
+                    break;
+                }
+            }
+            // If the specified country is adjacent, destroy half of the armies located on that country
+            if (isAdjacent) {
+                BombOrder bombOrder = new BombOrder(countryID);
+                this.d_orders.add(bombOrder);
+                this.lastCommandValidForOrders = true;
+                System.out.println("Bomb order created.");
+                d_ctx.updateLog("\nBomb order created for " + this.d_playerName + ".");
+            } else {
+                System.out.println("The specified country is not adjacent to any of your territories.");
+            }
+
             // Check if the player has the bomb card (implement this logic)
             // If the player has the bomb card, create and add a BombOrder to the list of orders
             // Otherwise, print a message indicating that the player does not have the required card
@@ -449,22 +505,25 @@ public class Player {
         }
     }
 
+    // Method to add a random card
     public void addRandomCard() {
-        CardType[] cardTypes = CardType.values();
-        CardType randomType = cardTypes[new Random().nextInt(cardTypes.length)];
-        Card newCard = new Card(randomType);
-        this.d_cards.add(newCard);
-        System.out.println(this.d_playerName + " received a " + randomType + " card.");
-        d_ctx.updateLog(this.d_playerName + " received a " + randomType + " card.");
-    }
+        // Get a random integer between 0 and 3 (inclusive)
+        Random random = new Random();
+        int randomIndex = random.nextInt(4);
 
+        // Map the random index to a card type
+        CardType randomCard = switch (randomIndex) {
+            case 0 -> CardType.BOMB;
+            case 1 -> CardType.NEGOTIATE;
+            case 2 -> CardType.AIRLIFT;
+            case 3 -> CardType.DIPLOMACY;
+            default -> null;
+        };
 
-    public void setConqueredThisTurn(boolean conquered) {
-        this.conqueredThisTurn = conquered;
-    }
-
-    public boolean hasConqueredThisTurn() {
-        return this.conqueredThisTurn;
+        // Add the selected card to the ArrayList
+        d_cards.add(randomCard);
+        System.out.println("Congratulations! You have conquered a territory and earned a new card.");
+        System.out.println("You have been awarded the following card: " + randomCard.getName());
     }
 
 

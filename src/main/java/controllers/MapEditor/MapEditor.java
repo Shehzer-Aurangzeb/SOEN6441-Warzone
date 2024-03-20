@@ -421,6 +421,8 @@ public class MapEditor {
         int l_continentId = l_mapContinents.get(l_continentIndex).getID();
         Country l_country = new Country(l_countryId, l_countryName, l_continentId);
         d_map.addCountry(l_country);
+        l_mapContinents.get(l_continentIndex).addCountry(l_country);
+
     }
 
     private void processNeighborLine(String[] p_parts) {

@@ -1,11 +1,13 @@
 package models.Order.Advance;
 
+import models.Continent.Continent;
 import models.Country.Country;
 import models.Enums.OrderType;
 import models.GameContext.GameContext;
 import models.Order.Order;
 import models.Player.Player;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -82,7 +84,8 @@ public class AdvanceOrder implements Order {
         int numOfAttackingArmies = this.d_noOfArmies;
         int attackerCasualties = 0;
         int defenderCasualties = 0;
-
+        Player attackingCountryOwner=attacker.getOwner();
+        Player defendingCountryOwner=defender.getOwner();
         // Simulate battle
         for (int i = 0; i < numOfAttackingArmies; i++) {
             if (Math.random() < 0.6) { // Attacker's army has a 60% chance of killing a defender's army
@@ -103,15 +106,16 @@ public class AdvanceOrder implements Order {
             // Attacker captures the territory
             defender.setArmiesDeployed(survivingArmies);
             // Update ownership
-            defender.getOwner().removeOwnedCountry(defender);
+            defendingCountryOwner.removeOwnedCountry(defender);
             defender.setOwner(attacker.getOwner());
-            attacker.getOwner().addOwnedCountry(defender);
-
-            System.out.println("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getOwner().getName() + ", with " + survivingArmies + " armies remaining.");
-            d_ctx.updateLog("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getOwner().getName() + ", with " + survivingArmies + " armies remaining.");
+            attackingCountryOwner.addOwnedCountry(defender);
+            defendingCountryOwner.setConqueredThisTurn(true);
+            updateOwnedContinents(attackingCountryOwner,defendingCountryOwner,defender);
+            System.out.println("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getName() + ", with " + survivingArmies + " armies remaining.");
+            d_ctx.updateLog("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getName() + ", with " + survivingArmies + " armies remaining.");
         } else {
-            System.out.println("The defending forces have repelled the attack! " + defender.getName() + " successfully defends against " + attacker.getOwner().getName() + ", with " + defender.getArmiesDeployed() + " armies remaining.");
-            d_ctx.updateLog("The defending forces have repelled the attack! " + defender.getName() + " successfully defends against " + attacker.getOwner().getName() + ", with " + defender.getArmiesDeployed() + " armies remaining.");
+            System.out.println("The defending forces have repelled the attack! " + defender.getName() + " successfully defends against " + attacker.getName() + ", with " + defender.getArmiesDeployed() + " armies remaining.");
+            d_ctx.updateLog("The defending forces have repelled the attack! " + defender.getName() + " successfully defends against " + attacker.getName() + ", with " + defender.getArmiesDeployed() + " armies remaining.");
         }
     }
 
@@ -120,6 +124,35 @@ public class AdvanceOrder implements Order {
         from.setArmiesDeployed(Math.max(0, from.getArmiesDeployed() - this.d_noOfArmies));
     }
 
+    public void updateOwnedContinents(Player attacker, Player defender, Country capturedTerritory) {
+        ArrayList<Continent> continents = d_ctx.getMap().getContinents();
+
+        for (Continent continent : continents) {
+            boolean attackerOwnsContinent = true;
+            boolean defenderOwnsContinent = true;
+
+            for (Country country : continent.getCountries()) {
+                if (country.getOwner() != attacker) {
+                    attackerOwnsContinent = false;
+                }
+                if (country != capturedTerritory && country.getOwner() != defender) {
+                    defenderOwnsContinent = false;
+                }
+            }
+
+            if (attackerOwnsContinent) {
+                attacker.addOwnedContinent(continent);
+            } else {
+                attacker.removeOwnedContinent(continent);
+            }
+
+            if (defenderOwnsContinent) {
+                defender.addOwnedContinent(continent);
+            } else {
+                defender.removeOwnedContinent(continent);
+            }
+        }
+    }
     @Override
     public String toString() {
         return "Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".";

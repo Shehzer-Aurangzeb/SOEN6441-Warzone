@@ -41,6 +41,7 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/log/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/log/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/log/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/log/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/log/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/log/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/member-search-index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Card/Card.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Card/Card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Card/class-use/Card.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Card/class-use/Card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Card/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Card/package-summary.html" afterDir="false" />
@@ -194,10 +195,12 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/GameContext/GameContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/GameContext/GameContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Continent/Continent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/CardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/CardType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Bomb/BombOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Bomb/BombOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" afterDir="false" />
     </list>
@@ -409,7 +412,7 @@
       <workItem from="1710485023689" duration="11502000" />
       <workItem from="1710578430896" duration="13151000" />
       <workItem from="1710704470523" duration="6497000" />
-      <workItem from="1710829092339" duration="25735000" />
+      <workItem from="1710829092339" duration="35026000" />
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
