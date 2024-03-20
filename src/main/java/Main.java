@@ -16,3 +16,12 @@ public class Main {
 
     }
 }
+
+//
+// loadmap test_map
+// proceed
+// gameplayer -add Tania -add Nabil
+// startgame
+ // endturn
+// deploy 528 3
+//advance Pakistan India 3

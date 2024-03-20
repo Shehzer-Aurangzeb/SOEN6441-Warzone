@@ -68,6 +68,7 @@ public class AdvanceOrder implements Order {
             System.out.println(this.d_noOfArmies + " armies moved from " + sourceCountry.getName() + " to " + targetCountry.getName() + ".");
         } else {
             simulateAttack(sourceCountry, targetCountry);
+
         }
     }
 
@@ -102,9 +103,10 @@ public class AdvanceOrder implements Order {
             // Attacker captures the territory
             defender.setArmiesDeployed(survivingArmies);
             // Update ownership
+            defender.getOwner().removeOwnedCountry(defender);
             defender.setOwner(attacker.getOwner());
             attacker.getOwner().addOwnedCountry(defender);
-            defender.getOwner().removeOwnedCountry(defender);
+
             System.out.println("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getOwner().getName() + ", with " + survivingArmies + " armies remaining.");
             d_ctx.updateLog("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getOwner().getName() + ", with " + survivingArmies + " armies remaining.");
         } else {

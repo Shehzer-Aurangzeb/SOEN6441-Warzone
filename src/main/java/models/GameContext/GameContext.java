@@ -97,6 +97,18 @@ public class GameContext {
     public void setGamePlayers(ArrayList<Player> new_players){
         this.d_players=new_players;
     }
+    /**
+     * Update player.
+     * @param p_player The updated player.
+     */
+    public void updatePlayer(Player p_player){
+        for(int i=0;i<d_players.size();i++){
+            if(d_players.get(i).getName().equals(p_player.getName())){
+                d_players.set(i,p_player);
+                break;
+            }
+        }
+    }
 
     /**
      * Adds a new player to the game.

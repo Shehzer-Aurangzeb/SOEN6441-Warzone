@@ -32,6 +32,19 @@ public class Map {
     public void addCountry(Country p_country){
         d_countries.add(p_country);
     }
+    /**
+     * Update a country in the map.
+     *
+     * @param p_updatedCountry The country to be updated.
+     */
+    public void updateCountry(Country p_updatedCountry){
+        for (int i = 0; i < d_countries.size(); i++) {
+            if (d_countries.get(i).getID() == p_updatedCountry.getID()) {
+                d_countries.set(i,p_updatedCountry);
+                break;
+            }
+        }
+    }
 
     /**
      * Add a continent to the map.

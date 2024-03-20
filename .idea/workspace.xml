@@ -195,23 +195,10 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/adapters/FileAdapter/FileAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MapEditor/MapEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/CardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/CardType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/GamePhase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/GamePhase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Enums/PlayerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Enums/PlayerType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/GameContext/GameContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/GameContext/GameContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Airlift/AirliftOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Airlift/AirliftOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/ExecuteOrder/ExecuteOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/ExecuteOrder/ExecuteOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/GamePlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/GamePlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/IssueOrder/IssueOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/IssueOrder/IssueOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/Startup/Startup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/Startup/Startup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/MapEditing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/MapEditing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/Postload/Postload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/Postload/Postload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/Phase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/Phase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +248,7 @@
     "JUnit.ModelsTestSuite.executor": "Run",
     "Maven.Warzone [test].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "git-widget-placeholder": "Merging develop",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -422,7 +409,7 @@
       <workItem from="1710485023689" duration="11502000" />
       <workItem from="1710578430896" duration="13151000" />
       <workItem from="1710704470523" duration="6497000" />
-      <workItem from="1710829092339" duration="19258000" />
+      <workItem from="1710829092339" duration="25735000" />
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />

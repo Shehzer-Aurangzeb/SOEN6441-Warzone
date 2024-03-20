@@ -1,9 +1,50 @@
-Blockading country 474.
-Deploying 5 armies to reinforce country 1.
-Cannot bomb country 946. No armies left.
-Player Player1 added.
-Player Player1 removed.
+Welcome to Warzone Game!
 
-Continent 'Asia' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.
+============== Map Editing Phase ==============
+
+Map 'test_map' has been loaded.
+
+============== MAP_EDITING_POSTLOAD Phase ==============
+
+
+============== STARTUP Phase ==============
+
+Player Tania added.
+Player Nabil added.
+Countries assigned to players.
+
+============== Issue Order Phase ==============
+
+
+Deploy order created.
+
+============== Execute Order Phase ==============
+
+Deploying 3 armies to reinforce country 528.
+
+============== Issue Order Phase ==============
+
+mymap command entered
+
+============== Execute Order Phase ==============
+
+
+============== Issue Order Phase ==============
+
+
+Deploy order created.
+
+Deploy order created.
+
+Advance order created for Nabil.
+
+============== Execute Order Phase ==============
+
+Deploying 1 armies to reinforce country 663.
+Deploying 3 armies to reinforce country 528.
+The attack was successful! India has been conquered by Nabil, with 2 armies remaining.
+
+============== Issue Order Phase ==============
+
+mymap command entered
+mymap command entered

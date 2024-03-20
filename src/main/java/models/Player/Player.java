@@ -115,6 +115,7 @@ public class Player {
      * @param p_country The country to be added.
      */
     public void addOwnedCountry(Country p_country) {
+
         this.d_ownedCountries.add(p_country);
     }
 
@@ -169,7 +170,7 @@ public class Player {
                 createAdvanceOrder(l_commandParts);
                 break;
             case "bomb":
-                handleBombOrder(l_commandParts);
+                createBombOrder(l_commandParts);
                 break;
             case "showarmies":
                 this.lastCommandValidForOrders = false;
@@ -327,7 +328,7 @@ public class Player {
      *
      * @param commandParts The command parts containing the details of the bomb order.
      */
-    private void handleBombOrder(String[] commandParts) {
+    private void createBombOrder(String[] commandParts) {
         if (commandParts.length != 2) {
             System.out.println("Invalid bomb order command format. Usage: bomb countryID");
             return;
