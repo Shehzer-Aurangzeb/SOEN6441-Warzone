@@ -2,6 +2,7 @@ package models.Order.Diplomacy;
 
 import models.Enums.OrderType;
 import models.Order.Order;
+import models.Player.Player;
 
 /**
  * Represents a diplomacy order in the game.
@@ -41,7 +42,7 @@ public class DiplomacyOrder implements Order {
      * Executes the order.
      */
     @Override
-    public void execute() {
+    public void execute(Player p_player) {
         // Placeholder implementation for executing a diplomacy order
         // This method will be called when the order is executed
         System.out.println("Executing diplomacy order with player ID: " + playerID);

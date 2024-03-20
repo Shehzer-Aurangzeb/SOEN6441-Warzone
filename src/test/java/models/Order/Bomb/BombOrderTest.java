@@ -8,6 +8,7 @@ import models.Enums.PlayerType;
 import models.GameContext.GameContext;
 import models.Map.Map;
 import models.Order.Bomb.BombOrder;
+import models.Player.Player;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,8 @@ import org.junit.jupiter.api.Test;
 public class BombOrderTest {
     private GameContext gameContext;
     private Country targetCountry;
+    private Player player;
+
     @BeforeEach
     public void setUp() {
         gameContext= GameContext.getInstance();
@@ -25,11 +28,15 @@ public class BombOrderTest {
 
         // Add the target country to the map
         gameContext.getMap().addCountry(targetCountry);
+        player= new Player("test-player");
+        gameContext.addPlayer(player);
+
     }
     @AfterEach
     public void tearDown(){
         gameContext=null;
         targetCountry=null;
+        player=null;
     }
 
     @Test
@@ -38,7 +45,7 @@ public class BombOrderTest {
         BombOrder bombOrder = new BombOrder(targetCountry.getID());
 
         // Call execute() method
-        bombOrder.execute();
+        bombOrder.execute(player);
 
         // Assert that the number of armies in the target country is reduced by 1
         assertEquals(9, targetCountry.getArmiesDeployed());
@@ -52,7 +59,7 @@ public class BombOrderTest {
         BombOrder bombOrder = new BombOrder(targetCountry.getID());
 
         // Call execute() method
-        bombOrder.execute();
+        bombOrder.execute(player);
 
         // Assert that no change occurs as the target country has no armies
         assertEquals(0, targetCountry.getArmiesDeployed());
@@ -64,7 +71,7 @@ public class BombOrderTest {
         BombOrder bombOrder = new BombOrder(-1);
 
         // Call execute() method
-        bombOrder.execute();
+        bombOrder.execute(player);
 
         // Assert that no change occurs as the target country is invalid
         assertEquals(10, targetCountry.getArmiesDeployed());

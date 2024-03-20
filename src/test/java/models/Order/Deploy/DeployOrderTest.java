@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import models.Country.Country;
 import models.Enums.OrderType;
 import models.GameContext.GameContext;
+import models.Player.Player;
 import org.junit.jupiter.api.*;
 
 
@@ -12,12 +13,16 @@ public class DeployOrderTest {
     private DeployOrder deployOrder;
     private Country country;
     private GameContext gameContext;
+    private Player player;
+
     @BeforeEach
     public void setUp() {
         country = new Country(1,"new_country",1);
         gameContext= GameContext.getInstance();
         gameContext.getMap().addCountry(country);
         deployOrder = new DeployOrder(1, 5);
+        player= new Player("test-player");
+        gameContext.addPlayer(player);
 
     }
 
@@ -29,7 +34,7 @@ public class DeployOrderTest {
     @Test
     public void execute_DeploysArmiesToTargetCountry() {
         // Execute the DeployOrder
-        deployOrder.execute();
+        deployOrder.execute(player);
 
         //check if armies are deployed
        assertEquals(5,gameContext.getMap().getCountryByID(1).getArmiesDeployed());
@@ -49,5 +54,6 @@ public class DeployOrderTest {
         gameContext=null;
         country=null;
         deployOrder=null;
+        player=null;
     }
 }

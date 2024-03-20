@@ -6,12 +6,14 @@ import static org.mockito.Mockito.*;
 import models.Country.Country;
 import models.GameContext.GameContext;
 import models.Map.Map;
+import models.Player.Player;
 import org.junit.jupiter.api.*;
 
 public class AdvanceOrderTest {
     private GameContext gameContext;
     private Country sourceCountry;
     private Country targetCountry;
+    private Player player;
     @BeforeEach
     public void setUp() {
         // Create a new GameContext instance
@@ -24,6 +26,9 @@ public class AdvanceOrderTest {
         // Add the countries to the map
         gameContext.getMap().addCountry(sourceCountry);
         gameContext.getMap().addCountry(targetCountry);
+        player= new Player("test-player");
+        gameContext.addPlayer(player);
+
     }
     @AfterEach
     public void tearDown() {
@@ -32,6 +37,7 @@ public class AdvanceOrderTest {
         // Create mock countries
         sourceCountry =null;
         targetCountry = null;
+        player=null;
     }
 
 //    @Test
@@ -63,7 +69,7 @@ public class AdvanceOrderTest {
         AdvanceOrder advanceOrder = new AdvanceOrder("SourceCountry", "TargetCountry", numArmies);
 
         // Call execute() method
-        advanceOrder.execute();
+        advanceOrder.execute(player);
 
         // Assert that no armies are moved from the source to the target country
         assertEquals(sourceArmies, sourceCountry.getArmiesDeployed());
@@ -77,7 +83,7 @@ public class AdvanceOrderTest {
         AdvanceOrder advanceOrder = new AdvanceOrder("InvalidSourceCountry", "InvalidTargetCountry", numArmies);
 
         // Call execute() method
-        advanceOrder.execute();
+        advanceOrder.execute(player);
 
         // Assert that no armies are moved from the source to the target country
         assertEquals(0, sourceCountry.getArmiesDeployed());
