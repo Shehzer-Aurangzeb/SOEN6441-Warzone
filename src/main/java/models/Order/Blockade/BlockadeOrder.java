@@ -36,28 +36,29 @@ public class BlockadeOrder implements Order {
     /**
      * Executes the blockade order.
      */
+    /**
+     * Executes the blockade order.
+     */
+    @Override
     public void execute(Player p_player) {
         // Retrieve the target country from the map
         Country targetCountry = d_ctx.getMap().getCountryByID(this.d_targetCountry);
 
         // Check if the target country exists
         if (targetCountry != null) {
-            // Check if the target country is owned by a player
-            PlayerType currentPlayer = targetCountry.getPlayer();
-            if (currentPlayer != PlayerType.NEUTRAL) {
-                // Remove half of the armies from the target country
-                int remainingArmies = Math.max(1, targetCountry.getArmiesDeployed() / 2); // Ensure at least 1 army remains
-                targetCountry.setArmiesDeployed(remainingArmies);
-                targetCountry.setPlayer(PlayerType.NEUTRAL); // Make the country neutral
-                System.out.println("Blockading country " + this.d_targetCountry + ".");
-                d_ctx.updateLog("Blockading country " + this.d_targetCountry + ".");
-            } else {
-                System.out.println("Cannot blockade a neutral country.");
-            }
+            // Remove half of the armies from the target country
+            int remainingArmies = Math.max(1, targetCountry.getArmiesDeployed() / 2); // Ensure at least 1 army remains
+            targetCountry.setArmiesDeployed(remainingArmies);
+            targetCountry.setPlayer(PlayerType.NEUTRAL); // Make the country neutral
+            System.out.println("Blockading country " + this.d_targetCountry + ".");
+            d_ctx.updateLog("Blockading country " + this.d_targetCountry + ".");
         } else {
             System.out.println("Invalid target country for blockade order.");
         }
+        // Remove adjacency relationships with other countries
+        p_player.removeOwnedCountry(targetCountry);
     }
+
 
     @Override
     public String toString(){

@@ -9,6 +9,7 @@ import models.Card.Card;
 import models.Country.Country;
 import models.Enums.CardType;
 import models.Enums.GamePhase;
+import models.Enums.PlayerType;
 import models.GameContext.GameContext;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
@@ -99,6 +100,8 @@ public class Player {
         return this.lastCommandValidForOrders;
     }
 
+
+
     /**
      * Retrieves the list of countries owned by the player.
      *
@@ -127,6 +130,7 @@ public class Player {
      */
     public void removeOwnedCountry(Country p_country) {
         this.d_ownedCountries.remove(p_country);
+        p_country.setPlayer(PlayerType.NEUTRAL);
     }
 
     /**
