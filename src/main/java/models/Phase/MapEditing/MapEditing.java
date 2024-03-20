@@ -63,7 +63,7 @@ public abstract class MapEditing extends Phase {
                 d_ctx.getMapService().setMapInRegistry(p_filename, new Map());
                 d_ctx.getMapService().setCurrentEditingFilename(p_filename);
                 System.out.println("\nNew map '" + p_filename + "' created. Ready to edit.");
-                d_ctx.updateLog("Map "+ p_filename + " has been created.");
+                d_ctx.updateLog("Map " + p_filename + " has been created.");
             }
             isMapLoaded = true;
         }
@@ -75,7 +75,7 @@ public abstract class MapEditing extends Phase {
 
     public abstract void saveMap(String p_command);
 
-    public void showMap(){
+    public void showMap() {
         displayMapInformation();
     }
 
@@ -89,8 +89,6 @@ public abstract class MapEditing extends Phase {
 
     public void executeOrders() {
     }
-
-    ;
 
     public abstract void next();
 }

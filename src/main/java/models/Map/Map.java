@@ -116,6 +116,20 @@ public class Map {
         }
         return null;
     }
+    /**
+     * Checks if two countries are adjacent.
+     *
+     * @param country1 The first country.
+     * @param country2 The second country.
+     * @return True if the countries are adjacent, false otherwise.
+     */
+    public boolean areAdjacent(Country country1, Country country2) {
+        // Get the list of neighboring countries for country1
+        ArrayList<Country> neighbors = country1.getNeighbours();
+
+        // Check if country2 is in the list of neighboring countries
+        return neighbors.contains(country2);
+    }
 
     /**
      * Get all continents in the map.

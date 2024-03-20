@@ -5,6 +5,7 @@ import models.Enums.OrderType;
 
 import models.GameContext.GameContext;
 import models.Order.Order;
+import models.Player.Player;
 
 /**
  * Represents an order to bomb a country.
@@ -35,7 +36,7 @@ public class BombOrder implements Order {
     /**
      * Executes the bomb order.
      */
-    public void execute() {
+    public void execute(Player p_player) {
         // Get the target country from the map
         Country targetCountry = d_ctx.getMap().getCountryByID(targetCountryID);
 

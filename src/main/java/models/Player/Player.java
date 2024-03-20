@@ -3,6 +3,7 @@ package models.Player;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
 import models.Card.Card;
 
 import models.Country.Country;
@@ -118,6 +119,15 @@ public class Player {
     }
 
     /**
+     * Removed a country from the list of countries owned by the player.
+     *
+     * @param p_country The country to be removed.
+     */
+    public void removeOwnedCountry(Country p_country) {
+        this.d_ownedCountries.remove(p_country);
+    }
+
+    /**
      * Sets the flag indicating whether the player has orders for the current turn.
      *
      * @param p_hasOrders A boolean value indicating whether the player has orders.
@@ -155,6 +165,12 @@ public class Player {
             case "deploy":
                 createDeployOrder(l_commandParts);
                 break;
+            case "advance":
+                createAdvanceOrder(l_commandParts);
+                break;
+            case "bomb":
+                handleBombOrder(l_commandParts);
+                break;
             case "showarmies":
                 this.lastCommandValidForOrders = false;
                 System.out.print("\nArmies left to deploy for " + this.getName() + ": " + this.d_noOfArmies);
@@ -163,12 +179,7 @@ public class Player {
                 this.lastCommandValidForOrders = false;
                 d_ctx.getPhase().showCommands();
                 break;
-            case "advance":
-                handleAdvanceOrder(l_commandParts);
-                break;
-            case "bomb":
-                handleBombOrder(l_commandParts);
-                break;
+
             case "blockade":
                 handleBlockadeOrder(l_commandParts);
                 break;
@@ -220,7 +231,7 @@ public class Player {
     }
 
     /**
-     * Creates a deploy order based on the provided command array.
+     * Creates a deployed order based on the provided command array.
      *
      * @param p_command An array containing the command arguments.
      *                  The first element is the command name.
@@ -228,30 +239,34 @@ public class Player {
      *                  The third element is the number of armies to deploy.
      */
     public final void createDeployOrder(String[] p_command) {
-        int countryID = Integer.parseInt(p_command[1]);
-        int noOfArmies = Integer.parseInt(p_command[2]);
-        if (this.d_noOfArmies < noOfArmies) {
-            this.lastCommandValidForOrders = false;
-            System.out.println("\nYou do not have enough armies.");
-            return;
+        try {
+            int countryID = Integer.parseInt(p_command[1]);
+            int noOfArmies = Integer.parseInt(p_command[2]);
+            if (this.d_noOfArmies < noOfArmies) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nYou do not have enough armies.");
+                return;
+            }
+            Country country = d_ctx.getMap().getCountryByID(countryID);
+            if (country == null) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nInvalid country ID. Country does not exist.");
+                return;
+            }
+            if (!this.getOwnedCountries().contains(country)) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("\nCannot deploy armies to country " + countryID + ". You do not own this country. Please select a country that you own to deploy your armies");
+                return;
+            }
+            // Modify the line below to pass the current player
+            this.d_orders.add(new DeployOrder(countryID, noOfArmies));
+            this.d_noOfArmies -= noOfArmies;
+            this.lastCommandValidForOrders = true;
+            System.out.println("\nDeploy order created.");
+            d_ctx.updateLog("\nDeploy order created.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid country ID or number of armies. Please provide an integer.");
         }
-        Country country = d_ctx.getMap().getCountryByID(countryID);
-        if (country == null) {
-            this.lastCommandValidForOrders = false;
-            System.out.println("\nInvalid country ID. Country does not exist.");
-            return;
-        }
-        if (!this.getOwnedCountries().contains(country)) {
-            this.lastCommandValidForOrders = false;
-            System.out.println("\nCannot deploy armies to country " + countryID + ". You do not own this country. Please select a country that you own to deploy your armies");
-            return;
-        }
-        // Modify the line below to pass the current player
-        this.d_orders.add(new DeployOrder(countryID, noOfArmies));
-        this.d_noOfArmies -= noOfArmies;
-        this.lastCommandValidForOrders = true;
-        System.out.println("\nDeploy order created.");
-        d_ctx.updateLog("\nDeploy order created.");
     }
 
     /**
@@ -259,7 +274,7 @@ public class Player {
      *
      * @param commandParts The command parts containing the details of the advance order.
      */
-    private void handleAdvanceOrder(String[] commandParts) {
+    private void createAdvanceOrder(String[] commandParts) {
         if (commandParts.length != 4) {
             System.out.println("Invalid advance order command format. Usage: advance countryFrom countryTo numArmies");
             return;
@@ -268,29 +283,39 @@ public class Player {
             String countryFrom = commandParts[1];
             String countryTo = commandParts[2];
             int numArmies = Integer.parseInt(commandParts[3]);
-            if (this.d_noOfArmies < numArmies) {
-                this.lastCommandValidForOrders = false;
-                System.out.println("\nYou do not have enough armies to advance.");
-                return;
-            }
+            // Get the source and target countries
             Country sourceCountry = d_ctx.getMap().getCountryByName(countryFrom);
             Country targetCountry = d_ctx.getMap().getCountryByName(countryTo);
+
+            // Check if both countries exist
             if (sourceCountry == null || targetCountry == null) {
-                this.lastCommandValidForOrders = false;
                 System.out.println("\nInvalid country names. One or both countries do not exist.");
                 return;
             }
+
+            // Check if source country has enough armies
+            if (sourceCountry.getArmiesDeployed() < numArmies) {
+                System.out.println("\nThe source country does not have enough armies to advance.");
+                d_ctx.updateLog("Not enough armies in " + sourceCountry.getName() + " to advance.");
+                return;
+            }
+
+            // Check if the countries are adjacent
+            if (!d_ctx.getMap().areAdjacent(sourceCountry, targetCountry)) {
+                System.out.println("\nThe source and target countries are not adjacent.");
+                return;
+            }
+
+            // Check if the source country belongs to the current player
             if (!this.d_ownedCountries.contains(sourceCountry)) {
-                this.lastCommandValidForOrders = false;
                 System.out.println("\nYou do not own the source country.");
                 return;
             }
             AdvanceOrder advanceOrder = new AdvanceOrder(countryFrom, countryTo, numArmies);
             this.d_orders.add(advanceOrder); // Add AdvanceOrder to the list of orders
-            this.d_noOfArmies -= numArmies;
             this.lastCommandValidForOrders = true;
             System.out.println("\nAdvance order created.");
-            d_ctx.updateLog("\nAdvance order created for "+ this.d_playerName+".");
+            d_ctx.updateLog("\nAdvance order created for " + this.d_playerName + ".");
 
         } catch (NumberFormatException e) {
             System.out.println("Invalid number of armies. Please provide an integer.");
@@ -322,7 +347,7 @@ public class Player {
             this.d_orders.add(bombOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nBomb order created.");
-            d_ctx.updateLog("\nBomb order created for "+ this.d_playerName+".");
+            d_ctx.updateLog("\nBomb order created for " + this.d_playerName + ".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID. Please provide a valid integer.");
         }
@@ -353,7 +378,7 @@ public class Player {
             this.d_orders.add(blockadeOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nBlockade order created.");
-            d_ctx.updateLog("\nBlockade order created for "+ this.d_playerName+".");
+            d_ctx.updateLog("\nBlockade order created for " + this.d_playerName + ".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID. Please provide a valid integer.");
         }
@@ -381,7 +406,7 @@ public class Player {
             this.d_orders.add(airliftOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nAirlift order created.");
-            d_ctx.updateLog("\nAirlift order created for "+ this.d_playerName+".");
+            d_ctx.updateLog("\nAirlift order created for " + this.d_playerName + ".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid country ID or number of armies. Please provide valid integers.");
         }
@@ -406,7 +431,7 @@ public class Player {
             this.d_orders.add(diplomacyOrder);
             this.lastCommandValidForOrders = true;
             System.out.println("\nDiplomacy order created.");
-            d_ctx.updateLog("\nDiplomacy order created for "+ this.d_playerName+".");
+            d_ctx.updateLog("\nDiplomacy order created for " + this.d_playerName + ".");
         } catch (NumberFormatException e) {
             System.out.println("Invalid player ID. Please provide a valid integer.");
         }
@@ -420,7 +445,6 @@ public class Player {
         System.out.println(this.d_playerName + " received a " + randomType + " card.");
         d_ctx.updateLog(this.d_playerName + " received a " + randomType + " card.");
     }
-
 
 
     public void setConqueredThisTurn(boolean conquered) {

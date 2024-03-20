@@ -21,6 +21,7 @@ public abstract class Phase {
     public abstract GamePhase getPhaseName();
     public abstract void loadMap(String p_filename);
     public abstract void editMap(String p_filename);
+    public abstract void validateMap();
     public abstract void modifyMapComponents(String p_command);
     public abstract void saveMap(String p_command);
     public abstract void showMap();

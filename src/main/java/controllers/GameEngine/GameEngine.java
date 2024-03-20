@@ -1,5 +1,6 @@
 package controllers.GameEngine;
 
+import models.Country.Country;
 import models.Enums.GamePhase;
 import models.GameContext.GameContext;
 import models.Phase.MapEditing.Preload.Preload;
@@ -15,10 +16,6 @@ public class GameEngine {
     private final GameContext d_ctx = GameContext.getInstance();
     private String d_command;
 
-
-    /**
-     * Initializes the GameEngine with default settings.
-     */
     public GameEngine() {
     }
 
@@ -38,8 +35,8 @@ public class GameEngine {
         d_ctx.updateLog("\n============== Map Editing Phase ==============\n");
         while (d_ctx.getPhase().getPhaseName() != GamePhase.ISSUE_ORDERS) {
             System.out.print("\nEnter your command: ");
-            this.d_command = d_sc.nextLine().trim(); // Ensure this line is correctly assigning the input to d_command
-            if (d_command != null && !d_command.isEmpty()) {
+            this.d_command = d_sc.nextLine().trim();
+            if (!d_command.isEmpty()) {
                 handleCommand();
             } else {
                 System.out.println("No command entered, please try again.");
@@ -65,10 +62,6 @@ public class GameEngine {
             }
         }
     }
-
-    /**
-     * Handles the given command processing.
-     */
     /**
      * Handles the given command processing.
      */
@@ -85,6 +78,9 @@ public class GameEngine {
             case "editcountry":
             case "editneighbor":
                 handleModifyMapComponents();
+                break;
+            case "validatemap":
+                d_ctx.getPhase().validateMap();
                 break;
             case "savemap":
                 handleSaveMap();
@@ -157,7 +153,10 @@ public class GameEngine {
     private void assignCountries() {
         int l_numPlayers = d_ctx.getGamePlayers().size();
         for (int i = 0; i < d_ctx.getMap().getCountries().size(); i++) {
-            d_ctx.getGamePlayers().get(i % l_numPlayers).addOwnedCountry(d_ctx.getMap().getCountries().get(i));
+            Player l_player= d_ctx.getGamePlayers().get(i % l_numPlayers);
+            Country l_country=d_ctx.getMap().getCountries().get(i);
+            l_player.addOwnedCountry(l_country);
+            l_country.setOwner(l_player);
         }
         System.out.println("\nCountries have been assigned to players.");
         d_ctx.updateLog("Countries assigned to players.");

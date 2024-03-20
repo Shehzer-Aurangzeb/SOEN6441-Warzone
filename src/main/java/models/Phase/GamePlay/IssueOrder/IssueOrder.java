@@ -13,28 +13,27 @@ import static utils.Feedback.printWelcomeMessageWithBanner;
 
 public class IssueOrder extends GamePlay {
     private static final GamePhase PHASE_NAME = GamePhase.ISSUE_ORDERS;
-    public IssueOrder(GameEngine new_ge){
-        super(new_ge,PHASE_NAME);
+
+    public IssueOrder(GameEngine new_ge) {
+        super(new_ge, PHASE_NAME);
     }
+
     public GamePhase getPhaseName() {
         return PHASE_NAME;
     }
 
-    public void issueOrders(){
+    public void issueOrders() {
         int l_currentPlayerIndex = 0;
-        ArrayList<Player> l_existingPlayers =d_ctx.getGamePlayers();
-        while (true) {
-            if (allPlayersDoneWithOrders()) break;
+        ArrayList<Player> l_existingPlayers = d_ctx.getGamePlayers();
+        while (!allPlayersDoneWithOrders()) {
             Player l_currentPlayer = l_existingPlayers.get(l_currentPlayerIndex);
             if (!l_currentPlayer.hasOrders()) {
                 l_currentPlayerIndex = (l_currentPlayerIndex + 1) % l_existingPlayers.size();
                 continue;
             }
             l_currentPlayer.issue_order();
-            if (!l_currentPlayer.lastCommandValidForOrders()) {
-                continue;
-            }
-            l_currentPlayer.setHasOrders(l_currentPlayer.getNoOfArmies() > 0);
+            if (!l_currentPlayer.lastCommandValidForOrders()) continue;
+            l_currentPlayer.setHasOrders(l_currentPlayer.hasOrders());
             l_currentPlayerIndex = (l_currentPlayerIndex + 1) % l_existingPlayers.size();
         }
         System.out.println("\nAll players have finished issuing orders. The game is now proceeding to execute orders.");
@@ -46,12 +45,17 @@ public class IssueOrder extends GamePlay {
     public void addOrRemovePlayer(String p_command) {
         printInvalidCommandMessage(p_command);
     }
-    public void executeOrders(){};
 
-    public void next(){
+    public void executeOrders() {
+    }
+
+    ;
+
+    public void next() {
         d_ctx.setPhase(new ExecuteOrder(d_ge));
         printWelcomeMessageWithBanner("Executing Orders ...");
     }
+
     /**
      * Checks if all players are done issuing orders.
      *

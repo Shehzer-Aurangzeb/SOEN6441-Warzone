@@ -42,33 +42,33 @@ public class ExecuteOrder extends GamePlay {
             switch (l_order.getName()) {
                 case DEPLOY:
                     System.out.println("\nExecuting Deploy order for player " + l_currentPlayer.getName() + ": " + l_order);
-                    l_order.execute();
+                    l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
                 case ADVANCE:
                     System.out.println("\nExecuting Advance order for player " + l_currentPlayer.getName() + ": " + l_order);
-                    l_order.execute();
+                    l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
                 case AIRLIFT:
                     System.out.println("\nExecuting AIRLIFT order for player " + l_currentPlayer.getName() + ": " + l_order);
-                    l_order.execute();
+                    l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
                 case BOMB:
                     System.out.println("\nExecuting BOMB order for player " + l_currentPlayer.getName() + ": " + l_order);
-                    l_order.execute();
+                    l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
                 case BLOCKADE:
                     System.out.println("\nExecuting BLOCKADE order for player " + l_currentPlayer.getName() + ": " + l_order);
-                    l_order.execute();
+                    l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
 
                 case DIPLOMACY:
                     System.out.println("\nExecuting DIPLOMACY order for player " + l_currentPlayer.getName() + ": " + l_order);
-                    l_order.execute();
+                    l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
 

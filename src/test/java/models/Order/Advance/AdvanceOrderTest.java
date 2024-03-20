@@ -95,10 +95,8 @@ public class AdvanceOrderTest {
         AdvanceOrder advanceOrder = new AdvanceOrder("SourceCountry", "TargetCountry", 7);
 
         // Execute the simulateAttack function
-        boolean result = advanceOrder.simulateAttack(sourceCountry, targetCountry);
+        advanceOrder.simulateAttack(sourceCountry, targetCountry);
 
-        // Ensure that the attack was successful
-        assertTrue(result);
         // Ensure that the target country was conquered
         assertEquals("SourceCountry", targetCountry.getPlayer());
         // Ensure that the surviving armies are as expected

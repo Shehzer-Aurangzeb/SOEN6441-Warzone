@@ -20,6 +20,7 @@ import models.Phase.MapEditing.Postload.PostloadTest;
 import models.Phase.MapEditing.Preload.PreloadTest;
 import models.Player.PlayerTest;
 import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.SelectPackages;
 import org.junit.platform.suite.api.Suite;
 
 @Suite
@@ -29,5 +30,6 @@ import org.junit.platform.suite.api.Suite;
         BombOrderTest.class, DiplomacyOrderTest.class, ExecuteOrderTest.class, IssueOrderTest.class,
         GamePlayTest.class, PostloadTest.class, PreloadTest.class
 })
+@SelectPackages({"command"})
 public class ModelsTestSuite {
 }

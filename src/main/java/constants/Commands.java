@@ -25,6 +25,8 @@ public class Commands {
         l_mapEditingPreloadCommands.add(new Command("editmap",
                 "Load an existing 'domination' map file or create a new map.",
                 new String[]{"filename"}));
+        l_mapEditingPreloadCommands.add(new Command("validatemap","Verify the correctness of map."));
+
         l_mapEditingPreloadCommands.add(new Command("showcommands","Display all available commands."));
         l_mapEditingPreloadCommands.add(new Command("showmap","Display the current state of the game map."));
         l_mapEditingPreloadCommands.add(new Command("proceed","Proceed to the next phase of the game."));

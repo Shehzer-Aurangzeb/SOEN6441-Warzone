@@ -3,6 +3,7 @@ import models.GameContext.GameContext;
 import models.Order.Order;
 import models.Enums.OrderType;
 import models.Country.Country;
+import models.Player.Player;
 
 public class AirliftOrder implements Order {
     private int sourceCountryID;
@@ -21,7 +22,7 @@ public class AirliftOrder implements Order {
         return OrderType.AIRLIFT;
     }
 
-    public void execute() {
+    public void execute(Player p_player) {
         Country sourceCountry = d_ctx.getMap().getCountryByID(sourceCountryID);
         Country targetCountry = d_ctx.getMap().getCountryByID(targetCountryID);
 

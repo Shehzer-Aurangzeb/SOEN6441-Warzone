@@ -38,10 +38,19 @@ public class DeployOrder implements Order {
 
     /**
      * Executes the deployment order.
+     * @param p_player The player who issued order
      */
-    public void execute(){
-        Country country = d_ctx.getMap().getCountryByID(this.d_targetCountry);
-        country.setArmiesDeployed(this.d_noOfArmies);
+    public void execute(Player p_player){
+        Country targetCountry = d_ctx.getMap().getCountryByID(this.d_targetCountry);
+
+        // Check ownership of the target country
+        if (!p_player.getOwnedCountries().contains(targetCountry)) {
+            System.out.println("\nYou do not own the specified country.");
+            return;
+        }
+
+        // Deploy armies to the target country
+        targetCountry.setArmiesDeployed(this.d_noOfArmies+targetCountry.getArmiesDeployed());
     }
     @Override
     public String toString(){

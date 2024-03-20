@@ -81,6 +81,15 @@ public class Postload extends MapEditing {
             d_ctx.getMapService().saveMap(l_file, d_ctx.getMapService().getMapRegistry().get(p_filename));
         }
     }
+    public void validateMap(){
+        if(!isMapLoaded) System.out.println("\nPlease load the map first using the 'loadmap' command.");
+        else if (!MapValidator.validateMap(d_ctx.getMap())) {
+            System.out.println("The map is not valid. Please load a valid map.\n");
+        }
+        else {
+            System.out.println("The map is valid. You can proceed to the next phase.");
+        }
+    }
 
     public void next() {
         if (!MapValidator.validateMap(d_ctx.getMap())) {

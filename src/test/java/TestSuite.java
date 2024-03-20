@@ -7,7 +7,6 @@ import org.junit.platform.suite.api.*;
 @SelectPackages({
         "adapters",
         "controllers",
-        "models",
         "utils",
         "views",
 

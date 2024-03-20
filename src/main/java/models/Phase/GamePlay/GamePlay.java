@@ -27,6 +27,9 @@ public abstract class GamePlay extends Phase {
     public void modifyMapComponents(String p_command){
         printInvalidCommandMessage(p_command);
     }
+    public void validateMap(){
+        printInvalidCommandMessage("validatemap");
+    }
     public void saveMap(String p_command){
         printInvalidCommandMessage(p_command);
     }

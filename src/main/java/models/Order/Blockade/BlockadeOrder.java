@@ -5,7 +5,7 @@ import models.Enums.OrderType;
 import models.Enums.PlayerType;
 import models.GameContext.GameContext;
 import models.Order.Order;
-
+import models.Player.Player;
 
 
 /**
@@ -36,7 +36,7 @@ public class BlockadeOrder implements Order {
     /**
      * Executes the blockade order.
      */
-    public void execute() {
+    public void execute(Player p_player) {
         // Retrieve the target country from the map
         Country targetCountry = d_ctx.getMap().getCountryByID(this.d_targetCountry);
 

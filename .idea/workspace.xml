@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647a9f05-de93-44d0-abb1-fc170e71fc18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/documentation/refactoring/Refactoring Document.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/Main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/FileAdapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/adapters/FileAdapter/FileAdapter.html" afterDir="false" />
@@ -31,7 +32,6 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/controllers/MapEditor/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/element-list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/help-doc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/index-all.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/index.html" afterDir="false" />
@@ -42,7 +42,6 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/log/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/log/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/log/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/log/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/log/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/log/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/member-search-index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Card/Card.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Card/Card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Card/class-use/Card.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Card/class-use/Card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Card/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Card/package-summary.html" afterDir="false" />
@@ -172,12 +171,10 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/models/Player/package-use.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/overview-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-search-index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/package-use.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/apidocs/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/type-search-index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/Feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/Feedback.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/Helpers.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/Helpers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/utils/Observable.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/utils/Observable.html" afterDir="false" />
@@ -199,14 +196,27 @@
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/apidocs/views/MapView/package-use.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/constants/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/GameEngine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Advance/AdvanceOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Airlift/AirliftOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Airlift/AirliftOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Blockade/BlockadeOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Blockade/BlockadeOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Bomb/BombOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Bomb/BombOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Deploy/DeployOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/ExecuteOrder/ExecuteOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/ExecuteOrder/ExecuteOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/GamePlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/GamePlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/IssueOrder/IssueOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/GamePlay/IssueOrder/IssueOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/MapEditing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/MapEditing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/Postload/Postload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/Postload/Postload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/Preload/Preload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/MapEditing/Preload/Preload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Phase/Phase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Phase/Phase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/models/ModelsTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/ModelsTestSuite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/models/Order/Advance/AdvanceOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Order/Advance/AdvanceOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Order/Diplomacy/DiplomacyOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Order/Diplomacy/DiplomacyOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Phase/GamePlay/ExecuteOrder/ExecuteOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Phase/GamePlay/ExecuteOrder/ExecuteOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Phase/GamePlay/GamePlayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Phase/GamePlay/GamePlayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/Phase/GamePlay/IssueOrder/IssueOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Phase/GamePlay/IssueOrder/IssueOrderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,11 +264,15 @@
     "JUnit.DeployOrderTest.executor": "Run",
     "JUnit.ModelsTestSuite.executor": "Run",
     "Maven.Warzone [test].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -266,6 +280,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/documentation/refactoring" />
       <recent name="$PROJECT_DIR$/src/main/resources/maps" />
       <recent name="$PROJECT_DIR$/documentation" />
     </key>
@@ -410,7 +425,8 @@
       <workItem from="1710314007606" duration="4844000" />
       <workItem from="1710485023689" duration="11502000" />
       <workItem from="1710578430896" duration="13151000" />
-      <workItem from="1710704470523" duration="5843000" />
+      <workItem from="1710704470523" duration="6497000" />
+      <workItem from="1710829092339" duration="18262000" />
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />

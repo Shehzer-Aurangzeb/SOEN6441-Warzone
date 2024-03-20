@@ -1,6 +1,7 @@
 package models.Country;
 
 import models.Enums.PlayerType;
+import models.Player.Player;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class Country {
     private ArrayList<Country> d_neighbours;
     private int d_armiesDeployed;
     private PlayerType d_player;
+    private Player d_owner;
 
     /**
      * Constructs a new country.
@@ -31,6 +33,7 @@ public class Country {
         this.d_neighbours = new ArrayList<>();
         this.d_armiesDeployed = 0;
         this.d_player = PlayerType.NEUTRAL;
+        this.d_owner=null;
     }
 
     /**
@@ -45,6 +48,7 @@ public class Country {
         this.d_continentId = new_continentId;
         this.d_neighbours = new ArrayList<>();
         this.d_armiesDeployed = 0;
+        this.d_owner=null;
     }
 
     /**
@@ -82,6 +86,14 @@ public class Country {
     public int getContinentID() {
         return this.d_continentId;
     }
+    /**
+     * Retrieves the Owner of the country.
+     *
+     * @return The Owner of the country.
+     */
+    public Player getOwner() {
+        return this.d_owner;
+    }
 
     /**
      * Retrieves the player owning the country.
@@ -114,6 +126,13 @@ public class Country {
      */
     public void setID(int p_id) {
         this.d_id = p_id;
+    }
+    /**
+     * Sets the Owner of the country.
+     * @param p_owner the owner of the country
+     */
+    public void setOwner(Player p_owner) {
+         this.d_owner=p_owner;
     }
 
     /**

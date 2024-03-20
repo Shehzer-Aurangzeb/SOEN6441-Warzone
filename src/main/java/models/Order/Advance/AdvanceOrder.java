@@ -4,6 +4,7 @@ import models.Country.Country;
 import models.Enums.OrderType;
 import models.GameContext.GameContext;
 import models.Order.Order;
+import models.Player.Player;
 
 import java.util.Random;
 
@@ -14,7 +15,7 @@ public class AdvanceOrder implements Order {
     private String d_countryFrom;
     private String d_countryTo;
     private int d_noOfArmies;
-    private static final GameContext d_ctx= GameContext.getInstance();
+    private static final GameContext d_ctx = GameContext.getInstance();
 
     /**
      * Initializes an advance order with the source country, target country, and number of armies to advance.
@@ -38,93 +39,81 @@ public class AdvanceOrder implements Order {
         return OrderType.ADVANCE;
     }
 
-    ;
-
     /**
      * Executes the advance order.
+     * @param p_player the player who issues the order.
      */
-    public void execute() {
+    public void execute(Player p_player) {
         // Retrieve the source country and target country from the map
         Country sourceCountry = d_ctx.getMap().getCountryByName(this.d_countryFrom);
         Country targetCountry = d_ctx.getMap().getCountryByName(this.d_countryTo);
-
-        if (sourceCountry != null && targetCountry != null) {
-            int sourceArmies = sourceCountry.getArmiesDeployed(); // Store the number of armies deployed in a variable
-            if (sourceArmies >= this.d_noOfArmies) {
-                if (sourceCountry.getPlayer() != null && !sourceCountry.getPlayer().equals(targetCountry.getPlayer())) {
-                    boolean conquered = simulateAttack(sourceCountry, targetCountry);
-
-                    if (conquered) {
-                        // Transfer ownership
-                        targetCountry.setPlayer(sourceCountry.getPlayer());
-                        System.out.println("Conquered " + targetCountry.getName());
-                        d_ctx.updateLog("Conquered " + targetCountry.getName());
-                    } else {
-                        System.out.println("Attack on " + targetCountry.getName() + " failed.");
-                        d_ctx.updateLog("Attack on " + targetCountry.getName() + " failed.");
-                    }
-                } else {
-                    System.out.println("Invalid operation. Either countries don't exist or not enough armies.");
-                }
-                // Move the specified number of armies from the source country to the target country
-                int remainingArmies = Math.max(0, sourceArmies - this.d_noOfArmies); // Use the stored variable here
-                sourceCountry.setArmiesDeployed(remainingArmies);
-                targetCountry.setArmiesDeployed(targetCountry.getArmiesDeployed() + this.d_noOfArmies);
-                System.out.println("Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".");
-                d_ctx.updateLog("Advancing " + this.d_noOfArmies + " armies from " + this.d_countryFrom + " to " + this.d_countryTo + ".");
-            } else {
-                System.out.println("Not enough armies in " + this.d_countryFrom + " to advance.");
-                d_ctx.updateLog("Not enough armies in " + this.d_countryFrom + " to advance.");
-            }
-        } else {
-            System.out.println("Invalid source or target country for advance order.");
-            d_ctx.updateLog("Invalid source or target country for advance order.");
+        int numArmies = this.d_noOfArmies;
+        // Check ownership of the source country
+        if (!p_player.getOwnedCountries().contains(sourceCountry)) {
+            System.out.println("\nYou do not own the source country.");
+            return;
+        }
+        // Check if the player has enough armies to advance
+        if (sourceCountry.getArmiesDeployed() < numArmies) {
+            // If the player doesn't have enough armies, move all available armies
+            this.d_noOfArmies = sourceCountry.getArmiesDeployed();
         }
 
+        if (p_player.getOwnedCountries().contains(targetCountry)) {
+            // Move armies from source to target country
+            moveArmies(sourceCountry, targetCountry);
+            System.out.println(this.d_noOfArmies + " armies moved from " + sourceCountry.getName() + " to " + targetCountry.getName() + ".");
+        } else {
+            simulateAttack(sourceCountry, targetCountry);
+        }
     }
 
     /**
-     * Simulates an attack from one country to another and determines the outcome.
-     * This method calculates the outcome of an attack based on the number of attacking
-     * and defending armies. It uses a simple probabilistic model where each attacking army
-     * has a 60% chance of winning against a defending army in each round. The battle continues
-     * until either the attacking or defending armies are depleted.
-     * If the attackers conquer the target country (i.e., all defending armies are defeated),
-     * it is assumed that a third of the attacking armies are lost in the battle, and the
-     * remaining forces are moved to the target country. If the attack fails, all attacking
-     * armies are considered lost.
+     * Simulates an attack between two territories.
      *
-     * @param sourceCountry The country from which the attack is launched.
-     * @param targetCountry The country being attacked.
-     * @return True if the attack was successful and the target country was conquered, false otherwise.
+     * @param attacker             The country launching the attack.
+     * @param defender             The country being attacked.
      */
-    public boolean simulateAttack(Country sourceCountry, Country targetCountry) {
-        int attackingArmies = d_noOfArmies; // Number of armies attacking
-        int defendingArmies = targetCountry.getArmiesDeployed(); // Number of armies defending
-        Random rand = new Random();
-        while (attackingArmies > 0 && defendingArmies > 0) {
-            if (rand.nextDouble() < 0.6) { // Assuming attackers have a 60% chance to win each small round
-                defendingArmies--; // Attacker wins this small round
-            } else {
-                attackingArmies--; // Defender wins this small round
+    public void simulateAttack(Country attacker, Country defender) {
+        int numOfAttackingArmies = this.d_noOfArmies;
+        int attackerCasualties = 0;
+        int defenderCasualties = 0;
+
+        // Simulate battle
+        for (int i = 0; i < numOfAttackingArmies; i++) {
+            if (Math.random() < 0.6) { // Attacker's army has a 60% chance of killing a defender's army
+                defenderCasualties++;
+            }
+        }
+        for (int i = 0; i < defender.getArmiesDeployed(); i++) {
+            if (Math.random() < 0.7) { // Defender's army has a 70% chance of killing an attacker's army
+                attackerCasualties++;
             }
         }
 
-        // If defending armies are depleted, attack is successful
-        boolean conquered = defendingArmies <= 0;
-
-        if (conquered) {
-            // Assuming attackers lose a third of their forces in a successful attack, rounded up
-            int survivingArmies = attackingArmies - (int) Math.ceil(attackingArmies / 3.0);
-            targetCountry.setArmiesDeployed(survivingArmies); // Update target country with surviving armies
+        attacker.setArmiesDeployed(attacker.getArmiesDeployed() - numOfAttackingArmies);
+        defender.setArmiesDeployed(Math.max(0, defender.getArmiesDeployed() - defenderCasualties));
+        // Determine the outcome of the attack
+        if (defender.getArmiesDeployed() == 0) {
+            int survivingArmies = numOfAttackingArmies - attackerCasualties;
+            // Attacker captures the territory
+            defender.setArmiesDeployed(survivingArmies);
+            // Update ownership
+            defender.setOwner(attacker.getOwner());
+            attacker.getOwner().addOwnedCountry(defender);
+            defender.getOwner().removeOwnedCountry(defender);
+            System.out.println("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getOwner().getName() + ", with " + survivingArmies + " armies remaining.");
+            d_ctx.updateLog("The attack was successful! " + defender.getName() + " has been conquered by " + attacker.getOwner().getName() + ", with " + survivingArmies + " armies remaining.");
         } else {
-            // If attack fails, all attacking armies are lost.
-            sourceCountry.setArmiesDeployed(sourceCountry.getArmiesDeployed() - d_noOfArmies);
+            System.out.println("The defending forces have repelled the attack! " + defender.getName() + " successfully defends against " + attacker.getOwner().getName() + ", with " + defender.getArmiesDeployed() + " armies remaining.");
+            d_ctx.updateLog("The defending forces have repelled the attack! " + defender.getName() + " successfully defends against " + attacker.getOwner().getName() + ", with " + defender.getArmiesDeployed() + " armies remaining.");
         }
-
-        return conquered;
     }
 
+    private void moveArmies(Country from, Country to) {
+        to.setArmiesDeployed(to.getArmiesDeployed()+this.d_noOfArmies);
+        from.setArmiesDeployed(Math.max(0,from.getArmiesDeployed() - this.d_noOfArmies));
+    }
 
     @Override
     public String toString() {

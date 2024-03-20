@@ -1,6 +1,7 @@
 package models.Order;
 
 import models.Enums.OrderType;
+import models.Player.Player;
 
 public interface Order {
     /**
@@ -10,6 +11,7 @@ public interface Order {
     OrderType getName();
     /**
      * Executes the order.
+     * @param p_player the player who issues the order.
      */
-    void execute();
+    void execute(Player p_player);
 }
