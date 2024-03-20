@@ -1,35 +1,6 @@
-Welcome to Warzone Game!
+Blockading country 353.
+Deploying 5 armies to reinforce country 1.
+Cannot bomb country 527. No armies left.
 
-============== Map Editing Phase ==============
-
-Map 'test_map' has been loaded.
-
-============== MAP_EDITING_POSTLOAD Phase ==============
-
-
-============== STARTUP Phase ==============
-
-Player tania added.
-Player nabil added.
-Countries assigned to players.
-
-============== Issue Order Phase ==============
-
-
-Deploy order created.
-
-Deploy order created.
-
-Blockade order created for tania.
-
-Blockade order created for nabil.
-
-============== Execute Order Phase ==============
-
-Deploying 3 armies to reinforce country 663.
-Deploying 3 armies to reinforce country 528.
-Blockading country 663.
-Blockading country 528.
-
-============== Issue Order Phase ==============
-
+Continent 'Asia' with value '5' has been added.
+Map has been saved.

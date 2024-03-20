@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="647a9f05-de93-44d0-abb1-fc170e71fc18" name="Changes" comment="">
+    <list default="true" id="647a9f05-de93-44d0-abb1-fc170e71fc18" name="Changes" comment="fixed blockade issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Country/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Order/Blockade/BlockadeOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Order/Blockade/BlockadeOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/logs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/Order/Blockade/BlockadeOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/Order/Blockade/BlockadeOrderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +52,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "JUnit.AdvanceOrderTest.executor": "Run",
+    "JUnit.BlockadeOrderTest.executor": "Run",
     "JUnit.DeployOrderTest.execute_DeploysArmiesToTargetCountry.executor": "Run",
     "JUnit.DeployOrderTest.executor": "Run",
     "JUnit.ModelsTestSuite.executor": "Run",
@@ -106,16 +105,10 @@
       <command value="mvn dependency:tree " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ModelsTestSuite">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Warzone" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdvanceOrderTest.testExecute_SourceCountryDoesNotHaveEnoughArmies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,6 +130,21 @@
       </method>
     </configuration>
     <configuration name="AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true" />
+    <configuration name="BlockadeOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Warzone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.Order.Blockade.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models.Order.Blockade" />
+      <option name="MAIN_CLASS_NAME" value="models.Order.Blockade.BlockadeOrderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DeployOrderTest.execute_DeploysArmiesToTargetCountry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
@@ -153,35 +161,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameEngineTest.testHandleLoadMapCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ModelsTestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Warzone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controllers.GameEngine.*" />
+          <option name="PATTERN" value="models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controllers.GameEngine" />
-      <option name="MAIN_CLASS_NAME" value="controllers.GameEngine.GameEngineTest" />
-      <option name="METHOD_NAME" value="testHandleLoadMapCommand" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="models" />
+      <option name="MAIN_CLASS_NAME" value="models.ModelsTestSuite" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.BlockadeOrderTest" />
+      <item itemvalue="JUnit.ModelsTestSuite" />
       <item itemvalue="JUnit.DeployOrderTest.execute_DeploysArmiesToTargetCountry" />
-      <item itemvalue="JUnit.GameEngineTest.testHandleLoadMapCommand" />
-      <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryDoesNotHaveEnoughArmies" />
       <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ModelsTestSuite" />
+        <item itemvalue="JUnit.BlockadeOrderTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.DeployOrderTest.execute_DeploysArmiesToTargetCountry" />
         <item itemvalue="JUnit.AdvanceOrderTest.testExecute_SourceCountryHasEnoughArmies" />
-        <item itemvalue="JUnit.GameEngineTest.testHandleLoadMapCommand" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +232,15 @@
       <workItem from="1710704470523" duration="6497000" />
       <workItem from="1710829092339" duration="25735000" />
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed blockade issue">
+      <option name="closed" value="true" />
+      <created>1710937038634</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710937038634</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +248,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="removed testcases from PlayerTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed testcases from PlayerTest" />
+    <MESSAGE value="fixed blockade issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed blockade issue" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SOEN6441_Warzone$TestSuite.ic" NAME="TestSuite Coverage Results" MODIFIED="1710634323304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
