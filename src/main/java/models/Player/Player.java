@@ -399,6 +399,17 @@ public class Player {
             int targetCountryID = Integer.parseInt(commandParts[2]);
             int numArmies = Integer.parseInt(commandParts[3]);
 
+            // Check if the player has enough armies in the source country
+            Country sourceCountry = d_ctx.getMap().getCountryByID(sourceCountryID);
+            if (sourceCountry == null) {
+                System.out.println("\nInvalid source country ID. Country does not exist.");
+                return;
+            }
+            if (numArmies > sourceCountry.getArmiesDeployed()) {
+                System.out.println("\nNot enough armies in country " + sourceCountryID + " to airlift.");
+                return;
+            }
+
             // Check if the player has the airlift card (implement this logic)
             // If the player has the airlift card, create and add an AirliftOrder to the list of orders
             // Otherwise, print a message indicating that the player does not have the required card
