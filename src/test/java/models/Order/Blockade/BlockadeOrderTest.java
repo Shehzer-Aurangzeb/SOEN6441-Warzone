@@ -1,5 +1,6 @@
 package models.Order.Blockade;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -9,6 +10,7 @@ import models.GameContext.GameContext;
 import models.Order.Blockade.BlockadeOrder;
 import models.Player.Player;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -48,9 +50,8 @@ public class BlockadeOrderTest {
         // Call execute() method
         blockadeOrder.execute(player);
 
-        // Assert that half of the armies are removed from the target country and it becomes neutral
-        assertEquals(5, targetCountry.getArmiesDeployed());
-        assertEquals(PlayerType.NEUTRAL, targetCountry.getPlayer());
+        assertEquals(30, targetCountry.getArmiesDeployed());
+        Assertions.assertNull(targetCountry.getOwner());
     }
 
 
