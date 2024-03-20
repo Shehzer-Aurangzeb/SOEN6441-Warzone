@@ -19,9 +19,11 @@ public class GameContext {
     private ArrayList<Player> d_players = new ArrayList<>();
     private final LogEntryBuffer d_logger= LogEntryBuffer.getInstance();
     private Phase d_currentGamePhase;
+    private Player d_winnner;
     private GameContext(){
         d_map = new Map();
         d_logger.clear();
+        d_winnner=null;
     }
 
     /**
@@ -67,6 +69,12 @@ public class GameContext {
     public void setMap(Map p_map) {
         this.d_map = p_map;
     }
+    public void setWinner(Player p_player) {
+        this.d_winnner = p_player;
+    }
+    public Player getWinner() {
+       return this.d_winnner;
+    }
 
     /**
      * Initializes and returns the map editor service.
@@ -88,6 +96,22 @@ public class GameContext {
     public ArrayList<Player> getGamePlayers(){
         return d_players;
     }
+
+    /**
+     * Retrieves a player by name.
+     *
+     * @param playerName The name of the player to retrieve.
+     * @return The player object if found, null otherwise.
+     */
+    public Player getPlayerByName(String playerName) {
+        for (Player player : d_players) {
+            if (player.getName().equals(playerName)) {
+                return player;
+            }
+        }
+        return null;
+    }
+
 
     /**
      * Sets the list of players to a new list of players.

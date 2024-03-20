@@ -7,7 +7,9 @@ import models.Phase.MapEditing.Preload.Preload;
 import models.Player.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import static utils.Feedback.*;
 
@@ -59,7 +61,7 @@ public class GameEngine {
      * Starts the main game loop where players issue orders and orders are executed.
      */
     private void startMainGameLoop() {
-        while (true) {
+        while (!checkGameEnd()) {
             switch (d_ctx.getPhase().getPhaseName()) {
                 case ISSUE_ORDERS:
                     d_ctx.updateLog("\n============== Issue Order Phase ==============\n");
@@ -70,6 +72,10 @@ public class GameEngine {
                     d_ctx.getPhase().executeOrders();
                     //after executing
                     awardCardsAndResetConquests();
+                    if(checkGameEnd()){
+                        System.out.println("Congratulations! Player " + d_ctx.getWinner().getName() + " wins the game!");
+                        return;
+                    }
                     break;
             }
         }
@@ -230,5 +236,21 @@ public class GameEngine {
                 player.setConqueredThisTurn(false); // Reset for the next turn
             }
         }
+    }
+    public boolean checkGameEnd() {
+        ArrayList<Country> countries = d_ctx.getMap().getCountries();
+        Set<Player> uniqueOwners = new HashSet<>();
+
+        // Collect unique owners of territories
+        for (Country country : countries) {
+            uniqueOwners.add(country.getOwner());
+        }
+
+        // If there's only one unique owner and they own all territories, declare them as the winner
+        if (uniqueOwners.size() == 1 && uniqueOwners.iterator().next().getOwnedCountries().size() == countries.size()) {
+           d_ctx.setWinner(uniqueOwners.iterator().next());
+           return true;
+        }
+        return false;
     }
 }

@@ -4,28 +4,30 @@ import models.Enums.OrderType;
 import models.Order.Order;
 import models.Player.Player;
 
+
+
 /**
  * Represents a diplomacy order in the game.
  */
 public class DiplomacyOrder implements Order {
-    private int playerID;
+    private String playerName;
 
     /**
-     * Constructs a diplomacy order with the specified player ID.
+     * Constructs a diplomacy order with the specified player name.
      *
-     * @param playerID The ID of the player to negotiate with.
+     * @param playerName The name of the player to negotiate with.
      */
-    public DiplomacyOrder(int playerID) {
-        this.playerID = playerID;
+    public DiplomacyOrder(String playerName) {
+        this.playerName = playerName;
     }
 
     /**
-     * Retrieves the ID of the player to negotiate with.
+     * Retrieves the name of the player to negotiate with.
      *
-     * @return The ID of the player.
+     * @return The name of the player.
      */
-    public int getPlayerID() {
-        return playerID;
+    public String getPlayerName() {
+        return playerName;
     }
 
     /**
@@ -39,13 +41,19 @@ public class DiplomacyOrder implements Order {
     }
 
     /**
-     * Executes the order.
+     * Executes the diplomacy order.
      */
     @Override
-    public void execute(Player p_player) {
+    public void execute(Player currentPlayer) {
         // Placeholder implementation for executing a diplomacy order
         // This method will be called when the order is executed
-        System.out.println("Executing diplomacy order with player ID: " + playerID);
-        // Implement the actual logic for diplomacy here
+        if (!currentPlayer.getName().equals(playerName)) {
+            System.out.println("Executing diplomacy order with player name: " + playerName);
+            // Implement the actual logic for diplomacy here
+        } else {
+            System.out.println("Cannot negotiate with yourself.");
+        }
     }
+
+
 }

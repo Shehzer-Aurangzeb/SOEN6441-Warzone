@@ -5,7 +5,7 @@ package models.Enums;
  **/
 public enum CardType {
     BOMB("Bomb"),
-    NEGOTIATE("Negotiate"),
+    BLOCKADE("Blockade"),
     AIRLIFT("Airlift"),
     DIPLOMACY("Diplomacy");
 

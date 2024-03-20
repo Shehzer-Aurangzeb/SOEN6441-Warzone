@@ -11,6 +11,7 @@ import models.Continent.Continent;
 import models.Country.Country;
 import models.Enums.CardType;
 import models.Enums.GamePhase;
+import models.Enums.PlayerType;
 import models.GameContext.GameContext;
 import models.Order.Deploy.DeployOrder;
 import models.Order.Order;
@@ -54,7 +55,7 @@ public class Player {
         this.d_noOfArmies = 0;
         this.hasOrders = true;
         this.lastCommandValidForOrders = true;
-        this.d_cards=new ArrayList<>();
+        this.d_cards = new ArrayList<>();
     }
     //getters
 
@@ -103,6 +104,7 @@ public class Player {
         return this.lastCommandValidForOrders;
     }
 
+
     /**
      * Retrieves the list of countries owned by the player.
      *
@@ -114,20 +116,18 @@ public class Player {
 
     /**
      * Adds the list of continents owned by the player.
-     *
      */
     public void addOwnedContinent(Continent p_continent) {
-        if(this.d_ownedContinents.contains(p_continent)) return;
+        if (this.d_ownedContinents.contains(p_continent)) return;
         this.d_ownedContinents.add(p_continent);
     }
 
 
     /**
      * remove a continents owned by the player.
-     *
      */
     public void removeOwnedContinent(Continent p_continent) {
-        if(!this.d_ownedContinents.contains(p_continent)) return;
+        if (!this.d_ownedContinents.contains(p_continent)) return;
         this.d_ownedContinents.remove(p_continent);
     }
 
@@ -146,6 +146,7 @@ public class Player {
 
         this.d_ownedCountries.add(p_country);
     }
+
     public void setConqueredThisTurn(boolean p_conquered) {
         this.conqueredThisTurn = p_conquered;
     }
@@ -158,6 +159,7 @@ public class Player {
      */
     public void removeOwnedCountry(Country p_country) {
         this.d_ownedCountries.remove(p_country);
+        p_country.setPlayer(PlayerType.NEUTRAL);
     }
 
     /**
@@ -220,12 +222,7 @@ public class Player {
                 handleAirliftOrder(l_commandParts);
                 break;
             case "negotiate":
-                if (d_ctx.getPhase().getPhaseName() == GamePhase.ISSUE_ORDERS) {
-                    System.out.println("\nThe 'negotiate' command is not available in the ISSUE ORDERS phase.");
-                    System.out.println("Please type 'showcommands' to see the commands you can run.");
-                } else {
-                    handleDiplomacyOrder(l_commandParts);
-                }
+                handleDiplomacyOrder(l_commandParts);
                 break;
             case "showmap":
                 this.lastCommandValidForOrders = false;
@@ -373,7 +370,7 @@ public class Player {
                 System.out.println("\nInvalid country ID. Country does not exist.");
                 return;
             }
-            if(!this.d_cards.contains(CardType.BOMB)){
+            if (!this.d_cards.contains(CardType.BOMB)) {
                 this.lastCommandValidForOrders = false;
                 System.out.println("You do not have the Bomb card to issue this order.");
                 return;
@@ -396,10 +393,6 @@ public class Player {
             } else {
                 System.out.println("The specified country is not adjacent to any of your territories.");
             }
-
-            // Check if the player has the bomb card (implement this logic)
-            // If the player has the bomb card, create and add a BombOrder to the list of orders
-            // Otherwise, print a message indicating that the player does not have the required card
             BombOrder bombOrder = new BombOrder(countryID);
             this.d_orders.add(bombOrder);
             this.lastCommandValidForOrders = true;
@@ -428,9 +421,12 @@ public class Player {
                 System.out.println("\nInvalid country ID. Country does not exist.");
                 return;
             }
-            // Check if the player has the blockade card (implement this logic)
-            // If the player has the blockade card, create and add a BlockadeOrder to the list of orders
-            // Otherwise, print a message indicating that the player does not have the required card
+            if (!this.d_cards.contains(CardType.BLOCKADE)) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("You do not have the blockade card to issue this order.");
+                return;
+            }
+
             BlockadeOrder blockadeOrder = new BlockadeOrder(countryID);
             this.d_orders.add(blockadeOrder);
             this.lastCommandValidForOrders = true;
@@ -456,10 +452,16 @@ public class Player {
             int targetCountryID = Integer.parseInt(commandParts[2]);
             int numArmies = Integer.parseInt(commandParts[3]);
 
+
             // Check if the player has enough armies in the source country
             Country sourceCountry = d_ctx.getMap().getCountryByID(sourceCountryID);
             if (sourceCountry == null) {
                 System.out.println("\nInvalid source country ID. Country does not exist.");
+                return;
+            }
+            if (!this.d_cards.contains(CardType.AIRLIFT)) {
+                this.lastCommandValidForOrders = false;
+                System.out.println("You do not have the airlift card to issue this order.");
                 return;
             }
             if (numArmies > sourceCountry.getArmiesDeployed()) {
@@ -467,9 +469,7 @@ public class Player {
                 return;
             }
 
-            // Check if the player has the airlift card (implement this logic)
-            // If the player has the airlift card, create and add an AirliftOrder to the list of orders
-            // Otherwise, print a message indicating that the player does not have the required card
+
             AirliftOrder airliftOrder = new AirliftOrder(sourceCountryID, targetCountryID, numArmies);
             this.d_orders.add(airliftOrder);
             this.lastCommandValidForOrders = true;
@@ -487,22 +487,15 @@ public class Player {
      */
     private void handleDiplomacyOrder(String[] commandParts) {
         if (commandParts.length != 2) {
-            System.out.println("Invalid diplomacy order command format. Usage: diplomacy playerID");
+            System.out.println("Invalid diplomacy order command format. Usage: diplomacy playerName");
             return;
         }
-        try {
-            int playerID = Integer.parseInt(commandParts[1]);
-            // Check if the player has the diplomacy card (implement this logic)
-            // If the player has the diplomacy card, create and add a DiplomacyOrder to the list of orders
-            // Otherwise, print a message indicating that the player does not have the required card
-            DiplomacyOrder diplomacyOrder = new DiplomacyOrder(playerID);
-            this.d_orders.add(diplomacyOrder);
-            this.lastCommandValidForOrders = true;
-            System.out.println("\nDiplomacy order created.");
-            d_ctx.updateLog("\nDiplomacy order created for " + this.d_playerName + ".");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid player ID. Please provide a valid integer.");
-        }
+        String playerName = commandParts[1]; // Extract playerName from commandParts
+        DiplomacyOrder diplomacyOrder = new DiplomacyOrder(playerName); // Pass playerName to the constructor
+        this.d_orders.add(diplomacyOrder);
+        this.lastCommandValidForOrders = true;
+        System.out.println("\nDiplomacy order created.");
+        d_ctx.updateLog("\nDiplomacy order created for " + this.d_playerName + ".");
     }
 
     // Method to add a random card
@@ -514,7 +507,7 @@ public class Player {
         // Map the random index to a card type
         CardType randomCard = switch (randomIndex) {
             case 0 -> CardType.BOMB;
-            case 1 -> CardType.NEGOTIATE;
+            case 1 -> CardType.BLOCKADE;
             case 2 -> CardType.AIRLIFT;
             case 3 -> CardType.DIPLOMACY;
             default -> null;
@@ -525,6 +518,5 @@ public class Player {
         System.out.println("Congratulations! You have conquered a territory and earned a new card.");
         System.out.println("You have been awarded the following card: " + randomCard.getName());
     }
-
 
 }

@@ -1,8 +1,0 @@
-Blockading country 992.
-Deploying 5 armies to reinforce country 1.
-Player Player1 added.
-Player Player1 removed.
-
-Continent 'Asia' with value '5' has been added.
-Map has been saved.
-Map 'canada' has been loaded.

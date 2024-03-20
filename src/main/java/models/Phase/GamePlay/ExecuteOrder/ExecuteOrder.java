@@ -85,7 +85,6 @@ public class ExecuteOrder extends GamePlay {
                     break;
 
                 case DIPLOMACY:
-                    System.out.println("\nExecuting DIPLOMACY order for player " + l_currentPlayer.getName() + ": " + l_order);
                     l_order.execute(l_currentPlayer);
                     l_currentOrder++;
                     break;
