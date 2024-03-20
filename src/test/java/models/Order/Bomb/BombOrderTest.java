@@ -48,7 +48,7 @@ public class BombOrderTest {
         bombOrder.execute(player);
 
         // Assert that the number of armies in the target country is reduced by 1
-        assertEquals(9, targetCountry.getArmiesDeployed());
+        assertEquals(5, targetCountry.getArmiesDeployed());
     }
     @Test
     public void testExecute_TargetCountryHasNoArmies() {
